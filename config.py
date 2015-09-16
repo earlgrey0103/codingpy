@@ -12,6 +12,12 @@ class Config:
     SITE_NAME = 'codingpy'
     SECRETE_KEY = os.urandom(32)
 
+    # 是否启用博客模式
+    BLOG_MODE = True
+
+    # html or markdown
+    BODY_FORMAT = os.getenv('BODY_FORMAT') or 'html'
+
     # mail setup
     MAIL_SERVER = 'smtp.126.com'
     MAIL_PORT = 25

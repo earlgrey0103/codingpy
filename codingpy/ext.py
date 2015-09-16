@@ -4,7 +4,7 @@
 import logging
 import datetime
 from functools import wraps
-from urllib2 import quote
+from urllib.parse import quote
 
 from flask import current_app, request, redirect, url_for
 from flask.ext.bootstrap import Bootstrap
@@ -118,7 +118,7 @@ class SMTPHandler(logging.Handler):
 class CodingpyCache(Cache):
 
     def init_app(self, app, config=None):
-        super(Cache, self).init_app(app)
+        super(CodingpyCache, self).init_app(app)
         self.app = app
 
     def cached(self, timeout=None, key_prefix=None, unless=None):
