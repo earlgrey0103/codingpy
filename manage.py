@@ -6,8 +6,7 @@ import os
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 
-from codingpy import create_app, db, User, Role, Permission, Category,\
-    Tag, Article, Topic, Label
+from codingpy import *
 
 app = create_app(os.environ.get('APP_CONFIG') or 'default')
 
