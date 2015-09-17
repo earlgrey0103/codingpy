@@ -5,14 +5,13 @@
 # import sys
 
 from flask import Flask, send_from_directory, flash, render_template
-from config import config
 from flask_wtf.csrf import CsrfProtect
 from flask.ext.login import logout_user, current_user
 from .ext import (bootstrap, db, moment, cache, mail,
                   login_manager, bcrypt)
 
 from .models import User, AnonymousUser
-
+from .config import config
 # 将project目录加入sys.path
 # project_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 # if project_path not in sys.path:
