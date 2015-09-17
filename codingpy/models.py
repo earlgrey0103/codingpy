@@ -24,7 +24,7 @@ BODY_FORMAT = Config.BODY_FORMAT
 pattern_hasmore = re.compile(r'<!--more-->', re.I)
 
 __all__ = ['User', 'Role', 'Permission', 'Category', 'Tag', 'Article',
-           'Topic', 'Label'
+           'Topic', 'Label', 'AnonymousUser'
            ]
 
 
