@@ -8,7 +8,7 @@ from flask import Flask, send_from_directory, flash, render_template
 from config import config
 from flask_wtf.csrf import CsrfProtect
 from flask.ext.login import logout_user, current_user
-from .ext import (babel, bootstrap, db, moment, cache, mail,
+from .ext import (bootstrap, db, moment, cache, mail,
                   login_manager, bcrypt)
 
 from .models import User, AnonymousUser
@@ -21,29 +21,24 @@ from .models import User, AnonymousUser
 csrf = CsrfProtect()
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
-    # config[config_name].init_app(app)
+    config[config_name].init_app(app)
 
     db.init_app(app)
     bootstrap.init_app(app)
     mail.init_app(app)
     moment.init_app(app)
     csrf.init_app(app)
-    babel.init_app(app)
+    # babel.init_app(app)
     cache.init_app(app)
     bcrypt.init_app(app)
 
     register_managers(app)
     register_routes(app)
     # register_uploadsets(app)
-    # register_error_handle(app)
+    register_error_handle(app)
 
     # before every request
     @app.before_request
@@ -69,18 +64,21 @@ def create_app(config_name):
 
 
 def register_routes(app):
-    from .controllers import admin, site, account
+    from .controllers import admin, site, user
 
     app.register_blueprint(site.bp, url_prefix='')
-    app.register_blueprint(account.bp, url_prefix='/account')
+    app.register_blueprint(user.bp, url_prefix='/user')
     app.register_blueprint(admin.bp, url_prefix='/admin')
 
 
 def register_managers(app):
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
     login_manager.session_protection = 'strong'
     # flask-login will keep track of ip and broswer agent,
     # will log user out if it detects a change
-    login_manager.login_view = 'account.login'
+    login_manager.login_view = 'user.login'
     login_manager.login_message = '请先登陆'
     login_manager.anonymous_user = AnonymousUser
     login_manager.init_app(app)

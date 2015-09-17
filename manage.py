@@ -3,13 +3,14 @@
 import os
 # import sys
 
-
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 
 from codingpy import create_app, db
+from codingpy.models import User, Role, Permission, Category,\
+    Tag, Article, Topic, Label
 
-app = create_app(os.getenv('APP_CONFIG') or 'default')
+app = create_app(os.environ.get('APP_CONFIG') or 'default')
 
 manager = Manager(app)
 migrate = Migrate(app, db)
@@ -19,8 +20,6 @@ manager.add_command('db', MigrateCommand)
 
 @manager.shell
 def make_shell_context():
-    from codingpy.models import User, Role, Permission, Category,\
-        Tag, Article, Topic, Label
     return dict(
         app=app, db=db, User=User, Role=Role, Permission=Permission,
         Category=Category, Tag=Tag, Article=Article, Topic=Topic,
@@ -28,7 +27,7 @@ def make_shell_context():
     )
 
 
-@manager.add_command
+@manager.command
 def test(coverage=False):
     """Run unit tests and/or covrage reports
     """

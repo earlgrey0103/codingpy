@@ -5,6 +5,7 @@ import re
 import json
 import hashlib
 from datetime import datetime
+from functools import reduce
 
 from flask import current_app, request, url_for
 from flask.ext.login import UserMixin, AnonymousUserMixin
@@ -12,7 +13,7 @@ from flask.ext.sqlalchemy import BaseQuery
 from itsdangerous import URLSafeTimedSerializer as Serializer
 from werkzeug import cached_property
 from jinja2.filters import do_striptags, do_truncate
-from .ext import db, bcrypt, keywords_split, to_bytes
+from .ext import db, bcrypt, keywords_split
 from .utils.filters import markdown_filter
 
 from config import Config
@@ -54,10 +55,11 @@ class Permission:
     #: 管理后台的权限
     ADMINISTER = 0x80
 
-    # TODO
-    # MODERATE_COMMENTS =
+    # 评论
+    MODERATE_COMMENTS = 0x03
+    COMMENT = 0x02
 
-    # WRITE_COMMENTS =
+    FOLLOW = 0x01
 
 
 class Role(db.Model):
@@ -75,8 +77,11 @@ class Role(db.Model):
     @staticmethod
     def insert_roles():
         roles = {
-            'User': (Permission.WRITE_ARTICLES, True),
-            'Moderator': (Permission.WRITE_ARTICLES |
+            'User': (Permission.FOLLOW |
+                     Permission.COMMENT, True),
+            'Moderator': (Permission.FOLLOW |
+                          Permission.COMMENT |
+                          Permission.WRITE_ARTICLES |
                           Permission.PUBLISH_ARTICLES, False),
             'Administrator': (0xff, False)
         }
@@ -104,11 +109,13 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(64), unique=True)
     username = db.Column(db.String(64), unique=True)
     name = db.Column(db.String(64))
+    about_me = db.Column(db.String(1000))
 
-    role_id = db.Column(db.Integer, db.ForeignKey(Role.id))
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     password_hash = db.Column(db.String(128))
     confirmed = db.Column(db.Boolean, default=False)
-    about_me = db.Column(db.String(1000))
+
+    # created at
     member_since = db.Column(db.DateTime(), default=datetime.now)
     last_seen = db.Column(db.DateTime(), default=datetime.now)
     avatar_hash = db.Column(db.String(32))
@@ -164,8 +171,7 @@ class User(UserMixin, db.Model):
         self.password_hash = bcrypt.generate_password_hash(password)
 
     def verify_password(self, password):
-        _hash = to_bytes(self.password_hash)
-        return bcrypt.check_password_hash(_hash, password)
+        return bcrypt.check_password_hash(self.password_hash, password)
 
     def generate_confirmation_token(self):
         s = Serializer(current_app.config['SECRET_KEY'])
@@ -277,7 +283,7 @@ article_tags_table = db.Table(
 
 class Category(db.Model):
 
-    """目录"""
+    """栏目"""
 
     __tablename__ = "categories"
 
@@ -314,12 +320,13 @@ class Category(db.Model):
 
     @cached_property
     def link(self):
-        return url_for('main.category', longslug=self.longslug, _external=True)
+        return url_for('site.category', longslug=self.longslug, _external=True)
 
     @cached_property
     def shortlink(self):
-        return url_for('main.category', longslug=self.longslug)
+        return url_for('site.category', longslug=self.longslug)
 
+    # 栏目文章数
     @cached_property
     def count(self):
         cates = db.session.query(Category.id).filter(
@@ -361,7 +368,7 @@ class Category(db.Model):
         '''如果栏目有子栏目，则不允许更改longslug，因为会造成longslug不一致'''
         if target.children and value != oldvalue:
             raise Exception(
-                'Category has children, longslug can not be change!')
+                'Category has children, longslug can not be changed!')
 
     def gen_longslug(self):
         '''生成longslug'''
@@ -379,7 +386,7 @@ class Category(db.Model):
         # 新增时判断longslug是否重复
         if _c:
             raise Exception(
-                'Category longslug "%s" already exist' % _c.longslug)
+                'Category longslug "%s" already exists' % _c.longslug)
 
     @staticmethod
     def before_update(mapper, connection, target):
@@ -389,7 +396,7 @@ class Category(db.Model):
         # 更新时判断longslug是否重复
         if _c and _c.id != target.id:
             raise Exception(
-                'Category longslug "%s" already exist' % _c.longslug)
+                'Category longslug "%s" already exists' % _c.longslug)
 
 db.event.listen(Category.body, 'set', Category.on_changed_body)
 db.event.listen(Category.longslug, 'set', Category.on_changed_longslug)
@@ -400,7 +407,7 @@ db.event.listen(Category, 'before_update', Category.before_update)
 class TagQuery(BaseQuery):
 
     def search(self, keyword):
-        keyword = u'%{0}%'.format(keyword.strip())
+        keyword = '%{0}%'.format(keyword.strip())
         return self.filter(Tag.name.ilike(keyword))
 
 
@@ -436,11 +443,11 @@ class Tag(db.Model):
 
     @cached_property
     def link(self):
-        return url_for('main.tag', name=self.name.lower(), _external=True)
+        return url_for('site.tag', name=self.name.lower(), _external=True)
 
     @cached_property
     def shortlink(self):
-        return url_for('main.tag', name=self.name.lower())
+        return url_for('site.tag', name=self.name.lower())
 
     @cached_property
     def count(self):
@@ -488,11 +495,11 @@ class Topic(db.Model):
 
     @cached_property
     def link(self):
-        return url_for('main.topic', slug=self.slug, _external=True)
+        return url_for('site.topic', slug=self.slug, _external=True)
 
     @cached_property
     def shortlink(self):
-        return url_for('main.topic', slug=self.slug)
+        return url_for('site.topic', slug=self.slug)
 
     @staticmethod
     def on_changed_body(target, value, oldvalue, initiator):
@@ -513,7 +520,7 @@ class ArticleQuery(BaseQuery):
         criteria = []
 
         for keyword in keywords_split(keyword):
-            keyword = u'%{0}%'.format(keyword)
+            keyword = '%{0}%'.format(keyword)
             criteria.append(db.or_(Article.title.ilike(keyword),))
 
         q = reduce(db.or_, criteria)
@@ -524,9 +531,9 @@ class ArticleQuery(BaseQuery):
             return self
 
         criteria = []
-        criteria.append(db.extract('year', Article.created) == year)
+        criteria.append(db.extract('year', Article.created_at) == year)
         if month:
-            criteria.append(db.extract('month', Article.created) == month)
+            criteria.append(db.extract('month', Article.created_at) == month)
 
         q = reduce(db.and_, criteria)
         return self.public().filter(q)
@@ -534,7 +541,7 @@ class ArticleQuery(BaseQuery):
 
 class Article(db.Model):
 
-    """贴文"""
+    """博文"""
 
     __tablename__ = "articles"
 
@@ -551,10 +558,10 @@ class Article(db.Model):
     seodesc = db.Column(db.String(300))
 
     category_id = db.Column(
-        db.Integer(), db.ForeignKey(Category.id), nullable=False,)
+        db.Integer(), db.ForeignKey('categories.id'), nullable=False,)
     category = db.relationship(Category, backref=db.backref("articles"))
 
-    topic_id = db.Column(db.Integer(), db.ForeignKey(Topic.id))
+    topic_id = db.Column(db.Integer(), db.ForeignKey('topics.id'))
     topic = db.relationship(Topic, backref=db.backref("articles"))
 
     tags = db.relationship(
@@ -565,10 +572,14 @@ class Article(db.Model):
     template = db.Column(db.String(255))
 
     summary = db.Column(db.String(2000))
+    keywords = db.Column(db.String(128))
+    source = db.Column(db.String(64))
+
     body = db.Column(db.Text, nullable=False)
     body_html = db.Column(db.Text)
 
     published = db.Column(db.Boolean, default=True)
+    # 置顶推荐
     ontop = db.Column(db.Boolean, default=False)
     recommended = db.Column(db.Boolean, default=False)
 
@@ -595,11 +606,11 @@ class Article(db.Model):
 
     @cached_property
     def link(self):
-        return url_for('main.article', article_id=self.id, _external=True)
+        return url_for('site.article', article_id=self.id, _external=True)
 
     @cached_property
     def shortlink(self):
-        return url_for('main.article', article_id=self.id)
+        return url_for('site.article', article_id=self.id)
 
     @cached_property
     def get_next(self):
@@ -677,11 +688,11 @@ class FriendLink(db.Model):
     anchor = db.Column(db.String(64), nullable=False)
     title = db.Column(db.String(128))
     url = db.Column(db.String(255), nullable=False)
-    actived = db.Column(db.Boolean, default=False)
+    active = db.Column(db.Boolean, default=False)
     order = db.Column(db.Integer, default=1)
     note = db.Column(db.String(400))
 
-    __mapper_args__ = {'order_by': [actived.desc(), order.asc()]}
+    __mapper_args__ = {'order_by': [active.desc(), order.asc()]}
 
     def __repr__(self):
         return '<FriendLink %r>' % (self.anchor)
@@ -716,11 +727,11 @@ class Flatpage(db.Model):
 
     @cached_property
     def link(self):
-        return url_for('main.flatpage', slug=self.slug, _external=True)
+        return url_for('site.flatpage', slug=self.slug, _external=True)
 
     @cached_property
     def shortlink(self):
-        return url_for('main.flatpage', slug=self.slug)
+        return url_for('site.flatpage', slug=self.slug)
 
     @staticmethod
     def on_changed_body(target, value, oldvalue, initiator):
@@ -853,3 +864,15 @@ class Setting(db.Model):
 
 db.event.listen(Setting, 'after_insert', Setting.after_update)
 db.event.listen(Setting, 'after_update', Setting.after_update)
+
+# TODO LIST
+# class Comment(db.Model):
+#     pass
+
+
+# class Follow(db.Model):
+#     pass
+
+
+# class Proverb(db.Model):
+#     pass

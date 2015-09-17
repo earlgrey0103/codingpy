@@ -13,7 +13,7 @@ class Config:
     SECRETE_KEY = os.urandom(32)
 
     # 是否启用博客模式
-    BLOG_MODE = True
+    # BLOG_MODE = True
 
     # html or markdown
     BODY_FORMAT = os.getenv('BODY_FORMAT') or 'html'
@@ -26,11 +26,12 @@ class Config:
     MAIL_SUBJECT_PREFIX = '[CODINGPY]'
     MAIL_SENDER = 'CODINGPY Admin <songbingjin@126.com>'
 
-    ADMIN = os.environ.get('CODINGPY_ADMIN')
+    APP_ADMIN = os.environ.get('CODINGPY_ADMIN')
 
     # flask-cache configuration
-    CACHE_KEY = 'codingpy/%s'
+    CACHE_KEY = 'views/%s'
     CACHE_DEFAULT_TIMEOUT = 300
+    CACHE_TYPE = 'simple'
 
     # QiNiu Cloud Storage
     QINIU_AK = os.getenv('QINIU_AK') or ''
