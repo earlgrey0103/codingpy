@@ -8,7 +8,7 @@ from flask import Flask, send_from_directory, flash, render_template
 from flask_wtf.csrf import CsrfProtect
 from flask.ext.login import logout_user, current_user
 
-from .models import User, AnonymousUser
+# from .models import User, AnonymousUser
 from .ext import (bootstrap, db, moment, cache, mail,
                   login_manager, bcrypt)
 from .config import config
@@ -70,15 +70,13 @@ def register_routes(app):
 
 
 def register_managers(app):
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
+
     login_manager.session_protection = 'strong'
     # flask-login will keep track of ip and broswer agent,
     # will log user out if it detects a change
     login_manager.login_view = 'user.login'
     login_manager.login_message = '请先登陆'
-    login_manager.anonymous_user = AnonymousUser
+    # login_manager.anonymous_user = AnonymousUser
     login_manager.init_app(app)
 
 
