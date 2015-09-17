@@ -13,6 +13,7 @@ from flask.ext.sqlalchemy import BaseQuery
 from itsdangerous import URLSafeTimedSerializer as Serializer
 from werkzeug import cached_property
 from jinja2.filters import do_striptags, do_truncate
+
 from .ext import db, bcrypt, keywords_split
 from .utils.filters import markdown_filter
 
@@ -21,6 +22,10 @@ from .config import Config
 BODY_FORMAT = Config.BODY_FORMAT
 
 pattern_hasmore = re.compile(r'<!--more-->', re.I)
+
+__all__ = ['User', 'Role', 'Permission', 'Category', 'Tag', 'Article',
+           'Topic', 'Label'
+           ]
 
 
 def markitup(text):

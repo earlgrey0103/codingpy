@@ -17,6 +17,9 @@ from flask.ext.cache import Cache
 from flask.ext.bcrypt import Bcrypt
 from werkzeug._compat import text_type, to_bytes
 
+__all__ = ['bootstrap', 'moment', 'mail', 'login_manager', 'db',
+           'babel', 'cache', 'bcrypt', 'keywords_split']
+
 
 def keywords_split(keywords):
     return keywords.replace(u',', ' ') \
