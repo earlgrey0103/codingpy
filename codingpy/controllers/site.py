@@ -5,7 +5,7 @@ from flask import render_template, redirect, url_for, flash, request,\
     current_app
 from werkzeug.contrib.atom import AtomFeed
 
-from ..models import Permission
+# from ..models import Permission
 from ..ext import cache
 
 bp = Blueprint('site', __name__)
