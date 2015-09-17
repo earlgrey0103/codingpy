@@ -202,8 +202,8 @@ class CodingpyCache(Cache):
                 try:
                     cache_key = decorated_function.make_cache_key(
                         *args, **kwargs)
-                    if request.MOBILE:
-                        cache_key = 'mobile_%s' % cache_key
+                    # if request.MOBILE:
+                    #     cache_key = 'mobile_%s' % cache_key
                     rv = self.cache.get(cache_key)
                 except Exception:
                     if current_app.debug:

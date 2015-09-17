@@ -11,12 +11,12 @@ from ..ext import cache
 bp = Blueprint('site', __name__)
 
 
-@bp.app_context_processor
-def inject_permissions():
-    return dict(Permission=Permission)
+# @bp.app_context_processor
+# def inject_permissions():
+#     return dict(Permission=Permission)
 
 
 @bp.route('/')
 @cache.cached()
 def index():
-	render_template('index.html')
+	return render_template('index.html')
