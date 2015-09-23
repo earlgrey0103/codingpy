@@ -33,7 +33,7 @@ def create_app(config_name):
     # babel.init_app(app)
     cache.init_app(app)
     bcrypt.init_app(app)
-    Admin(app, name='codingpy', templatemode='bootstrap3')
+    Admin(app, name='codingpy', template_mode='bootstrap3')
 
     register_managers(app)
     register_routes(app)
