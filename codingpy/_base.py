@@ -64,7 +64,7 @@ def create_app(config_name):
 
 
 def register_routes(app):
-    from .controllers import admin, site, user
+    from .controllers import site, user
 
     app.register_blueprint(site.bp, url_prefix='')
     app.register_blueprint(user.bp, url_prefix='/user')
