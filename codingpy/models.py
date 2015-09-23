@@ -584,6 +584,7 @@ class Article(db.Model):
     body_html = db.Column(db.Text)
 
     published = db.Column(db.Boolean, default=True)
+
     # 置顶推荐
     ontop = db.Column(db.Boolean, default=False)
     recommended = db.Column(db.Boolean, default=False)

@@ -29,9 +29,10 @@ class Config:
     APP_ADMIN = os.environ.get('CODINGPY_ADMIN')
 
     # flask-cache configuration
-    CACHE_KEY = 'views/%s'
+    CACHE_KEY_PREFIX = 'views/%s'  # ?
     CACHE_DEFAULT_TIMEOUT = 300
-    CACHE_TYPE = 'simple'
+    CACHE_TYPE = 'memcached'
+    CACHE_MEMCACHED_SERVERS = ['127.0.0.1:12112']
 
     # QiNiu Cloud Storage
     QINIU_AK = os.getenv('QINIU_AK') or ''

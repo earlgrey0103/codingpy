@@ -7,6 +7,7 @@
 from flask import Flask, send_from_directory, flash, render_template
 from flask_wtf.csrf import CsrfProtect
 from flask.ext.login import logout_user, current_user
+from flask_admin import Admin
 
 # from .models import User, AnonymousUser
 from .ext import (bootstrap, db, moment, cache, mail,
@@ -32,6 +33,7 @@ def create_app(config_name):
     # babel.init_app(app)
     cache.init_app(app)
     bcrypt.init_app(app)
+    Admin(app, name='codingpy', templatemode='bootstrap3')
 
     register_managers(app)
     register_routes(app)
