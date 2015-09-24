@@ -10,7 +10,7 @@ datadir = 'data'
 
 class Config:
     SITE_NAME = 'codingpy'
-    SECRETE_KEY = os.urandom(32)
+    SECRET_KEY = os.urandom(32)
 
     # 是否启用博客模式
     # BLOG_MODE = True
@@ -29,10 +29,11 @@ class Config:
     APP_ADMIN = os.environ.get('CODINGPY_ADMIN')
 
     # flask-cache configuration
-    CACHE_KEY_PREFIX = 'views/%s'  # ?
-    CACHE_DEFAULT_TIMEOUT = 300
-    CACHE_TYPE = 'memcached'
-    CACHE_MEMCACHED_SERVERS = ['127.0.0.1:12112']
+    CACHE_KEY = 'views'  # ?
+    CACHE_DEFAULT_TIMEOUT = 30
+    CACHE_TYPE = 'null'
+    # memcache problem: str does not have buffer interface
+    # CACHE_MEMCACHED_SERVERS = ['127.0.0.1:11211']
 
     # QiNiu Cloud Storage
     QINIU_AK = os.getenv('QINIU_AK') or ''

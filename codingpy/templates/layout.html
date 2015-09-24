@@ -1,0 +1,23 @@
+{% extends "bootstrap/base.html" %}
+
+{% block head %}
+{{ super() }}
+	{% block title %}
+	This is an example page.
+	{% endblock %}
+
+
+	{% block styles%}
+	{{super()}}
+		<link rel="stylesheet" href="/static/css/semantic-ui/semantic.css">
+	{% endblock %}
+
+{% endblock %}
+
+
+{% block navbar %}
+	<div class="navbar navbar-fixed-top">
+		
+	</div>
+{% endblock %}
+

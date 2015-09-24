@@ -7,18 +7,17 @@
 from flask import Flask, send_from_directory, flash, render_template
 from flask_wtf.csrf import CsrfProtect
 from flask.ext.login import logout_user, current_user
-from flask_admin import Admin
+
 
 # from .models import User, AnonymousUser
 from .ext import (bootstrap, db, moment, cache, mail,
                   login_manager, bcrypt)
 from .config import config
-
+from .admins import admin
 
 __all__ = ['create_app']
 
 csrf = CsrfProtect()
-admin = Admin()
 
 
 def create_app(config_name):
@@ -68,7 +67,7 @@ def register_routes(app):
     from .controllers import site, user
 
     app.register_blueprint(site.bp, url_prefix='')
-    app.register_blueprint(user.bp, url_prefix='/user')
+    # app.register_blueprint(user.bp, url_prefix='/user')
     # app.register_blueprint(admin.bp, url_prefix='/admin')
 
 

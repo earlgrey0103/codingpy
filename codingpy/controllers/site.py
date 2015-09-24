@@ -7,6 +7,7 @@ from werkzeug.contrib.atom import AtomFeed
 
 # from ..models import Permission
 from ..ext import cache
+from ..models import Article
 
 bp = Blueprint('site', __name__)
 
@@ -19,4 +20,6 @@ bp = Blueprint('site', __name__)
 @bp.route('/')
 @cache.cached()
 def index():
-	return render_template('index.html')
+	article = Article.query.first()
+
+	return render_template('index.html', a=article)
