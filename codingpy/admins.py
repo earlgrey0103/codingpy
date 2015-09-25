@@ -3,8 +3,7 @@
 
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from .ext import db
-from .models import Article, User, Role, Category
+from .models import Article, User, Role, Category, db
 
 admin = Admin()
 
