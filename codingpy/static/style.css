@@ -1,0 +1,18 @@
+body {
+    font-family: "Lantinghei SC", "Open Sans", Arial, 
+    "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", 
+    "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+}
+
+
+/*navbar*/
+
+#navbar {
+    background-color: #2d618c;
+}
+
+#navbar a {
+    font-size: 16px;
+    font-weight: 600;
+
+}

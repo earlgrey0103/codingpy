@@ -1,15 +1,9 @@
-{% extends "bootstrap/base.html" %}
-
-{% block title %}example page{% endblock title %}
-
-{% block styles %}
-{{ super() }}
-	<link rel="stylesheet" href="/static/css/semantic-ui/semantic.css">
-{% endblock styles %}
+{% extends "layout.html" %}
 
 {% block content %}
-	
-<div class="ui card">
+	{{ super() }}
+<div class="ui container">
+    <div class="ui card">
     <div class="image">
         <img src="/images/avatar2/large/kristy.png">
     </div>
@@ -27,6 +21,7 @@
             <i class="user icon"></i> 22 Friends
         </a>
     </div>
+</div>
 </div>
 
 

@@ -1,23 +1,56 @@
-{% extends "bootstrap/base.html" %}
+<!DOCTYPE html>
+<html {% block html_attrs %}
+	lang="zh-CN"
+{% endblock html_attrs %}>
 
-{% block head %}
-{{ super() }}
-	{% block title %}
-	This is an example page.
-	{% endblock %}
+<head>
+	{% block head %}
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>{% block title %}编程派：学习Python的乐园{% endblock title %}</title>
 
+		{% block metas %}
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="keywords" content="Python, 编程派">
+			<meta name="description" content="">
+			<meta name="author" content="EarlGrey">
+		{% endblock metas %}
 
-	{% block styles%}
-	{{super()}}
-		<link rel="stylesheet" href="/static/css/semantic-ui/semantic.css">
-	{% endblock %}
+		{% block styles %}
+			<link rel="stylesheet" href="/static/vendor/semantic-ui/semantic.css">
+			<link rel="stylesheet" type="text/css" href="/static/style.css">
+		{% endblock styles %}
+	{% endblock head %}
+</head>
+<body {% block body_attrs %}
+	rel='index'
+{% endblock body_attrs %}>
+	{% block content %}
 
-{% endblock %}
-
-
-{% block navbar %}
-	<div class="navbar navbar-fixed-top">
-		
+	{% block navbar %}
+	<div id="navbar" class="ui inverted segment">
+	    <div class="ui container inverted secondary menu">
+	        <a class="item" href="" target="_blank">首页</a>
+	        <a class="item" href="" target="_blank">资讯</a>
+	        <a class="item" href="" target="_blank">教程</a>
+	        <a class="item" href="" target="_blank">练习</a>
+	        <a class="item" href="" target="_blank">资源</a>
+	        <a class="item" href="" target="_blank">关于</a>
+	    </div>
 	</div>
-{% endblock %}
+
+
+	{% endblock navbar %}
+		
+	{% endblock content %}
+
+	{% block scripts %}
+		<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="/static/vendor/semantic-ui/semantic.min.js"></script>
+	{% endblock scripts %}
+
+	{% block analytics %}
+		
+	{% endblock analytics %}
+</body>
+</html>
 
