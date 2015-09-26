@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html {% block html_attrs %}
-	lang="zh-CN"
-{% endblock html_attrs %}>
+<html {% block html_attrs %}lang="zh-CN"{% endblock html_attrs %}>
 
 <head>
 	{% block head %}
@@ -21,36 +19,60 @@
 		{% endblock styles %}
 	{% endblock head %}
 </head>
-<body {% block body_attrs %}
-	rel='index'
-{% endblock body_attrs %}>
-	{% block content %}
+<body {% block body_attrs %}rel='index'{% endblock body_attrs %}>
+
+{% block content %}
 
 	{% block navbar %}
 	<div id="navbar" class="ui inverted segment">
 	    <div class="ui container inverted secondary menu">
+			<div class="item">
+			    <div class="ui logo shape">
+			        <div class="sides">
+			            <div class="active ui side">
+			                <a href="http://codingpy.com" target="_blank" title="codingpy.com"><img class="ui image" src="http://semantic-ui.com/images/logo.png"></a>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
 	        <a class="item" href="" target="_blank">首页</a>
 	        <a class="item" href="" target="_blank">资讯</a>
 	        <a class="item" href="" target="_blank">教程</a>
 	        <a class="item" href="" target="_blank">练习</a>
 	        <a class="item" href="" target="_blank">资源</a>
 	        <a class="item" href="" target="_blank">关于</a>
+
 	    </div>
 	</div>
 
-
 	{% endblock navbar %}
+
+
+	{% block main %}
 		
-	{% endblock content %}
+	{% endblock main %}
+
+
+	{% block footer %}
+		
+	{% endblock footer %}
+
 
 	{% block scripts %}
-		<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src="/static/vendor/semantic-ui/semantic.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/static/vendor/semantic-ui/semantic.min.js"></script>
 	{% endblock scripts %}
+
 
 	{% block analytics %}
 		
 	{% endblock analytics %}
+
+		
+{% endblock content %}
+
+
 </body>
 </html>
 
