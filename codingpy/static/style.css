@@ -1,12 +1,43 @@
 body {
-    font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+    font-family: arial, 'Hiragino Sans GB', '微软雅黑', MicrosoftYaHei, '宋体', Tahoma, Arial, Helvetica, STHeiti;
+}
+
+
+/*slice box*/
+
+#sb-slider img {
+    width: 100%;
+    height: 420px;
+}
+
+.sb-description {
+    background-color: rgba(0, 0, 0, 0);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(#000));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), #000);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0), #000);
+    opacity: 0.4;
+    position: absolute;
+    border: none;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 30;
+}
+
+.sb-description a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.sb-description a:hover {
+	color: #F44336;
 }
 
 
 /*navbar*/
 
 #navbar {
-    background-color: #2d618c;
+    background-color: #455A64;
     border-radius: 0;
 }
 
@@ -20,5 +51,24 @@ img.ui.logo {
 }
 
 div.header.item a {
-	height: 32px;
+    height: 32px;
+}
+
+.ui.menu {
+    font-family: arial, 'Hiragino Sans GB', '微软雅黑', MicrosoftYaHei, '宋体', Tahoma, Arial, Helvetica, STHeiti;
+}
+
+
+/*main content*/
+
+.ui.container {
+    margin: 1em 0;
+}
+
+
+/*footer*/
+
+footer .footer.vertical.segment {
+    background-color: #455A64;
+    border-radius: 0;
 }
