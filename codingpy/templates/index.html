@@ -3,7 +3,7 @@
 {% block main %}
 
 
-<div class="ui container">
+<div id="top-area" class="ui container">
 {# top articles with jquery slider #}
 <div class="ui stackable sixteen column grid">
     <div class="eleven wide column">
@@ -36,21 +36,34 @@
         </ul>
     </div>
 
-    <div class="five wide column" style="margin-top: 10px;">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    <div class="five wide column">
+        {# recommended articles #}
+        <div class="rec-article">
+            <a href="" style="background-image: url(http://120.24.245.101:10086/portal/resources/uploadImg/20151008/5ea1b620e29c4d52b21dded92151edb8.jpg);"><img  alt="" src="http://120.24.245.101:10086/portal/resources/uploadImg/20151008/5ea1b620e29c4d52b21dded92151edb8.jpg"></a>
+            <div class="sb-description">
+                <a href="#"><h3>Python:简单易学的编程语言
+                Python:简单易学的编程语言</h3></a>
+            </div>
+        </div>
+
+        <div class="rec-article">
+            <a href="" style="background-image: url(http://120.24.245.101:10086/portal/resources/uploadImg/20151008/bc52ca9c565249ea95cdef374b352d02.jpg);"><img src="http://120.24.245.101:10086/portal/resources/uploadImg/20151008/bc52ca9c565249ea95cdef374b352d02.jpg" alt=""></a>
+            <div class="sb-description">
+                <a href="#"><h3>Python:简单易学的编程语言
+                Python:简单易学的编程语言</h3></a>
+            </div>
+        </div>
+
     </div>
 </div>
 
+</div>
 
-{# recommended articles #}
 
 
 {# latest articles #}
+<div class="ui container">
     <div class="ui link cards">
         <div class="ui card">
             <div class="image">
