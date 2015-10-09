@@ -82,6 +82,9 @@ div.header.item a {
     background-size: cover;
 }
 
+.three.column.grid .column {
+    padding: 0 10px;
+}
 
 /*footer*/
 
