@@ -5,6 +5,7 @@ body {
 
 
 /*glider area*/
+
 #top-area {
     background: #E0E0E0;
     padding: 0.5em 0;
@@ -43,12 +44,13 @@ body {
     transform: scale(1.02)
 }
 
+
 /*navbar*/
 
 #navbar {
     background-color: #455A64;
     border-radius: 0;
-        border-top: 3px solid #00BFA5;
+    border-top: 2px solid #00BFA5;
 }
 
 #navbar a {
@@ -73,6 +75,11 @@ div.header.item a {
 
 .ui.container {
     margin: 1em 0;
+}
+
+.item .image {
+	    background: no-repeat center center;
+    background-size: cover;
 }
 
 
