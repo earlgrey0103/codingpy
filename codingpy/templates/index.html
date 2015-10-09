@@ -3,84 +3,34 @@
 {% block main %}
 
 
-<div id="top-area" class="ui container">
-{# top articles with jquery slider #}
-<div class="ui stackable grid">
-    <div class="eight wide column">
-        <ul id="sb-slider" class="sb-slider">
-            <li>
-                <a href="#" target="_blank" ><img src="http://120.24.245.101:10086/portal/resources/uploadImg/20151008/bc52ca9c565249ea95cdef374b352d02.jpg" alt="" ></a>
-                <div class="sb-description">
-                    <a href=""><h3>Python:简单易学的编程语言</h3></a>
-                </div>
-            </li>
-            <li>
-                <a href="#" target="_blank"><img src="http://120.24.245.101:10086/portal/resources/uploadImg/20151008/440d0015c4374fe091b1b4179789b633.jpg" alt=""></a>
-                <div class="sb-description">
-                    <a href="#"><h3>Example slider</h3></a>
-                </div>
-            </li>
-            
-            <li>
-                <a href="#" target="_blank"><img src="http://120.24.245.101:10086/portal/resources/uploadImg/20151008/5ea1b620e29c4d52b21dded92151edb8.jpg" alt=""></a>
-                <div class="sb-description">
-                    <a href="#"><h3>Example slider</h3></a>
-                </div>
-            </li>
-            <li>
-                <a href="#" target="_blank"><img src="http://120.24.245.101:10086/portal/resources/uploadImg/20151008/01a26b5a2a8d4ed0bb0abd8f037e021f.jpg" alt=""></a>
-                <div class="sb-description">
-                    <a href="#"><h3>Example slider</h3></a>
-                </div>
-            </li>
-        </ul>
+<div id="top-area">
+    {# top articles with jquery slider #}
+<div id="Glide" class="glide ui container">
+
+    <div class="glide__arrows">
+        <span class="glide__arrow prev" data-glide-dir="<">prev</span>
+        <span class="glide__arrow next" data-glide-dir=">">next</span>
     </div>
 
-
-    <div class="four wide column">
-        {# recommended articles #}
-        <div class="rec-article">
-            <a href="" style="background-image: url(http://120.24.245.101:10086/portal/resources/uploadImg/20151008/5ea1b620e29c4d52b21dded92151edb8.jpg);"></a>
-            <div class="sb-description">
-                <a href="#"><h3>Python:简单易学的编程语言
-                Python:简单易学的编程语言</h3></a>
+    <div class="glide__wrapper">
+        <div class="glide__track">
+            <div class="glide__slide slider__slide">
+                <div class="box" style="background-image: url(http://sspai.com/attachment/origin/2015/09/23/282810.png)"></div>
+            </div>
+            <div class="glide__slide slider__slide">
+                <div class="box" style="background-image: url(http://sspai.com/attachment/origin/2015/09/06/279083.jpg)"></div>
+            </div>
+            <div class="glide__slide slider__slide">
+                <div class="box" style="background-image: url(http://sspai.com/attachment/origin/2015/09/15/280817.jpg)"></div>
             </div>
         </div>
-
-        <div class="rec-article">
-            <a href="" style="background-image: url(http://120.24.245.101:10086/portal/resources/uploadImg/20151008/bc52ca9c565249ea95cdef374b352d02.jpg);"></a>
-            <div class="sb-description">
-                <a href="#"><h3>Python:简单易学的编程语言
-                Python:简单易学的编程语言</h3></a>
-            </div>
-        </div>
-
     </div>
 
+    <div class="glide__bullets"></div>
 
-    <div class="four wide column">
-        {# recommended articles #}
-        <div class="rec-article">
-            <a href="" style="background-image: url(http://120.24.245.101:10086/portal/resources/uploadImg/20151008/5ea1b620e29c4d52b21dded92151edb8.jpg);"></a>
-            <div class="sb-description">
-                <a href="#"><h3>Python:简单易学的编程语言
-                Python:简单易学的编程语言</h3></a>
-            </div>
-        </div>
-
-        <div class="rec-article">
-            <a href="" style="background-image: url(http://120.24.245.101:10086/portal/resources/uploadImg/20151008/bc52ca9c565249ea95cdef374b352d02.jpg);"></a>
-            <div class="sb-description">
-                <a href="#"><h3>Python:简单易学的编程语言
-                Python:简单易学的编程语言</h3></a>
-            </div>
-        </div>
-
-    </div>
 </div>
 
 </div>
-
 
 
 {# latest articles #}
@@ -114,13 +64,13 @@
 
 {% block scripts %}
     {{super()}}
-    <script type="text/javascript">
+    <script>
+    $("#Glide").glide({
+        type: "carousel",
+        paddings: 250,
+        autoplay: 5000,
+        animationDuration: 500,
 
-    $('#sb-slider').slicebox({
-    orientation : 'r',
-    autoplay: true,
-    interval: 5000,
     });
-
-    </script>
+</script>
 {% endblock scripts %}

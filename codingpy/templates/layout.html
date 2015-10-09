@@ -4,7 +4,7 @@
 <head>
 	{% block head %}
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>{% block title %}编程派：学习Python的乐园{% endblock title %}</title>
+		<title>{% block title %}编程派：Better, Faster Coding{% endblock title %}</title>
 
 		{% block metas %}
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +16,10 @@
 		{% block styles %}
 			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
 			<link rel="stylesheet" href="/static/vendor/semantic-ui/semantic.css">
-			<link rel="stylesheet" type="text/css" href="/static/vendor/slicebox/slicebox.css">
+			<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.core.min.css">
+			<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.theme.min.css">
 			<link rel="stylesheet" type="text/css" href="/static/style.css">
+			<link rel="stylesheet" type="text/css" href="">
 
 		{% endblock styles %}
 	{% endblock head %}
@@ -39,7 +41,7 @@
         <a class="item" href="" target="_blank">资源</a>
         <div class="right menu">
             <div class="item">
-                <div style="font-family: arial,'Hiragino Sans GB','微软雅黑',MicrosoftYaHei,'宋体',Tahoma,Arial,Helvetica,STHeiti;" class="ui basic olive inverted button">
+                <div style="font-family: arial,'Hiragino Sans GB','微软雅黑',MicrosoftYaHei,'宋体',Tahoma,Arial,Helvetica,STHeiti;" class="ui basic teal inverted button">
                     注册/登陆 
                     {# 已登录则显示为退出 #}
                 </div>
@@ -96,7 +98,7 @@
 	<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="/static/js/modernizr.js"></script>
 	<script type="text/javascript" src="/static/vendor/semantic-ui/semantic.min.js"></script>
-	<script type="text/javascript" src="/static/vendor/slicebox/jquery.slicebox.js"></script>
+	<script type="text/javascript" src="/static/vendor/glide/glide.min.js"></script>
 	{% endblock scripts %}
 
 
