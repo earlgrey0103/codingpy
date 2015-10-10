@@ -6,6 +6,11 @@ body {
 
 /*glider area*/
 
+/*避免加载时的bug带来的不良体验*/
+.bug-fix {
+	display: none !important;
+}
+
 #top {
     background: #E0E0E0;
     padding: 0.5em 0;

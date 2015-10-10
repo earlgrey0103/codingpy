@@ -7,6 +7,8 @@
         <link rel="stylesheet" type="text/css" href="/static/vendor/slit/slitNoJS.css">
     </noscript>
 {% endblock styles %}
+
+
 {% block main %}
 
 
@@ -15,7 +17,7 @@
     {# photos need to be preprocessed and refined #}
 
 
-    <div id="Glide" class="glide ui container">
+    <div id="Glide" class="glide ui container display-none">
 
         <div class="glide__arrows">
             <span class="glide__arrow prev" data-glide-dir="<">prev</span>
@@ -131,7 +133,9 @@ $(document).ready(function() {
             paddings: 0,
             autoplay: 5000,
             animationDuration: 500,
-        })
+        });
+        $('#Glide').removeClass('bug-fix');
+        // 避免加载时的bug带来的不良体验
     } else {
             $("#Glide").glide({
             type: "carousel",
@@ -140,6 +144,7 @@ $(document).ready(function() {
             animationDuration: 500,
 
         });
+            $('#Glide').removeClass('bug-fix');
     };
 
 });
