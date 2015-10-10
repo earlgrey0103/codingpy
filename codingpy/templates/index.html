@@ -1,14 +1,5 @@
 {% extends "layout.html" %}
 
-{% block styles %}
-    {{super()}}
-    <link rel="stylesheet" type="text/css" href="/static/vendor/slit/slit.css">
-    <noscript>
-        <link rel="stylesheet" type="text/css" href="/static/vendor/slit/slitNoJS.css">
-    </noscript>
-{% endblock styles %}
-
-
 {% block main %}
 
 
@@ -17,14 +8,14 @@
     {# photos need to be preprocessed and refined #}
 
 
-    <div id="Glide" class="glide ui container bug-fix">
+    <div id="Glide" class="glide ui container">
 
         <div class="glide__arrows">
             <span class="glide__arrow prev" data-glide-dir="<">prev</span>
             <span class="glide__arrow next" data-glide-dir=">">next</span>
         </div>
 
-        <div class="glide__wrapper">
+        <div class="glide__wrapper bug-fix">
             <div class="glide__track">
                 <div class="glide__slide slider__slide">
                     <a href=""><div class="box" style="background-image: url(http://sspai.com/attachment/origin/2015/09/23/282810.png)"></div></a>
@@ -57,14 +48,12 @@
 
 $(document).ready(function() {
     if (matchMedia('only screen and (max-width: 768px)').matches) {
-        console.log('hello');
         $('#Glide').glide({
             type: "carousel",
-            paddings: 0,
             autoplay: 5000,
             animationDuration: 500,
         });
-        $('#Glide').removeClass('bug-fix');
+        $('.glide__wrapper').removeClass('bug-fix');
         // 避免加载时的bug带来的不良体验
     } else {
             $("#Glide").glide({
@@ -74,7 +63,7 @@ $(document).ready(function() {
             animationDuration: 500,
 
         });
-            $('#Glide').removeClass('bug-fix');
+            $('.glide__wrapper').removeClass('bug-fix');
     };
 
 });
