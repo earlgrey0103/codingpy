@@ -15,7 +15,7 @@
     {# photos need to be preprocessed and refined #}
 
 
-{#     <div id="Glide" class="glide ui container">
+    <div id="Glide" class="glide ui container">
 
         <div class="glide__arrows">
             <span class="glide__arrow prev" data-glide-dir="<">prev</span>
@@ -38,10 +38,10 @@
 
         <div class="glide__bullets"></div>
 
-    </div> #}
+    </div>
 
 
-{# slit slider #}
+{# slit slider has a serious bug#}
 
 <div id="slider" class="sl-slider-wrapper ui container">
     <div class="sl-slider">
@@ -122,15 +122,48 @@
     <script type="text/javascript" src="/static/vendor/slit/ba-cond.min.js"></script>
     <script type="text/javascript" src="/static/vendor/slit/slitslider.js"></script>
     <script>
-// bug：
-$(document).ready(function() {
-    $("#Glide").glide({
-        type: "carousel",
-        autoplay: 5000,
-        animationDuration: 500,
 
-    });
+$(document).ready(function() {
+    if (matchMedia('only screen and (max-width: 768px)').matches) {
+        console.log('hello');
+        $('#Glide').glide({
+            type: "carousel",
+            paddings: 0,
+            autoplay: 5000,
+            animationDuration: 500,
+        })
+    } else {
+            $("#Glide").glide({
+            type: "carousel",
+            paddings: "20%",
+            autoplay: 5000,
+            animationDuration: 500,
+
+        });
+    };
+
 });
+
+// $(window).resize(function() {
+//     if (matchMedia('only screen and (min-width: 768px)').matches) {
+//         console.log('changing style');
+//         $('#Glide').glide({
+//             type: "slideshow",
+//             paddings: "20%",
+//             autoplay: 5000,
+//             animationDuration: 500,
+//         })
+//     } else {
+//             $("#Glide").glide({
+//             type: "carousel",
+//             paddings: 0,
+//             autoplay: 5000,
+//             animationDuration: 500,
+
+//         });
+//     };
+// });
+
 
 
 $('.special.cards .image').dimmer({
