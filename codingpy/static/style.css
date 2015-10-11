@@ -12,8 +12,8 @@ body {
 }
 
 #top {
-    background: #E0E0E0;
     padding: 0.5em 0;
+    background: #E0E0E0;
 }
 
 .box {
@@ -82,14 +82,27 @@ div.header.item a {
     margin: 1em 0;
 }
 
-.item .image {
-	    background: no-repeat center center;
+.article {
+    padding: 0 2rem;
+
+}
+
+
+.article-thumb {
+    width: 100%;
+    height: 320px;
+	background: no-repeat center center;
     background-size: cover;
 }
 
-.three.column.grid .column {
-    padding: 0 10px;
+@media (max-width: 768px) {
+  .article-thumb {
+    height: 240px;
+  }
 }
+
+/*aside*/
+
 
 /*footer*/
 
