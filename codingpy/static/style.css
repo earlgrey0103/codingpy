@@ -111,7 +111,10 @@ div.header.item a {
     }
 }
 
-
+.share-article {
+	float: right;
+	margin-left: 0.5rem;
+}
 /*aside*/
 
 /*TODO*/

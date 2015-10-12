@@ -122,16 +122,17 @@
                     <div class="ui feed">
                         <div class="event">
                             <div class="label"><img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="" data-title="EarlGrey" class="avatar"></div>
-                            <div class="meta content">
+                            <div class="content">
                                 <span class="date">20小时前</span>
-                                <span><i class="tag icon"></i>Python</span>
-                                <span><i class="tag icon"></i>Flask</span>
+                                <span class="category date"><i class="tag icon"></i>Python</span>
+                                <span class="sub-category date"><i class="tag icon"></i>Flask</span>
+                                <span class="share-article"><i class="share alternate icon"></i></span>
+                                <span class="share-article"><i class="heart icon"></i>90</span>
+                                <span class="share-article"><i class="comments icon"></i>67</span>
+
+
                             </div>
-                            <div class="right floated">
-                                <span><i class="comments icon"></i>67</span>
-                                <span><i class="heart icon"></i>90</span>
-                                <span><i class="share alternate icon"></i></span>
-                            </div>
+
                         </div>
                     </div>
 
@@ -139,6 +140,7 @@
                 </div>
 
                 <div class="ui divider"></div>
+
                 <a class="ui red ribbon label"><i class="book icon"></i>教程</a>
                 <div class="article">
                     <div class="header"><a href=""><h2>百度员工离职总结：如何做个好员工？</h2></a></div>
@@ -154,16 +156,17 @@
                     <div class="ui feed">
                         <div class="event">
                             <div class="label"><img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="" data-title="EarlGrey" class="avatar"></div>
-                            <div class="meta content">
+                            <div class="content">
                                 <span class="date">20小时前</span>
-                                <span><i class="tag icon"></i>Python</span>
-                                <span><i class="tag icon"></i>Flask</span>
+                                <span class="category date"><i class="tag icon"></i>Python</span>
+                                <span class="sub-category date"><i class="tag icon"></i>Flask</span>
+                                <span class="share-article"><i class="share alternate icon"></i></span>
+                                <span class="share-article"><i class="heart icon"></i>90</span>
+                                <span class="share-article"><i class="comments icon"></i>67</span>
+
+
                             </div>
-                            <div class="right floated">
-                                <span><i class="comments icon"></i>67</span>
-                                <span><i class="heart icon"></i>90</span>
-                                <span><i class="share alternate icon"></i></span>
-                            </div>
+
                         </div>
                     </div>
 
@@ -177,6 +180,10 @@
         </div>
 
         <aside class="five wide column">
+
+            <div class="follow-me">
+                
+            </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe hic consequatur rem velit ut, officia aspernatur atque. Ipsam id eaque, numquam deserunt reiciendis tenetur delectus velit aspernatur magnam, suscipit earum.</p>
         </aside>
     </div>
@@ -227,6 +234,8 @@ $('.box').dimmer({
 });
 
 $('.avatar').popup();
+
+$('.ui.divider').last().remove();
 
 </script>
 
