@@ -180,11 +180,59 @@
         </div>
 
         <aside class="five wide column">
+            <div class="follow-me ui raised segment red">
+                <div class="header"><h3>关注编程派</h3></div>
+                <div class="ui shape">
+                    <div class="sides">
+                        <div class="active side">
 
-            <div class="follow-me">
-                
+                        </div>
+                        <div class="side">                            
+                            <div class="image">
+                                <img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="">
+                            </div>
+                        </div>
+                        <div class="side">This is the last side</div>
+                    </div>
+
+                    <div class="ui ignored icon direction buttons">
+                        <div class="ui button" data-animation="flip" data-direction="left" title="Flip Left"><i class="wechat icon"></i></div>
+                        <div class="ui button" data-animation="flip" data-direction="up" title="Flip Up"><i class="weibo icon"></i></div>
+                        <div class="ui icon button" data-animation="flip" data-direction="down" title="Flip Down"><i class="github icon"></i></div>
+                        <div class="ui icon button" data-animation="flip" data-direction="right" title="Flip Right"><i class="twitter icon"></i></div>
+                    </div>
+
+                </div>
+
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe hic consequatur rem velit ut, officia aspernatur atque. Ipsam id eaque, numquam deserunt reiciendis tenetur delectus velit aspernatur magnam, suscipit earum.</p>
+
+        <div class="ui sticky">
+            <div class="rec-list ui raised segment teal">
+                <div class="header"><h3>推荐阅读</h3></div>
+                <ul>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+                     <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+                      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+                       <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+
+                </ul>
+            </div>
+
+            <div class="hotlist ui raised segment olive">
+                <div class="header"><h3>热门文章</h3></div>
+                <ul>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+                     <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+                      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+                       <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+
+                </ul>
+            </div>
+
+
+        </div>
         </aside>
     </div>
 
@@ -237,6 +285,16 @@ $('.avatar').popup();
 
 $('.ui.divider').last().remove();
 
+$('.shape')
+  .shape('flip up')
+;
+
+$('.ui.sticky')
+  .sticky({
+
+    context: '.articles'
+  }).sticky('refresh')
+;
 </script>
 
 

@@ -42,7 +42,7 @@ body {
     -o-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
     height: 360px;
-    height: 34vh;
+    height: 40vh;
 }
 
 .slider__slide.active {
@@ -117,7 +117,12 @@ div.header.item a {
 }
 /*aside*/
 
-/*TODO*/
+.follow-me {
+    background: #fff;
+}
+.ui.shape {
+    margin: 0 auto;
+}
 
 /*footer*/
 
