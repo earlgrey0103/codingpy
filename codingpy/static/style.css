@@ -1,18 +1,21 @@
 body {
     font-family: arial, 'Hiragino Sans GB', '微软雅黑', MicrosoftYaHei, '宋体', Tahoma, Arial, Helvetica, STHeiti;
     -webkit-font-smoothing: antialiased;
+        background: #E0E0E0;
 }
 
 
 /*glider area*/
 
+
 /*避免加载时的bug带来的不良体验*/
+
 .bug-fix {
-	display: none !important;
+    display: none !important;
 }
 
 #top {
-    padding: 0.5em 0;
+    padding: 0.5em 0 0 0;
     background: #E0E0E0;
 }
 
@@ -24,10 +27,9 @@ body {
     margin-right: 15px;
     border-radius: 12px;
     outline: transparent solid 1px;
-    height: 30vh;
     background: no-repeat center center;
     background-size: cover;
-    min-height: 320px;
+    height: 100%;
 }
 
 .slider__slide {
@@ -38,7 +40,9 @@ body {
     -moz-transform-origin: 50% 50%;
     -ms-transform-origin: 50% 50%;
     -o-transform-origin: 50% 50%;
-    transform-origin: 50% 50%
+    transform-origin: 50% 50%;
+    height: 360px;
+    height: 34vh;
 }
 
 .slider__slide.active {
@@ -83,26 +87,34 @@ div.header.item a {
 }
 
 .article {
-    padding: 0 2rem;
-
+	background: #fff;
+	padding: 1rem 1.5rem 0 1.5rem;
 }
-
 
 .article-thumb {
     width: 100%;
     height: 320px;
-	background: no-repeat center center;
+    background: no-repeat center center;
     background-size: cover;
 }
 
-@media (max-width: 768px) {
-  .article-thumb {
-    height: 240px;
-  }
+.image {
+	padding: 1.5rem 0;
 }
+
+@media (max-width: 768px) {
+    .article-thumb {
+        height: 240px;
+    }
+    .slider__slide {
+        height: 240px;
+    }
+}
+
 
 /*aside*/
 
+/*TODO*/
 
 /*footer*/
 
