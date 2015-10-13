@@ -1,10 +1,29 @@
+/*fonts*/
 body {
-    font-family: arial, 'Hiragino Sans GB', '微软雅黑', MicrosoftYaHei, '宋体', Tahoma, Arial, Helvetica, STHeiti;
     -webkit-font-smoothing: antialiased;
         background: #E0E0E0;
 }
 
 
+/*overall*/
+
+.header a {
+	color: rgba(0,0,0,0.78) !important;
+
+}
+
+.header a:hover {
+	color: #39c !important;
+}
+
+.section-title .item {
+	padding-left: 0 !important;
+}
+
+.list i.icon {
+	width: 20px;
+	height: 20px;
+}
 /*glider area*/
 
 
@@ -42,7 +61,7 @@ body {
     -o-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
     height: 360px;
-    height: 40vh;
+    height: 36vh;
 }
 
 .slider__slide.active {
@@ -117,11 +136,21 @@ div.header.item a {
 }
 /*aside*/
 
-.follow-me {
-    background: #fff;
+
+#follow-nav .item {
+	padding-left: 0;
 }
-.ui.shape {
-    margin: 0 auto;
+
+
+.list .item a {
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	color: rgba(0,0,0,1);
+	line-height: 1.5rem;
+}
+
+.list .item a:hover {
+	color: #39c;
 }
 
 /*footer*/

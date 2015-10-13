@@ -101,12 +101,17 @@
 
 {# latest content #}
 <div id="main">
-    
+   
     <div class="ui container stackable grid">
 
         <div class="articles eleven wide column">
 
             <div class="ui raised segment">
+
+                <div class="ui pointing secondary menu brown section-title">
+                    <div class="item active"><i class="feed icon"></i>最新文章</div>                 
+                </div>
+
                 <a class="ui red ribbon label"><i class="book icon"></i>教程</a>
                 <div class="article">
                     <div class="header"><a href=""><h2>百度员工离职总结：如何做个好员工？</h2></a></div>
@@ -180,57 +185,186 @@
         </div>
 
         <aside class="five wide column">
-            <div class="follow-me ui raised segment red">
-                <div class="header"><h3>关注编程派</h3></div>
-                <div class="ui shape">
-                    <div class="sides">
-                        <div class="active side">
-
-                        </div>
-                        <div class="side">                            
-                            <div class="image">
-                                <img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="">
-                            </div>
-                        </div>
-                        <div class="side">This is the last side</div>
-                    </div>
-
-                    <div class="ui ignored icon direction buttons">
-                        <div class="ui button" data-animation="flip" data-direction="left" title="Flip Left"><i class="wechat icon"></i></div>
-                        <div class="ui button" data-animation="flip" data-direction="up" title="Flip Up"><i class="weibo icon"></i></div>
-                        <div class="ui icon button" data-animation="flip" data-direction="down" title="Flip Down"><i class="github icon"></i></div>
-                        <div class="ui icon button" data-animation="flip" data-direction="right" title="Flip Right"><i class="twitter icon"></i></div>
-                    </div>
-
+            <div class="follow-me ui raised segment">
+                <div class="ui pointing secondary menu green section-title">
+                    <div class="item active"><i class="wechat icon"></i>关注编程派</div>                 
                 </div>
+
+                <button class="ui circular wechat green icon button">
+                    <i class="wechat icon"></i>
+                </button>
+                <button class="ui circular weibo red icon button">
+                    <i class="weibo icon"></i>
+                </button>
+                <button class="ui circular twitter icon button">
+                    <i class="twitter icon"></i>
+                </button>
+
+                <button class="ui circular icon button">
+                    <i class="github alternate blue icon"></i>
+                </button>
+                    
 
             </div>
 
         <div class="ui sticky">
-            <div class="rec-list ui raised segment teal">
-                <div class="header"><h3>推荐阅读</h3></div>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
-                     <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
-                      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
-                       <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
 
-                </ul>
+            <div class="ui raised segment">
+                <div id="tab-nav" class="ui pointing secondary menu">
+                    <a class="item active" data-tab="recommend">推荐阅读</a>
+                    <a class="item" data-tab="popular">热门文章</a>
+                    <a class="item" data-tab="random">随机发现</a>                 
+                </div>
+
+                <div class="ui tab active" data-tab="recommend">
+                    <div class="ui relaxed divided animated list">
+                    {# 确定每个版块的ICON #}
+                      <div class="item">
+                        <i class="book icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+
+                      <div class="item">
+                        <i class="world icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+
+                      <div class="item">
+                        <i class="cloud download icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <i class="fork icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <i class="write icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+                                                                      
+                    </div>
+                </div>
+                <div class="ui tab" data-tab="popular">
+                    <div class="ui relaxed divided animated list">
+                    {# 确定每个版块的ICON #}
+                      <div class="item">
+                        <i class="book icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+
+                      <div class="item">
+                        <i class="world icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+
+                      <div class="item">
+                        <i class="cloud download icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <i class="fork icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <i class="write icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+                                                                      
+                    </div>
+                </div>
+                <div class="ui tab" data-tab="random">
+                    <div class="ui relaxed divided animated list">
+                    {# 确定每个版块的ICON #}
+                      <div class="item">
+                        <i class="book icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+
+                      <div class="item">
+                        <i class="world icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+
+                      <div class="item">
+                        <i class="cloud download icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <i class="fork icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <i class="write icon"></i>
+                        <div class="content">
+                          <a class="">百度员工离职总结：如何做个好员工</a>
+                        </div>
+                      </div>
+                                                                      
+                    </div>
+                </div>
             </div>
 
-            <div class="hotlist ui raised segment olive">
-                <div class="header"><h3>热门文章</h3></div>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
-                     <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
-                      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
-                       <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
 
-                </ul>
+            <div class="ui raised segment">
+                <div class="ui pointing secondary menu red section-title">
+                    <div class="item active"><i class="tags icon"></i>热门标签</div>                 
+                </div>
+                {# 按标签下文章数量排序 #}
+                <div class="ui labels">
+                  <a class="ui label">
+                    Python
+                  </a>
+                  <a class="ui label">
+                    Flask
+                  </a>
+                  <a class="ui label">
+                    Design Pattern
+                  </a>
+                  <a class="ui label">
+                    Best Practice
+                  </a>
+                  <a class="ui label">
+                    网络并发
+                  </a>
+                  <a class="ui label">
+                    性能优化
+                  </a>
+                  <a class="ui label">
+                    网站建设
+                  </a>
+                  <a class="ui label">
+                    后端框架
+                  </a>
+                </div>                              
             </div>
-
 
         </div>
         </aside>
@@ -295,6 +429,9 @@ $('.ui.sticky')
     context: '.articles'
   }).sticky('refresh')
 ;
+
+$('#tab-nav .item').tab();
+
 </script>
 
 
