@@ -160,6 +160,11 @@ footer .footer.vertical.segment {
     border-radius: 0;
 }
 
+.ui.images img.ui.image {
+    width: 48px;
+    height: 90px;
+    margin-right: 1rem;
+}
 
 /*article page*/
 
@@ -172,3 +177,22 @@ footer .footer.vertical.segment {
 	font-size: 16px;
 	line-height: 1.5em;
 }
+
+.related-thumb {
+    height: 140px;
+    background: no-repeat center center;
+    background-size: cover;
+}
+
+@media (max-width: 768px) {
+    .related-thumb {
+        height: 240px;
+    }
+
+}
+
+.related-articles .content .header {
+    font-size: 1.2rem !important;
+    line-height: 1rem;
+}
+

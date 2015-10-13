@@ -20,7 +20,6 @@
 	                                <span class="date">20小时前</span>
 	                                <span class="category date"><i class="tag icon"></i>Python</span>
 	                                <span class="sub-category date"><i class="tag icon"></i>Flask</span>
-	                                <span class="share-article"><i class="share alternate icon"></i></span>
 	                                <span class="share-article"><i class="heart icon"></i>90</span>
 
 
@@ -44,14 +43,89 @@
 	                        <p>从一份国内再生资源利用市场分析报告了解到，上世纪末，发达国家再生资源产业规模已达2500亿美元，本世纪初已增加到6000亿美元。“目前中国再生资源回收企业有5000多家，回收网点16万个(未登记注册或临时的回收网点有近40万个)，回收加工处理工厂3000多家，从业人员140万人。若包括进城收废品的农民工，中国国内废旧物资回收行业的就业人数近1000万。遍布全国各地，并且在一些重点地区形成了不同的产业规模。中国每年可回收的再生资源近1亿吨，价值2000多亿元，其中废钢铁4000多万吨、废纸3000多万吨、废有色金属500多万吨、废塑料600万吨、废轮胎5000多万条、其他废旧物资1000多万吨。”(李雷光——《中国再生资源回收利用市场调研及发展前景分析报告》)</p>
 	                    </div>
 
+						<div class="copyright-box ui segment secondary grey">
+						    <p>
+						        <span class="author-name">作者：
+						        <a href="">Earl Grey</a>
+						        </span>
+						        <span>文章来源：<a href="#">编程派</a></span>
+						    </p>
+						    <p class="copyright-declare"><i class="fa fa-copyright"></i>此文版权归编程派所有，非商业性转载请注明来源编程派、作者及原文链接。商业转载请先<a href="mailto:contact@sspai.com">联系我们</a>。</p>
+						</div>
+
+
 	                    <div class="ui divider"></div>
 
+						<div class="nearby">
+						  <div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工">
+							  <div class="visible content">上一篇</div>
+							  <div class="hidden content">
+							    <i class="left arrow icon"></i>
+							  </div>
+						  </div>
+
+						<div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工">
+						  <div class="visible content">下一篇</div>
+						  <div class="hidden content">
+						    <i class="right arrow icon"></i>
+						  </div>
+						</div>
+                        <div class="share-article ui button teal icon basic"><i class="share alternate icon"></i></div>
+						<div class="share-article ui labeled button">
+						  <div class="ui teal basic button">
+						    <i class="heart icon"></i> Like
+						  </div>
+						  <a class="ui basic teal  left pointing label">
+						    1,048
+						  </a>
+						</div>
 
 
 	                </div>
 
-	            </div>
+						</div>
 
+	            </div>
+	            <div class="ui raised segment related-articles">
+	                <div class="ui pointing secondary menu section-title">
+	                    <div class="item active"><i class="tags icon"></i>相关文章</div>                 
+	                </div>
+
+						<div class="ui three stackable cards">
+
+						    <div class="ui fluid link card">
+						      <div class="image">
+						      	<div class="related-thumb" data-bg="http://sspai.com/attachment/origin/2015/10/09/285971.jpg"></div>
+						      </div>
+						      <div class="content">
+						        <a class="header">百度员工离职总结：如何做个好员工</a>
+						      </div>
+						    </div>
+
+
+						    <div class="ui fluid card link">
+						      <div class="image">
+						      	<div class="related-thumb" data-bg="http://sspai.com/attachment/origin/2015/10/09/285971.jpg"></div>
+						      </div>
+						      <div class="content">
+						        <a class="header">百度员工离职总结：如何做个好员工</a>
+						      </div>
+						    </div>
+	
+	
+						    <div class="ui fluid card link">
+						      <div class="image">
+						      	<div class="related-thumb" data-bg="http://sspai.com/attachment/origin/2015/10/09/285971.jpg"></div>
+						      </div>
+						      <div class="content">
+						        <a class="header">百度员工离职总结：如何做个好员工</a>
+						      </div>
+						    </div>
+		
+		
+						</div>
+                          
+	            </div>
 	        </div>
 
 	        <aside class="five wide column">
@@ -255,5 +329,10 @@ $('.ui.sticky')
 
 $('#tab-nav .item').tab();
 
+$('.nearby .animated.button')
+  .popup()
+;
+
+$('.avatar').popup();
 	</script>
 {% endblock scripts %}
