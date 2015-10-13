@@ -159,3 +159,16 @@ footer .footer.vertical.segment {
     background-color: #455A64;
     border-radius: 0;
 }
+
+
+/*article page*/
+
+.article-content {
+	font-size: 16px;
+	line-height: 1.5em;
+}
+
+.article-content p {
+	font-size: 16px;
+	line-height: 1.5em;
+}

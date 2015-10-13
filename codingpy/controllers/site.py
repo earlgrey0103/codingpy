@@ -23,3 +23,8 @@ def index():
 	article = Article.query.first()
 
 	return render_template('index.html', a=article)
+
+@bp.route('/article')
+@cache.cached()
+def article():
+	return render_template('article.html')
