@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 
+{% block title %}
+	百度员工离职总结：如何做个好员工？
+
+{% endblock title %}
+
 {% block main %}
 	<div id="main">
 	   
@@ -20,7 +25,7 @@
 	                                <span class="date">20小时前</span>
 	                                <span class="category date"><i class="tag icon"></i>Python</span>
 	                                <span class="sub-category date"><i class="tag icon"></i>Flask</span>
-	                                <span class="share-article"><i class="heart icon"></i>90</span>
+	                                <span class="share-article avatar" data-title="阅读数"><i class="eye icon" ></i>90</span>
 
 
 	                            </div>
@@ -125,6 +130,112 @@
 		
 						</div>
                           
+	            </div>
+
+	            <div class="ui raised segment">
+					<div class="ui pointing secondary menu section-title">
+					    <div class="item active"><i class="comments icon"></i>文章评论</div>                 
+					</div>
+
+
+<div id="SOHUCS"></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cys2CrJ25'; 
+var conf = '403f48c8bbadb8045eea6fdcd141f91c'; 
+if (window.screen.width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); 
+} else { 
+var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); 
+} 
+})();
+
+
+</script>
+
+
+
+					<div class="ui threaded comments">
+
+					  <div class="comment">
+					    <a class="avatar">
+					      <img src="http://semantic-ui.com/images/avatar2/small/mark.png">
+					    </a>
+					    <div class="content">
+					      <a class="author">Matt</a>
+					      <div class="metadata">
+					        <span class="date">Today at 5:42PM</span>
+					      </div>
+					      <div class="text">
+					        How artistic!
+					      </div>
+					      <div class="actions">
+					        <a class="reply">Reply</a>
+					      </div>
+					    </div>
+					  </div>
+					  <div class="comment">
+					    <a class="avatar">
+					      <img src="http://semantic-ui.com/images/avatar2/small/mark.png">
+					    </a>
+					    <div class="content">
+					      <a class="author">Elliot Fu</a>
+					      <div class="metadata">
+					        <span class="date">Yesterday at 12:30AM</span>
+					      </div>
+					      <div class="text">
+					        <p>This has been very useful for my research. Thanks as well!</p>
+					      </div>
+					      <div class="actions">
+					        <a class="reply">Reply</a>
+					      </div>
+					    </div>
+					    <div class="comments">
+					      <div class="comment">
+					        <a class="avatar">
+					          <img src="http://semantic-ui.com/images/avatar2/small/mark.png">
+					        </a>
+					        <div class="content">
+					          <a class="author">Jenny Hess</a>
+					          <div class="metadata">
+					            <span class="date">Just now</span>
+					          </div>
+					          <div class="text">
+					            Elliot you are always so right :)
+					          </div>
+					          <div class="actions">
+					            <a class="reply">Reply</a>
+					          </div>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+					  <div class="comment">
+					    <a class="avatar">
+					      <img src="http://semantic-ui.com/images/avatar2/small/mark.png">
+					    </a>
+					    <div class="content">
+					      <a class="author">Joe Henderson</a>
+					      <div class="metadata">
+					        <span class="date">5 days ago</span>
+					      </div>
+					      <div class="text">
+					        Dude, this is awesome. Thanks so much
+					      </div>
+					      <div class="actions">
+					        <a class="reply">Reply</a>
+					      </div>
+					    </div>
+					  </div>
+					  <form class="ui reply form">
+					    <div class="field">
+					      <textarea></textarea>
+					    </div>
+					    <div class="ui blue labeled submit icon button">
+					      <i class="icon edit"></i> Add Reply
+					    </div>
+					  </form>
+					</div>
 	            </div>
 	        </div>
 
@@ -335,4 +446,6 @@ $('.nearby .animated.button')
 
 $('.avatar').popup();
 	</script>
+
+
 {% endblock scripts %}

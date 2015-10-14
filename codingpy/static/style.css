@@ -134,6 +134,10 @@ div.header.item a {
 	float: right;
 	margin-left: 0.5rem;
 }
+
+.content span:hover {
+	color: red;
+}
 /*aside*/
 
 
