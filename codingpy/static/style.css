@@ -60,8 +60,8 @@ body {
     -ms-transform-origin: 50% 50%;
     -o-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
-    height: 360px;
     height: 36vh;
+    min-height: 320px;
 }
 
 .slider__slide.active {
@@ -200,3 +200,9 @@ footer .footer.vertical.segment {
     line-height: 1rem;
 }
 
+.article-content h2 {
+        font-size: 1.3em;
+    margin: 40px 10px 20px 0;
+    padding-left: 9px;
+    border-left: 6px solid #ff7e79;
+}

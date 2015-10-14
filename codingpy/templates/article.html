@@ -15,9 +15,9 @@
 	            <div class="ui raised segment">
 
 
-	                <a class="ui red ribbon label"><i class="book icon"></i>教程</a>
+	                <a class="ui red ribbon label" href="" target="_blank"><i class="book icon"></i>教程</a>
 	                <div class="article">
-	                    <div class="header"><a href=""><h2>百度员工离职总结：如何做个好员工？</h2></a></div>
+	                    <div class="header"><a href=""><h1>百度员工离职总结：如何做个好员工？</h1></a></div>
 	                    <div class="ui feed">
 	                        <div class="event">
 	                            <div class="label"><img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="" data-title="EarlGrey" class="avatar"></div>
@@ -45,6 +45,8 @@
 	                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	                        <p>从一份国内再生资源利用市场分析报告了解到，上世纪末，发达国家再生资源产业规模已达2500亿美元，本世纪初已增加到6000亿美元。“目前中国再生资源回收企业有5000多家，回收网点16万个(未登记注册或临时的回收网点有近40万个)，回收加工处理工厂3000多家，从业人员140万人。若包括进城收废品的农民工，中国国内废旧物资回收行业的就业人数近1000万。遍布全国各地，并且在一些重点地区形成了不同的产业规模。中国每年可回收的再生资源近1亿吨，价值2000多亿元，其中废钢铁4000多万吨、废纸3000多万吨、废有色金属500多万吨、废塑料600万吨、废轮胎5000多万条、其他废旧物资1000多万吨。”(李雷光——《中国再生资源回收利用市场调研及发展前景分析报告》)</p>
 
+	                        <h2>副标题</h2>
+
 	                        <p>从一份国内再生资源利用市场分析报告了解到，上世纪末，发达国家再生资源产业规模已达2500亿美元，本世纪初已增加到6000亿美元。“目前中国再生资源回收企业有5000多家，回收网点16万个(未登记注册或临时的回收网点有近40万个)，回收加工处理工厂3000多家，从业人员140万人。若包括进城收废品的农民工，中国国内废旧物资回收行业的就业人数近1000万。遍布全国各地，并且在一些重点地区形成了不同的产业规模。中国每年可回收的再生资源近1亿吨，价值2000多亿元，其中废钢铁4000多万吨、废纸3000多万吨、废有色金属500多万吨、废塑料600万吨、废轮胎5000多万条、其他废旧物资1000多万吨。”(李雷光——《中国再生资源回收利用市场调研及发展前景分析报告》)</p>
 	                    </div>
 
@@ -62,20 +64,36 @@
 	                    <div class="ui divider"></div>
 
 						<div class="nearby">
-						  <div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工">
+						  <div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工" data-variation="wide">
 							  <div class="visible content">上一篇</div>
 							  <div class="hidden content">
 							    <i class="left arrow icon"></i>
 							  </div>
 						  </div>
 
-						<div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工">
+						<div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工" data-variation="wide">
 						  <div class="visible content">下一篇</div>
 						  <div class="hidden content">
 						    <i class="right arrow icon"></i>
 						  </div>
 						</div>
-                        <div class="share-article ui button teal icon basic"><i class="share alternate icon"></i></div>
+                        <div class="share-article ui button teal icon basic" >
+						<i class="share alternate icon"></i>
+
+
+                        </div>
+
+<div class="ui popup">
+	<div class='bdsharebuttonbox bdshare-button-style1-24' data-bd-bind='1444833783821' >
+    <a href='#' class='item bds_qzone' data-cmd='qzone' title='分享到QQ空间'></a>
+    <a href='#' class='item bds_tsina' data-cmd='tsina' title='分享到新浪微博'></a>
+    <a href='#' class='item bds_tqq' data-cmd='tqq' title='分享到腾讯微博'></a>
+    <a href='#' class='item bds_renren' data-cmd='renren' title='分享到人人网'></a>
+    <a href='#' class='item bds_weixin' data-cmd='weixin' title='分享到微信'></a>
+</div>
+</div>
+
+
 						<div class="share-article ui labeled button">
 						  <div class="ui teal basic button">
 						    <i class="heart icon"></i> Like
@@ -91,6 +109,7 @@
 						</div>
 
 	            </div>
+
 	            <div class="ui raised segment related-articles">
 	                <div class="ui pointing secondary menu section-title">
 	                    <div class="item active"><i class="tags icon"></i>相关文章</div>                 
@@ -137,7 +156,7 @@
 					    <div class="item active"><i class="comments icon"></i>文章评论</div>                 
 					</div>
 
-
+{# 
 <div id="SOHUCS"></div> 
 <script type="text/javascript"> 
 (function(){ 
@@ -153,6 +172,7 @@ var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||documen
 
 </script>
 
+#}
 
 
 					<div class="ui threaded comments">
@@ -444,8 +464,37 @@ $('.nearby .animated.button')
   .popup()
 ;
 
+$('.share-article.ui.button').popup({
+	position: 'left center',
+	hoverable: true,
+})
+  	
+
 $('.avatar').popup();
+
+
 	</script>
 
+<!-- Baidu Share JS -->
+    <script>
+    window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {},
+            "bdText": "",
+            "bdMini": "1",
+            "bdMiniList": false,
+            "bdPic": "",
+            "bdStyle": "1",
+            "bdSize": "24"
+        },
+
+        // bdText   string  自定义 分享的内容
+        // bdDesc  string  自定义 分享的摘要
+        // bdUrl   string  自定义 分享的Url地址
+        // bdPic   string  自定义 分享的图片
+        "share": {}
+    };
+    with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+    </script>
 
 {% endblock scripts %}
