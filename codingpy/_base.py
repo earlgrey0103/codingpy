@@ -3,6 +3,9 @@
 
 # import os
 # import sys
+from gevent import monkey
+
+monkey.patch_all()
 
 from flask import Flask, send_from_directory, flash, render_template
 from flask_wtf.csrf import CsrfProtect

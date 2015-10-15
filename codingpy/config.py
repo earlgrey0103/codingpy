@@ -31,7 +31,7 @@ class Config:
     # flask-cache configuration
     CACHE_KEY = 'views'  # ?
     CACHE_DEFAULT_TIMEOUT = 30
-    CACHE_TYPE = 'null'
+    CACHE_TYPE = 'simple'
     # memcache problem: str does not have buffer interface
     # CACHE_MEMCACHED_SERVERS = ['127.0.0.1:11211']
 
