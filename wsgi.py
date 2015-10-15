@@ -5,6 +5,8 @@ from gevent.wsgi import WSGIServer
 
 from manage import app as application
 
+application.jinja_env.cache = {}
+
 if __name__ == '__main__':
     http_server = WSGIServer(('', 5000), application)
     http_server.serve_forever()
