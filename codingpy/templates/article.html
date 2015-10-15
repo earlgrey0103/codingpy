@@ -1,10 +1,17 @@
 {% extends "layout.html" %}
 
-{% block title %}
-	百度员工离职总结：如何做个好员工？
+{% block title %}百度员工离职总结：如何做个好员工？{% endblock title %}
 
-{% endblock title %}
+{% block metas %}
+	<meta name="keywords" content="百度员工离职总结：如何做个好员工">
+	<meta name="description" content="百度员工离职总结：如何做个好员工">
+	<meta name="author" content="EarlGrey">
+{% endblock metas %}
 
+{% block head_extend %}
+{# 	  {% if article.get_prev %}<link rel="prev" title="{{ article.get_prev.title }}" href="{{ article.get_prev.link }}" />{% endif %}
+	  {% if article.get_next %}<link rel="next" title="{{ article.get_next.title}}" href="{{ article.get_next.link }}" />{% endif %} #}
+{% endblock head_extend %}
 {% block main %}
 	<div id="main">
 	   

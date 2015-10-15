@@ -5,9 +5,8 @@
 	{% block head %}
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>{% block title %}编程派 | Practice Coding Everyday{% endblock title %}</title>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		{% block metas %}
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<meta name="keywords" content="Python, 编程派">
 			<meta name="description" content="">
 			<meta name="author" content="EarlGrey">
@@ -26,6 +25,10 @@
 
 		{% endblock styles %}
 	{% endblock head %}
+
+    {% block head_extend %}
+        
+    {% endblock head_extend %}
 </head>
 <body {% block body_attrs %}rel='index'{% endblock body_attrs %}>
 
