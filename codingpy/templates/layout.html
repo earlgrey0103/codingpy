@@ -13,11 +13,15 @@
 		{% endblock metas %}
 
 		{% block styles %}
-			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
-			<link rel="stylesheet" href="/static/vendor/semantic-ui/semantic.css">
+{# 			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"> #}
+{# 			<link rel="stylesheet" href="/static/vendor/semantic-ui/semantic.css">
 			<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.core.min.css">
 			<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.theme.min.css">
-			<link rel="stylesheet" type="text/css" href="/static/style.css">
+			<link rel="stylesheet" type="text/css" href="/static/style.css"> #}
+             {% assets "home_css" %}
+            <link rel="stylesheet" href="{{ ASSET_URL }}">
+            {% endassets %}
+
 			<link rel="icon" href="http://semantic-ui.com/images/logo.png">
 			<link rel="image_src" type="image/jpeg" href="http://semantic-ui.com/images/logo.png">
 
@@ -109,12 +113,11 @@
             <div class="seven wide column">
                 <h4 class="ui inverted header">Powered by</h4>
                 <div class="ui images">
-                    <a target="_blank" href="http://www.python.org"><img class="ui image" src="https://www.python.org/static/favicon.ico" alt="python"></a>
+                    <a target="_blank" href="http://www.python.org"><img class="ui image" src="/static/images/python-favico.ico" alt="python"></a>
 
-                    <a target="_blank" href="http://flask.pocoo.org/"><img class="ui image" src="http://flask.pocoo.org/docs/0.10/_static/flask.png" alt="flask"></a>
-                    <a target="_blank" href="https://www.digitalocean.com/?refcode=70fd6733d655"><img class="ui image" src="https://www.digitalocean.com/assets/images/logo-blue-icon-c7cbd47b.svg" alt="digitalocean"></a>
+                    <a target="_blank" href="http://flask.pocoo.org/"><img class="ui image" src="/static/images/flask.png" alt="flask"></a>
+                    <a target="_blank" href="https://www.digitalocean.com/?refcode=70fd6733d655"><img class="ui image" src="/static/images/digitalocean.png" alt="digitalocean"></a>
                 </div>
-
             </div>
 
 
@@ -127,12 +130,11 @@
 </footer>
 
 	{% block scripts %}
-	<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="/static/js/modernizr.js"></script>
-	<script type="text/javascript" src="/static/vendor/semantic-ui/semantic.min.js"></script>
-	<script type="text/javascript" src="/static/vendor/glide/glide.min.js"></script>
-        <script src="/static/js/lazyloadxt.js"></script>
-    <script src="/static/js/lazyloadxt.bg.js"></script>
+
+       {% assets "home_js" %}
+            <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
+
 	{% endblock scripts %}
 
 

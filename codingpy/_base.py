@@ -11,7 +11,6 @@ from flask import Flask, send_from_directory, flash, render_template
 from flask_wtf.csrf import CsrfProtect
 from flask.ext.login import logout_user, current_user
 
-
 # from .models import User, AnonymousUser
 from .ext import (bootstrap, db, moment, cache, mail,
                   login_manager, bcrypt)
@@ -67,7 +66,7 @@ def create_app(config_name):
 
 
 def register_routes(app):
-    from .controllers import site, user
+    from .controllers import site
 
     app.register_blueprint(site.bp, url_prefix='')
     # app.register_blueprint(user.bp, url_prefix='/user')
