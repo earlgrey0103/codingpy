@@ -3,6 +3,9 @@
 import os
 # import sys
 
+from gevent import monkey
+
+monkey.patch_all()
 
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
