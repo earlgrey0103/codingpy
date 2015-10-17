@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block main %}
+  <div class="ui container middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui teal header">
+      登陆编程派
+    </h2>
+        <form class="ui large form">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="email" placeholder="E-mail address">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="ui fluid large teal submit button">Login</div>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+        <div class="ui message">
+            还不是会员？<a href="/register">请先注册</a>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

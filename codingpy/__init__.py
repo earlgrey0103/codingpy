@@ -5,7 +5,7 @@ from ._base import *
 from .models import *
 from .ext import *
 
-#__all__ = (_base.__all__ + models.__all__ + ext.__all__)
+__all__ = (_base.__all__ + models.__all__ + ext.__all__)
 
 
 @login_manager.user_loader
