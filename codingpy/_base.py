@@ -19,13 +19,12 @@ from .admins import admin
 
 __all__ = ['create_app']
 
-csrf = CsrfProtect()
-
 
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
+    csrf = CsrfProtect()
 
     db.init_app(app)
     bootstrap.init_app(app)
@@ -43,15 +42,15 @@ def create_app(config_name):
     register_error_handle(app)
 
     # before every request
-    @app.before_request
-    def before_request():
-        if not current_user.is_anonymous:
-            if not current_user.confirmed:
-                flash('请登录邮箱激活账户。')
-                logout_user()
-            if current_user.is_banned:
-                flash('账户已被禁用，请联系管理员。')
-                logout_user()
+    # @app.before_request
+    # def before_request():
+    #     if not current_user.is_anonymous:
+    #         if not current_user.confirmed:
+    #             flash('请登录邮箱激活账户。')
+    #             logout_user()
+    #         if current_user.is_banned:
+    #             flash('账户已被禁用，请联系管理员。')
+    #             logout_user()
 
     @app.route('/favicon.ico')
     def favicon():
@@ -66,19 +65,19 @@ def create_app(config_name):
 
 
 def register_routes(app):
-    from .controllers import site, user
+    from .controllers import site, account
 
     app.register_blueprint(site.bp, url_prefix='')
-    # app.register_blueprint(user.bp, url_prefix='/user')
+    app.register_blueprint(account.bp, url_prefix='/account')
     # app.register_blueprint(admin.bp, url_prefix='/admin')
 
 
 def register_managers(app):
 
-    login_manager.session_protection = 'strong'
+    # login_manager.session_protection = 'strong'
     # flask-login will keep track of ip and broswer agent,
     # will log user out if it detects a change
-    login_manager.login_view = 'user.login'
+    login_manager.login_view = 'account.login'
     login_manager.login_message = '请先登陆'
     # login_manager.anonymous_user = AnonymousUser
     login_manager.init_app(app)

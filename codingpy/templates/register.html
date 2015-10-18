@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% import "wtf.html" as wtf %}
 
 {% block main %}
   <div class="ui container middle aligned center aligned grid">
@@ -6,7 +7,7 @@
         <h2 class="ui teal header">
       注册编程派
     </h2>
-        <form class="ui large form">
+{#         <form class="ui large form">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
@@ -29,8 +30,8 @@
                 <div class="ui fluid large teal submit button">注册</div>
             </div>
             <div class="ui error message"></div>
-        </form>
-
+        </form> #}
+        {{ wtf.quick_form(form, method="POST", enctype="multipart/form-data", form_type="horizontal", horizontal_columns=('md', 2, 10)) }}
     </div>
 </div>
 

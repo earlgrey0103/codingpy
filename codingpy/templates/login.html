@@ -1,33 +1,73 @@
 {% extends "layout.html" %}
+{% import "wtf.html" as wtf %}
+
+{% block title %}login to codingpy{% endblock title %}
+
+{% block navbar %}
+    
+{% endblock navbar %}
+
+{% block footer %}
+    
+{% endblock footer %}
+
+
+{% block metas %}
+    <meta name="keywords" content="login">
+    <meta name="description" content="login">
+    <meta name="author" content="EarlGrey">
+{% endblock metas %}
 
 {% block main %}
-  <div class="ui container middle aligned center aligned grid">
+  <div class="ui container middle aligned center aligned grid" style='width:380px !important; min-height:480px;'>
     <div class="column">
-        <h2 class="ui teal header">
+       {#  <h2 class="ui teal header">
       登陆编程派
-    </h2>
-        <form class="ui large form">
-            <div class="ui stacked segment">
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="email" placeholder="E-mail address">
+        </h2>
+        <form action="{{ url_for('account.login') }}" class="ui large form" action="" method="POST" enctype="multipart/form-data" role="form">
+            <input id="csrf_token" type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+                <div class="ui stacked segment">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input id="email" required type="text" name="email" placeholder="E-mail address">
+                        </div>
                     </div>
-                </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="Password">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" id="password" name="password" placeholder="Password" required>
+                        </div>
                     </div>
+
+                    <div class="field">
+                        <div class="ui checkbox">
+
+                                <input id='remember_me' type="checkbox" name="remember_me"> 
+                                <label for="remember_me">Remember Me</label>
+                        </div>
+                    </div>
+
+
+                    <input class="ui fluid large teal submit button" id="submit" name="submit" type="submit" value="Log In">
                 </div>
-                <div class="ui fluid large teal submit button">Login</div>
-            </div>
-            <div class="ui error message"></div>
+            
+
         </form>
+        
         <div class="ui message">
-            还不是会员？<a href="/register">请先注册</a>
-        </div>
+            还不是会员？<a href="/account/signin/">请先注册</a>
+        </div> #}
+
+        {{ wtf.quick_form(form, method="POST", enctype="multipart/form-data", form_type="horizontal", horizontal_columns=('md', 2, 10)) }}
+
     </div>
+
 </div>
 
 {% endblock main %}
+
+{% block scripts %}
+    
+{% endblock scripts %}

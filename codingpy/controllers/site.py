@@ -29,15 +29,3 @@ def index():
 @cache.cached()
 def article():
     return render_template('article.html')
-
-
-@bp.route('/login/')
-@cache.cached()
-def login():
-    return render_template('login.html')
-
-
-@bp.route('/register/')
-@cache.cached()
-def register():
-    return render_template('register.html')

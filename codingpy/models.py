@@ -14,7 +14,7 @@ from itsdangerous import URLSafeTimedSerializer as Serializer
 from werkzeug import cached_property
 from jinja2.filters import do_striptags, do_truncate
 
-from .ext import db, bcrypt, keywords_split
+from .ext import db, bcrypt, keywords_split, login_manager
 from .utils.filters import markdown_filter
 
 from .config import Config
@@ -26,6 +26,11 @@ pattern_hasmore = re.compile(r'<!--more-->', re.I)
 __all__ = ['User', 'Role', 'Permission', 'Category', 'Tag', 'Article',
            'Topic', 'Label', 'AnonymousUser'
            ]
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 def markitup(text):
