@@ -24,7 +24,7 @@ class Config:
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     MAIL_SUBJECT_PREFIX = '[CODINGPY]'
-    MAIL_SENDER = 'CODINGPY Admin <songbingjin@126.com>'
+    MAIL_SENDER = 'CODINGPY Admin <codingpy@126.com>'
 
     APP_ADMIN = os.environ.get('CODINGPY_ADMIN')
 
@@ -68,7 +68,6 @@ class DevelopmentConfig(Config):
 
 
 class ProductionConfig(Config):
-    CACHE_TYPE = 'filesystem'
     CACHE_DIR = os.path.join(basedir, datadir, 'cache')
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI')
