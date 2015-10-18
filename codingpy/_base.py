@@ -20,12 +20,14 @@ from .admins import admin
 
 __all__ = ['create_app']
 
+csrf = CsrfProtect()
+toolbar = DebugToolbarExtension()
+
 
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
-    csrf = CsrfProtect()
 
     db.init_app(app)
     bootstrap.init_app(app)
@@ -37,7 +39,7 @@ def create_app(config_name):
     bcrypt.init_app(app)
     admin.init_app(app)
 
-    # toolbar = DebugToolbarExtension(app)
+    toolbar.init_app(app)
 
     register_managers(app)
     register_routes(app)
