@@ -35,7 +35,7 @@ class Config:
     CACHE_REDIS_HOST = 'localhost'
     CACHE_REDIS_PORT = 6379
     CACHE_REDIS_URL = 'redis://localhost:6379'
-    # CACHE_REDIS_PASSWORD = 'rediscache'
+
     # memcache problem: str does not have buffer interface
     # CACHE_MEMCACHED_SERVERS = ['127.0.0.1:11211']
 
@@ -68,7 +68,7 @@ class DevelopmentConfig(Config):
 
 
 class ProductionConfig(Config):
-    CACHE_DIR = os.path.join(basedir, datadir, 'cache')
+    # CACHE_DIR = os.path.join(basedir, datadir, 'cache')
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI')
 
