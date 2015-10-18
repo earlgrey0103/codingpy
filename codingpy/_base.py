@@ -37,7 +37,7 @@ def create_app(config_name):
     bcrypt.init_app(app)
     admin.init_app(app)
 
-    toolbar = DebugToolbarExtension(app)
+    # toolbar = DebugToolbarExtension(app)
 
     register_managers(app)
     register_routes(app)
