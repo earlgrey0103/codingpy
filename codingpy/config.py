@@ -29,7 +29,7 @@ class Config:
     APP_ADMIN = os.environ.get('CODINGPY_ADMIN')
 
     # flask-cache configuration
-    CACHE_KEY = 'views'  # ?
+    CACHE_KEY = 'view/%s'  # ?
     CACHE_DEFAULT_TIMEOUT = 30
     CACHE_TYPE = 'redis'
     CACHE_REDIS_HOST = 'localhost'
