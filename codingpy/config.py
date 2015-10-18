@@ -11,6 +11,7 @@ datadir = 'data'
 class Config:
     SITE_NAME = 'codingpy'
     SECRET_KEY = os.urandom(32)
+    DEBUG_TB_INTERCEPT_REDIRECTS = False
 
     # 是否启用博客模式
     # BLOG_MODE = True
