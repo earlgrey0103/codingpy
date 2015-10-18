@@ -10,6 +10,7 @@ monkey.patch_all()
 from flask import Flask, send_from_directory, flash, render_template
 from flask_wtf.csrf import CsrfProtect
 from flask.ext.login import logout_user, current_user
+from flask_debugtoolbar import DebugToolbarExtension
 
 # from .models import User, AnonymousUser
 from .ext import (bootstrap, db, moment, cache, mail,
@@ -35,6 +36,8 @@ def create_app(config_name):
     cache.init_app(app)
     bcrypt.init_app(app)
     admin.init_app(app)
+
+    toolbar = DebugToolbarExtension(app)
 
     register_managers(app)
     register_routes(app)
