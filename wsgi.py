@@ -18,5 +18,5 @@ if __name__ == '__main__':
     handler.setFormatter(formatter)
     application.logger.addHandler(handler)
 
-    http_server = WSGIServer(('', 5000), application)
+    http_server = WSGIServer((''), application)
     http_server.serve_forever()
