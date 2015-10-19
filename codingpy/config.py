@@ -70,6 +70,7 @@ class DevelopmentConfig(Config):
 
 class ProductionConfig(Config):
     # CACHE_DIR = os.path.join(basedir, datadir, 'cache')
+    DEBUG = False
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI')
 
