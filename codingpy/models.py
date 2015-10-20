@@ -317,6 +317,9 @@ class Category(db.Model):
     template = db.Column(db.String(255))
     article_template = db.Column(db.String(255))
 
+    # views
+    hits = db.Column(db.Integer)
+
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
 
@@ -442,6 +445,9 @@ class Tag(db.Model):
 
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
+
+    # 阅读数
+    hits = db.Column(db.Integer)
 
     __mapper_args__ = {'order_by': [id.desc()]}
 
@@ -593,6 +599,7 @@ class Article(db.Model):
     # 置顶推荐
     ontop = db.Column(db.Boolean, default=False)
     recommended = db.Column(db.Boolean, default=False)
+    slider = db.Column(db.Boolean, default=False)
 
     hits = db.Column(db.Integer, default=0)
 

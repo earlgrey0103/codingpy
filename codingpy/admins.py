@@ -4,9 +4,9 @@
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 
-from .models import Article, User, Role, Category, db
+from .models import Article, User, Category, Tag, db
 
-admin = Admin()
+admin = Admin(template_mode='bootstrap3')
 
 
 # class CodingpyModelView(ModelView):
@@ -22,11 +22,14 @@ admin = Admin()
 
 class ArticleAdmin(ModelView):
 
-    column_list = ('title', 'category', 'tags', 'published', 'ontop',
-                   'recommend', 'created', 'view_on_site')
+    create_template = "admin/a_create.html"
+    edit_template = "admin/a_edit.html"
 
-    form_excluded_columns = ('author', 'body_html', 'hits', 'created',
-                             'last_modified',)
+    column_list = ('title', 'category', 'tags', 'published', 'ontop',
+                   'recommended', 'created_at', 'hits')
+
+    form_excluded_columns = ('author', 'body_html', 'hits', 'created_at',
+                             'last_modified', 'template')
 
     column_searchable_list = ('title',)
 
@@ -42,6 +45,7 @@ class ArticleAdmin(ModelView):
 
     column_labels = dict(
         title=('标题'),
+        slug=('英文链接名'),
         seotitle=('SEO 标题'),
         category=('类别'),
         topic=('专题'),
@@ -50,30 +54,137 @@ class ArticleAdmin(ModelView):
         summary=('摘要'),
         published=('发布'),
         ontop=('置顶'),
-        recommend=('推荐'),
+        recommended=('推荐'),
         seokey=('SEO 关键词'),
         seodesc=('SEO 描述'),
         thumbnail=('缩略图'),
         thumbnail_big=('大缩略图'),
         template=('模板'),
-        created=('创建时间'),
-        view_on_site=('阅读数'),
+        created_at=('创建时间'),
+        hits=('阅读数'),
+        keywords=('关键词'),
+        source=('来源'),
     )
 
-    # form_widget_args = {
-    #     'title': {'style': 'width:480px;'},
-    #     'slug': {'style': 'width:480px;'},
-    #     'seotitle': {'style': 'width:480px;'},
-    #     'seokey': {'style': 'width:480px;'},
-    #     'seodesc': {'style': 'width:480px; height:80px;'},
-    #     'thumbnail': {'style': 'width:480px;'},
-    #     'thumbnail_big': {'style': 'width:480px;'},
-    #     'template': {'style': 'width:480px;'},
-    #     'summary': {'style': 'width:680px; height:80px;'},
-    # }
+    form_widget_args = {
+        'title': {'style': 'width:480px;'},
+        'category': {'style': 'width:480px;'},
+        'topic': {'style': 'width:480px;'},
+        'tags': {'style': 'width:480px;'},
+        'source': {'style': 'width:480px;'},
+        'slug': {'style': 'width:480px;'},
+        'seotitle': {'style': 'width:480px;'},
+        'seokey': {'style': 'width:480px;'},
+        'seodesc': {'style': 'width:480px; height:80px;'},
+        'thumbnail': {'style': 'width:480px;'},
+        'thumbnail_big': {'style': 'width:480px;'},
+        'summary': {'style': 'width:680px; height:80px;'},
+    }
 
 
-admin.add_view(ModelView(User, db.session))
+class CategoryAdmin(ModelView):
+
+    # create_template = "admin/model/a_create.html"
+    # edit_template = "admin/model/a_edit.html"
+
+    column_list = ('name', 'longslug', 'seotitle', 'hits')
+
+    column_searchable_list = ('slug', 'longslug', 'name')
+
+    form_excluded_columns = ('articles', 'body_html', 'longslug', 'children',
+                             'body', 'template', 'article_template', 'hits')
+
+    # form_overrides = dict(seodesc=TextAreaField, body=EDITOR_WIDGET)
+
+    # column_formatters = dict(view_on_site=view_on_site)
+
+    column_labels = dict(
+        parent=('父栏目'),
+        slug=('链接名'),
+        longslug=('长链接'),
+        name=('名称'),
+        seotitle=('SEO 名称'),
+        body=('正文'),
+        seokey=('SEO 关键词'),
+        seodesc=('SEO 描述'),
+        thumbnail=('缩略图'),
+        hits=('阅读数'),
+    )
+
+    form_widget_args = {
+        'parent': {'style': 'width:320px;'},
+        'slug': {'style': 'width:320px;'},
+        'name': {'style': 'width:320px;'},
+        'thumbnail': {'style': 'width:480px;'},
+        'seotitle': {'style': 'width:480px;'},
+        'seokey': {'style': 'width:480px;'},
+        'seodesc': {'style': 'width:480px; height:80px;'},
+    }
+
+
+class UserAdmin(ModelView):
+
+    column_list = ('email', 'username', 'name', 'role', 'confirmed')
+
+    form_excluded_columns = (
+        'password_hash', 'avatar_hash', 'articles', 'member_since',
+        'last_seen')
+
+    column_searchable_list = ('email', 'username', 'name')
+
+    # form_overrides = dict(about_me=TextAreaField)
+
+    column_labels = dict(
+        email=('邮箱'),
+        username=('用户名'),
+        name=('昵称'),
+        confirmed=('已确认'),
+        about_me=('简介'),
+        role=('角色'),
+    )
+
+    form_widget_args = {
+        'about_me': {'style': 'width:480px; height:80px;'},
+    }
+
+
+class TagAdmin(ModelView):
+
+    # create_template = "admin/a_create.html"
+    # edit_template = "admin/a_edit.html"
+
+    column_list = ('name', 'seotitle', 'seokey', 'hits')
+
+    column_searchable_list = ('name',)
+
+    form_excluded_columns = ('articles', 'body_html')
+
+    # form_overrides = dict(seodesc=TextAreaField, body=EDITOR_WIDGET)
+
+    # column_formatters = dict(view_on_site=view_on_site)
+
+    column_labels = dict(
+        slug=('链接名'),
+        name=('名称'),
+        seotitle=('SEO 名称'),
+        body=('正文'),
+        seokey=('SEO 关键词'),
+        seodesc=('SEO 描述'),
+        thumbnail=('缩略图'),
+        hits=('阅读数'),
+    )
+
+    form_widget_args = {
+        'slug': {'style': 'width:320px;'},
+        'name': {'style': 'width:320px;'},
+        'thumbnail': {'style': 'width:480px;'},
+        'seotitle': {'style': 'width:480px;'},
+        'seokey': {'style': 'width:480px;'},
+        'seodesc': {'style': 'width:480px; height:80px;'},
+    }
+
+
 admin.add_view(ArticleAdmin(Article, db.session))
-admin.add_view(ModelView(Role, db.session))
-admin.add_view(ModelView(Category, db.session))
+admin.add_view(CategoryAdmin(Category, db.session))
+admin.add_view(UserAdmin(User, db.session))
+admin.add_view(TagAdmin(Tag, db.session))
