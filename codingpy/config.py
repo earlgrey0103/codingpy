@@ -72,22 +72,23 @@ class ProductionConfig(Config):
     # CACHE_DIR = os.path.join(basedir, datadir, 'cache')
     DEBUG = False
 
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') or \
+        "postgresql://earlgrey:earlgrey@localhost/codingpy"
 
     # postgresql configuration
-    POSTGRES_USER = os.getenv('POSTGRES_USER') or ''
-    POSTGRES_PASS = os.getenv('POSTGRES_PASS') or ''
-    POSTGRES_HOST = os.getenv('POSTGRES_HOST') or ''
-    POSTGRES_PORT = os.getenv('POSTGRES_PORT') or ''
-    POSTGRES_DB = os.getenv('POSTGRES_DB') or ''
+    # POSTGRES_USER = os.getenv('POSTGRES_USER') or ''
+    # POSTGRES_PASS = os.getenv('POSTGRES_PASS') or ''
+    # POSTGRES_HOST = os.getenv('POSTGRES_HOST') or ''
+    # POSTGRES_PORT = os.getenv('POSTGRES_PORT') or ''
+    # POSTGRES_DB = os.getenv('POSTGRES_DB') or ''
 
-    if (len(POSTGRES_USER) > 0 and len(POSTGRES_PASS) > 0 and
-            len(POSTGRES_HOST) > 0 and len(POSTGRES_PORT) > 0 and
-            len(POSTGRES_DB) > 0):
-        SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI') or \
-            'postgresql://%s:%s@%s:%s/%s' % (
-                POSTGRES_USER, POSTGRES_PASS, POSTGRES_HOST,
-                POSTGRES_PORT, POSTGRES_DB)
+    # if (len(POSTGRES_USER) > 0 and len(POSTGRES_PASS) > 0 and
+    #         len(POSTGRES_HOST) > 0 and len(POSTGRES_PORT) > 0 and
+    #         len(POSTGRES_DB) > 0):
+    #     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI') or \
+    #         'postgresql://%s:%s@%s:%s/%s' % (
+    #             POSTGRES_USER, POSTGRES_PASS, POSTGRES_HOST,
+    #             POSTGRES_PORT, POSTGRES_DB)
 
     @classmethod
     def init_app(cls, app):
