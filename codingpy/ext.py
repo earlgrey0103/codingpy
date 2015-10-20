@@ -7,7 +7,7 @@ from functools import wraps
 from urllib.parse import quote
 
 from flask import current_app, request, redirect, url_for
-from flask.ext.bootstrap import Bootstrap
+# from flask.ext.bootstrap import Bootstrap
 from flask.ext.mail import Mail, Message
 from flask.ext.moment import Moment
 from flask.ext.login import LoginManager
@@ -17,7 +17,7 @@ from flask.ext.cache import Cache
 from flask.ext.bcrypt import Bcrypt
 from werkzeug._compat import text_type, to_bytes
 
-__all__ = ['bootstrap', 'moment', 'mail', 'login_manager', 'db',
+__all__ = ['moment', 'mail', 'login_manager', 'db',
            'babel', 'cache', 'bcrypt', 'keywords_split']
 
 
