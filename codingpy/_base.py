@@ -13,7 +13,7 @@ from flask.ext.login import logout_user, current_user
 from flask_debugtoolbar import DebugToolbarExtension
 
 # from .models import User, AnonymousUser
-from .ext import (bootstrap, db, moment, cache, mail,
+from .ext import (db, moment, cache, mail,
                   login_manager, bcrypt)
 from .config import config
 from .admins import admin

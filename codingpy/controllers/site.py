@@ -20,9 +20,9 @@ bp = Blueprint('site', __name__)
 @bp.route('/')
 @cache.cached()
 def index():
-    article = Article.query.first()
+    # article = Article.query.first()
 
-    return render_template('index.html', a=article)
+    return render_template('index.html')
 
 
 @bp.route('/article/')

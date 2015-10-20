@@ -260,13 +260,13 @@ mail = Mail()
 db = SQLAlchemy()
 babel = Babel()
 moment = Moment()
-bootstrap = Bootstrap()
+# bootstrap = Bootstrap()
 cache = CodingpyCache()
 bcrypt = Bcrypt()
 
 login_manager = LoginManager()
 
 
-@babel.localeselector
-def get_locale():
-    return request.accept_languages.best_match(['en', 'zh_CN', 'zh_TW'])
+# @babel.localeselector
+# def get_locale():
+#     return request.accept_languages.best_match(['en', 'zh_CN', 'zh_TW'])
