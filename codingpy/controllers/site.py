@@ -18,17 +18,21 @@ bp = Blueprint('site', __name__)
 
 
 @bp.route('/')
+@bp.route('/index/')
 @cache.cached()
 def index():
-    # article = Article.query.first()
+    # Latest articles
+    latest_articles = Article.query.filter(Article.published == True).\
+        order_by(Article.created_at.desc()).limit(5)
 
-    return render_template('index.html')
+    return render_template('index.html', latest_articles=latest_articles)
 
 
-@bp.route('/article/')
+@bp.route('/<article_slug>/')
 @cache.cached()
-def article():
-    return render_template('article.html')
+def article(article_slug):
+    article = Article.query.filter(Article.slug == article_slug).first()
+    return render_template('article.html', article=article)
 
 
 @bp.route('/<category>/')

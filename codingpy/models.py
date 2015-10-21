@@ -606,8 +606,8 @@ class Article(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey(User.id))
     author = db.relationship(User, backref=db.backref("articles"))
 
-    created_at = db.Column(db.DateTime())
-    last_modified = db.Column(db.DateTime())
+    created_at = db.Column(db.DateTime(), default=datetime.utcnow)
+    last_modified = db.Column(db.DateTime(), default=datetime.utcnow)
 
     __mapper_args__ = {'order_by': [ontop.desc(), id.desc()]}
 

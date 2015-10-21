@@ -111,25 +111,28 @@
                     <div class="item active"><i class="feed icon"></i>最新文章</div>                 
                 </div>
 
-                <a class="ui red ribbon label"><i class="book icon"></i>教程</a>
+                {% for article in latest_articles %}
+                <a class="ui red ribbon label"><i class="book icon"></i>{{ article.category.name}}</a>
                 <div class="article">
-                    <div class="header"><a href="/article"><h2>百度员工离职总结：如何做个好员工？</h2></a></div>
+                    <div class="header"><a href="{{ url_for('site.article', article_slug=article.slug, _external=True) }}"><h2>{{ article.title }}</h2></a></div>
                     <div class="image ">
                         <div class="article-thumb" data-bg="http://sspai.com/attachment/origin/2015/10/09/285971.jpg">
                         </div>
                     </div>
                     <div class="article-content">
                         <div class="description">
-                            苹果下架违规广告屏蔽应用；Google 对 iOS 9 开启应用索引功能；基于 Android 6.0 的 CyanogenMod 13 现已正式启动；民间大神为 Nexus 4 适配 Android 6.0；播客应用 Overcast 发布 2.0 版；LogMeIn 以 1.25 亿美元价格收购 LastPass。
+                            {{ article.summary}}
                         </div>
                     </div>
                     <div class="ui feed">
                         <div class="event">
                             <div class="label"><img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="" data-title="EarlGrey" class="avatar"></div>
                             <div class="content">
-                                <span class="date">20小时前</span>
-                                <span class="category date"><i class="tag icon"></i>Python</span>
-                                <span class="sub-category date"><i class="tag icon"></i>Flask</span>
+                                <span class="date">{{moment(article.created_at).fromNow()}}</span>
+                                {% for tag in article.tags %}
+                                  <span class="category date"><i class="tag icon"></i>{{ tag.name }}</span>
+                                {% endfor %}
+
                                 <span class="share-article"><i class="heart icon"></i>90</span>
                                 <span class="share-article"><i class="comments icon"></i>67</span>
 
@@ -143,6 +146,10 @@
                 </div>
 
                 <div class="ui divider"></div>
+
+                {% endfor %}
+
+
 
 
             </div>

@@ -135,6 +135,9 @@
             <script type="text/javascript" src="{{ ASSET_URL }}"></script>
         {% endassets %}
 
+    {{moment.include_moment()}}
+    {{ moment.lang('zh-CN')}}
+
 	{% endblock scripts %}
 
 

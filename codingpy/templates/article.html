@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %}百度员工离职总结：如何做个好员工？{% endblock title %}
+{% block title %}{{ article.title}}{% endblock title %}
 
 {% block metas %}
 	<meta name="keywords" content="百度员工离职总结：如何做个好员工">
@@ -12,6 +12,7 @@
 {# 	  {% if article.get_prev %}<link rel="prev" title="{{ article.get_prev.title }}" href="{{ article.get_prev.link }}" />{% endif %}
 	  {% if article.get_next %}<link rel="next" title="{{ article.get_next.title}}" href="{{ article.get_next.link }}" />{% endif %} #}
 {% endblock head_extend %}
+
 {% block main %}
 	<div id="main">
 	   
@@ -22,100 +23,73 @@
 	            <div class="ui raised segment">
 
 
-	                <a class="ui red ribbon label" href="" target="_blank"><i class="book icon"></i>教程</a>
+	                <a class="ui red ribbon label" href="" target="_blank"><i class="book icon"></i>{{ article.category.name}}</a>
 	                <div class="article">
-	                    <div class="header"><a href=""><h1>百度员工离职总结：如何做个好员工？</h1></a></div>
-	                    <div class="ui feed">
-	                        <div class="event">
-	                            <div class="label"><img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="" data-title="EarlGrey" class="avatar"></div>
-	                            <div class="content">
-	                                <span class="date">20小时前</span>
-	                                <span class="category date"><i class="tag icon"></i>Python</span>
-	                                <span class="sub-category date"><i class="tag icon"></i>Flask</span>
-	                                <span class="share-article avatar" data-title="阅读数"><i class="eye icon" ></i>90</span>
+					    <div class="header"><a href=""><h1>{{ article.title }}</h1></a></div>
+					    <div class="ui feed">
+					        <div class="event">
+					            <div class="label"><img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="" data-title="EarlGrey" class="avatar"></div>
+					            <div class="content">
+					                <span class="date">{{moment(article.created_at).fromNow()}}</span> {% for tag in article.tags %}
+					                <span class="category date"><i class="tag icon"></i>{{ tag.name }}</span> {% endfor %}
+					                <span class="share-article avatar" data-title="阅读数"><i class="eye icon" ></i>90</span>
+					            </div>
+					        </div>
+					    </div>
+					    <div class="image" style="padding-top: 0;">
+					        <div class="article-thumb" data-bg="http://sspai.com/attachment/origin/2015/10/09/285971.jpg">
+					        </div>
+					    </div>
+					    <div class="article-content">
+					        {{article.body_html | safe }}
+					        <div class="copyright-box ui segment secondary grey">
+					            <p>
+					                <span class="author-name">作者：
+											        <a href="">Earl Grey</a>
+											        </span>
+					                <span>文章来源：<a href="#">编程派</a></span>
+					            </p>
+					            <p class="copyright-declare"><i class="fa fa-copyright"></i>此文版权归编程派所有，非商业性转载请注明来源编程派、作者及原文链接。商业转载请先<a href="mailto:contact@sspai.com">联系我们</a>。</p>
+					        </div>
+					        <div class="ui divider"></div>
+					        <div class="nearby">
+					            <div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工" data-variation="wide">
+					                <div class="visible content">上一篇</div>
+					                <div class="hidden content">
+					                    <i class="left arrow icon"></i>
+					                </div>
+					            </div>
+					            <div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工" data-variation="wide">
+					                <div class="visible content">下一篇</div>
+					                <div class="hidden content">
+					                    <i class="right arrow icon"></i>
+					                </div>
+					            </div>
+					            <div class="share-article ui button teal icon basic">
+					                <i class="share alternate icon"></i>
+					            </div>
+					            <div class="ui popup">
+					                <div class='bdsharebuttonbox bdshare-button-style1-24' data-bd-bind='1444833783821'>
+					                    <a href='#' class='item bds_qzone' data-cmd='qzone' title='分享到QQ空间'></a>
+					                    <a href='#' class='item bds_tsina' data-cmd='tsina' title='分享到新浪微博'></a>
+					                    <a href='#' class='item bds_tqq' data-cmd='tqq' title='分享到腾讯微博'></a>
+					                    <a href='#' class='item bds_renren' data-cmd='renren' title='分享到人人网'></a>
+					                    <a href='#' class='item bds_weixin' data-cmd='weixin' title='分享到微信'></a>
+					                </div>
+					            </div>
+					            <div class="share-article ui labeled button">
+					                <div class="ui teal basic button">
+					                    <i class="heart icon"></i> Like
+					                </div>
+					                <a class="ui basic teal  left pointing label">
+											    1,048
+											  </a>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+				</div>
 
-
-	                            </div>
-
-	                        </div>
-	                    </div>
-	                    <div class="image" style="padding-top: 0;">
-	                        <div class="article-thumb" data-bg="http://sspai.com/attachment/origin/2015/10/09/285971.jpg">
-	                        </div>
-	                    </div>
-	                    <div class="article-content">
-	                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	                        <p>从一份国内再生资源利用市场分析报告了解到，上世纪末，发达国家再生资源产业规模已达2500亿美元，本世纪初已增加到6000亿美元。“目前中国再生资源回收企业有5000多家，回收网点16万个(未登记注册或临时的回收网点有近40万个)，回收加工处理工厂3000多家，从业人员140万人。若包括进城收废品的农民工，中国国内废旧物资回收行业的就业人数近1000万。遍布全国各地，并且在一些重点地区形成了不同的产业规模。中国每年可回收的再生资源近1亿吨，价值2000多亿元，其中废钢铁4000多万吨、废纸3000多万吨、废有色金属500多万吨、废塑料600万吨、废轮胎5000多万条、其他废旧物资1000多万吨。”(李雷光——《中国再生资源回收利用市场调研及发展前景分析报告》)</p>
-
-	                        <h2>副标题</h2>
-
-	                        <p>从一份国内再生资源利用市场分析报告了解到，上世纪末，发达国家再生资源产业规模已达2500亿美元，本世纪初已增加到6000亿美元。“目前中国再生资源回收企业有5000多家，回收网点16万个(未登记注册或临时的回收网点有近40万个)，回收加工处理工厂3000多家，从业人员140万人。若包括进城收废品的农民工，中国国内废旧物资回收行业的就业人数近1000万。遍布全国各地，并且在一些重点地区形成了不同的产业规模。中国每年可回收的再生资源近1亿吨，价值2000多亿元，其中废钢铁4000多万吨、废纸3000多万吨、废有色金属500多万吨、废塑料600万吨、废轮胎5000多万条、其他废旧物资1000多万吨。”(李雷光——《中国再生资源回收利用市场调研及发展前景分析报告》)</p>
-	                    </div>
-
-						<div class="copyright-box ui segment secondary grey">
-						    <p>
-						        <span class="author-name">作者：
-						        <a href="">Earl Grey</a>
-						        </span>
-						        <span>文章来源：<a href="#">编程派</a></span>
-						    </p>
-						    <p class="copyright-declare"><i class="fa fa-copyright"></i>此文版权归编程派所有，非商业性转载请注明来源编程派、作者及原文链接。商业转载请先<a href="mailto:contact@sspai.com">联系我们</a>。</p>
-						</div>
-
-
-	                    <div class="ui divider"></div>
-
-						<div class="nearby">
-						  <div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工" data-variation="wide">
-							  <div class="visible content">上一篇</div>
-							  <div class="hidden content">
-							    <i class="left arrow icon"></i>
-							  </div>
-						  </div>
-
-						<div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工" data-variation="wide">
-						  <div class="visible content">下一篇</div>
-						  <div class="hidden content">
-						    <i class="right arrow icon"></i>
-						  </div>
-						</div>
-                        <div class="share-article ui button teal icon basic" >
-						<i class="share alternate icon"></i>
-
-
-                        </div>
-
-<div class="ui popup">
-	<div class='bdsharebuttonbox bdshare-button-style1-24' data-bd-bind='1444833783821' >
-    <a href='#' class='item bds_qzone' data-cmd='qzone' title='分享到QQ空间'></a>
-    <a href='#' class='item bds_tsina' data-cmd='tsina' title='分享到新浪微博'></a>
-    <a href='#' class='item bds_tqq' data-cmd='tqq' title='分享到腾讯微博'></a>
-    <a href='#' class='item bds_renren' data-cmd='renren' title='分享到人人网'></a>
-    <a href='#' class='item bds_weixin' data-cmd='weixin' title='分享到微信'></a>
-</div>
-</div>
-
-
-						<div class="share-article ui labeled button">
-						  <div class="ui teal basic button">
-						    <i class="heart icon"></i> Like
-						  </div>
-						  <a class="ui basic teal  left pointing label">
-						    1,048
-						  </a>
-						</div>
-
-
-	                </div>
-
-						</div>
-
-	            </div>
 
 	            <div class="ui raised segment related-articles">
 	                <div class="ui pointing secondary menu section-title">
