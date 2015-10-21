@@ -1,15 +1,22 @@
 #!usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask_admin import Admin
+from flask.ext.admin import Admin, AdminIndexView, expose
+from flask.ext.login import current_user
 from flask_admin.contrib.sqla import ModelView
 
 from .models import Article, User, Category, Tag, db
 
-admin = Admin(template_mode='bootstrap3')
 
+class CodingpyAdmin(AdminIndexView):
 
-# class CodingpyModelView(ModelView):
+    @expose('/')
+    def index(self):
+        latest_articles = Article.query.\
+            order_by(Article.created_at.desc()).limit(5)
+
+        return self.render('admin/index.html', latest_articles=latest_articles)
+
 
 #     def is_accessible(self):
 #         return current_user.is_authenticated()
@@ -18,9 +25,12 @@ admin = Admin(template_mode='bootstrap3')
 #         # redirect to login page if user doesn't have access
 #         return redirect(url_for('site.login', next=request.url))
 
-# Customized Post model admin
 
 class ArticleAdmin(ModelView):
+    @expose('/<article_id>/')
+    def preview(self, article_id):
+        article = Article.query.get_or_404(article_id)
+        return self.render('article.html', article=article)
 
     create_template = "admin/a_create.html"
     edit_template = "admin/a_edit.html"
@@ -184,7 +194,11 @@ class TagAdmin(ModelView):
     }
 
 
-admin.add_view(ArticleAdmin(Article, db.session))
-admin.add_view(CategoryAdmin(Category, db.session))
-admin.add_view(UserAdmin(User, db.session))
-admin.add_view(TagAdmin(Tag, db.session))
+admin = Admin(index_view=CodingpyAdmin(name='首页'),
+              name='编程派',
+              template_mode='bootstrap3')
+
+admin.add_view(ArticleAdmin(Article, db.session, name='文章'))
+admin.add_view(CategoryAdmin(Category, db.session, name='分类'))
+admin.add_view(UserAdmin(User, db.session, name='用户'))
+admin.add_view(TagAdmin(Tag, db.session, name='标签'))

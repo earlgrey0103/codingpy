@@ -1,5 +1,29 @@
 {% extends 'admin/master.html' %}
 
 {% block body %}
-  <p>Hello world</p>
+  <div class="col-md-8">
+
+  	<h4>最新文章</h4>
+
+  	<ul>
+  		{% for article in latest_articles %}
+  			<li> 
+  			{{ article.category.name }} | {{ article.title }} | 
+  			<i class={% if article.published %} "icon-ok-circle" {% else %} "icon-ban-circle" {% endif %}></i>
+  			<a class="btn btn-success btn-small" href="{{ url_for('article.edit_view', id=article.id)}}"> 
+  			 <i class="icon-edit"></i> {{_gettext('Edit')}}</a>
+  			 <a class="btn btn-primary btn-small" target="_blank" href="{{ 
+  			 url_for('site.article', article_slug=article.slug) if article.published else url_for('article.preview', article_id=article.id) }}">
+              <i class="icon-globe"></i> {{_gettext('View') if article.published else _gettext('Preview')}}</a>
+  			</li>
+  		{% endfor %}
+  	</ul>
+
+  </div>
+
+  <div class="col-md-4">
+
+  	<h4>最新评论</h4>
+  	
+  </div>
 {% endblock %}
