@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint
 from flask import render_template, redirect, url_for, flash, request,\
-    current_app
+    current_app, jsonify
 from werkzeug.contrib.atom import AtomFeed
 
 # from ..models import Permission
 from ..ext import cache
-from ..models import Article
+from ..models import Article, Tag
 
 bp = Blueprint('site', __name__)
 
@@ -21,11 +21,34 @@ bp = Blueprint('site', __name__)
 @bp.route('/index/')
 @cache.cached()
 def index():
-    # Latest articles
+    # Latest 10 articles
     latest_articles = Article.query.filter(Article.published == True).\
         order_by(Article.created_at.desc()).limit(5)
 
-    return render_template('index.html', latest_articles=latest_articles)
+    # Tags
+    tags = Tag.query.order_by(Tag.hits.desc()).all()
+
+    return render_template('index.html',
+                           latest_articles=latest_articles,
+                           tags=tags)
+
+
+@bp.route('/load_more/', methods=['GET'])
+def load_more():
+    start_article_id = 1
+    next_ten_articles = Article.query.filter(
+        start_article_id <= Article.id,
+        Article.id <= start_article_id + 0).all()
+
+    # build a dict of new articles
+    send_dict = {}
+
+    for article in next_ten_articles:
+        send_dict[article.title] = {'article_slug': article.slug,
+                                    'article.id': article.id,
+                                    'article.summary': article.summary, }
+
+    return jsonify(send_dict)
 
 
 @bp.route('/<article_slug>/')
@@ -41,9 +64,9 @@ def category(category):
     pass
 
 
-@bp.route('/tag/<tag_name>/')
+@bp.route('/tag/<name>/')
 @cache.cached()
-def tag(tag_name):
+def tag(name):
     pass
 
 

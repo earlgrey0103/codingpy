@@ -149,11 +149,13 @@
 
                 {% endfor %}
 
-
-
-
             </div>
 
+            <div class="ui center aligned" style="text-align:center">
+              
+              <button class="ui large primary button">加载更多</button>
+
+            </div>
         </div>
 
         <aside class="five wide column">
@@ -162,19 +164,23 @@
                     <div class="item active"><i class="wechat icon"></i>关注编程派</div>                 
                 </div>
 
-                <button class="ui circular large wechat green icon button">
+                <a href="/"><button class="ui circular large wechat green icon button">
                     <i class="wechat icon"></i>
-                </button>
-                <button class="ui circular large weibo red icon button">
+                </button></a>
+                <a href="/"><button class="ui circular large weibo red icon button">
                     <i class="weibo icon"></i>
-                </button>
-                <button class="ui circular large twitter icon button">
+                </button></a>
+                <a href="/"><button class="ui circular large twitter icon button">
                     <i class="twitter icon"></i>
-                </button>
+                </button></a>
 
-                <button class="ui circular large icon button">
+                <a href=""><button class="ui circular large icon button">
                     <i class="github alternate blue icon"></i>
-                </button>
+                </button></a>
+
+                <a href="/"><button class="ui circular large icon button">
+                    <i class="rss brown icon"></i>
+                </button></a>
                     
 
             </div>
@@ -311,30 +317,11 @@
                 </div>
                 {# 按标签下文章数量排序 #}
                 <div class="ui labels">
-                  <a class="ui label">
-                    Python
-                  </a>
-                  <a class="ui label">
-                    Flask
-                  </a>
-                  <a class="ui label">
-                    Design Pattern
-                  </a>
-                  <a class="ui label">
-                    Best Practice
-                  </a>
-                  <a class="ui label">
-                    网络并发
-                  </a>
-                  <a class="ui label">
-                    性能优化
-                  </a>
-                  <a class="ui label">
-                    网站建设
-                  </a>
-                  <a class="ui label">
-                    后端框架
-                  </a>
+
+                  {% for tag in tags %}
+                    <a href="{{ tag.link }}" class="ui label">{{ tag.name }}</a>
+                  {% endfor %}
+
                 </div>                              
             </div>
 
@@ -409,6 +396,31 @@ $('.ui.sticky')
 ;
 
 $('#tab-nav .item').tab();
+
+// load more articles
+$(function() {
+  $('button.ui.primary.button').click(function() {
+    var article_id = {{ latest_articles[-1].id }};
+    console.log(article_id);
+    $.ajax({
+      url:'/load_more',
+      type:'GET',
+      data: article_id,
+      success: function(response) {
+        console.log(response);
+        $.each(response, function(key, value) {
+          console.log(key + ":" + value.article_slug);
+          $('.articles div.ui.raised.segment').last().after("<div class='ui raised segment'>" + value.article_slug +"</div>");
+        });
+        
+      },
+      error: function(error) {
+        console.log(error)
+      }
+    })
+  });
+});
+
 
 </script>
 
