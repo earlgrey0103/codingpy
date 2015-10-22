@@ -35055,31 +35055,36 @@ html.ios body {
 .glide{position:relative;width:100%;height:100%}.glide__wrapper{overflow:hidden}.glide__track{position:relative;width:100%;height:100%;list-style:none;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-ms-touch-action:pan-Y;touch-action:pan-Y}.glide__track.dragging{cursor:-webkit-grabbing;cursor:grabbing;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.glide__slide{width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}.glide__arrows{-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.glide__arrow{cursor:pointer}.glide__bullets{-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.glide--slider .glide__slide{float:left;clear:none}.glide--carousel .glide__slide{float:left;clear:none}.glide--slideshow .glide__wrapper{height:100%}.glide--slideshow .glide__slide{height:100%;position:absolute;top:0;left:0;z-index:-1;-webkit-transform-style:preserve-3d;-webkit-transform:translate3d(0, 0, 0)}.glide--slideshow .glide__slide.active{z-index:1}
 .glide__arrows{position:absolute}.glide--horizontal .glide__arrows{top:50%;width:92%;margin-left:4%}.glide--vertical .glide__arrows{left:50%;height:88%;margin-top:6%}.glide__arrow{position:absolute;z-index:2;color:white;text-transform:uppercase;font:11px Arial,sans-serif;padding:9px 12px;background-color:transparent;border:2px solid rgba(255,255,255,0.5);border-radius:4px;-webkit-transition:border 300ms ease-in-out;transition:border 300ms ease-in-out}.glide__arrow:focus{outline:none}.glide__arrow:hover{border-color:white}.glide--horizontal .glide__arrow{-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}.glide--horizontal .glide__arrow.prev{left:0}.glide--horizontal .glide__arrow.next{right:0}.glide--vertical .glide__arrow{-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%)}.glide--vertical .glide__arrow.prev{top:0}.glide--vertical .glide__arrow.next{bottom:0}.glide__bullets{position:absolute;list-style:none}.glide--horizontal .glide__bullets{bottom:8%;left:0;width:100%;height:12px;text-align:center}.glide--vertical .glide__bullets{top:50%;right:8%;width:12px;height:auto;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}.glide__bullets>*{display:inline-block;background-color:rgba(255,255,255,0.5);width:12px;height:12px;padding:0;cursor:pointer;border-radius:50%;border:2px solid transparent;-webkit-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out}.glide--horizontal .glide__bullets>*{margin:0 5px}.glide--vertical .glide__bullets>*{vertical-align:middle}.glide__bullets>*.active{background-color:white}.glide__bullets>*:focus{outline:none}.glide__bullets>*:hover,.glide__bullets>*:focus{border:2px solid white;background-color:rgba(255,255,255,0.5)}.glide--slider .glide__arrow{opacity:1;-webkit-transition:opacity 150ms ease;transition:opacity 150ms ease}.glide--slider .glide__arrow.disabled{opacity:.33}
 /*fonts*/
+
 body {
     -webkit-font-smoothing: antialiased;
-        background: #E0E0E0;
+    background: #E0E0E0;
 }
 
+.pusher {
+    background: #E0E0E0 !important;
+}
 
 /*overall*/
 
 .header a {
-	color: rgba(0,0,0,0.78) !important;
-
+    color: rgba(0, 0, 0, 0.78) !important;
 }
 
 .header a:hover {
-	color: #39c !important;
+    color: #39c !important;
 }
 
 .section-title .item {
-	padding-left: 0 !important;
+    padding-left: 0 !important;
 }
 
 .list i.icon {
-	width: 20px;
-	height: 20px;
+    width: 20px;
+    height: 20px;
 }
+
+
 /*glider area*/
 
 
@@ -35154,6 +35159,10 @@ div.header.item a {
     font-family: arial, 'Hiragino Sans GB', '微软雅黑', MicrosoftYaHei, '宋体', Tahoma, Arial, Helvetica, STHeiti;
 }
 
+.secondary.menu .toc.item {
+    display: none;
+}
+
 
 /*main content*/
 
@@ -35162,8 +35171,8 @@ div.header.item a {
 }
 
 .article {
-	background: #fff;
-	padding: 1rem 1.5rem 0 1.5rem;
+    background: #fff;
+    padding: 1rem 1.5rem 0 1.5rem;
 }
 
 .article-thumb {
@@ -35174,44 +35183,61 @@ div.header.item a {
 }
 
 .image {
-	padding: 1.5rem 0;
+    padding: 1.5rem 0;
 }
 
 @media (max-width: 768px) {
+    .secondary.inverted.menu .item {
+        display: none;
+    }
     .article-thumb {
-        height: 240px;
+        height: 160px;
     }
     .slider__slide {
-        height: 240px;
+        height: 160px;
+    }
+    .article {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .header h2 {
+        font-size: 1.5rem;
+    }
+    .secondary.menu .toc.item {
+        display: block;
+    }
+    .ui.vertical.sidebar {
+        width: 120px;
     }
 }
 
 .share-article {
-	float: right;
-	margin-left: 0.5rem;
+    float: right;
+    margin-left: 0.5rem;
 }
 
 .content span:hover {
-	color: red;
+    color: red;
 }
+
+
 /*aside*/
 
-
 #follow-nav .item {
-	padding-left: 0;
+    padding-left: 0;
 }
 
-
 .list .item a {
-	padding-top: 10px !important;
-	padding-bottom: 10px !important;
-	color: rgba(0,0,0,1);
-	line-height: 1.5rem;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    color: rgba(0, 0, 0, 1);
+    line-height: 1.5rem;
 }
 
 .list .item a:hover {
-	color: #39c;
+    color: #39c;
 }
+
 
 /*footer*/
 
@@ -35226,16 +35252,17 @@ footer .footer.vertical.segment {
     margin-right: 1rem;
 }
 
+
 /*article page*/
 
 .article-content {
-	font-size: 16px;
-	line-height: 1.5em;
+    font-size: 16px;
+    line-height: 1.5em;
 }
 
 .article-content p {
-	font-size: 16px;
-	line-height: 1.5em;
+    font-size: 16px;
+    line-height: 1.5em;
 }
 
 .related-thumb {
@@ -35248,7 +35275,6 @@ footer .footer.vertical.segment {
     .related-thumb {
         height: 240px;
     }
-
 }
 
 .related-articles .content .header {
@@ -35257,7 +35283,7 @@ footer .footer.vertical.segment {
 }
 
 .article-content h2 {
-        font-size: 1.3em;
+    font-size: 1.3em;
     margin: 40px 10px 20px 0;
     padding-left: 9px;
     border-left: 6px solid #ff7e79;

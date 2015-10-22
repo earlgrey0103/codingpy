@@ -37,6 +37,7 @@ bundles = {
         'vendor/glide/css/glide.core.min.css',
         'vendor/glide/css/glide.theme.min.css',
         'style.css',
+        depends='style.css',
         output='gen/home.css'),
 
 }

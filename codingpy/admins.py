@@ -1,6 +1,7 @@
 #!usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from flask import redirect, url_for, request
 from flask.ext.admin import Admin, AdminIndexView, expose
 from flask.ext.login import current_user
 from flask_admin.contrib.sqla import ModelView
@@ -17,13 +18,12 @@ class CodingpyAdmin(AdminIndexView):
 
         return self.render('admin/index.html', latest_articles=latest_articles)
 
+    # def is_accessible(self):
+    #     return current_user.is_administrator()
 
-#     def is_accessible(self):
-#         return current_user.is_authenticated()
-
-#     def inaccessible_callback(self, name, **kwargs):
-#         # redirect to login page if user doesn't have access
-#         return redirect(url_for('site.login', next=request.url))
+    # def inaccessible_callback(self, name, **kwargs):
+    #     # redirect to login page if user doesn't have access
+    #     return redirect(url_for('site.login', next=request.url))
 
 
 class ArticleAdmin(ModelView):

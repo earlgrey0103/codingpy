@@ -13,14 +13,19 @@
 		{% endblock metas %}
 
 		{% block styles %}
-{# 			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"> #}
-{# 			<link rel="stylesheet" href="/static/vendor/semantic-ui/semantic.css">
+{# 			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+			<link rel="stylesheet" href="/static/vendor/semantic-ui/semantic.css">
 			<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.core.min.css">
-			<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.theme.min.css">
-			<link rel="stylesheet" type="text/css" href="/static/style.css"> #}
+			<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.theme.min.css"> 
+
+#}
+			
              {% assets "home_css" %}
             <link rel="stylesheet" href="{{ ASSET_URL }}">
             {% endassets %}
+            {# 必须删了home.css才会更新源文件里的内容 #}
+
+{#             <link rel="stylesheet" type="text/css" href="/static/style.css"> #}
 
 			<link rel="icon" href="/static/images/logo.png">
 			<link rel="image_src" type="image/jpeg" href="/static/images/logo.png">
@@ -36,15 +41,34 @@
 </head>
 <body {% block body_attrs %}rel='index'{% endblock body_attrs %}>
 
+<!-- Sidebar Menu For optimal performance make sure sidebar and pusher are direct children of your body tag -->
+<div class="ui vertical inverted sidebar menu">
+  <a class="active item"><i class="home icon"></i>首页</a>
+  <a class="item"><i class="world icon"></i>资讯</a>
+  <a class="item"><i class="fork icon"></i>教程</a>
+  <a class="item"><i class="write icon"></i>练习</a>
+  <a class="item"><i class="book icon"></i>笔记</a>
+  <a class="item"><i class="cloud download icon"></i>资源</a>
+  <a class="item"><i class="sign in icon"></i>注册</a>
+  <a class="item"><i class="sign out icon"></i>登录</a>
+</div>
+
+
+<div class="pusher">
 {% block content %}
 
 	{% block navbar %}
 	<nav id="navbar" class="ui stripe">
-    <div class="ui container inverted secondary stackable menu">
+
+
+    <div class="ui container inverted secondary menu">
         <div class="header item">
             <a href="http://codingpy.com" target="_blank" title="codingpy.com"><img class="ui logo" src="http://semantic-ui.com/images/logo.png"></a>
         </div>
-        <a class="item" href="/" target="_blank">首页</a>
+        <a class="toc item">
+          <i class="sidebar icon"></i>
+        </a>
+        <a class="item active" href="/" target="_blank">首页</a>
         <a class="item" href="/news/" target="_blank">资讯</a>
         <a class="item" href="/tuts/" target="_blank">教程</a>
         <a class="item" href="/katas/" target="_blank">练习</a>
@@ -116,8 +140,9 @@
                     <a target="_blank" href="http://www.python.org"><img class="ui image" src="/static/images/python-favico.ico" alt="python"></a>
 
                     <a target="_blank" href="http://flask.pocoo.org/"><img class="ui image" src="/static/images/flask.png" alt="flask"></a>
-                    <a target="_blank" href="https://www.digitalocean.com/?refcode=70fd6733d655"><img class="ui image" src="/static/images/digitalocean.png" alt="digitalocean"></a>
+                    
                 </div>
+                <a target="_blank" href="https://www.digitalocean.com/?refcode=70fd6733d655"><img class="ui image" src="/static/images/digitalocean.png" alt="digitalocean" width="160"></a>
             </div>
 
 
@@ -147,7 +172,7 @@
 
 		
 {% endblock content %}
-
+</div>
 
 </body>
 </html>
