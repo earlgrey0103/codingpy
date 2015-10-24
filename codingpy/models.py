@@ -501,6 +501,8 @@ class Topic(db.Model):
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
 
+    hits = db.Column(db.Integer)
+
     __mapper_args__ = {'order_by': [id.desc()]}
 
     def __repr__(self):
@@ -566,7 +568,7 @@ class Article(db.Model):
     PER_PAGE = 10
 
     id = db.Column(db.Integer, primary_key=True)
-    slug = db.Column(db.String(200))
+    slug = db.Column(db.String(200), nullable=False)
     title = db.Column(db.String(200), nullable=False)
 
     seotitle = db.Column(db.String(200))

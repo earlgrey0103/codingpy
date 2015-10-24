@@ -411,6 +411,8 @@ $(function() {
         $.each(response, function(key, value) {
           console.log(key + ":" + value.article_slug);
           $('.articles div.ui.raised.segment').last().after("<div class='ui raised segment'>" + value.article_slug +"</div>");
+
+          $('.articles .ui.raised.segment').last().hide().slideUp(500);
         });
         
       },

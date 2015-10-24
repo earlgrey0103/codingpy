@@ -5,8 +5,15 @@ from flask import redirect, url_for, request
 from flask.ext.admin import Admin, AdminIndexView, expose
 from flask.ext.login import current_user
 from flask_admin.contrib.sqla import ModelView
+from flask_admin.contrib.fileadmin import FileAdmin
+from flask_admin.form import rules, ImageUploadField
+# from wtforms.fields import ImageUploadField
 
-from .models import Article, User, Category, Tag, db
+from .models import Article, User, Category, Tag, Topic, db
+
+import os.path as op
+
+file_path = op.join(op.dirname(__file__), 'static')
 
 
 class CodingpyAdmin(AdminIndexView):
@@ -27,6 +34,7 @@ class CodingpyAdmin(AdminIndexView):
 
 
 class ArticleAdmin(ModelView):
+
     @expose('/<article_id>/')
     def preview(self, article_id):
         article = Article.query.get_or_404(article_id)
@@ -43,19 +51,23 @@ class ArticleAdmin(ModelView):
 
     column_searchable_list = ('title',)
 
-    # form_create_rules = (
-    #     'title', 'seotitle', 'category', 'topic', 'tags', 'body',
-    #     'summary', 'published', 'ontop', 'recommend', 'seokey',
-    #     'seodesc', 'thumbnail', 'thumbnail_big', 'template',
-    # )
-    # form_edit_rules = form_create_rules
+    form_overrides = dict(
+        thumbnail=ImageUploadField,
+        thumbnail_big=ImageUploadField)
 
-# form_overrides = dict(seodesc=TextAreaField, body=EDITOR_WIDGET,
-#                       summary=TextAreaField)
+    form_args = {
+        'thumbnail': {
+            'label': '缩略图',
+            'base_path': file_path,
+            'allow_overwrite': True,
+            'relative_path': 'thumbnails/',
+        },
+
+    }
 
     column_labels = dict(
         title=('标题'),
-        slug=('英文链接名'),
+        slug=('URL Slug'),
         seotitle=('SEO 标题'),
         category=('类别'),
         topic=('专题'),
@@ -81,6 +93,7 @@ class ArticleAdmin(ModelView):
         'category': {'style': 'width:480px;'},
         'topic': {'style': 'width:480px;'},
         'tags': {'style': 'width:480px;'},
+        'keywords': {'style': 'width:480px;'},
         'source': {'style': 'width:480px;'},
         'slug': {'style': 'width:480px;'},
         'seotitle': {'style': 'width:480px;'},
@@ -89,6 +102,10 @@ class ArticleAdmin(ModelView):
         'thumbnail': {'style': 'width:480px;'},
         'thumbnail_big': {'style': 'width:480px;'},
         'summary': {'style': 'width:680px; height:80px;'},
+        'published': {'class': 'col-md-1'},
+        'ontop': {'class': 'col-md-1'},
+        'recommended': {'class': 'col-md-1'},
+        'slider': {'class': 'col-md-1'},
     }
 
 
@@ -110,7 +127,7 @@ class CategoryAdmin(ModelView):
 
     column_labels = dict(
         parent=('父栏目'),
-        slug=('链接名'),
+        slug=('URL Slug'),
         longslug=('长链接'),
         name=('名称'),
         seotitle=('SEO 名称'),
@@ -130,6 +147,8 @@ class CategoryAdmin(ModelView):
         'seokey': {'style': 'width:480px;'},
         'seodesc': {'style': 'width:480px; height:80px;'},
     }
+
+    form_overrides = dict(thumbnail=ImageUploadField)
 
 
 class UserAdmin(ModelView):
@@ -174,7 +193,7 @@ class TagAdmin(ModelView):
     # column_formatters = dict(view_on_site=view_on_site)
 
     column_labels = dict(
-        slug=('链接名'),
+        slug=('URL Slug'),
         name=('名称'),
         seotitle=('SEO 名称'),
         body=('正文'),
@@ -194,6 +213,39 @@ class TagAdmin(ModelView):
     }
 
 
+class TopicAdmin(ModelView):
+
+    create_template = "admin/a_create.html"
+    edit_template = "admin/a_edit.html"
+
+    column_list = ('name', 'slug', 'seotitle')
+
+    form_excluded_columns = ('articles', 'body_html', 'hits')
+
+    column_searchable_list = ('slug', 'name')
+
+    column_labels = dict(
+        slug=('URL Slug'),
+        name=('名称'),
+        seotitle=('SEO 名称'),
+        body=('正文'),
+        seokey=('SEO 关键词'),
+        seodesc=('SEO 描述'),
+        thumbnail=('缩略图'),
+        template=('模板'),
+    )
+
+    form_widget_args = {
+        'slug': {'style': 'width:320px;'},
+        'name': {'style': 'width:320px;'},
+        'thumbnail': {'style': 'width:480px;'},
+        'seotitle': {'style': 'width:480px;'},
+        'seokey': {'style': 'width:480px;'},
+        'seodesc': {'style': 'width:480px; height:80px;'},
+        'template': {'style': 'width:480px;'},
+    }
+
+
 admin = Admin(index_view=CodingpyAdmin(name='首页'),
               name='编程派',
               template_mode='bootstrap3')
@@ -202,3 +254,5 @@ admin.add_view(ArticleAdmin(Article, db.session, name='文章'))
 admin.add_view(CategoryAdmin(Category, db.session, name='分类'))
 admin.add_view(UserAdmin(User, db.session, name='用户'))
 admin.add_view(TagAdmin(Tag, db.session, name='标签'))
+admin.add_view(TopicAdmin(Topic, db.session, name='专题'))
+admin.add_view(FileAdmin(file_path, '/static/', name='文件'))
