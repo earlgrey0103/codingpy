@@ -62,6 +62,12 @@ class ArticleAdmin(ModelView):
             'allow_overwrite': True,
             'relative_path': 'thumbnails/',
         },
+        'thumbnail_big': {
+            'label': '大缩略图',
+            'base_path': file_path,
+            'allow_overwrite': True,
+            'relative_path': 'thumbnails/',
+        },
 
     }
 

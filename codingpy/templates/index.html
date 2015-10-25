@@ -116,12 +116,12 @@
                 <div class="article">
                     <div class="header"><a href="{{ url_for('site.article', article_slug=article.slug, _external=True) }}"><h2>{{ article.title }}</h2></a></div>
                     <div class="image ">
-                        <div class="article-thumb" data-bg="http://sspai.com/attachment/origin/2015/10/09/285971.jpg">
+                        <div class="article-thumb" data-bg="{{ url_for('static', filename=article.thumbnail) if article.thumbnail }}">
                         </div>
                     </div>
                     <div class="article-content">
                         <div class="description">
-                            {{ article.summary}}
+                            {{ article.summary }}
                         </div>
                     </div>
                     <div class="ui feed">
@@ -338,41 +338,6 @@
     {{super()}}
 
     <script>
-
-// expand horizontal viewport
-$.extend($.lazyLoadXT, {
-  edgeX:  2500,
-});
-
-
-$(document).ready(function() {
-
-    if (matchMedia('only screen and (max-width: 768px)').matches) {
-        $('#Glide').glide({
-            type: "carousel",
-            autoplay: 4000,
-            animationDuration: 500,
-        });
-        $('.glide__wrapper').removeClass('bug-fix');
-        // 避免加载时的bug带来的不良体验
-    } else {
-            $("#Glide").glide({
-            type: "carousel",
-            paddings: "20%",
-            autoplay: 4000,
-            animationDuration: 500,
-
-        });
-            $('.glide__wrapper').removeClass('bug-fix');
-    };
-
-
-    // create sidebar and attach to menu open
-    $('.ui.sidebar')
-      .sidebar('attach events', '.toc.item')
-    ;
-
-});
 
 
 $('.box').dimmer({

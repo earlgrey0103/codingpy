@@ -9,6 +9,7 @@ body {
     background: #E0E0E0 !important;
 }
 
+
 /*overall*/
 
 .header a {
@@ -39,17 +40,16 @@ body {
 }
 
 #top {
-    padding: 0.5em 0 0 0;
+    padding: 1rem 0;
     background: #E0E0E0;
 }
 
 .box {
     color: #fff;
-    padding: 54px 18px;
-    font-size: 2em;
-    margin-left: 15px;
-    margin-right: 15px;
-    border-radius: 12px;
+    /*    padding: 54px 18px;*/
+    /*    font-size: 2em;*/
+    margin: 0 15px;
+    /*    border-radius: 12px;*/
     outline: transparent solid 1px;
     background: no-repeat center center;
     background-size: cover;
@@ -110,13 +110,14 @@ div.header.item a {
 
 /*main content*/
 
-.ui.container {
+
+/*.ui.container {
     margin: 1em 0;
-}
+}*/
 
 .article {
     background: #fff;
-    padding: 1rem 1.5rem 0 1.5rem;
+    padding: 0 1.5rem;
 }
 
 .article-thumb {
@@ -128,32 +129,6 @@ div.header.item a {
 
 .image {
     padding: 1.5rem 0;
-}
-
-
-@media (max-width: 768px) {
-    .secondary.inverted.menu .item {
-        display: none;
-    }
-    .article-thumb {
-        height: 160px;
-    }
-    .slider__slide {
-        height: 160px;
-    }
-    .article {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .header h2 {
-        font-size: 1.5rem;
-    }
-    .secondary.menu .toc.item {
-        display: block;
-    }
-    .ui.vertical.sidebar {
-        width: 120px;
-    }
 }
 
 .share-article {
@@ -216,12 +191,6 @@ footer .footer.vertical.segment {
     background-size: cover;
 }
 
-@media (max-width: 768px) {
-    .related-thumb {
-        height: 240px;
-    }
-}
-
 .related-articles .content .header {
     font-size: 1.2rem !important;
     line-height: 1rem;
@@ -232,4 +201,49 @@ footer .footer.vertical.segment {
     margin: 40px 10px 20px 0;
     padding-left: 9px;
     border-left: 6px solid #ff7e79;
+}
+
+
+/*mobile devices */
+
+@media (max-width: 768px) {
+    .secondary.inverted.menu .item {
+        display: none;
+    }
+    .article-thumb {
+        height: 160px;
+    }
+    .box {
+        height: 200px;
+        margin: 0;
+    }
+    .glide__wrapper,
+    .slider__slide {
+        height: 200px;
+    }
+    .article {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .article-content > .description {
+        display: none;
+    }
+    .ui.ribbon.label {
+        display: none;
+    }
+    .category.date {
+        display: none;
+    }
+    .header h2 {
+        font-size: 1.5rem;
+    }
+    .secondary.menu .toc.item {
+        display: block;
+    }
+    .ui.vertical.sidebar {
+        width: 120px;
+    }
+    .related-thumb {
+        height: 240px;
+    }
 }

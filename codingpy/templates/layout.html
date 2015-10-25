@@ -49,8 +49,8 @@
   <a class="item"><i class="write icon"></i>练习</a>
   <a class="item"><i class="book icon"></i>笔记</a>
   <a class="item"><i class="cloud download icon"></i>资源</a>
-  <a class="item"><i class="sign in icon"></i>注册</a>
-  <a class="item"><i class="sign out icon"></i>登录</a>
+  <a class="item"><i class="user icon"></i>注册</a>
+  <a class="item"><i class="sign in icon"></i>登录</a>
 </div>
 
 
@@ -142,7 +142,7 @@
                     <a target="_blank" href="http://flask.pocoo.org/"><img class="ui image" src="/static/images/flask.png" alt="flask"></a>
                     
                 </div>
-                <a target="_blank" href="https://www.digitalocean.com/?refcode=70fd6733d655"><img class="ui image" src="/static/images/digitalocean.png" alt="digitalocean" width="160"></a>
+{#                 <a target="_blank" href="https://www.digitalocean.com/?refcode=70fd6733d655"><img class="ui image" src="/static/images/digitalocean.png" alt="digitalocean" width="160"></a> #}
             </div>
 
 
@@ -162,6 +162,45 @@
 
     {{moment.include_moment()}}
     {{ moment.lang('zh-CN')}}
+
+    <script type="text/javascript">
+// expand horizontal viewport
+$.extend($.lazyLoadXT, {
+  edgeX:  2500,
+});
+
+
+$(document).ready(function() {
+
+    if (matchMedia('only screen and (max-width: 768px)').matches) {
+        $('#Glide').glide({
+            type: "carousel",
+            autoplay: 4000,
+            animationDuration: 500,
+        });
+        $('.glide__wrapper').removeClass('bug-fix');
+        // 避免加载时的bug带来的不良体验
+    } else {
+            $("#Glide").glide({
+            type: "carousel",
+            paddings: "20%",
+            autoplay: 4000,
+            animationDuration: 500,
+
+        });
+            $('.glide__wrapper').removeClass('bug-fix');
+    };
+
+
+    // create sidebar and attach to menu open
+    $('.ui.sidebar')
+      .sidebar('attach events', '.toc.item')
+    ;
+
+});
+
+
+    </script>
 
 	{% endblock scripts %}
 
