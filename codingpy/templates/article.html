@@ -37,7 +37,7 @@
 					        </div>
 					    </div>
 					    <div class="image" style="padding-top: 0;">
-					        <div class="article-thumb" data-bg="http://sspai.com/attachment/origin/2015/10/09/285971.jpg">
+					        <div class="article-thumb" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}">
 					        </div>
 					    </div>
 					    <div class="article-content">
@@ -46,8 +46,8 @@
 <!-- 打赏表单 -->
 <form id="donate" action="https://shenghuo.alipay.com/send/payment/fill.htm" method="POST" target="_blank" accept-charset="GBK" style="display: none;">
     <input name="optEmail" type="hidden" value="您的支付宝账号" />
-    <input name="payAmount" type="hidden" value="默认的打赏金额" />
-    <input id="title" name="title" type="hidden" value="默认显示的付款说明" />
+    <input name="payAmount" type="hidden" value="9.9" />
+    <input id="title" name="title" type="hidden" value="好文章，请继续努力！" />
     <input name="memo" type="hidden" value="备注" />
 </form>
 <!-- /打赏表单 -->
@@ -73,7 +73,7 @@
 </style>
 <!-- /打赏按钮的样式表 -->
 <!-- 打赏按钮 -->
-<div class="donate_bar">
+<div class="donate_bar" style="text-align:center">
     <a class="btn_donate" href="javascript:;" title="Donate 打赏" onclick="document.getElementById('donate').submit()"></a>
     <span class="donate_txt">
 		&uarr;<br/>
@@ -87,7 +87,7 @@
 </div>
 <!-- /打赏按钮 -->
 
-					        <div class="copyright-box ui segment secondary grey">
+{# 					        <div class="copyright-box ui segment secondary grey">
 					            <p>
 					                <span class="author-name">作者：
 											        <a href="">Earl Grey</a>
@@ -95,7 +95,7 @@
 					                <span>文章来源：<a href="#">编程派</a></span>
 					            </p>
 					            <p class="copyright-declare"><i class="fa fa-copyright"></i>此文版权归编程派所有，非商业性转载请注明来源编程派、作者及原文链接。商业转载请先<a href="mailto:contact@sspai.com">联系我们</a>。</p>
-					        </div>
+					        </div> #}
 					        <div class="ui divider"></div>
 					        <div class="nearby">
 					            <div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工" data-variation="wide">
@@ -129,48 +129,27 @@
 				</div>
 
 
-	            <div class="ui raised segment related-articles">
+	            <div id="related__wrapper" class="ui raised segment related-articles">
 	                <div class="ui pointing secondary menu section-title">
 	                    <div class="item active"><i class="tags icon"></i>相关文章</div>                 
 	                </div>
 
 						<div class="ui three stackable cards">
+							{# 相关文章暂时限制为3篇 #}
 
 						    <div class="ui fluid link card">
 						      <div class="image">
-						      	<div class="related-thumb" data-bg="http://sspai.com/attachment/origin/2015/10/09/285971.jpg"></div>
+						      	<div class="related-thumb" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}"></div>
 						      </div>
 						      <div class="content">
-						        <a class="header">百度员工离职总结：如何做个好员工</a>
+						        <a class="header">{{ article.title }}</a>
 						      </div>
-						    </div>
-
-
-						    <div class="ui fluid card link">
-						      <div class="image">
-						      	<div class="related-thumb" data-bg="http://sspai.com/attachment/origin/2015/10/09/285971.jpg"></div>
-						      </div>
-						      <div class="content">
-						        <a class="header">百度员工离职总结：如何做个好员工</a>
-						      </div>
-						    </div>
-	
-	
-						    <div class="ui fluid card link">
-						      <div class="image">
-						      	<div class="related-thumb" data-bg="http://sspai.com/attachment/origin/2015/10/09/285971.jpg"></div>
-						      </div>
-						      <div class="content">
-						        <a class="header">百度员工离职总结：如何做个好员工</a>
-						      </div>
-						    </div>
-		
-		
+						    </div>		
 						</div>
                           
 	            </div>
 
-	            <div class="ui raised segment">
+	            <div id="comment__wrapper" class="ui raised segment">
 					<div class="ui pointing secondary menu section-title">
 					    <div class="item active"><i class="comments icon"></i>文章评论</div>                 
 					</div>
@@ -297,7 +276,10 @@ var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||documen
 	                <button class="ui circular large icon button">
 	                    <i class="github alternate blue icon"></i>
 	                </button>
-	                    
+
+	                <a href="/"><button class="ui circular large icon button">
+	                    <i class="rss brown icon"></i>
+	                </button></a>	                    
 
 	            </div>
 

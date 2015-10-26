@@ -43,10 +43,44 @@ def load_more():
     # build a dict of new articles
     send_dict = {}
 
+    category_label = """
+    <a class="ui red ribbon label" href="%s">
+    <i class="book icon"></i>%s</a>
+
+    """
+
+    header = """
+    <div class="header">
+    <a href="%s">
+    <h2>%s</h2>
+    </a></div>
+    """
+
+    image = """
+    <div class="image ">
+        <div class="article-thumb" data-bg=" %s ">
+        </div>
+    </div>
+    """
+
+    summary = """
+    <div class="article-content">
+        <div class="description">
+            %s
+        </div>
+    </div>
+    """
+
+    feed = """%s """
     for article in next_ten_articles:
-        send_dict[article.title] = {'article_slug': article.slug,
-                                    'article.id': article.id,
-                                    'article.summary': article.summary, }
+        html = (category_label + header + image + summary + feed) %\
+            (article.category.name,
+             article.category.name,
+             article.title, article.title,
+             url_for('static', filename=article.thumbnail),
+             article.summary,
+             article.created_at)
+        send_dict[article.title] = html
 
     return jsonify(send_dict)
 

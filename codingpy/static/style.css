@@ -40,7 +40,7 @@ body {
 }
 
 #top {
-    padding: 1rem 0;
+    padding: 0 0 1rem 0;
     background: #E0E0E0;
 }
 
@@ -84,6 +84,7 @@ body {
     background-color: #455A64;
     border-radius: 0;
     border-top: 2px solid #00BFA5;
+    margin-bottom: 1rem;
 }
 
 #navbar a {
@@ -143,6 +144,10 @@ div.header.item a {
 
 /*aside*/
 
+/*#related__wrapper {
+    margin-bottom: 1rem;
+}*/
+
 #follow-nav .item {
     padding-left: 0;
 }
@@ -170,6 +175,10 @@ footer .footer.vertical.segment {
     width: 48px;
     height: 90px;
     margin-right: 1rem;
+}
+
+.ui.center.aligned button {
+    margin-bottom: 1rem;
 }
 
 
@@ -203,6 +212,9 @@ footer .footer.vertical.segment {
     border-left: 6px solid #ff7e79;
 }
 
+#comment__wrapper {
+    margin-bottom: 1rem;
+}
 
 /*mobile devices */
 
