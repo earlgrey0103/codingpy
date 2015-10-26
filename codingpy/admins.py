@@ -1,13 +1,12 @@
 #!usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask import redirect, url_for, request
+# from flask import redirect, url_for, request
 from flask.ext.admin import Admin, AdminIndexView, expose
-from flask.ext.login import current_user
+# from flask.ext.login import current_user
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.contrib.fileadmin import FileAdmin
-from flask_admin.form import rules, ImageUploadField
-# from wtforms.fields import ImageUploadField
+from flask_admin.form import ImageUploadField
 
 from .models import Article, User, Category, Tag, Topic, db
 

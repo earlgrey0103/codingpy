@@ -11,7 +11,7 @@ datadir = 'data'
 class Config:
     SITE_NAME = 'codingpy'
     SECRET_KEY = os.urandom(32)
-    DEBUG_TB_INTERCEPT_REDIRECTS = False
+    # DEBUG_TB_INTERCEPT_REDIRECTS = False
 
     # 是否启用博客模式
     # BLOG_MODE = True
@@ -36,9 +36,6 @@ class Config:
     CACHE_REDIS_HOST = 'localhost'
     CACHE_REDIS_PORT = 6379
     CACHE_REDIS_URL = 'redis://localhost:6379'
-
-    # memcache problem: str does not have buffer interface
-    # CACHE_MEMCACHED_SERVERS = ['127.0.0.1:11211']
 
     # QiNiu Cloud Storage
     QINIU_AK = os.getenv('QINIU_AK') or ''

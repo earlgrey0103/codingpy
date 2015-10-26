@@ -7,10 +7,9 @@ from gevent import monkey
 
 monkey.patch_all()
 
-from flask import Flask, send_from_directory, flash, render_template
+from flask import Flask, send_from_directory, render_template
 from flask_wtf.csrf import CsrfProtect
-from flask.ext.login import logout_user, current_user
-# from flask_debugtoolbar import DebugToolbarExtension
+# from flask.ext.login import logout_user, current_user
 
 # from .models import User, AnonymousUser
 from .ext import (db, moment, cache, mail,
@@ -30,20 +29,17 @@ def create_app(config_name):
     config[config_name].init_app(app)
 
     db.init_app(app)
-    # bootstrap.init_app(app)
+
     mail.init_app(app)
     moment.init_app(app)
     csrf.init_app(app)
-    # babel.init_app(app)
+
     cache.init_app(app)
     bcrypt.init_app(app)
     admin.init_app(app)
 
-    # toolbar.init_app(app)
-
     register_managers(app)
     register_routes(app)
-    # register_uploadsets(app)
     register_error_handle(app)
 
     # before every request
