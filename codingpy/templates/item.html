@@ -1,0 +1,36 @@
+<div class="js-infinite-item">
+    <a class="ui red ribbon label" href="{{ url_for('site.category', category=article.category.slug) }}"><i class="book icon"></i>{{ article.category.name}}</a>
+<div class="article">
+    <div class="header"><a href="{{ url_for('site.article', article_slug=article.slug, _external=True) }}"><h2>{{ article.title }}</h2></a></div>
+    <div class="image ">
+        <div class="article-thumb" data-bg="{{ url_for('static', filename=article.thumbnail) if article.thumbnail }}">
+        </div>
+    </div>
+    <div class="article-content">
+        <div class="description">
+            {{ article.summary }}
+        </div>
+    </div>
+    <div class="ui feed">
+        <div class="event">
+            <div class="label"><img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="" data-title="EarlGrey" class="avatar"></div>
+            <div class="content">
+                <span class="date">{{moment(article.created_at).fromNow()}}</span>
+                {% for tag in article.tags %}
+                  <span class="category date"><i class="tag icon"></i>{{ tag.name }}</span>
+                {% endfor %}
+
+                <span class="share-article"><i class="heart icon"></i>90</span>
+                <span class="share-article"><i class="comments icon"></i>67</span>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<div class="ui divider"></div>
+</div>

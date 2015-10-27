@@ -167,6 +167,14 @@
 // expand horizontal viewport
 $.extend($.lazyLoadXT, {
   edgeX:  2500,
+  updateEvent: 'load orientationchange resize scroll switchSlideEvent switchSlideAnimateEvent'
+
+});
+
+$(window).on('ajaxComplete', function() {
+    setTimeout(function() {
+        $(window).lazyLoadXT();
+    }, 50);
 });
 
 

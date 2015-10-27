@@ -19,18 +19,22 @@ bp = Blueprint('site', __name__)
 
 @bp.route('/')
 @bp.route('/index/')
+@bp.route('/page/<int:page>')
 @cache.cached()
-def index():
+def index(page=1):
     # Latest 10 articles
+    template_name = 'index.html' if page == 1 else 'items.html'
+    all_articles = Article.query.paginate(page, Article.PER_PAGE, False).items
     latest_articles = Article.query.filter(Article.published == True).\
         order_by(Article.created_at.desc()).limit(5)
 
     # Tags
     tags = Tag.query.order_by(Tag.hits.desc()).all()
 
-    return render_template('index.html',
-                           latest_articles=latest_articles,
-                           tags=tags)
+    return render_template(template_name,
+                           all_articles=all_articles,
+                           tags=tags,
+                           page=page)
 
 
 @bp.route('/load_more/', methods=['GET'])

@@ -16,7 +16,7 @@
         <div class="glide__wrapper bug-fix">
             <div class="glide__track">
             {# lazyloadxt cannot load slides not visible on viewport #}
-            {% for article in latest_articles %}
+            {% for article in all_articles %}
                 <div class="glide__slide slider__slide">
 
                     <div class="box" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}">
@@ -55,7 +55,7 @@
                     <div class="item active"><i class="feed icon"></i>最新文章</div>                 
                 </div>
 
-                {% for article in latest_articles %}
+{#                 {% for article in latest_articles %}
                 <a class="ui red ribbon label" href="{{ url_for('site.category', category=article.category.slug) }}"><i class="book icon"></i>{{ article.category.name}}</a>
                 <div class="article">
                     <div class="header"><a href="{{ url_for('site.article', article_slug=article.slug, _external=True) }}"><h2>{{ article.title }}</h2></a></div>
@@ -91,13 +91,19 @@
 
                 <div class="ui divider"></div>
 
-                {% endfor %}
+                {% endfor %} #}
+
+                {% if all_articles %}
+                  <div class="js-infinite-layout">
+                    {% include "items.html" %}
+                  </div>
+                {% endif %}
 
             </div>
 
-            <div class="ui center aligned" style="text-align:center">
+            <div class="ui center aligned js-infinite-navigation" style="text-align:center">
               
-              <button class="ui large primary button">加载更多</button>
+              <a href="{{ request.url }}/page/{{page + 1}}"></a>
 
             </div>
         </div>
@@ -281,6 +287,8 @@
 {% block scripts %}
     {{super()}}
 
+<script type="text/javascript" src="static/js/jquery.infinitescroll.min.js"></script>
+
     <script>
 
 
@@ -291,7 +299,7 @@ $('.box').dimmer({
 
 $('.avatar').popup();
 
-$('.ui.divider').last().remove();
+// $('.ui.divider').last().remove();
 
 $('.shape')
   .shape('flip up')
@@ -306,30 +314,15 @@ $('.ui.sticky')
 
 $('#tab-nav .item').tab();
 
-// load more articles
-$(function() {
-  $('button.ui.primary.button').click(function() {
-    var article_id = {{ latest_articles[-1].id }};
-    console.log(article_id);
-    $.ajax({
-      url:'/load_more',
-      type:'GET',
-      data: article_id,
-      success: function(response) {
-        console.log(response);
-        $.each(response, function(key, value) {
-          console.log(key + ":" + value.article_slug);
-        $('.article').last().after(value);
-
-          // $('.article').last().slideUp(500);
-        });
-        
-      },
-      error: function(error) {
-        console.log(error)
-      }
-    })
-  });
+// 加载后的文章，图片无法lazyload
+$('.js-infinite-layout').infinitescroll({
+  loading: {
+    finishedMsg: "<div style='text-align:center'><em>没有更多文章了~~</em></div>",
+    msgText: "<div class='ui segment'><div class='ui active inverted dimmer'><div class='ui text loader'>Loading</div></div></div>",
+  },
+  itemSelector: '.js-infinite-item',
+  nextSelector: "div.js-infinite-navigation a:first",
+  navSelector: "div.js-infinite-navigation",
 });
 
 
@@ -337,3 +330,4 @@ $(function() {
 
 
 {% endblock scripts %}
+
