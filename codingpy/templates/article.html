@@ -9,8 +9,8 @@
 {% endblock metas %}
 
 {% block head_extend %}
-{# 	  {% if article.get_prev %}<link rel="prev" title="{{ article.get_prev.title }}" href="{{ article.get_prev.link }}" />{% endif %}
-	  {% if article.get_next %}<link rel="next" title="{{ article.get_next.title}}" href="{{ article.get_next.link }}" />{% endif %} #}
+	  {% if article.get_prev %}<link rel="prev" title="{{ article.get_prev.title }}" href="{{ article.get_prev.link }}" />{% endif %}
+	  {% if article.get_next %}<link rel="next" title="{{ article.get_next.title}}" href="{{ article.get_next.link }}" />{% endif %}
 {% endblock head_extend %}
 
 {% block main %}
@@ -43,49 +43,7 @@
 					    <div class="article-content">
 					        {{article.body_html | safe }}
 
-<!-- 打赏表单 -->
-<form id="donate" action="https://shenghuo.alipay.com/send/payment/fill.htm" method="POST" target="_blank" accept-charset="GBK" style="display: none;">
-    <input name="optEmail" type="hidden" value="您的支付宝账号" />
-    <input name="payAmount" type="hidden" value="9.9" />
-    <input id="title" name="title" type="hidden" value="好文章，请继续努力！" />
-    <input name="memo" type="hidden" value="备注" />
-</form>
-<!-- /打赏表单 -->
-<!-- 打赏按钮的样式表 -->
-<style type="text/css">
-.donate_bar a.btn_donate {
-    display: inline-block;
-    width: 82px;
-    height: 82px;
-    background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
-    _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
-}
-
-.donate_bar a.btn_donate:hover {
-    background-position: 0px -82px;
-}
-
-.donate_bar .donate_txt {
-    display: block;
-    color: #9d9d9d;
-    font: 14px/2 "Microsoft Yahei";
-}
-</style>
-<!-- /打赏按钮的样式表 -->
-<!-- 打赏按钮 -->
-<div class="donate_bar" style="text-align:center">
-    <a class="btn_donate" href="javascript:;" title="Donate 打赏" onclick="document.getElementById('donate').submit()"></a>
-    <span class="donate_txt">
-		&uarr;<br/>
-		If you enjoy the blog,
-		please feel free to donate~
-		Thx for your support.
-	</span>
-    <span class="donate_txt">
-		若本文对您有帮助，求打赏~ 谢谢您的支持和鼓励。
-	</span>
-</div>
-<!-- /打赏按钮 -->
+					        {% include "includes/reward.html" %}
 
 {# 					        <div class="copyright-box ui segment secondary grey">
 					            <p>
@@ -96,6 +54,8 @@
 					            </p>
 					            <p class="copyright-declare"><i class="fa fa-copyright"></i>此文版权归编程派所有，非商业性转载请注明来源编程派、作者及原文链接。商业转载请先<a href="mailto:contact@sspai.com">联系我们</a>。</p>
 					        </div> #}
+
+
 					        <div class="ui divider"></div>
 					        <div class="nearby">
 					            <div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工" data-variation="wide">
@@ -154,294 +114,17 @@
 					    <div class="item active"><i class="comments icon"></i>文章评论</div>                 
 					</div>
 
-{# 
-<div id="SOHUCS"></div> 
-<script type="text/javascript"> 
-(function(){ 
-var appid = 'cys2CrJ25'; 
-var conf = '403f48c8bbadb8045eea6fdcd141f91c'; 
-if (window.screen.width < 960) { 
-window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); 
-} else { 
-var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); 
-} 
-})();
+					{% include "includes/comment.html" %}
 
 
-</script>
-
-#}
-
-
-					<div class="ui threaded comments">
-
-					  <div class="comment">
-					    <a class="avatar">
-					      <img src="http://semantic-ui.com/images/avatar2/small/mark.png">
-					    </a>
-					    <div class="content">
-					      <a class="author">Matt</a>
-					      <div class="metadata">
-					        <span class="date">Today at 5:42PM</span>
-					      </div>
-					      <div class="text">
-					        How artistic!
-					      </div>
-					      <div class="actions">
-					        <a class="reply">Reply</a>
-					      </div>
-					    </div>
-					  </div>
-					  <div class="comment">
-					    <a class="avatar">
-					      <img src="http://semantic-ui.com/images/avatar2/small/mark.png">
-					    </a>
-					    <div class="content">
-					      <a class="author">Elliot Fu</a>
-					      <div class="metadata">
-					        <span class="date">Yesterday at 12:30AM</span>
-					      </div>
-					      <div class="text">
-					        <p>This has been very useful for my research. Thanks as well!</p>
-					      </div>
-					      <div class="actions">
-					        <a class="reply">Reply</a>
-					      </div>
-					    </div>
-					    <div class="comments">
-					      <div class="comment">
-					        <a class="avatar">
-					          <img src="http://semantic-ui.com/images/avatar2/small/mark.png">
-					        </a>
-					        <div class="content">
-					          <a class="author">Jenny Hess</a>
-					          <div class="metadata">
-					            <span class="date">Just now</span>
-					          </div>
-					          <div class="text">
-					            Elliot you are always so right :)
-					          </div>
-					          <div class="actions">
-					            <a class="reply">Reply</a>
-					          </div>
-					        </div>
-					      </div>
-					    </div>
-					  </div>
-					  <div class="comment">
-					    <a class="avatar">
-					      <img src="http://semantic-ui.com/images/avatar2/small/mark.png">
-					    </a>
-					    <div class="content">
-					      <a class="author">Joe Henderson</a>
-					      <div class="metadata">
-					        <span class="date">5 days ago</span>
-					      </div>
-					      <div class="text">
-					        Dude, this is awesome. Thanks so much
-					      </div>
-					      <div class="actions">
-					        <a class="reply">Reply</a>
-					      </div>
-					    </div>
-					  </div>
-					  <form class="ui reply form">
-					    <div class="field">
-					      <textarea></textarea>
-					    </div>
-					    <div class="ui blue labeled submit icon button">
-					      <i class="icon edit"></i> Add Reply
-					    </div>
-					  </form>
-					</div>
 	            </div>
 	        </div>
 
 	        <aside class="five wide column">
-	            <div class="follow-me ui raised segment">
-	                <div class="ui pointing secondary menu green section-title">
-	                    <div class="item active"><i class="wechat icon"></i>关注编程派</div>                 
-	                </div>
-
-	                <button class="ui circular large wechat green icon button">
-	                    <i class="wechat icon"></i>
-	                </button>
-	                <button class="ui circular large weibo red icon button">
-	                    <i class="weibo icon"></i>
-	                </button>
-	                <button class="ui circular large twitter icon button">
-	                    <i class="twitter icon"></i>
-	                </button>
-
-	                <button class="ui circular large icon button">
-	                    <i class="github alternate blue icon"></i>
-	                </button>
-
-	                <a href="/"><button class="ui circular large icon button">
-	                    <i class="rss brown icon"></i>
-	                </button></a>	                    
-
-	            </div>
-
+	        	{% include "includes/follow_us.html" %}
 	        <div class="ui sticky">
-
-	            <div class="ui raised segment">
-	                <div id="tab-nav" class="ui pointing secondary menu">
-	                    <a class="item active" data-tab="recommend">推荐阅读</a>
-	                    <a class="item" data-tab="popular">热门文章</a>
-	                    <a class="item" data-tab="random">随机发现</a>                 
-	                </div>
-
-	                <div class="ui tab active" data-tab="recommend">
-	                    <div class="ui relaxed divided animated list">
-	                    {# 确定每个版块的ICON #}
-	                      <div class="item">
-	                        <i class="book icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-
-	                      <div class="item">
-	                        <i class="world icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-
-	                      <div class="item">
-	                        <i class="cloud download icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-	                      <div class="item">
-	                        <i class="fork icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-	                      <div class="item">
-	                        <i class="write icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-	                                                                      
-	                    </div>
-	                </div>
-	                <div class="ui tab" data-tab="popular">
-	                    <div class="ui relaxed divided animated list">
-	                    {# 确定每个版块的ICON #}
-	                      <div class="item">
-	                        <i class="book icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-
-	                      <div class="item">
-	                        <i class="world icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-
-	                      <div class="item">
-	                        <i class="cloud download icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-	                      <div class="item">
-	                        <i class="fork icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-	                      <div class="item">
-	                        <i class="write icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-	                                                                      
-	                    </div>
-	                </div>
-	                <div class="ui tab" data-tab="random">
-	                    <div class="ui relaxed divided animated list">
-	                    {# 确定每个版块的ICON #}
-	                      <div class="item">
-	                        <i class="book icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-
-	                      <div class="item">
-	                        <i class="world icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-
-	                      <div class="item">
-	                        <i class="cloud download icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-	                      <div class="item">
-	                        <i class="fork icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-	                      <div class="item">
-	                        <i class="write icon"></i>
-	                        <div class="content">
-	                          <a class="">百度员工离职总结：如何做个好员工</a>
-	                        </div>
-	                      </div>
-	                                                                      
-	                    </div>
-	                </div>
-	            </div>
-
-
-	            <div class="ui raised segment">
-	                <div class="ui pointing secondary menu red section-title">
-	                    <div class="item active"><i class="tags icon"></i>热门标签</div>                 
-	                </div>
-	                {# 按标签下文章数量排序 #}
-	                <div class="ui labels">
-	                  <a class="ui label">
-	                    Python
-	                  </a>
-	                  <a class="ui label">
-	                    Flask
-	                  </a>
-	                  <a class="ui label">
-	                    Design Pattern
-	                  </a>
-	                  <a class="ui label">
-	                    Best Practice
-	                  </a>
-	                  <a class="ui label">
-	                    网络并发
-	                  </a>
-	                  <a class="ui label">
-	                    性能优化
-	                  </a>
-	                  <a class="ui label">
-	                    网站建设
-	                  </a>
-	                  <a class="ui label">
-	                    后端框架
-	                  </a>
-	                </div>                              
-	            </div>
-
+	        	{% include "includes/popular.html" %}
+	        	{% include "includes/tags.html" %}
 	        </div>
 	        </aside>
 	    </div>

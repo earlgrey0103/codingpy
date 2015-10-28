@@ -24,9 +24,10 @@ bp = Blueprint('site', __name__)
 def index(page=1):
     # Latest 10 articles
     template_name = 'index.html' if page == 1 else 'items.html'
-    all_articles = Article.query.paginate(page, Article.PER_PAGE, False).items
-    latest_articles = Article.query.filter(Article.published == True).\
-        order_by(Article.created_at.desc()).limit(5)
+    all_articles = Article.query.order_by(Article.created_at.desc()).\
+        paginate(page, Article.PER_PAGE, False).items
+    # latest_articles = Article.query.filter(Article.published == True).\
+    #     order_by(Article.created_at.desc()).limit(5)
 
     # Tags
     tags = Tag.query.order_by(Tag.hits.desc()).all()

@@ -1,0 +1,33 @@
+    <div id="Glide" class="glide ui container">
+
+        <div class="glide__arrows">
+            <span class="glide__arrow prev" data-glide-dir="<">prev</span>
+            <span class="glide__arrow next" data-glide-dir=">">next</span>
+        </div>
+
+        <div class="glide__wrapper bug-fix">
+            <div class="glide__track">
+            {# lazyloadxt cannot load slides not visible on viewport #}
+            {% for article in all_articles %}
+                <div class="glide__slide slider__slide">
+
+                    <div class="box" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}">
+                        
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <a href="{{ url_for('site.article', article_slug=article.slug, _external=True )}}"><div class="ui inverted button">查看详情</div></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>              
+            {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="glide__bullets"></div>
+
+    </div>

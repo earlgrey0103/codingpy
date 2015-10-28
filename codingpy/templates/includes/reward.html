@@ -1,0 +1,43 @@
+<!-- 打赏表单 -->
+<form id="donate" action="https://shenghuo.alipay.com/send/payment/fill.htm" method="POST" target="_blank" accept-charset="GBK" style="display: none;">
+    <input name="optEmail" type="hidden" value="您的支付宝账号" />
+    <input name="payAmount" type="hidden" value="9.9" />
+    <input id="title" name="title" type="hidden" value="好文章，请继续努力！" />
+    <input name="memo" type="hidden" value="备注" />
+</form>
+<!-- /打赏表单 -->
+<!-- 打赏按钮的样式表 -->
+<style type="text/css">
+.donate_bar a.btn_donate {
+    display: inline-block;
+    width: 82px;
+    height: 82px;
+    background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+    _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+}
+
+.donate_bar a.btn_donate:hover {
+    background-position: 0px -82px;
+}
+
+.donate_bar .donate_txt {
+    display: block;
+    color: #9d9d9d;
+    font: 14px/2 "Microsoft Yahei";
+}
+</style>
+<!-- /打赏按钮的样式表 -->
+<!-- 打赏按钮 -->
+<div class="donate_bar" style="text-align:center">
+    <a class="btn_donate" href="javascript:;" title="Donate 打赏" onclick="document.getElementById('donate').submit()"></a>
+    <span class="donate_txt">
+		&uarr;<br/>
+		If you enjoy the blog,
+		please feel free to donate~
+		Thx for your support.
+	</span>
+    <span class="donate_txt">
+		若本文对您有帮助，求打赏~ 谢谢您的支持和鼓励。
+	</span>
+</div>
+<!-- /打赏按钮 -->

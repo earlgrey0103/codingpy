@@ -3,44 +3,9 @@
 {% block main %}
 
 <div id="top">
-    {# top articles with jquery slider #}
-    {# photos need to be preprocessed and refined #}
+    {% include "includes/glide.html" %}
 
-    <div id="Glide" class="glide ui container">
-
-        <div class="glide__arrows">
-            <span class="glide__arrow prev" data-glide-dir="<">prev</span>
-            <span class="glide__arrow next" data-glide-dir=">">next</span>
-        </div>
-
-        <div class="glide__wrapper bug-fix">
-            <div class="glide__track">
-            {# lazyloadxt cannot load slides not visible on viewport #}
-            {% for article in all_articles %}
-                <div class="glide__slide slider__slide">
-
-                    <div class="box" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}">
-                        
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <div class="center">
-                                <a href="{{ url_for('site.article', article_slug=article.slug, _external=True )}}"><div class="ui inverted button">查看详情</div></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    </div>
-                </div>              
-            {% endfor %}
-
-            </div>
-        </div>
-
-        <div class="glide__bullets"></div>
-
-    </div>
 </div>
-
 
 {# latest content #}
 <div id="main">
@@ -55,47 +20,9 @@
                     <div class="item active"><i class="feed icon"></i>最新文章</div>                 
                 </div>
 
-{#                 {% for article in latest_articles %}
-                <a class="ui red ribbon label" href="{{ url_for('site.category', category=article.category.slug) }}"><i class="book icon"></i>{{ article.category.name}}</a>
-                <div class="article">
-                    <div class="header"><a href="{{ url_for('site.article', article_slug=article.slug, _external=True) }}"><h2>{{ article.title }}</h2></a></div>
-                    <div class="image ">
-                        <div class="article-thumb" data-bg="{{ url_for('static', filename=article.thumbnail) if article.thumbnail }}">
-                        </div>
-                    </div>
-                    <div class="article-content">
-                        <div class="description">
-                            {{ article.summary }}
-                        </div>
-                    </div>
-                    <div class="ui feed">
-                        <div class="event">
-                            <div class="label"><img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="" data-title="EarlGrey" class="avatar"></div>
-                            <div class="content">
-                                <span class="date">{{moment(article.created_at).fromNow()}}</span>
-                                {% for tag in article.tags %}
-                                  <span class="category date"><i class="tag icon"></i>{{ tag.name }}</span>
-                                {% endfor %}
-
-                                <span class="share-article"><i class="heart icon"></i>90</span>
-                                <span class="share-article"><i class="comments icon"></i>67</span>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="ui divider"></div>
-
-                {% endfor %} #}
-
                 {% if all_articles %}
                   <div class="js-infinite-layout">
-                    {% include "items.html" %}
+                    {% include "includes/items.html" %}
                   </div>
                 {% endif %}
 
@@ -109,173 +36,16 @@
         </div>
 
         <aside id="related__wrapper" class="five wide column">
-            <div class="follow-me ui raised segment">
-                <div class="ui pointing secondary menu green section-title">
-                    <div class="item active"><i class="wechat icon"></i>关注编程派</div>                 
-                </div>
+            {% include "includes/follow_us.html" %}
 
-                <a href="/"><button class="ui circular large wechat green icon button">
-                    <i class="wechat icon"></i>
-                </button></a>
-                <a href="/"><button class="ui circular large weibo red icon button">
-                    <i class="weibo icon"></i>
-                </button></a>
-                <a href="/"><button class="ui circular large twitter icon button">
-                    <i class="twitter icon"></i>
-                </button></a>
+            <div class="ui sticky">
 
-                <a href=""><button class="ui circular large icon button">
-                    <i class="github alternate blue icon"></i>
-                </button></a>
+                {% include "includes/popular.html" %}
 
-                <a href="/"><button class="ui circular large icon button">
-                    <i class="rss brown icon"></i>
-                </button></a>
-                    
+
+                {% include "includes/tags.html" %}
 
             </div>
-
-        <div class="ui sticky">
-
-            <div class="ui raised segment">
-                <div id="tab-nav" class="ui pointing secondary menu">
-                    <a class="item active" data-tab="recommend">推荐阅读</a>
-                    <a class="item" data-tab="popular">热门文章</a>
-                    <a class="item" data-tab="random">随机发现</a>                 
-                </div>
-
-                <div class="ui tab active" data-tab="recommend">
-                    <div class="ui relaxed divided animated list">
-                    {# 确定每个版块的ICON #}
-                      <div class="item">
-                        <i class="book icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-
-                      <div class="item">
-                        <i class="world icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-
-                      <div class="item">
-                        <i class="cloud download icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <i class="fork icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <i class="write icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-                                                                      
-                    </div>
-                </div>
-                <div class="ui tab" data-tab="popular">
-                    <div class="ui relaxed divided animated list">
-                    {# 确定每个版块的ICON #}
-                      <div class="item">
-                        <i class="book icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-
-                      <div class="item">
-                        <i class="world icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-
-                      <div class="item">
-                        <i class="cloud download icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <i class="fork icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <i class="write icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-                                                                      
-                    </div>
-                </div>
-                <div class="ui tab" data-tab="random">
-                    <div class="ui relaxed divided animated list">
-                    {# 确定每个版块的ICON #}
-                      <div class="item">
-                        <i class="book icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-
-                      <div class="item">
-                        <i class="world icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-
-                      <div class="item">
-                        <i class="cloud download icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <i class="fork icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <i class="write icon"></i>
-                        <div class="content">
-                          <a class="">百度员工离职总结：如何做个好员工</a>
-                        </div>
-                      </div>
-                                                                      
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="ui raised segment">
-                <div class="ui pointing secondary menu red section-title">
-                    <div class="item active"><i class="tags icon"></i>热门标签</div>                 
-                </div>
-                {# 按标签下文章数量排序 #}
-                <div class="ui labels">
-
-                  {% for tag in tags %}
-                    <a href="{{ tag.link }}" class="ui label">{{ tag.name }}</a>
-                  {% endfor %}
-
-                </div>                              
-            </div>
-
-        </div>
         </aside>
     </div>
 
@@ -314,11 +84,10 @@ $('.ui.sticky')
 
 $('#tab-nav .item').tab();
 
-// 加载后的文章，图片无法lazyload
 $('.js-infinite-layout').infinitescroll({
   loading: {
     finishedMsg: "<div style='text-align:center'><em>没有更多文章了~~</em></div>",
-    msgText: "<div class='ui segment'><div class='ui active inverted dimmer'><div class='ui text loader'>Loading</div></div></div>",
+    img: 'static/images/rolling.svg',
   },
   itemSelector: '.js-infinite-item',
   nextSelector: "div.js-infinite-navigation a:first",

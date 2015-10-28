@@ -626,11 +626,11 @@ class Article(db.Model):
 
     @cached_property
     def link(self):
-        return url_for('site.article', article_id=self.id, _external=True)
+        return url_for('site.article', article_slug=self.slug, _external=True)
 
     @cached_property
     def shortlink(self):
-        return url_for('site.article', article_id=self.id)
+        return url_for('site.article', article_slug=self.slug)
 
     @cached_property
     def get_next(self):
