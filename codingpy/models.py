@@ -319,6 +319,7 @@ class Category(db.Model):
 
     # views
     hits = db.Column(db.Integer)
+    icon = db.Column(db.String(64))
 
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)

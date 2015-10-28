@@ -14,6 +14,7 @@ body {
 
 .header a {
     color: rgba(0, 0, 0, 0.78) !important;
+
 }
 
 .header a:hover {
@@ -128,8 +129,12 @@ div.header.item a {
     background-size: cover;
 }
 
+.article .header h2 {
+    margin-top: 1rem;
+}
+
 .image {
-    padding: 1.5rem 0;
+    padding: 1rem 0;
 }
 
 .share-article {

@@ -22,18 +22,28 @@ bp = Blueprint('site', __name__)
 @bp.route('/page/<int:page>')
 @cache.cached()
 def index(page=1):
+    _base_query = Article.query.public()
     # Latest 10 articles
     template_name = 'index.html' if page == 1 else 'items.html'
-    all_articles = Article.query.order_by(Article.created_at.desc()).\
+    all_articles = _base_query.order_by(Article.created_at.desc()).\
         paginate(page, Article.PER_PAGE, False).items
-    # latest_articles = Article.query.filter(Article.published == True).\
-    #     order_by(Article.created_at.desc()).limit(5)
 
     # Tags
     tags = Tag.query.order_by(Tag.hits.desc()).all()
 
+    # recommended articles top 5
+    recommended_articles = _base_query.filter_by(recommended=True).limit(5)
+    popular_articles = _base_query.\
+        order_by(Article.hits.desc()).limit(5)
+
+    from sqlalchemy.sql.expression import func
+    random_articles = _base_query.order_by(func.random()).limit(5)
+
     return render_template(template_name,
                            all_articles=all_articles,
+                           recommended_articles=recommended_articles,
+                           popular_articles=popular_articles,
+                           random_articles=random_articles,
                            tags=tags,
                            page=page)
 

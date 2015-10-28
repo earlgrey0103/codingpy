@@ -94,18 +94,18 @@ class ArticleAdmin(ModelView):
     )
 
     form_widget_args = {
-        'title': {'style': 'width:480px;'},
-        'category': {'style': 'width:480px;'},
-        'topic': {'style': 'width:480px;'},
-        'tags': {'style': 'width:480px;'},
-        'keywords': {'style': 'width:480px;'},
-        'source': {'style': 'width:480px;'},
-        'slug': {'style': 'width:480px;'},
-        'seotitle': {'style': 'width:480px;'},
-        'seokey': {'style': 'width:480px;'},
-        'seodesc': {'style': 'width:480px; height:80px;'},
-        'thumbnail': {'style': 'width:480px;'},
-        'thumbnail_big': {'style': 'width:480px;'},
+        'title': {'style': 'width:320px;'},
+        'category': {'style': 'width:320px;'},
+        'topic': {'style': 'width:320px;'},
+        'tags': {'style': 'width:320px;'},
+        'keywords': {'style': 'width:320px;'},
+        'source': {'style': 'width:320px;'},
+        'slug': {'style': 'width:320px;'},
+        'seotitle': {'style': 'width:320px;'},
+        'seokey': {'style': 'width:320px;'},
+        'seodesc': {'style': 'width:320px; height:80px;'},
+        'thumbnail': {'style': 'width:320px;'},
+        'thumbnail_big': {'style': 'width:320px;'},
         'summary': {'style': 'width:680px; height:80px;'},
         'published': {'class': 'col-md-1'},
         'ontop': {'class': 'col-md-1'},
@@ -119,7 +119,7 @@ class CategoryAdmin(ModelView):
     # create_template = "admin/model/a_create.html"
     # edit_template = "admin/model/a_edit.html"
 
-    column_list = ('name', 'longslug', 'seotitle', 'hits')
+    column_list = ('name', 'slug', 'seotitle', 'hits')
 
     column_searchable_list = ('slug', 'longslug', 'name')
 
@@ -133,7 +133,6 @@ class CategoryAdmin(ModelView):
     column_labels = dict(
         parent=('父栏目'),
         slug=('URL Slug'),
-        longslug=('长链接'),
         name=('名称'),
         seotitle=('SEO 名称'),
         body=('正文'),
@@ -141,16 +140,18 @@ class CategoryAdmin(ModelView):
         seodesc=('SEO 描述'),
         thumbnail=('缩略图'),
         hits=('阅读数'),
+        icon=('图标')
     )
 
     form_widget_args = {
         'parent': {'style': 'width:320px;'},
         'slug': {'style': 'width:320px;'},
         'name': {'style': 'width:320px;'},
-        'thumbnail': {'style': 'width:480px;'},
-        'seotitle': {'style': 'width:480px;'},
-        'seokey': {'style': 'width:480px;'},
-        'seodesc': {'style': 'width:480px; height:80px;'},
+        'icon': {'style': 'width:320px;'},
+        'thumbnail': {'style': 'width:320px;'},
+        'seotitle': {'style': 'width:320px;'},
+        'seokey': {'style': 'width:320px;'},
+        'seodesc': {'style': 'width:320px; height:80px;'},
     }
 
     form_overrides = dict(thumbnail=ImageUploadField)
@@ -178,7 +179,7 @@ class UserAdmin(ModelView):
     )
 
     form_widget_args = {
-        'about_me': {'style': 'width:480px; height:80px;'},
+        'about_me': {'style': 'width:320px; height:80px;'},
     }
 
 
@@ -211,10 +212,10 @@ class TagAdmin(ModelView):
     form_widget_args = {
         'slug': {'style': 'width:320px;'},
         'name': {'style': 'width:320px;'},
-        'thumbnail': {'style': 'width:480px;'},
-        'seotitle': {'style': 'width:480px;'},
-        'seokey': {'style': 'width:480px;'},
-        'seodesc': {'style': 'width:480px; height:80px;'},
+        'thumbnail': {'style': 'width:320px;'},
+        'seotitle': {'style': 'width:320px;'},
+        'seokey': {'style': 'width:320px;'},
+        'seodesc': {'style': 'width:320px; height:80px;'},
     }
 
 
@@ -243,11 +244,11 @@ class TopicAdmin(ModelView):
     form_widget_args = {
         'slug': {'style': 'width:320px;'},
         'name': {'style': 'width:320px;'},
-        'thumbnail': {'style': 'width:480px;'},
-        'seotitle': {'style': 'width:480px;'},
-        'seokey': {'style': 'width:480px;'},
-        'seodesc': {'style': 'width:480px; height:80px;'},
-        'template': {'style': 'width:480px;'},
+        'thumbnail': {'style': 'width:320px;'},
+        'seotitle': {'style': 'width:320px;'},
+        'seokey': {'style': 'width:320px;'},
+        'seodesc': {'style': 'width:320px; height:80px;'},
+        'template': {'style': 'width:320px;'},
     }
 
 

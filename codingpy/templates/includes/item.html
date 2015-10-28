@@ -4,7 +4,17 @@
     <div class="header"><a href="{{ url_for('site.article', article_slug=article.slug, _external=True) }}"><h2>{{ article.title }}</h2></a></div>
     <div class="image ">
         <div class="article-thumb" data-bg="{{ url_for('static', filename=article.thumbnail) if article.thumbnail }}">
+
+            <div class="ui dimmer">
+                <div class="content">
+                    <div class="center">
+                        <a href="{{ url_for('site.article', article_slug=article.slug, _external=True )}}"><div class="ui inverted button">查看详情</div></a>
+                    </div>
+                </div>
+            </div>
+        
         </div>
+
     </div>
     <div class="article-content">
         <div class="description">

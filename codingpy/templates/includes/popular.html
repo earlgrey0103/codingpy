@@ -8,114 +8,42 @@
     <div class="ui tab active" data-tab="recommend">
         <div class="ui relaxed divided animated list">
         {# 确定每个版块的ICON #}
+        {% for article in recommended_articles %}
           <div class="item">
-            <i class="book icon"></i>
+            <i class="{{ article.category.icon }} icon"></i>
             <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
+              <a class="{{ article.link }}">{{ article.title }}</a>
             </div>
-          </div>
-
-          <div class="item">
-            <i class="world icon"></i>
-            <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
-            </div>
-          </div>
-
-          <div class="item">
-            <i class="cloud download icon"></i>
-            <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
-            </div>
-          </div>
-          <div class="item">
-            <i class="fork icon"></i>
-            <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
-            </div>
-          </div>
-          <div class="item">
-            <i class="write icon"></i>
-            <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
-            </div>
-          </div>
+          </div>          
+        {% endfor %}
                                                           
         </div>
     </div>
+
     <div class="ui tab" data-tab="popular">
         <div class="ui relaxed divided animated list">
         {# 确定每个版块的ICON #}
+        {% for article in popular_articles %}
           <div class="item">
-            <i class="book icon"></i>
+            <i class="{{ article.category.icon }} icon"></i>
             <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
+              <a class="{{ article.link }}">{{ article.title }}</a>
             </div>
-          </div>
-
-          <div class="item">
-            <i class="world icon"></i>
-            <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
-            </div>
-          </div>
-
-          <div class="item">
-            <i class="cloud download icon"></i>
-            <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
-            </div>
-          </div>
-          <div class="item">
-            <i class="fork icon"></i>
-            <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
-            </div>
-          </div>
-          <div class="item">
-            <i class="write icon"></i>
-            <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
-            </div>
-          </div>
+          </div>          
+        {% endfor %}
                                                           
         </div>
     </div>
     <div class="ui tab" data-tab="random">
         <div class="ui relaxed divided animated list">
-        {# 确定每个版块的ICON #}
+        {% for article in random_articles %}
           <div class="item">
-            <i class="book icon"></i>
+            <i class="{{ article.category.icon }} icon"></i>
             <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
+              <a class="{{ article.link }}">{{ article.title }}</a>
             </div>
-          </div>
-
-          <div class="item">
-            <i class="world icon"></i>
-            <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
-            </div>
-          </div>
-
-          <div class="item">
-            <i class="cloud download icon"></i>
-            <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
-            </div>
-          </div>
-          <div class="item">
-            <i class="fork icon"></i>
-            <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
-            </div>
-          </div>
-          <div class="item">
-            <i class="write icon"></i>
-            <div class="content">
-              <a class="">百度员工离职总结：如何做个好员工</a>
-            </div>
-          </div>
+          </div>          
+        {% endfor %}
                                                           
         </div>
     </div>
