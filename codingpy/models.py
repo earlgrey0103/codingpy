@@ -614,7 +614,7 @@ class Article(db.Model):
     __mapper_args__ = {'order_by': [ontop.desc(), id.desc()]}
 
     def __repr__(self):
-        return '<Post %r>' % (self.title)
+        return '<Article %r>' % (self.title)
 
     def __unicode__(self):
         return self.title
@@ -634,6 +634,7 @@ class Article(db.Model):
 
     @cached_property
     def get_next(self):
+        # 直接id+1或-1不可以吗？
         _query = db.and_(Article.category_id.in_([self.category.id]),
                          Article.id > self.id)
         return self.query.public().filter(_query) \

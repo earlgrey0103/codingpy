@@ -8,7 +8,7 @@
         <div class="glide__wrapper bug-fix">
             <div class="glide__track">
             {# lazyloadxt cannot load slides not visible on viewport #}
-            {% for article in all_articles %}
+            {% for article in all_articles[:5] %}
                 <div class="glide__slide slider__slide">
 
                     <div class="box" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}">
