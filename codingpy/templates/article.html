@@ -3,8 +3,8 @@
 {% block title %}{{ article.title}}{% endblock title %}
 
 {% block metas %}
-	<meta name="keywords" content="百度员工离职总结：如何做个好员工">
-	<meta name="description" content="百度员工离职总结：如何做个好员工">
+	<meta name="keywords" content="{{ article.title}}">
+	<meta name="description" content="{{ article.title}}">
 	<meta name="author" content="EarlGrey">
 {% endblock metas %}
 
@@ -30,9 +30,11 @@
 					        <div class="event">
 					            <div class="label"><img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="" data-title="EarlGrey" class="avatar"></div>
 					            <div class="content">
-					                <span class="date">{{moment(article.created_at).fromNow()}}</span> {% for tag in article.tags %}
-					                <span class="category date"><i class="tag icon"></i>{{ tag.name }}</span> {% endfor %}
-					                <span class="share-article avatar" data-title="阅读数"><i class="eye icon" ></i>90</span>
+					                <span class="date">{{moment(article.created_at).fromNow()}}</span> 
+					                {% for tag in article.tags %}
+					                <span class="category date"><i class="tag icon"></i>{{ tag.name }}</span> 
+					                {% endfor %}
+					                <span class="share-article avatar" data-title="阅读数"><i class="eye icon" ></i>{{ article.hits }}</span>
 					            </div>
 					        </div>
 					    </div>
@@ -58,18 +60,25 @@
 
 					        <div class="ui divider"></div>
 					        <div class="nearby">
-					            <div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工" data-variation="wide">
+					        	{% if article.get_prev %}
+					            <div class="ui animated basic button teal" data-content="{{ article.get_prev.title }}" data-variation="wide">
 					                <div class="visible content">上一篇</div>
-					                <div class="hidden content">
+					                <a href="{{ article.get_prev.link }}"><div class="hidden content">
 					                    <i class="left arrow icon"></i>
-					                </div>
+					                </div></a>
 					            </div>
-					            <div class="ui animated basic button teal" data-content="百度员工离职总结：如何做个好员工" data-variation="wide">
+					        	{% endif %}
+
+					        	{% if article.get_next %}
+					            <div class="ui animated basic button teal" data-content="{{ article.get_next.title }}" data-variation="wide">
 					                <div class="visible content">下一篇</div>
-					                <div class="hidden content">
+					                <a href="{{ article.get_next.link }}"><div class="hidden content">
 					                    <i class="right arrow icon"></i>
-					                </div>
+					                </div></a>
 					            </div>
+					        	{% endif %}
+
+
 					            <div class="share-article ui button teal icon basic">
 					                <i class="share alternate icon"></i>
 					            </div>
