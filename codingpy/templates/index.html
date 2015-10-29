@@ -1,9 +1,20 @@
 {% extends "layout.html" %}
 
+
+{% block title %}
+{% if 'category' in request.url  %}
+{{ category.name }} | 编程派 | Practice Coding Everyday
+{% else %} 编程派 | Practice Coding Everyday
+{% endif %}
+{% endblock title %}
+
+
 {% block main %}
 
 <div id="top">
-    {% include "includes/glide.html" %}
+    {% if 'category' in request.url  %}
+        {% else %}{% include "includes/glide.html" %}
+    {% endif %}
 
 </div>
 
@@ -57,7 +68,7 @@
 {% block scripts %}
     {{super()}}
 
-<script type="text/javascript" src="static/js/jquery.infinitescroll.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.infinitescroll.min.js') }}"></script>
 
     <script>
 
@@ -87,7 +98,7 @@ $('#tab-nav .item').tab();
 $('.js-infinite-layout').infinitescroll({
   loading: {
     finishedMsg: "<div style='text-align:center'><em>没有更多文章了~~</em></div>",
-    img: 'static/images/rolling.svg',
+    img: "{{ url_for('static', filename='/images/rolling.svg') }}",
   },
   itemSelector: '.js-infinite-item',
   nextSelector: "div.js-infinite-navigation a:first",

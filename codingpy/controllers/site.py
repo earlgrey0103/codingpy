@@ -7,7 +7,7 @@ from werkzeug.contrib.atom import AtomFeed
 
 # from ..models import Permission
 from ..ext import cache
-from ..models import Article, Tag
+from ..models import Article, Tag, Category, db
 
 bp = Blueprint('site', __name__)
 
@@ -29,7 +29,7 @@ def index(page=1):
         paginate(page, Article.PER_PAGE, False).items
 
     # Tags
-    tags = Tag.query.order_by(Tag.hits.desc()).all()
+    tags = Tag.query.order_by(Tag.hits.desc()).limit(10)
 
     # recommended articles top 5
     recommended_articles = _base_query.filter_by(recommended=True).limit(5)
@@ -48,71 +48,71 @@ def index(page=1):
                            page=page)
 
 
-@bp.route('/load_more/', methods=['GET'])
-def load_more():
-    start_article_id = 1
-    next_ten_articles = Article.query.filter(
-        start_article_id <= Article.id,
-        Article.id <= start_article_id + 0).all()
-
-    # build a dict of new articles
-    send_dict = {}
-
-    category_label = """
-    <a class="ui red ribbon label" href="%s">
-    <i class="book icon"></i>%s</a>
-
-    """
-
-    header = """
-    <div class="header">
-    <a href="%s">
-    <h2>%s</h2>
-    </a></div>
-    """
-
-    image = """
-    <div class="image ">
-        <div class="article-thumb" data-bg=" %s ">
-        </div>
-    </div>
-    """
-
-    summary = """
-    <div class="article-content">
-        <div class="description">
-            %s
-        </div>
-    </div>
-    """
-
-    feed = """%s """
-    for article in next_ten_articles:
-        html = (category_label + header + image + summary + feed) %\
-            (article.category.name,
-             article.category.name,
-             article.title, article.title,
-             url_for('static', filename=article.thumbnail),
-             article.summary,
-             article.created_at)
-        send_dict[article.title] = html
-
-    return jsonify(send_dict)
-
-
-@bp.route('/<article_slug>/')
+@bp.route('/article/<article_slug>/')
 @cache.cached()
 def article(article_slug):
     article = Article.query.filter(Article.slug == article_slug).first()
-    return render_template('article.html', article=article)
+    article.hits += 1
+
+    db.session.add(article)
+    db.session.commit()
+
+    related_articles = Article.query.search(article.keywords).limit(3)
+
+    _base_query = Article.query.public()
+
+    # Tags
+    tags = Tag.query.order_by(Tag.hits.desc()).limit(10)
+
+    # recommended articles top 5
+    recommended_articles = _base_query.filter_by(recommended=True).limit(5)
+    popular_articles = _base_query.\
+        order_by(Article.hits.desc()).limit(5)
+
+    from sqlalchemy.sql.expression import func
+    random_articles = _base_query.order_by(func.random()).limit(5)
+
+    return render_template('article.html',
+                           article=article,
+                           tags=tags,
+                           related_articles=related_articles,
+                           recommended_articles=recommended_articles,
+                           popular_articles=popular_articles,
+                           random_articles=random_articles)
 
 
-@bp.route('/<category>/')
+@bp.route('/category/<slug>/')
+@bp.route('/category/page/<int:page>')
 @cache.cached()
-def category(category):
-    pass
+def category(slug, page=1):
+    category = Category.query.filter_by(slug=slug).first()
+    _base_query = Article.query.public().filter_by(category=category)
+
+    all_articles = _base_query.order_by(Article.created_at.desc()).\
+        paginate(page, Article.PER_PAGE, False).items
+
+    # Tags
+    tags = Tag.query.order_by(Tag.hits.desc()).limit(10)
+
+    # recommended articles top 5
+    recommended_articles = _base_query.filter_by(recommended=True).limit(5)
+    popular_articles = _base_query.\
+        order_by(Article.hits.desc()).limit(5)
+
+    from sqlalchemy.sql.expression import func
+    random_articles = _base_query.order_by(func.random()).limit(5)
+
+    return render_template('index.html',
+                           page=page,
+                           tags=tags,
+                           category=category,
+                           all_articles=all_articles,
+                           recommended_articles=recommended_articles,
+                           popular_articles=popular_articles,
+                           random_articles=random_articles)
 
 
+# not implemented for now
 @bp.route('/tag/<name>/')
 @cache.cached()
 def tag(name):

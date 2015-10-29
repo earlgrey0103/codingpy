@@ -130,6 +130,8 @@ class User(UserMixin, db.Model):
     last_seen = db.Column(db.DateTime(), default=datetime.now)
     avatar_hash = db.Column(db.String(32))
 
+    comments = db.relationship('Comment', backref='author', lazy='dynamic')
+
     __mapper_args__ = {'order_by': [confirmed.desc(), id.desc()]}
 
     def __init__(self, **kwargs):
@@ -540,7 +542,7 @@ class ArticleQuery(BaseQuery):
 
         for keyword in keywords_split(keyword):
             keyword = '%{0}%'.format(keyword)
-            criteria.append(db.or_(Article.title.ilike(keyword),))
+            criteria.append(db.or_(Article.keywords.ilike(keyword),))
 
         q = reduce(db.or_, criteria)
         return self.public().filter(q)
@@ -611,6 +613,8 @@ class Article(db.Model):
 
     created_at = db.Column(db.DateTime(), default=datetime.utcnow)
     last_modified = db.Column(db.DateTime(), default=datetime.utcnow)
+
+    comments = db.relationship('Comment', backref='article', lazy='dynamic')
 
     __mapper_args__ = {'order_by': [ontop.desc(), id.desc()]}
 
@@ -887,14 +891,22 @@ class Setting(db.Model):
 db.event.listen(Setting, 'after_insert', Setting.after_update)
 db.event.listen(Setting, 'after_update', Setting.after_update)
 
-# TODO LIST
-# class Comment(db.Model):
-#     pass
 
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.Text)
+    body_html = db.Column(db.Text)
+    created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    disabled = db.Column(db.Boolean)
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    article_id = db.Column(db.Integer, db.ForeignKey('articles.id'))
+    parent_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
+    parent = db.relationship('Comment',
+                             primaryjoin=('Comment.parent_id == Comment.id'),
+                             remote_side=id, backref=db.backref("children"))
 
-# class Follow(db.Model):
-#     pass
-
-
-# class Proverb(db.Model):
-#     pass
+    # @staticmethod
+    # def on_changed_body(target, value, oldvalue, initiator):
+    #     allowed_tags = ['a', 'abbr', 'acronym', 'b', 'code',
+    #                     'em', 'i', 'strong']

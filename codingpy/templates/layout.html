@@ -4,7 +4,7 @@
 <head>
 	{% block head %}
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>{% block title %}编程派 | Practice Coding Everyday{% endblock title %}</title>
+		<title>{% block title %}{% endblock title %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		{% block metas %}
 		<meta name="keywords" content="Python, 编程派">
@@ -23,8 +23,8 @@
         {% endassets %}
         {# 必须删了home.css才会更新源文件里的内容 #}
 {#      <link rel="stylesheet" type="text/css" href="/static/style.css"> #}
-		<link rel="icon" href="/static/images/logo.png">
-		<link rel="image_src" type="image/jpeg" href="/static/images/logo.png">
+		<link rel="icon" href="{{ url_for('static', filename='/images/logo.png') }}">
+		<link rel="image_src" type="image/jpeg" href="{{ url_for('static', filename='/images/logo.png') }}">
 
 		{% endblock styles %}
 	{% endblock head %}

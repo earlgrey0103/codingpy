@@ -21,12 +21,12 @@ __all__ = ['moment', 'mail', 'login_manager', 'db',
 
 
 def keywords_split(keywords):
-    return keywords.replace(u',', ' ') \
-                   .replace(u';', ' ') \
-                   .replace(u'+', ' ') \
-                   .replace(u'；', ' ') \
-                   .replace(u'，', ' ') \
-                   .replace(u'　', ' ') \
+    return keywords.replace(',', ' ') \
+                   .replace(';', ' ') \
+                   .replace('+', ' ') \
+                   .replace('；', ' ') \
+                   .replace('，', ' ') \
+                   .replace('　', ' ') \
                    .split(' ')
 
 

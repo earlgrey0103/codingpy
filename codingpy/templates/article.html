@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %}{{ article.title}}{% endblock title %}
+{% block title %}{{ article.title}}| 编程派 | Practice Coding Everyday{% endblock title %}
 
 {% block metas %}
 	<meta name="keywords" content="{{ article.title}}">
@@ -23,7 +23,7 @@
 	            <div class="ui raised segment">
 
 
-	                <a class="ui red ribbon label" href="" target="_blank"><i class="book icon"></i>{{ article.category.name}}</a>
+	                <a class="ui red ribbon label" href="{{ url_for('site.category', slug=article.category.slug) }}" target="_blank"><i class="book icon"></i>{{ article.category.name}}</a>
 	                <div class="article">
 					    <div class="header"><a href=""><h1>{{ article.title }}</h1></a></div>
 					    <div class="ui feed">
@@ -103,9 +103,10 @@
 	                    <div class="item active"><i class="tags icon"></i>相关文章</div>                 
 	                </div>
 
+
 						<div class="ui three stackable cards">
 							{# 相关文章暂时限制为3篇 #}
-
+							{% for article in related_articles %}
 						    <div class="ui fluid link card">
 						      <div class="image">
 						      	<div class="related-thumb" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}"></div>
@@ -113,8 +114,11 @@
 						      <div class="content">
 						        <a class="header">{{ article.title }}</a>
 						      </div>
-						    </div>		
-						</div>
+						    </div>
+						    {% endfor %}		
+						</div>						    		
+				    	
+
                           
 	            </div>
 
