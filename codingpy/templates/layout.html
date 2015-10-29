@@ -7,30 +7,24 @@
 		<title>{% block title %}编程派 | Practice Coding Everyday{% endblock title %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		{% block metas %}
-			<meta name="keywords" content="Python, 编程派">
-			<meta name="description" content="">
-			<meta name="author" content="EarlGrey">
+		<meta name="keywords" content="Python, 编程派">
+		<meta name="description" content="">
+		<meta name="author" content="EarlGrey">
 		{% endblock metas %}
 
 		{% block styles %}
-{# 			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
-			<link rel="stylesheet" href="/static/vendor/semantic-ui/semantic.css">
-			<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.core.min.css">
-			<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.theme.min.css"> 
-
-#}
-			
-             {% assets "home_css" %}
-            <link rel="stylesheet" href="{{ ASSET_URL }}">
-            {% endassets %}
-            {# 必须删了home.css才会更新源文件里的内容 #}
-
-{#             <link rel="stylesheet" type="text/css" href="/static/style.css"> #}
-
-			<link rel="icon" href="/static/images/logo.png">
-			<link rel="image_src" type="image/jpeg" href="/static/images/logo.png">
-
-
+{# 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+		<link rel="stylesheet" href="/static/vendor/semantic-ui/semantic.css">
+		<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.core.min.css">
+		<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.theme.min.css"> 
+#}			
+         {% assets "home_css" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}">
+        {% endassets %}
+        {# 必须删了home.css才会更新源文件里的内容 #}
+{#      <link rel="stylesheet" type="text/css" href="/static/style.css"> #}
+		<link rel="icon" href="/static/images/logo.png">
+		<link rel="image_src" type="image/jpeg" href="/static/images/logo.png">
 
 		{% endblock styles %}
 	{% endblock head %}
@@ -38,116 +32,28 @@
     {% block head_extend %}
         
     {% endblock head_extend %}
+
 </head>
 <body {% block body_attrs %}rel='index'{% endblock body_attrs %}>
 
-<!-- Sidebar Menu For optimal performance make sure sidebar and pusher are direct children of your body tag -->
-<div class="ui vertical inverted sidebar menu">
-  <a class="active item"><i class="home icon"></i>首页</a>
-  <a class="item"><i class="world icon"></i>资讯</a>
-  <a class="item"><i class="fork icon"></i>教程</a>
-  <a class="item"><i class="write icon"></i>练习</a>
-  <a class="item"><i class="book icon"></i>笔记</a>
-  <a class="item"><i class="cloud download icon"></i>资源</a>
-  <a class="item"><i class="user icon"></i>注册</a>
-  <a class="item"><i class="sign in icon"></i>登录</a>
-</div>
 
+{% include "includes/sidebar.html" %}
 
 <div class="pusher">
 {% block content %}
 
 	{% block navbar %}
-	<nav id="navbar" class="ui stripe">
-
-
-    <div class="ui container inverted secondary menu">
-        <div class="header item">
-            <a href="http://codingpy.com" target="_blank" title="codingpy.com"><img class="ui logo" src="static/images/logo.png"></a>
-        </div>
-        <a class="toc item">
-          <i class="sidebar icon"></i>
-        </a>
-        <a class="item active" href="/" target="_blank">首页</a>
-        <a class="item" href="/news/" target="_blank">资讯</a>
-        <a class="item" href="/tuts/" target="_blank">教程</a>
-        <a class="item" href="/katas/" target="_blank">练习</a>
-        <a class="item" href="/notes/" target="_blank">笔记</a>
-        <a class="item" href="downloads/" target="_blank">资源</a>
-{#         <div class="right menu">
-            <div class="item">
-                <div style="font-family: arial,'Hiragino Sans GB','微软雅黑',MicrosoftYaHei,'宋体',Tahoma,Arial,Helvetica,STHeiti;" class="ui basic teal inverted button">
-                    注册/登陆
-                </div>
-            </div>
-        </div> #}
-    </div>
-
-</nav>
-
-
-
+        {% include "includes/navbar.html" %}        
 	{% endblock navbar %}
 
-
-	{% block main %}
-		
+	{% block main %}		
 	{% endblock main %}
 
 <footer>
 	{% block footer %}
 <div class="ui inverted vertical footer segment">
     <div class="ui container">
-        <div class="ui stackable inverted divided equal height stackable grid">
-            <div class="three wide column">
-                <h4 class="ui inverted header">关于编程派</h4>
-                <div class="ui inverted link list">
-                    <a href="/sitemap" class="item">站点地图</a>
-                    <a href="/contact" class="item">联系我们</a>
-                </div>
-            </div>
-            <div class="three wide column">
-                <h4 class="ui inverted header">关注编程派</h4>
-                <button class="ui circular wechat green icon button">
-                    <i class="wechat icon"></i>
-                </button>
-                <button class="ui circular weibo red icon button">
-                    <i class="weibo icon"></i>
-                </button>
-                <button class="ui circular twitter icon button">
-                    <i class="twitter icon"></i>
-                </button>
-
-                <button class="ui circular icon button">
-                    <i class="github alternate blue icon"></i>
-                </button>
-            </div>
-
-            <div class="three wide column">
-                <h4 class="ui inverted header">导航</h4>
-                <div class="ui inverted link list">
-                    <a target="_blank" href="/news/" class="item">资讯</a>
-                    <a target="_blank" href="/tuts/" class="item">教程</a>
-                    <a target="_blank" href="/katas/" class="item">练习</a>
-                    <a target="_blank" href="/notes/" class="item">笔记</a>
-                    <a target="_blank" href="/downloads/" class="item">资源</a>
-                </div>
-            </div>
-
-            <div class="seven wide column">
-                <h4 class="ui inverted header">Powered by</h4>
-                <div class="ui images">
-                    <a target="_blank" href="http://www.python.org"><img class="ui image" src="/static/images/python-favico.ico" alt="python"></a>
-
-                    <a target="_blank" href="http://flask.pocoo.org/"><img class="ui image" src="/static/images/flask.png" alt="flask"></a>
-                    
-                </div>
-{#                 <a target="_blank" href="https://www.digitalocean.com/?refcode=70fd6733d655"><img class="ui image" src="/static/images/digitalocean.png" alt="digitalocean" width="160"></a> #}
-            </div>
-
-
-
-        </div>
+        {% include "includes/footer.html" %}
     </div>
 </div>
 
