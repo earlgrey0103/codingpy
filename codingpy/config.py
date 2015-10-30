@@ -9,7 +9,7 @@ datadir = 'data'
 
 
 class Config:
-    SITE_NAME = 'codingpy'
+    SITE_NAME = 'codingpy | 编程派'
     SECRET_KEY = os.urandom(32)
     DEBUG_TB_INTERCEPT_REDIRECTS = False
 

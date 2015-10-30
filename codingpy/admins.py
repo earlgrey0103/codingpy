@@ -1,7 +1,9 @@
 #!usr/bin/env python
 # -*- coding: utf-8 -*-
+from datetime import datetime
+import os.path as op
 
-# from flask import redirect, url_for, request
+from flask.ext.login import current_user
 from flask.ext.admin import Admin, AdminIndexView, expose
 # from flask.ext.login import current_user
 from flask_admin.contrib.sqla import ModelView
@@ -9,10 +11,18 @@ from flask_admin.contrib.fileadmin import FileAdmin
 from flask_admin.form import ImageUploadField
 
 from .models import Article, User, Category, Tag, Topic, db
-
-import os.path as op
+from .ext import cache
+from .config import Config
+from .utils.helpers import baidu_ping
 
 file_path = op.join(op.dirname(__file__), 'static')
+cache_key = Config.CACHE_KEY
+
+
+def cache_delete(key):
+    keys = [cache_key % key]
+    for _key in keys:
+        cache.delete(_key)
 
 
 class CodingpyAdmin(AdminIndexView):
@@ -112,6 +122,24 @@ class ArticleAdmin(ModelView):
         'recommended': {'class': 'col-md-1'},
         'slider': {'class': 'col-md-1'},
     }
+
+    # Model handlers
+    def on_model_change(self, form, model, is_created):
+        if is_created:
+            model.author_id = current_user.id
+            model.created_at = datetime.now()
+            model.last_modified = model.created_at
+        else:
+            model.last_modified = datetime.now()
+
+    def after_model_change(self, form, model, is_created):
+        # 如果发布新文章，则PING通知百度
+        if is_created and model.published:
+            baidu_ping(model.link)
+            pass
+
+        # 清除缓存，以便可以看到最新内容
+        cache_delete(model.shortlink)
 
 
 class CategoryAdmin(ModelView):
