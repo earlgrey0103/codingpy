@@ -2,7 +2,7 @@
             <div class="three wide column">
                 <h4 class="ui inverted header">关于编程派</h4>
                 <div class="ui inverted link list">
-                    <a href="/sitemap" class="item">站点地图</a>
+                    <a href="{{ url_for('site.sitemap_xml', _external=True) }}" class="item">站点地图</a>
                     <a href="/contact" class="item">联系我们</a>
                 </div>
             </div>
@@ -21,25 +21,31 @@
                 <button class="ui circular icon button">
                     <i class="github alternate blue icon"></i>
                 </button>
+                <a href="{{ url_for('site.feed', _external=True) }}">
+                    <button class="ui circular icon button" style="margin-top: 1rem;">
+                        <i class="rss brown icon"></i>
+                    </button>
+                </a>
+
             </div>
 
             <div class="three wide column">
                 <h4 class="ui inverted header">导航</h4>
                 <div class="ui inverted link list">
-                    <a target="_blank" href="/news/" class="item">资讯</a>
-                    <a target="_blank" href="/tuts/" class="item">教程</a>
-                    <a target="_blank" href="/katas/" class="item">练习</a>
-                    <a target="_blank" href="/notes/" class="item">笔记</a>
-                    <a target="_blank" href="/downloads/" class="item">资源</a>
+                    <a target="_blank" href="/category/news/" class="item">资讯</a>
+                    <a target="_blank" href="/category/tuts/" class="item">教程</a>
+                    <a target="_blank" href="/category/katas/" class="item">练习</a>
+                    <a target="_blank" href="/category/notes/" class="item">笔记</a>
+                    <a target="_blank" href="/category/downloads/" class="item">资源</a>
                 </div>
             </div>
 
             <div class="seven wide column">
                 <h4 class="ui inverted header">Powered by</h4>
                 <div class="ui images">
-                    <a target="_blank" href="http://www.python.org"><img class="ui image" src="/static/images/python-favico.ico" alt="python"></a>
+                    <a target="_blank" href="http://www.python.org"><img src="/static/images/python-favico.ico" alt="python"></a>
 
-                    <a target="_blank" href="http://flask.pocoo.org/"><img class="ui image" src="/static/images/flask.png" alt="flask"></a>
+                    <a target="_blank" href="http://flask.pocoo.org/"><img src="/static/images/flask.png" alt="flask"></a>
                     
                 </div>
 {#                 <a target="_blank" href="https://www.digitalocean.com/?refcode=70fd6733d655"><img class="ui image" src="/static/images/digitalocean.png" alt="digitalocean" width="160"></a> #}

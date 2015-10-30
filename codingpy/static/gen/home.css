@@ -35185,7 +35185,7 @@ div.header.item a {
     background-size: cover;
 }
 
-.article .header h2 {
+.article .header h2, .article .header h1 {
     margin-top: 1rem;
 }
 
@@ -35232,9 +35232,9 @@ footer .footer.vertical.segment {
     border-radius: 0;
 }
 
-.ui.images img.ui.image {
+footer .ui.images img {
     width: 48px;
-    height: 90px;
+    height: 48px;
     margin-right: 1rem;
 }
 

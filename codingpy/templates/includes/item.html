@@ -1,5 +1,5 @@
 <div class="js-infinite-item">
-    <a class="ui red ribbon label" href="{{ url_for('site.category', slug=article.category.slug) }}"><i class="book icon"></i>{{ article.category.name}}</a>
+    <a class="ui red ribbon label" href="{{ url_for('site.category', slug=article.category.slug) }}"><i class="{{ article.category.icon }} icon"></i>{{ article.category.name}}</a>
 <div class="article">
     <div class="header"><a href="{{ url_for('site.article', article_slug=article.slug, _external=True) }}"><h2>{{ article.title }}</h2></a></div>
     <div class="image ">
@@ -30,7 +30,7 @@
                   <span class="category date"><i class="tag icon"></i>{{ tag.name }}</span>
                 {% endfor %}
 
-                <span class="share-article"><i class="eye icon"></i>{{ article.hits }}</span>
+                <span class="share-article"><i class="eye icon"></i>{{ article.views }}</span>
                 <span class="share-article"><i class="comments icon"></i>67</span>
             </div>
 

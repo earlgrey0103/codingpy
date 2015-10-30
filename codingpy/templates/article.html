@@ -25,7 +25,7 @@
 
 	                <a class="ui red ribbon label" href="{{ url_for('site.category', slug=article.category.slug) }}" target="_blank"><i class="book icon"></i>{{ article.category.name}}</a>
 	                <div class="article">
-					    <div class="header"><a href=""><h1>{{ article.title }}</h1></a></div>
+					    <div class="header"><a href="{{ article.link }}"><h1>{{ article.title }}</h1></a></div>
 					    <div class="ui feed">
 					        <div class="event">
 					            <div class="label"><img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="" data-title="EarlGrey" class="avatar"></div>
@@ -34,7 +34,7 @@
 					                {% for tag in article.tags %}
 					                <span class="category date"><i class="tag icon"></i>{{ tag.name }}</span> 
 					                {% endfor %}
-					                <span class="share-article avatar" data-title="阅读数"><i class="eye icon" ></i>{{ article.hits }}</span>
+					                <span class="share-article avatar" data-title="阅读数"><i class="eye icon" ></i>{{ article.views }}</span>
 					            </div>
 					        </div>
 					    </div>

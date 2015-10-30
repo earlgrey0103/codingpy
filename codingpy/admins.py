@@ -43,10 +43,10 @@ class ArticleAdmin(ModelView):
     edit_template = "admin/a_edit.html"
 
     column_list = ('title', 'category', 'tags', 'published', 'ontop',
-                   'recommended', 'created_at', 'hits')
+                   'recommended', 'created_at', 'views')
 
-    form_excluded_columns = ('author', 'body_html', 'hits', 'created_at',
-                             'last_modified', 'template')
+    form_excluded_columns = ('author', 'body_html', 'views', 'created_at',
+                             'last_modified', 'template', 'comments')
 
     column_searchable_list = ('title',)
 
@@ -88,7 +88,7 @@ class ArticleAdmin(ModelView):
         thumbnail_big=('大缩略图'),
         template=('模板'),
         created_at=('创建时间'),
-        hits=('阅读数'),
+        views=('阅读数'),
         keywords=('关键词'),
         source=('来源'),
     )
@@ -119,12 +119,12 @@ class CategoryAdmin(ModelView):
     # create_template = "admin/model/a_create.html"
     # edit_template = "admin/model/a_edit.html"
 
-    column_list = ('name', 'slug', 'seotitle', 'hits')
+    column_list = ('name', 'slug', 'seotitle', 'views')
 
     column_searchable_list = ('slug', 'longslug', 'name')
 
     form_excluded_columns = ('articles', 'body_html', 'longslug', 'children',
-                             'body', 'template', 'article_template', 'hits')
+                             'body', 'template', 'article_template', 'views')
 
     # form_overrides = dict(seodesc=TextAreaField, body=EDITOR_WIDGET)
 
@@ -139,7 +139,7 @@ class CategoryAdmin(ModelView):
         seokey=('SEO 关键词'),
         seodesc=('SEO 描述'),
         thumbnail=('缩略图'),
-        hits=('阅读数'),
+        views=('阅读数'),
         icon=('图标')
     )
 
@@ -188,7 +188,7 @@ class TagAdmin(ModelView):
     # create_template = "admin/a_create.html"
     # edit_template = "admin/a_edit.html"
 
-    column_list = ('name', 'seotitle', 'seokey', 'hits')
+    column_list = ('name', 'seotitle', 'seokey', 'views')
 
     column_searchable_list = ('name',)
 
@@ -206,7 +206,7 @@ class TagAdmin(ModelView):
         seokey=('SEO 关键词'),
         seodesc=('SEO 描述'),
         thumbnail=('缩略图'),
-        hits=('阅读数'),
+        views=('阅读数'),
     )
 
     form_widget_args = {
@@ -226,7 +226,7 @@ class TopicAdmin(ModelView):
 
     column_list = ('name', 'slug', 'seotitle')
 
-    form_excluded_columns = ('articles', 'body_html', 'hits')
+    form_excluded_columns = ('articles', 'body_html', 'views')
 
     column_searchable_list = ('slug', 'name')
 

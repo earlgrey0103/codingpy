@@ -311,16 +311,16 @@ class Category(db.Model):
                              remote_side=id, backref=db.backref("children"))
 
     # SEO page title
-    seotitle = db.Column(db.String(128))
-    seokey = db.Column(db.String(128))
-    seodesc = db.Column(db.String(300))
+    seotitle = db.Column(db.String(128), nullable=False)
+    seokey = db.Column(db.String(128), nullable=False)
+    seodesc = db.Column(db.String(300), nullable=False)
 
     thumbnail = db.Column(db.String(255))
     template = db.Column(db.String(255))
     article_template = db.Column(db.String(255))
 
     # views
-    hits = db.Column(db.Integer)
+    views = db.Column(db.Integer)
     icon = db.Column(db.String(64))
 
     body = db.Column(db.Text)
@@ -336,17 +336,17 @@ class Category(db.Model):
 
     @cached_property
     def link(self):
-        return url_for('site.category', longslug=self.longslug, _external=True)
+        return url_for('site.category', slug=self.slug, _external=True)
 
     @cached_property
     def shortlink(self):
-        return url_for('site.category', longslug=self.longslug)
+        return url_for('site.category', slug=self.slug)
 
     # 栏目文章数
     @cached_property
     def count(self):
         cates = db.session.query(Category.id).filter(
-            Category.longslug.startswith(self.longslug)).all()
+            Category.slug.startswith(self.slug)).all()
         cate_ids = [cate.id for cate in cates]
         return Article.query.public().filter(
             Article.category_id.in_(cate_ids)).count()
@@ -368,7 +368,7 @@ class Category(db.Model):
         cates = Category.query.all()
         out = []
         for cate in cates:
-            indent = len(cate.longslug.split('/')) - 1
+            indent = len(cate.slug.split('/')) - 1
             out.append((indent, cate))
         return out
 
@@ -436,12 +436,13 @@ class Tag(db.Model):
     query_class = TagQuery
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), unique=True, index=True, nullable=False)
+    name = db.Column(db.String(50), unique=True, nullable=False)
+    slug = db.Column(db.String(64), unique=True, index=True, nullable=False)
 
     # SEO info
-    seotitle = db.Column(db.String(128))
-    seokey = db.Column(db.String(128))
-    seodesc = db.Column(db.String(300))
+    seotitle = db.Column(db.String(128), nullable=False)
+    seokey = db.Column(db.String(128), nullable=False)
+    seodesc = db.Column(db.String(300), nullable=False)
 
     thumbnail = db.Column(db.String(255))
     template = db.Column(db.String(255))
@@ -450,7 +451,7 @@ class Tag(db.Model):
     body_html = db.Column(db.Text)
 
     # 阅读数
-    hits = db.Column(db.Integer)
+    views = db.Column(db.Integer)
 
     __mapper_args__ = {'order_by': [id.desc()]}
 
@@ -494,9 +495,9 @@ class Topic(db.Model):
     name = db.Column(db.String(64), nullable=False)
 
     # SEO page title
-    seotitle = db.Column(db.String(128))
-    seokey = db.Column(db.String(128))
-    seodesc = db.Column(db.String(300))
+    seotitle = db.Column(db.String(128), nullable=False)
+    seokey = db.Column(db.String(128), nullable=False)
+    seodesc = db.Column(db.String(300), nullable=False)
 
     thumbnail = db.Column(db.String(255))
     template = db.Column(db.String(255))
@@ -504,7 +505,7 @@ class Topic(db.Model):
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
 
-    hits = db.Column(db.Integer)
+    views = db.Column(db.Integer)
 
     __mapper_args__ = {'order_by': [id.desc()]}
 
@@ -574,9 +575,9 @@ class Article(db.Model):
     slug = db.Column(db.String(200), nullable=False)
     title = db.Column(db.String(200), nullable=False)
 
-    seotitle = db.Column(db.String(200))
-    seokey = db.Column(db.String(128))
-    seodesc = db.Column(db.String(300))
+    seotitle = db.Column(db.String(200), nullable=False)
+    seokey = db.Column(db.String(128), nullable=False)
+    seodesc = db.Column(db.String(300), nullable=False)
 
     category_id = db.Column(
         db.Integer(), db.ForeignKey('categories.id'), nullable=False,)
@@ -588,12 +589,12 @@ class Article(db.Model):
     tags = db.relationship(
         Tag, secondary=article_tags_table, backref=db.backref("articles"))
 
-    thumbnail = db.Column(db.String(255))
+    thumbnail = db.Column(db.String(255), nullable=False)
     thumbnail_big = db.Column(db.String(255))
     template = db.Column(db.String(255))
 
     summary = db.Column(db.String(2000))
-    keywords = db.Column(db.String(128))
+    keywords = db.Column(db.String(128), nullable=False)
     source = db.Column(db.String(64))
 
     body = db.Column(db.Text, nullable=False)
@@ -606,7 +607,7 @@ class Article(db.Model):
     recommended = db.Column(db.Boolean, default=False)
     slider = db.Column(db.Boolean, default=False)
 
-    hits = db.Column(db.Integer, default=0)
+    views = db.Column(db.Integer, default=0)
 
     author_id = db.Column(db.Integer, db.ForeignKey(User.id))
     author = db.relationship(User, backref=db.backref("articles"))
