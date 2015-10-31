@@ -35059,6 +35059,7 @@ html.ios body {
 body {
     -webkit-font-smoothing: antialiased;
     background: #E0E0E0;
+    min-height: 768px;
 }
 
 .pusher {
@@ -35226,7 +35227,9 @@ div.header.item a {
 
 
 /*footer*/
-
+footer {
+    padding-top: 2rem;
+}
 footer .footer.vertical.segment {
     background-color: #455A64;
     border-radius: 0;

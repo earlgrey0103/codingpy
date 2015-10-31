@@ -1,38 +1,60 @@
 {% extends "layout.html" %}
-{% import "wtf.html" as wtf %}
+{% from 'wtf.html' import render_field %}
+{% block title %}注册会员{% endblock title %}
+
+{% block metas %}
+    <meta name="keywords" content="login">
+    <meta name="description" content="login">
+    <meta name="author" content="EarlGrey">
+{% endblock metas %}
 
 {% block main %}
-  <div class="ui container middle aligned center aligned grid">
+  <div class="ui container middle aligned center aligned grid" style='width:380px !important; min-height:480px;'>
     <div class="column">
-        <h2 class="ui teal header">
-      注册编程派
-    </h2>
-{#         <form class="ui large form">
+        <h2 class="ui teal header">会员注册</h2>
+        <form action="{{ url_for('account.register') }}" class="ui large form"method="POST" enctype="multipart/form-data" role="form">
+            <input id="csrf_token" type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="email" placeholder="E-mail address">
+                        <input id="username" required type="text" name="username" placeholder="Username">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="mail icon"></i>
+                        <input id="email" required type="text" name="email" placeholder="E-mail address">
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" id="password" name="password" placeholder="Password" required>
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="confirm password" placeholder="Retype Password">
+                        <input type="password" id="password2" name="password2" placeholder="Confirm Password" required>
                     </div>
                 </div>
-                <div class="ui fluid large teal submit button">注册</div>
+                <input class="ui fluid large teal submit button" id="submit" name="submit" type="submit" value="注册">
             </div>
-            <div class="ui error message"></div>
-        </form> #}
-        {{ wtf.quick_form(form, method="POST", enctype="multipart/form-data", form_type="horizontal", horizontal_columns=('md', 2, 10)) }}
+      
+
+        </form>
+        
+        <div class="ui message">
+            已经是会员？<a href="/account/login/">点击这里登陆</a>
+        </div>
+
     </div>
+
 </div>
 
 {% endblock main %}
+
+{% block scripts %}
+    
+{% endblock scripts %}

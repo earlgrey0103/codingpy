@@ -3,30 +3,24 @@
 
 <head>
 	{% block head %}
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>{% block title %}{% endblock title %}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		{% block metas %}
-		<meta name="keywords" content="Python, 编程派">
-		<meta name="description" content="">
-		<meta name="author" content="EarlGrey">
-		{% endblock metas %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{% block title %}{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block metas %}
+	<meta name="keywords" content="Python, 编程派">
+	<meta name="description" content="">
+	<meta name="author" content="EarlGrey">
+	{% endblock metas %}
+	{% block styles %}	
+    {% assets "home_css" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}
+    {# 必须删了home.css才会更新源文件里的内容 #}
+{#  <link rel="stylesheet" type="text/css" href="/static/style.css"> #}
+	<link rel="icon" href="{{ url_for('static', filename='/images/logo.png') }}">
+	<link rel="image_src" type="image/jpeg" href="{{ url_for('static', filename='/images/logo.png') }}">
 
-		{% block styles %}
-{# 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
-		<link rel="stylesheet" href="/static/vendor/semantic-ui/semantic.css">
-		<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.core.min.css">
-		<link rel="stylesheet" type="text/css" href="/static/vendor/glide/css/glide.theme.min.css"> 
-#}			
-         {% assets "home_css" %}
-        <link rel="stylesheet" href="{{ ASSET_URL }}">
-        {% endassets %}
-        {# 必须删了home.css才会更新源文件里的内容 #}
-{#      <link rel="stylesheet" type="text/css" href="/static/style.css"> #}
-		<link rel="icon" href="{{ url_for('static', filename='/images/logo.png') }}">
-		<link rel="image_src" type="image/jpeg" href="{{ url_for('static', filename='/images/logo.png') }}">
-
-		{% endblock styles %}
+	{% endblock styles %}
 	{% endblock head %}
 
     {% block head_extend %}
@@ -35,7 +29,6 @@
 
 </head>
 <body {% block body_attrs %}rel='index'{% endblock body_attrs %}>
-
 
 {% include "includes/sidebar.html" %}
 
