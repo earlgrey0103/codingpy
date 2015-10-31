@@ -3,11 +3,13 @@
 from datetime import datetime
 import os.path as op
 
+from flask import flash
 from flask.ext.login import current_user
 from flask.ext.admin import Admin, AdminIndexView, expose
 # from flask.ext.login import current_user
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.contrib.fileadmin import FileAdmin
+from flask.ext.admin.actions import action
 from flask_admin.form import ImageUploadField
 
 from .models import Article, User, Category, Tag, Topic, db
@@ -136,10 +138,16 @@ class ArticleAdmin(ModelView):
         # 如果发布新文章，则PING通知百度
         if is_created and model.published:
             baidu_ping(model.link)
-            pass
 
         # 清除缓存，以便可以看到最新内容
         cache_delete(model.shortlink)
+
+    @action('pingbaidu', 'Ping to Baidu')
+    def action_ping_baidu(self, ids):
+        for id in ids:
+            obj = Article.query.get(id)
+            baidu_ping(obj.link)
+        flash(u'PING请求已发送，请等待百度处理')
 
 
 class CategoryAdmin(ModelView):

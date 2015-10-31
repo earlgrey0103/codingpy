@@ -1,8 +1,8 @@
 #!usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import xmlrpclib
-from flask import current_app, request, url_for
+import xmlrpc.client
+from flask import current_app, url_for
 
 
 def baidu_ping(url):
@@ -20,16 +20,16 @@ def baidu_ping(url):
     """
 
     result = 1
-    rpc_server = xmlrpclib.ServerProxy('http://ping.baidu.com/ping/RPC2')
+    rpc_server = xmlrpc.client.ServerProxy('http://ping.baidu.com/ping/RPC2')
 
     try:
         # 返回0表示提交成功
         current_app.logger.info('begin to ping baidu: <%s>' % url)
         result = rpc_server.weblogUpdates.extendedPing(
             current_app.config.get('SITE_NAME'),
-            url_for('main.index', _external=True),
+            url_for('site.index', _external=True),
             url,
-            url_for('main.feed', _external=True)
+            url_for('site.feed', _external=True)
         )
     except:
         pass
