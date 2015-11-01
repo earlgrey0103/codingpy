@@ -23,7 +23,7 @@
 	            <div class="ui raised segment">
 
 
-	                <a class="ui red ribbon label" href="{{ url_for('site.category', slug=article.category.slug) }}" target="_blank"><i class="book icon"></i>{{ article.category.name}}</a>
+	                <a class="ui red ribbon label" href="{{ url_for('site.category', slug=article.category.slug) }}" target="_blank"><i class="{{ article.category.icon }} icon"></i>{{ article.category.name}}</a>
 	                <div class="article">
 					    <div class="header"><a href="{{ article.link }}"><h1>{{ article.title }}</h1></a></div>
 					    <div class="ui feed">
