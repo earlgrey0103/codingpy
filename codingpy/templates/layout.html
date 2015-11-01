@@ -15,6 +15,8 @@
     {% assets "home_css" %}
     <link rel="stylesheet" href="{{ ASSET_URL }}">
     {% endassets %}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
+
     {# 必须删了home.css才会更新源文件里的内容 #}
 {#  <link rel="stylesheet" type="text/css" href="/static/style.css"> #}
 	<link rel="icon" href="{{ url_for('static', filename='/images/logo.png') }}">
@@ -58,11 +60,14 @@
        {% assets "home_js" %}
             <script type="text/javascript" src="{{ ASSET_URL }}"></script>
         {% endassets %}
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
     {{moment.include_moment()}}
     {{ moment.lang('zh-CN')}}
 
     <script type="text/javascript">
+
+hljs.initHighlightingOnLoad();
+
 // expand horizontal viewport
 $.extend($.lazyLoadXT, {
   edgeX:  2500,

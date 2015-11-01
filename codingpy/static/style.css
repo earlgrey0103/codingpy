@@ -6,6 +6,10 @@ body {
     min-height: 768px;
 }
 
+code {
+    font-size: 1rem;
+}
+
 .pusher {
     background: #E0E0E0 !important;
 }

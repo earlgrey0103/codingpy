@@ -33,6 +33,7 @@ class Config:
     # flask-cache configuration
     CACHE_KEY = 'view/%s'  # ?
     CACHE_DEFAULT_TIMEOUT = 30
+    # 使用uwsgi_cache效果更好
     CACHE_TYPE = 'redis'
     CACHE_REDIS_HOST = 'localhost'
     CACHE_REDIS_PORT = 6379
