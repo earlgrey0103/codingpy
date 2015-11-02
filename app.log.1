@@ -1,0 +1,119 @@
+Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1044, in _do_get
+    return self._pool.get(wait, self._timeout)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/util/queue.py", line 145, in get
+    raise Empty
+sqlalchemy.util.queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+    return fn()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 376, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 713, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 480, in checkout
+    rec = pool._do_get()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1060, in _do_get
+    self._dec_overflow()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 182, in reraise
+    raise value
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1057, in _do_get
+    return self._create_connection()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 323, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 449, in __init__
+    self.connection = self.__connect()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 607, in __connect
+    connection = self.__pool._invoke_creator(self)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 385, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+psycopg2.OperationalError: FATAL:  password authentication failed for user "earlgrey"
+FATAL:  password authentication failed for user "earlgrey"
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vagrant/venv/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/vagrant/venv/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "./codingpy/ext.py", line 215, in decorated_function
+    rv = f(*args, **kwargs)
+  File "./codingpy/controllers/site.py", line 31, in index
+    paginate(page, Article.PER_PAGE, False).items
+  File "/home/vagrant/venv/lib/python3.4/site-packages/flask_sqlalchemy/__init__.py", line 431, in paginate
+    items = self.limit(per_page).offset((page - 1) * per_page).all()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/orm/query.py", line 2399, in all
+    return list(self)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/orm/query.py", line 2516, in __iter__
+    return self._execute_and_instances(context)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/orm/query.py", line 2529, in _execute_and_instances
+    close_with_result=True)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/orm/query.py", line 2520, in _connection_from_session
+    **kw)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/orm/session.py", line 882, in connection
+    execution_options=execution_options)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/orm/session.py", line 887, in _connection_for_bind
+    engine, execution_options)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/orm/session.py", line 334, in _connection_for_bind
+    conn = bind.contextual_connect()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2039, in contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2078, in _wrap_pool_connect
+    e, dialect, self)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1405, in _handle_dbapi_exception_noconnection
+    exc_info
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 188, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=exc_value)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 181, in reraise
+    raise value.with_traceback(tb)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+    return fn()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 376, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 713, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 480, in checkout
+    rec = pool._do_get()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1060, in _do_get
+    self._dec_overflow()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 182, in reraise
+    raise value
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1057, in _do_get
+    return self._create_connection()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 323, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 449, in __init__
+    self.connection = self.__connect()
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/pool.py", line 607, in __connect
+    connection = self.__pool._invoke_creator(self)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 385, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/vagrant/venv/lib/python3.4/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) FATAL:  password authentication failed for user "earlgrey"
+FATAL:  password authentication failed for user "earlgrey"
+
