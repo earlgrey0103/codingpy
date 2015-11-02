@@ -28,7 +28,7 @@
 					    <div class="header"><a href="{{ article.link }}"><h1>{{ article.title }}</h1></a></div>
 					    <div class="ui feed">
 					        <div class="event">
-					            <div class="label"><img src="http://semantic-ui.com/images/avatar2/small/mark.png" alt="" data-title="EarlGrey" class="avatar"></div>
+					            <div class="label"><img src="{{ article.author.gravatar() if article.author is not none else "http://semantic-ui.com/images/avatar2/small/mark.png" }}" alt="" data-title="{{ article.author.username }}" class="avatar"></div>
 					            <div class="content">
 					                <span class="date">{{moment(article.created_at).fromNow()}}</span> 
 					                {% for tag in article.tags %}
@@ -43,7 +43,7 @@
 					        </div>
 					    </div>
 					    <div class="article-content">
-					        {{article.body | safe }}
+					        {{article.body_html | safe }}
 
 					        {% include "includes/reward.html" %}
 

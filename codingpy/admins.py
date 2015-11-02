@@ -122,6 +122,7 @@ class ArticleAdmin(ModelView):
         'thumbnail': {'style': 'width:320px;'},
         'thumbnail_big': {'style': 'width:320px;'},
         'summary': {'style': 'width:680px; height:80px;'},
+        'body': {'style': 'width:680px; height:240px;'},
         'published': {'class': 'col-md-1'},
         'ontop': {'class': 'col-md-1'},
         'recommended': {'class': 'col-md-1'},

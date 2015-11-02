@@ -42,11 +42,11 @@ def markitup(text):
     若需要生成高亮代码，需在Setting增加codehilite设置值，类型为int，
     值大于0. 另外需要安装Pygments。
     """
-    try:
-        _flag = Setting.get('codehilite', False) and True
-    except:
-        _flag = False
-    return markdown_filter(text, codehilite=_flag)
+    # try:
+    #     _flag = Setting.get('codehilite', False) and True
+    # except:
+    #     _flag = False
+    return markdown_filter(text, codehilite=True)
 
 
 class Permission:
@@ -128,6 +128,7 @@ class User(UserMixin, db.Model):
     member_since = db.Column(db.DateTime(), default=datetime.now)
     last_seen = db.Column(db.DateTime(), default=datetime.now)
     avatar_hash = db.Column(db.String(32))
+    avatar = db.Column(db.String(32))
 
     comments = db.relationship('Comment', backref='author', lazy='dynamic')
 
@@ -586,7 +587,7 @@ class Article(db.Model):
     tags = db.relationship(
         Tag, secondary=article_tags_table, backref=db.backref("articles"))
 
-    thumbnail = db.Column(db.String(255), nullable=False)
+    thumbnail = db.Column(db.String(255))
     thumbnail_big = db.Column(db.String(255))
     template = db.Column(db.String(255))
 

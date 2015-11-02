@@ -18,7 +18,7 @@ class Config:
     # BLOG_MODE = True
 
     # html or markdown
-    BODY_FORMAT = os.getenv('BODY_FORMAT') or 'html'
+    BODY_FORMAT = os.getenv('BODY_FORMAT')  # or 'html'
 
     # mail setup
     MAIL_SERVER = 'smtp.126.com'

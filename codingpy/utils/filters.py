@@ -17,7 +17,7 @@ def markdown_filter(text, codehilite=True):
     """
     exts = [
         'abbr', 'attr_list', 'def_list', 'sane_lists', 'fenced_code',
-        'tables', 'toc', 'wikilinks', 'joinline',
+        'tables', 'toc', 'wikilinks',
     ]
 
     if codehilite:
