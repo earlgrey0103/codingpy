@@ -27,9 +27,9 @@ def baidu_ping(url):
         current_app.logger.info('begin to ping baidu: <%s>' % url)
         result = rpc_server.weblogUpdates.extendedPing(
             current_app.config.get('SITE_NAME'),
-            url_for('main.index', _external=True),
+            url_for('site.index', _external=True),
             url,
-            url_for('main.feed', _external=True)
+            url_for('site.feed', _external=True)
         )
     except:
         pass
