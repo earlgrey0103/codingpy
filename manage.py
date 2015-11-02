@@ -10,6 +10,8 @@ from codingpy import *
 
 app = create_app(os.environ.get('APP_CONFIG') or 'default')
 
+print(os.environ.get('APP_CONFIG'))
+
 manager = Manager(app)
 migrate = Migrate(app, db)
 
