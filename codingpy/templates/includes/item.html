@@ -23,7 +23,7 @@
     </div>
     <div class="ui feed">
         <div class="event">
-            <div class="label"><img src="{{ article.author.gravatar() if article.author is not none else "http://semantic-ui.com/images/avatar2/small/mark.png" }}" alt="article author avatar" data-title="{{ article.author.username }}" class="avatar"></div>
+            <div class="label"><img src="{{ article.author.avatar if article.author.avatar is not none else article.author.gravatar() }}" alt="avatar of this article's author {{article.author.username}}" data-title="{{ article.author.username }}" class="avatar"></div>
             <div class="content">
                 <span class="date">{{moment(article.created_at).fromNow()}}</span>
                 {% for tag in article.tags %}
@@ -31,7 +31,7 @@
                 {% endfor %}
 
                 <span class="share-article"><i class="eye icon"></i>{{ article.views }}</span>
-                <span class="share-article"><i class="comments icon"></i>67</span>
+{#                 <span class="share-article"><i class="comments icon"></i>67</span> #}
             </div>
 
         </div>

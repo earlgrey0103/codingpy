@@ -16,7 +16,7 @@
              {% if current_user.username %}
                 <div class="item" style="font-family: arial,'Hiragino Sans GB','微软雅黑',MicrosoftYaHei,'宋体',Tahoma,Arial,Helvetica,STHeiti;" >
                     <div class="ui basic teal inverted button">
-                        {{ current_user.username }}
+                        <a href="{{ url_for('admin.index') }}">{{ current_user.username }}</a>
                     </div>                      
                 </div>
                 <div class="item">

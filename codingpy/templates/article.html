@@ -3,9 +3,9 @@
 {% block title %}{{ article.title}}| 编程派 | Practice Coding Everyday{% endblock title %}
 
 {% block metas %}
-	<meta name="keywords" content="{{ article.title}}">
-	<meta name="description" content="{{ article.title}}">
-	<meta name="author" content="EarlGrey">
+	<meta name="keywords" content="{{ article.seotitle}}">
+	<meta name="description" content="{{ article.seodesc}}">
+	<meta name="author" content="{{article.author.username}}@codingpy.com">
 {% endblock metas %}
 
 {% block head_extend %}
@@ -28,7 +28,7 @@
 					    <div class="header"><a href="{{ article.link }}"><h1>{{ article.title }}</h1></a></div>
 					    <div class="ui feed">
 					        <div class="event">
-					            <div class="label"><img src="{{ article.author.gravatar() if article.author is not none else "http://semantic-ui.com/images/avatar2/small/mark.png" }}" alt="" data-title="{{ article.author.username }}" class="avatar"></div>
+					            <div class="label"><img src="{{ article.author.gravatar() if article.author is not none else "http://semantic-ui.com/images/avatar2/small/mark.png" }}" alt="avatar of this article's author {{article.author.username}}" data-title="{{ article.author.username }}" class="avatar"></div>
 					            <div class="content">
 					                <span class="date">{{moment(article.created_at).fromNow()}}</span> 
 					                {% for tag in article.tags %}
@@ -47,15 +47,13 @@
 
 					        {% include "includes/reward.html" %}
 
-{# 					        <div class="copyright-box ui segment secondary grey">
+					        <div class="copyright-box ui segment secondary grey">
 					            <p>
-					                <span class="author-name">作者：
-											        <a href="">Earl Grey</a>
-											        </span>
-					                <span>文章来源：<a href="#">编程派</a></span>
+					                <span class="author-name">作者：<a href="">{{ article.author.username }} </a></span>
+					                <span>文章来源：<a href="/">编程派</a></span>
 					            </p>
-					            <p class="copyright-declare"><i class="fa fa-copyright"></i>此文版权归编程派所有，非商业性转载请注明来源编程派、作者及原文链接。商业转载请先<a href="mailto:contact@sspai.com">联系我们</a>。</p>
-					        </div> #}
+					            <p class="copyright-declare"><i class="fa fa-copyright"></i>此文版权归编程派所有，非商业性转载请注明来源编程派、作者及原文链接。</a></p>
+					        </div>
 
 
 					        <div class="ui divider"></div>

@@ -6,16 +6,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{% block title %}{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	{% block metas %}
-	<meta name="keywords" content="Python, 编程派">
-	<meta name="description" content="">
-	<meta name="author" content="EarlGrey">
+	<meta name="keywords" content="Python, 新闻, 教程, 笔记, 资源下载, 编程练习">
+	<meta name="description" content="分享有关Python的最新资讯、原创编译教程、编程练习题、读书笔记和下载资源">
+	<meta name="author" content="EarlGrey@codingpy.com">
 	{% endblock metas %}
 	{% block styles %}	
     {% assets "home_css" %}
     <link rel="stylesheet" href="{{ ASSET_URL }}">
     {% endassets %}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='code.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='codehilite.css') }}">
 
 
     {# 必须删了home.css才会更新源文件里的内容 #}
@@ -24,6 +25,7 @@
 	<link rel="image_src" type="image/jpeg" href="{{ url_for('static', filename='/images/logo.png') }}">
 
 	{% endblock styles %}
+    
 	{% endblock head %}
 
     {% block head_extend %}
@@ -31,7 +33,8 @@
     {% endblock head_extend %}
 
 </head>
-<body {% block body_attrs %}rel='index'{% endblock body_attrs %}>
+
+<body {% block body_attrs %}{% endblock body_attrs %}>
 
 {% include "includes/sidebar.html" %}
 
