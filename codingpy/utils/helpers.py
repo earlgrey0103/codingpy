@@ -1,8 +1,8 @@
 #!usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import xmlrpclib
-from flask import current_app, request, url_for
+import xmlrpc.client
+from flask import current_app, url_for
 
 
 def baidu_ping(url):
@@ -20,7 +20,7 @@ def baidu_ping(url):
     """
 
     result = 1
-    rpc_server = xmlrpclib.ServerProxy('http://ping.baidu.com/ping/RPC2')
+    rpc_server = xmlrpc.client.ServerProxy('http://ping.baidu.com/ping/RPC2')
 
     try:
         # 返回0表示提交成功

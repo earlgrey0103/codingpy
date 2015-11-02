@@ -3,6 +3,7 @@
 
 import os
 import logging
+from logging.handlers import RotatingFileHandler
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 datadir = 'data'
@@ -32,6 +33,7 @@ class Config:
     # flask-cache configuration
     CACHE_KEY = 'view/%s'  # ?
     CACHE_DEFAULT_TIMEOUT = 30
+    # 使用uwsgi_cache效果更好
     CACHE_TYPE = 'redis'
     CACHE_REDIS_HOST = 'localhost'
     CACHE_REDIS_PORT = 6379
@@ -45,7 +47,9 @@ class Config:
 
     @staticmethod
     def init_app(app):
-        _handler = logging.StreamHandler()
+        _handler = RotatingFileHandler(
+            'app.log', maxBytes=10000, backupCount=1)
+        _handler.setLevel(logging.WARNING)
         app.logger.addHandler(_handler)
 
         # TODO
@@ -72,27 +76,9 @@ class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') or \
         "postgresql://earlgrey:earlgrey@localhost/codingpy"
 
-    # postgresql configuration
-    # POSTGRES_USER = os.getenv('POSTGRES_USER') or ''
-    # POSTGRES_PASS = os.getenv('POSTGRES_PASS') or ''
-    # POSTGRES_HOST = os.getenv('POSTGRES_HOST') or ''
-    # POSTGRES_PORT = os.getenv('POSTGRES_PORT') or ''
-    # POSTGRES_DB = os.getenv('POSTGRES_DB') or ''
-
-    # if (len(POSTGRES_USER) > 0 and len(POSTGRES_PASS) > 0 and
-    #         len(POSTGRES_HOST) > 0 and len(POSTGRES_PORT) > 0 and
-    #         len(POSTGRES_DB) > 0):
-    #     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URI') or \
-    #         'postgresql://%s:%s@%s:%s/%s' % (
-    #             POSTGRES_USER, POSTGRES_PASS, POSTGRES_HOST,
-    #             POSTGRES_PORT, POSTGRES_DB)
-
     @classmethod
     def init_app(cls, app):
         Config.init_app(app)
-
-        # mail_handler = Config.get_mailhandler()
-        # app.logger.addHandler(mail_handler)
 
 
 class TestingConfig(Config):

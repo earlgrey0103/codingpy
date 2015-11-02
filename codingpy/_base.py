@@ -9,7 +9,7 @@ from flask_wtf.csrf import CsrfProtect
 from flask_debugtoolbar import DebugToolbarExtension
 # from flask.ext.login import logout_user, current_user
 
-# from .models import User, AnonymousUser
+from .models import AnonymousUser
 from .ext import (db, moment, cache, mail,
                   login_manager, bcrypt)
 from .config import config
@@ -79,7 +79,7 @@ def register_managers(app):
     # will log user out if it detects a change
     login_manager.login_view = 'account.login'
     login_manager.login_message = '请先登陆'
-    # login_manager.anonymous_user = AnonymousUser
+    login_manager.anonymous_user = AnonymousUser
     login_manager.init_app(app)
 
 
@@ -95,3 +95,7 @@ def register_error_handle(app):
     @app.errorhandler(500)
     def page_500(error):
         return render_template('errors/500.html'), 500
+
+    @app.errorhandler(502)
+    def page_502(error):
+        return render_template('errors/502.html'), 502

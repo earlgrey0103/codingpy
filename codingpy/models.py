@@ -125,7 +125,6 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     confirmed = db.Column(db.Boolean, default=False)
 
-    # created at
     member_since = db.Column(db.DateTime(), default=datetime.now)
     last_seen = db.Column(db.DateTime(), default=datetime.now)
     avatar_hash = db.Column(db.String(32))
@@ -274,13 +273,11 @@ class User(UserMixin, db.Model):
 
 
 class AnonymousUser(AnonymousUserMixin):
-
     def can(self, permissions):
         return False
 
     def is_administrator(self):
         return False
-
 
 # Create M2M table
 article_tags_table = db.Table(

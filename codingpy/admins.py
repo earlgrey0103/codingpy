@@ -3,17 +3,20 @@
 from datetime import datetime
 import os.path as op
 
-from flask.ext.login import current_user
+from flask import flash, redirect, url_for, request
+from flask.ext.login import current_user, login_required
 from flask.ext.admin import Admin, AdminIndexView, expose
 # from flask.ext.login import current_user
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.contrib.fileadmin import FileAdmin
+from flask.ext.admin.actions import action
 from flask_admin.form import ImageUploadField
 
 from .models import Article, User, Category, Tag, Topic, db
 from .ext import cache
 from .config import Config
 from .utils.helpers import baidu_ping
+from .decorators import admin_required
 
 file_path = op.join(op.dirname(__file__), 'static')
 cache_key = Config.CACHE_KEY
@@ -28,18 +31,20 @@ def cache_delete(key):
 class CodingpyAdmin(AdminIndexView):
 
     @expose('/')
+    @login_required
+    @admin_required
     def index(self):
         latest_articles = Article.query.\
             order_by(Article.created_at.desc()).limit(5)
 
         return self.render('admin/index.html', latest_articles=latest_articles)
 
-    # def is_accessible(self):
-    #     return current_user.is_administrator()
+    def is_accessible(self):
+        return current_user.is_administrator()
 
-    # def inaccessible_callback(self, name, **kwargs):
-    #     # redirect to login page if user doesn't have access
-    #     return redirect(url_for('site.login', next=request.url))
+    def inaccessible_callback(self, name, **kwargs):
+        # redirect to login page if user doesn't have access
+        return redirect(url_for('account.login', next=request.url))
 
 
 class ArticleAdmin(ModelView):
@@ -52,7 +57,7 @@ class ArticleAdmin(ModelView):
     create_template = "admin/a_create.html"
     edit_template = "admin/a_edit.html"
 
-    column_list = ('title', 'category', 'tags', 'published', 'ontop',
+    column_list = ('title', 'category', 'published', 'ontop',
                    'recommended', 'created_at', 'views')
 
     form_excluded_columns = ('author', 'body_html', 'views', 'created_at',
@@ -136,10 +141,16 @@ class ArticleAdmin(ModelView):
         # 如果发布新文章，则PING通知百度
         if is_created and model.published:
             baidu_ping(model.link)
-            pass
 
         # 清除缓存，以便可以看到最新内容
         cache_delete(model.shortlink)
+
+    @action('pingbaidu', 'Ping to Baidu')
+    def action_ping_baidu(self, ids):
+        for id in ids:
+            obj = Article.query.get(id)
+            baidu_ping(obj.link)
+        flash(u'PING请求已发送，请等待百度处理')
 
 
 class CategoryAdmin(ModelView):
@@ -155,8 +166,6 @@ class CategoryAdmin(ModelView):
                              'body', 'template', 'article_template', 'views')
 
     # form_overrides = dict(seodesc=TextAreaField, body=EDITOR_WIDGET)
-
-    # column_formatters = dict(view_on_site=view_on_site)
 
     column_labels = dict(
         parent=('父栏目'),
@@ -183,19 +192,26 @@ class CategoryAdmin(ModelView):
     }
 
     form_overrides = dict(thumbnail=ImageUploadField)
+    form_args = {
+        'thumbnail': {
+            'label': '缩略图',
+            'base_path': file_path,
+            'allow_overwrite': True,
+            'relative_path': 'thumbnails/',
+        }
+    }
 
 
 class UserAdmin(ModelView):
 
-    column_list = ('email', 'username', 'name', 'role', 'confirmed')
+    column_list = ('email', 'username', 'name', 'role',
+                   'confirmed', 'last_seen')
 
     form_excluded_columns = (
         'password_hash', 'avatar_hash', 'articles', 'member_since',
-        'last_seen')
+        'last_seen', 'comments')
 
     column_searchable_list = ('email', 'username', 'name')
-
-    # form_overrides = dict(about_me=TextAreaField)
 
     column_labels = dict(
         email=('邮箱'),
@@ -207,7 +223,12 @@ class UserAdmin(ModelView):
     )
 
     form_widget_args = {
-        'about_me': {'style': 'width:320px; height:80px;'},
+        'about_me': {'style': 'width:320px;'},
+        'email': {'style': 'width:320px;'},
+        'username': {'style': 'width:320px;'},
+        'name': {'style': 'width:320px;'},
+        'confirmed': {'class': 'col-md-1'},
+        'role': {'style': 'width:320px;'},
     }
 
 
@@ -220,11 +241,18 @@ class TagAdmin(ModelView):
 
     column_searchable_list = ('name',)
 
-    form_excluded_columns = ('articles', 'body_html')
+    form_excluded_columns = ('articles', 'body_html', 'template', 'views')
 
-    # form_overrides = dict(seodesc=TextAreaField, body=EDITOR_WIDGET)
+    form_overrides = dict(thumbnail=ImageUploadField)
 
-    # column_formatters = dict(view_on_site=view_on_site)
+    form_args = {
+        'thumbnail': {
+            'label': '缩略图',
+            'base_path': file_path,
+            'allow_overwrite': True,
+            'relative_path': 'thumbnails/',
+        },
+    }
 
     column_labels = dict(
         slug=('URL Slug'),
@@ -244,6 +272,7 @@ class TagAdmin(ModelView):
         'seotitle': {'style': 'width:320px;'},
         'seokey': {'style': 'width:320px;'},
         'seodesc': {'style': 'width:320px; height:80px;'},
+        'body': {'style': 'width:320px; height:80px;'},
     }
 
 

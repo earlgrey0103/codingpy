@@ -1,16 +1,6 @@
 {% extends "layout.html" %}
-{% import "wtf.html" as wtf %}
 
-{% block title %}login to codingpy{% endblock title %}
-
-{% block navbar %}
-    
-{% endblock navbar %}
-
-{% block footer %}
-    
-{% endblock footer %}
-
+{% block title %}登陆编程派 每天学习Python{% endblock title %}
 
 {% block metas %}
     <meta name="keywords" content="login">
@@ -21,16 +11,18 @@
 {% block main %}
   <div class="ui container middle aligned center aligned grid" style='width:380px !important; min-height:480px;'>
     <div class="column">
-       {#  <h2 class="ui teal header">
-      登陆编程派
-        </h2>
-        <form action="{{ url_for('account.login') }}" class="ui large form" action="" method="POST" enctype="multipart/form-data" role="form">
+{#         <h2 class="ui teal image header">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" class="image">
+          <div class="content">登陆编程派</div>
+        </h2> #}
+
+        <form class="ui form"method="POST" enctype="multipart/form-data" role="form">
             <input id="csrf_token" type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
 
                 <div class="ui stacked segment">
                     <div class="field">
                         <div class="ui left icon input">
-                            <i class="user icon"></i>
+                            <i class="mail icon"></i>
                             <input id="email" required type="text" name="email" placeholder="E-mail address">
                         </div>
                     </div>
@@ -41,26 +33,23 @@
                         </div>
                     </div>
 
-                    <div class="field">
+                    <div class="field" style="text-align:left;">
                         <div class="ui checkbox">
-
-                                <input id='remember_me' type="checkbox" name="remember_me"> 
-                                <label for="remember_me">Remember Me</label>
+                            <input id='remember_me' type="checkbox" name="remember_me"> 
+                            <label for="remember_me">记住我</label>
                         </div>
                     </div>
 
 
-                    <input class="ui fluid large teal submit button" id="submit" name="submit" type="submit" value="Log In">
+                    <input class="ui fluid large teal submit button" id="submit" name="submit" type="submit" value="登陆">
                 </div>
             
 
         </form>
         
         <div class="ui message">
-            还不是会员？<a href="/account/signin/">请先注册</a>
-        </div> #}
-
-        {{ wtf.quick_form(form, method="POST", enctype="multipart/form-data", form_type="horizontal", horizontal_columns=('md', 2, 10)) }}
+            还不是会员？<a href="/account/register/">请先注册</a>
+        </div>
 
     </div>
 

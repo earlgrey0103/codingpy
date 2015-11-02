@@ -1,8 +1,7 @@
 	<nav id="navbar" class="ui stripe">
-
         <div class="ui container inverted secondary menu">
             <div class="header item">
-                <a href="http://codingpy.com" target="_blank" title="codingpy.com"><img class="ui logo" src="/static/images/logo.png"></a>
+                <a href="http://www.codingpy.com" target="_blank" title="codingpy.com"><img class="ui logo" src="/static/images/logo.png"></a>
             </div>
             <a class="toc item">
               <i class="sidebar icon"></i>
@@ -13,13 +12,19 @@
             <a class="item" href="/category/katas/" target="_blank">练习</a>
             <a class="item" href="/category/notes/" target="_blank">笔记</a>
             <a class="item" href="/category/downloads/" target="_blank">资源</a>
-    {#         <div class="right menu">
+            <div class="right menu">
+             {% if current_user.username %}
+                <div class="item" style="font-family: arial,'Hiragino Sans GB','微软雅黑',MicrosoftYaHei,'宋体',Tahoma,Arial,Helvetica,STHeiti;" >
+                    <div class="ui basic teal inverted button">
+                        {{ current_user.username }}
+                    </div>                      
+                </div>
                 <div class="item">
-                    <div style="font-family: arial,'Hiragino Sans GB','微软雅黑',MicrosoftYaHei,'宋体',Tahoma,Arial,Helvetica,STHeiti;" class="ui basic teal inverted button">
-                        注册/登陆
+                    <div class="ui basic teal inverted button">
+                        <a href="{{ url_for('account.logout') }}">退出</a>
                     </div>
                 </div>
-            </div> #}
+             {% endif %}
+            </div>
         </div>
-
     </nav>
