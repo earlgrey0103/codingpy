@@ -33,6 +33,9 @@ def index(page=1):
     # Tags
     tags = Tag.query.order_by(Tag.views.desc()).limit(10)
 
+    slides = _base_query.filter_by(slider=True).order_by(
+        Article.created_at.desc()).limit(5)
+
     # recommended articles top 5
     recommended_articles = _base_query.filter_by(recommended=True).limit(5)
     popular_articles = _base_query.\
@@ -46,6 +49,7 @@ def index(page=1):
                            recommended_articles=recommended_articles,
                            popular_articles=popular_articles,
                            random_articles=random_articles,
+                           slides=slides,
                            tags=tags,
                            page=page)
 
