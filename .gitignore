@@ -1,7 +1,6 @@
 # Mac
 .DS_Store
 
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -30,7 +29,9 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-.webassets-cache/
+codingpy/static/.webassets-cache/
+# static files
+codingpy/static/thumbnails
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
