@@ -35198,6 +35198,35 @@ div.header.item a {
     padding: 1rem 0;
 }
 
+.article img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.article-content a {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.article-content blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+.article-content blockquote:before {
+  color: #ccc;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+.article-content blockquote p {
+  display: inline;
+}
+
+
 .share-article {
     float: right;
     margin-left: 0.5rem;
