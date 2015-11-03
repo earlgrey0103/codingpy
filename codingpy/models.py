@@ -137,7 +137,7 @@ class User(UserMixin, db.Model):
     member_since = db.Column(db.DateTime(), default=datetime.now)
     last_seen = db.Column(db.DateTime(), default=datetime.now)
     avatar_hash = db.Column(db.String(32))
-    avatar = db.Column(db.String(32))
+    avatar = db.Column(db.String(128))
 
     comments = db.relationship('Comment', backref='author', lazy='dynamic')
 
