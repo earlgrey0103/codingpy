@@ -30,7 +30,7 @@
 					        <div class="event">
 					            <div class="label"><img src="{{ article.author.gravatar() if article.author is not none else "http://semantic-ui.com/images/avatar2/small/mark.png" }}" alt="avatar of this article's author {{article.author.username}}" data-title="{{ article.author.username }}" class="avatar"></div>
 					            <div class="content">
-					                <span class="date">{{moment(article.created_at, local=True).fromNow()}}</span> 
+					                <span class="date">{{moment(article.created_at).fromNow()}}</span> 
 					                {% for tag in article.tags %}
 					                <span class="category date"><i class="tag icon"></i>{{ tag.name }}</span> 
 					                {% endfor %}
