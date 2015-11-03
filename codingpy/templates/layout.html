@@ -33,6 +33,19 @@
         
     {% endblock head_extend %}
 
+    {% block analytics %}
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    {% endblock analytics %}
+    
 </head>
 
 <body {% block body_attrs %}{% endblock body_attrs %}>
@@ -117,21 +130,6 @@ $(document).ready(function() {
     </script>
 
 	{% endblock scripts %}
-
-
-	{% block analytics %}
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-	{% endblock analytics %}
-
 		
 {% endblock content %}
 </div>
