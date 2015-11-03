@@ -49,6 +49,15 @@ def markitup(text):
     return markdown_filter(text, codehilite=True)
 
 
+def format_time(datetime_object):
+    from pytz import timezone
+
+    eastern = timezone('US/Eastern')
+    fmt = '%Y-%m-%d %H:%M:%S %Z%z'
+    local = eastern.localize(datetime_object)
+    return local.strftime(fmt)
+
+
 class Permission:
 
     '''定义角色拥有的权限'''
@@ -125,8 +134,8 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     confirmed = db.Column(db.Boolean, default=False)
 
-    member_since = db.Column(db.DateTime(), default=datetime.utcnow)
-    last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
+    member_since = db.Column(db.DateTime(), default=datetime.now)
+    last_seen = db.Column(db.DateTime(), default=datetime.now)
     avatar_hash = db.Column(db.String(32))
     avatar = db.Column(db.String(32))
 
@@ -251,7 +260,7 @@ class User(UserMixin, db.Model):
         return self.can(Permission.ADMINISTER) & self.confirmed
 
     def ping(self):
-        self.last_seen = datetime.utcnow()
+        self.last_seen = datetime.now()
         db.session.add(self)
         db.session.commit()
 
@@ -610,8 +619,8 @@ class Article(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey(User.id))
     author = db.relationship(User, backref=db.backref("articles"))
 
-    created_at = db.Column(db.DateTime(), default=datetime.utcnow)
-    last_modified = db.Column(db.DateTime(), default=datetime.utcnow)
+    created_at = db.Column(db.DateTime(), default=datetime.now)
+    last_modified = db.Column(db.DateTime(), default=datetime.now)
 
     comments = db.relationship('Comment', backref='article', lazy='dynamic')
 
@@ -896,7 +905,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
-    created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, index=True, default=datetime.now)
     disabled = db.Column(db.Boolean)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     article_id = db.Column(db.Integer, db.ForeignKey('articles.id'))
