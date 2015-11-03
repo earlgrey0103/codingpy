@@ -106,6 +106,7 @@ class ArticleAdmin(ModelView):
         views=('阅读数'),
         keywords=('关键词'),
         source=('来源'),
+        slider=('轮播'),
     )
 
     form_widget_args = {
