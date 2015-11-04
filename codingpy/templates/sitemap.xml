@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <?xml-stylesheet type="text/xsl" href="{{ url_for('site.sitemap_xsl') }}"?>
-        <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:mobile="http://www.baidu.com/schemas/sitemap-mobile/1/">
             {% for url in urlset -%}
             <url>
                 <loc>{{ url['loc']|safe }}</loc>
+                <mobile:mobile type="pc,mobile"/>
                 {%- if 'lastmod' in url %}
                 <lastmod>{{ url['lastmod'] }}</lastmod>{% endif %} 
                 {%- if 'changefreq' in url %}
