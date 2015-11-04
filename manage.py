@@ -25,6 +25,7 @@ bundles = {
         'vendor/glide/glide.min.js',
         'js/lazyloadxt.js',
         'js/lazyloadxt.bg.js',
+        'js/jquery.infinitescroll.min.js',
         output='gen/home.js'),
 
     'home_css': Bundle(
