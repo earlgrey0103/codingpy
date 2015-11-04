@@ -5,5 +5,5 @@
 #
 
 User-agent: *
-Disallow: /admin/
+
 
