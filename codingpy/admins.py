@@ -15,7 +15,7 @@ from flask_admin.form import ImageUploadField
 from .models import Article, User, Category, Tag, Topic, db
 from .ext import cache
 from .config import Config
-from .utils.helpers import baidu_ping
+from .utils.helpers import baidu_ping, notify_baidu
 from .decorators import admin_required
 
 file_path = op.join(op.dirname(__file__), 'static')
@@ -141,8 +141,12 @@ class ArticleAdmin(ModelView):
 
     def after_model_change(self, form, model, is_created):
         # 如果发布新文章，则PING通知百度
+        site = "http://www.codingpy.com"
+        link = site + model.shortlink
+        # 由于使用了Nginx反向代理, model.link的域名部分是localhost
         if is_created and model.published:
-            baidu_ping(model.link)
+            baidu_ping(link)
+            notify_baidu(link)
 
         # 清除缓存，以便可以看到最新内容
         cache_delete(model.shortlink)
@@ -151,7 +155,10 @@ class ArticleAdmin(ModelView):
     def action_ping_baidu(self, ids):
         for id in ids:
             obj = Article.query.get(id)
-            baidu_ping(obj.link)
+            site = "http://www.codingpy.com"
+            link = site + obj.shortlink
+            baidu_ping(link)
+            notify_baidu(link)
         flash(u'PING请求已发送，请等待百度处理')
 
 

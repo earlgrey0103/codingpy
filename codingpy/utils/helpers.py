@@ -2,7 +2,21 @@
 # -*- coding: utf-8 -*-
 
 import xmlrpc.client
-from flask import current_app, url_for
+from flask import current_app, url_for, flash
+import requests
+
+
+def notify_baidu(url):
+    baidu_api = "http://data.zz.baidu.com/urls?"
+    token = "site=www.codingpy.com&token=flJTo2ma4A4ijZkU"
+
+    resp = requests.post(baidu_api + token, data=url)
+
+    if resp.status_code == 200:
+        return True
+    else:
+        flash('An error occured. ')
+        return False
 
 
 def baidu_ping(url):

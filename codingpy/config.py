@@ -3,6 +3,7 @@
 
 import os
 import logging
+from hashlib import md5
 from logging.handlers import RotatingFileHandler
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -34,6 +35,9 @@ class Config:
     CACHE_KEY = 'view/%s'  # ?
     CACHE_DEFAULT_TIMEOUT = 30
     # 使用uwsgi_cache效果更好
+    # Used only for RedisCache, MemcachedCache and GAEMemcachedCache
+    CACHE_KEY_PREFIX = '%s_' % md5(SECRET_KEY).hexdigest()[7:15]
+
     CACHE_TYPE = 'redis'
     CACHE_REDIS_HOST = 'localhost'
     CACHE_REDIS_PORT = 6379
