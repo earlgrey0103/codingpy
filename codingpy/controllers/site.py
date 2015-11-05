@@ -122,10 +122,36 @@ def category(slug, page=1):
                            random_articles=random_articles)
 
 
-@bp.route('/tag/<name>/')
+@bp.route('/tag/<slug>/')
+@bp.route('/tag/page/<int:page>')
 @cache.cached()
-def tag(name):
-    pass
+def tag(slug, page=1):
+    tag = Tag.query.filter_by(slug=slug).first()
+    _base_query = Article.query.public().filter(
+        Article.tags.any(id=tag.id))
+
+    all_articles = _base_query.order_by(Article.created_at.desc()).\
+        paginate(page, Article.PER_PAGE, False).items
+
+    # Tags
+    tags = Tag.query.order_by(Tag.views.desc()).limit(10)
+
+    # recommended articles top 5
+    recommended_articles = _base_query.filter_by(recommended=True).limit(5)
+    popular_articles = _base_query.\
+        order_by(Article.views.desc()).limit(5)
+
+    from sqlalchemy.sql.expression import func
+    random_articles = _base_query.order_by(func.random()).limit(5)
+
+    return render_template('index.html',
+                           page=page,
+                           tags=tags,
+                           tag=tag,
+                           all_articles=all_articles,
+                           recommended_articles=recommended_articles,
+                           popular_articles=popular_articles,
+                           random_articles=random_articles)
 
 
 @bp.route('/sitemap.xsl/')

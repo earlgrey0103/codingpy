@@ -9,7 +9,7 @@
   >
 
 <channel>
-<title>编程派 | Practice Coding Everyday</title>
+<title>编程派 | Coding Python</title>
 <atom:link href="{{ url_for('site.feed', _external=True) }}" rel="self" type="application/rss+xml"/>
 <link>http://www.codingpy.com</link>
 <description>编程派 | Practice Coding Everyday</description>

@@ -2,16 +2,16 @@
 
 
 {% block title %}
-{% if 'category' in request.url  %}
-Python{{ category.name }} | 编程派 | Practice Coding Python Everyday
-{% else %} 编程派 | Practice Coding Python Everyday
+{% if 'category' in request.url  %}{{ category.name }} | 编程派
+{% elif 'tag' in request.url %} {{ tag.name }} | 编程派
+{% else %} 编程派 | Coding Python
 {% endif %}
 {% endblock title %}
 
 {% block main %}
 
 <div id="top">
-    {% if 'category' in request.url  %}
+    {% if 'category' in request.url or 'tag' in request.url %}
         {% else %}{% include "includes/glide.html" %}
     {% endif %}
 
@@ -27,7 +27,12 @@ Python{{ category.name }} | 编程派 | Practice Coding Python Everyday
             <div class="ui raised segment">
 
                 <div class="ui pointing secondary menu brown section-title">
-                    <div class="item active"><i class="feed icon"></i>最新文章</div>                 
+                    <div class="item active"><i class="feed icon"></i>
+                    {% if 'category' in request.url %}
+                      {{ category.name }}：最新文章
+                      {% elif 'tag' in request.url %} {{ tag.name }}：最新文章
+                      {% else %}最新文章
+                    {% endif %}</div>                 
                 </div>
 
                 {% if all_articles %}

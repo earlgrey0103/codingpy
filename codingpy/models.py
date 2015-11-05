@@ -470,11 +470,11 @@ class Tag(db.Model):
 
     @cached_property
     def link(self):
-        return url_for('site.tag', name=self.name.lower(), _external=True)
+        return url_for('site.tag', slug=self.slug, _external=True)
 
     @cached_property
     def shortlink(self):
-        return url_for('site.tag', name=self.name.lower())
+        return url_for('site.tag', slug=self.slug)
 
     @cached_property
     def count(self):
