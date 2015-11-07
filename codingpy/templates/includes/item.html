@@ -2,8 +2,9 @@
     <a class="ui red ribbon label" href="{{ url_for('site.category', slug=article.category.slug) }}"><i class="{{ article.category.icon }} icon"></i>{{ article.category.name}}</a>
 <div class="article">
     <div class="header"><a href="{{ url_for('site.article', article_slug=article.slug, _external=True) }}"><h2>{{ article.title }}</h2></a></div>
+    {% if article.thumbnail %}
     <div class="image ">
-        <div class="article-thumb" data-bg="{{ url_for('static', filename=article.thumbnail) if article.thumbnail }}">
+        <div class="article-thumb" data-bg="{{ url_for('static', filename=article.thumbnail)}}">
 
             <div class="ui dimmer">
                 <div class="content">
@@ -15,7 +16,9 @@
         
         </div>
 
-    </div>
+    </div>        
+    {% endif %}
+
     <div class="article-content">
         <div class="description">
             {{ article.summary }}

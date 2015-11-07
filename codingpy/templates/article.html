@@ -38,10 +38,14 @@
 					            </div>
 					        </div>
 					    </div>
+
+					    {% if article.thumbnail %}
 					    <div class="image" style="padding-top: 0;">
 					        <div class="article-thumb" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}">
 					        </div>
-					    </div>
+					    </div>					    	
+					    {% endif %}
+
 					    <div class="article-content">
 					        {{article.body_html | safe }}
 

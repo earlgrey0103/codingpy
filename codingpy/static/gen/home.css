@@ -35075,7 +35075,6 @@ code {
 
 .header a {
     color: rgba(0, 0, 0, 0.78) !important;
-
 }
 
 .header a:hover {
@@ -35190,12 +35189,14 @@ div.header.item a {
     background-size: cover;
 }
 
-.article .header h2, .article .header h1 {
+.article .header h2,
+.article .header h1 {
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .image {
-    padding: 1rem 0;
+    padding: 0 0 1rem 0;
 }
 
 .article img {
@@ -35205,27 +35206,33 @@ div.header.item a {
 }
 
 .article-content a {
-    color: rgba(0, 0, 0, 0.87);
+    color: #008E59;
+    text-decoration: none;
+}
+
+.article-content a:hover, .article-content a:focus {
+    color: #004229;
+    text-decoration: underline;
 }
 
 .article-content blockquote {
-  background: #f9f9f9;
-  border-left: 10px solid #ccc;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
 }
+
 .article-content blockquote:before {
-  color: #ccc;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
+    color: #ccc;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
 }
 
 .article-content blockquote p {
-  display: inline;
+    display: inline;
 }
-
 
 .share-article {
     float: right;
@@ -35238,6 +35245,7 @@ div.header.item a {
 
 
 /*aside*/
+
 
 /*#related__wrapper {
     margin-bottom: 1rem;
@@ -35260,9 +35268,11 @@ div.header.item a {
 
 
 /*footer*/
+
 footer {
     padding-top: 2rem;
 }
+
 footer .footer.vertical.segment {
     background-color: #455A64;
     border-radius: 0;
@@ -35312,6 +35322,7 @@ footer .ui.images img {
 #comment__wrapper {
     margin-bottom: 1rem;
 }
+
 
 /*mobile devices */
 
