@@ -111,9 +111,12 @@
 							{# 相关文章暂时限制为3篇 #}
 							{% for article in related_articles %}
 						    <div class="ui fluid link card">
+						    {% if article.thumbnail %}
 						      <div class="image">
 						      	<div class="related-thumb" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}"></div>
-						      </div>
+						      </div>						    	
+						    {% endif %}
+
 						      <div class="content">
 						        <a class="header">{{ article.title }}</a>
 						      </div>
