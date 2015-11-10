@@ -26,7 +26,7 @@ bp = Blueprint('site', __name__)
 def index(page=1):
     _base_query = Article.query.public()
     # Latest 10 articles
-    template_name = 'index.html' if page == 1 else 'items.html'
+    template_name = 'index.html' if page == 1 else 'includes/items.html'
     all_articles = _base_query.order_by(Article.created_at.desc()).\
         paginate(page, Article.PER_PAGE, False).items
 
