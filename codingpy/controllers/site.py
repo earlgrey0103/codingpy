@@ -21,7 +21,7 @@ bp = Blueprint('site', __name__)
 
 @bp.route('/')
 @bp.route('/index/')
-@bp.route('/page/<int:page>')
+@bp.route('/page/<int:page>/')
 @cache.cached()
 def index(page=1):
     _base_query = Article.query.public()
