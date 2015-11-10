@@ -45,7 +45,8 @@
 
             <div class="ui center aligned js-infinite-navigation" style="text-align:center">
               
-              <a href="{{ request.url }}/page/{{page + 1}}"></a>
+{#               <a href="{{ request.url }}/page/{{page + 1}}"></a> #}
+                <a href="{{ url_for('site.%s' % (request.script_root[1:]), page=page+1, _external=True) }}"></a>
 
             </div>
         </div>

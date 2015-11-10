@@ -92,7 +92,7 @@ def article(article_slug):
 
 
 @bp.route('/category/<slug>/')
-@bp.route('/category/page/<int:page>')
+@bp.route('/category/page/<int:page>/')
 @cache.cached()
 def category(slug, page=1):
     category = Category.query.filter_by(slug=slug).first()
@@ -123,7 +123,7 @@ def category(slug, page=1):
 
 
 @bp.route('/tag/<slug>/')
-@bp.route('/tag/page/<int:page>')
+@bp.route('/tag/page/<int:page>/')
 @cache.cached()
 def tag(slug, page=1):
     tag = Tag.query.filter_by(slug=slug).first()
