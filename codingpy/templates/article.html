@@ -20,7 +20,7 @@
 
 	        <div class="articles eleven wide column">
 
-	            <div class="ui raised segment">
+	            <div class="ui segment">
 
 
 	                <a class="ui red ribbon label" href="{{ url_for('site.category', slug=article.category.slug) }}" target="_blank"><i class="{{ article.category.icon }} icon"></i>{{ article.category.name}}</a>
@@ -40,6 +40,7 @@
 					    </div>
 
 					    {% if article.thumbnail %}
+					    <div id="wechat-thumbnail"><img src="{{ url_for('static', filename=article.thumbnail, _external=True )}}"></div>
 					    <div class="image" style="padding-top: 0;">
 					        <div class="article-thumb" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}">
 					        </div>
@@ -101,7 +102,7 @@
 				</div>
 
 
-	            <div id="related__wrapper" class="ui raised segment related-articles">
+	            <div id="related__wrapper" class="ui segment related-articles">
 	                <div class="ui pointing secondary menu section-title">
 	                    <div class="item active"><i class="tags icon"></i>相关文章</div>                 
 	                </div>
@@ -128,7 +129,7 @@
                           
 	            </div>
 
-	            <div id="comment__wrapper" class="ui raised segment">
+	            <div id="comment__wrapper" class="ui segment">
 					<div class="ui pointing secondary menu section-title">
 					    <div class="item active"><i class="comments icon"></i>文章评论</div>                 
 					</div>
@@ -139,7 +140,7 @@
 	            </div>
 	        </div>
 
-	        <aside class="five wide column">
+	        <aside id="related__wrapper" class="five wide column">
 	        	{% include "includes/follow_us.html" %}
 	        <div class="ui sticky">
 	        	{% include "includes/popular.html" %}
@@ -154,12 +155,17 @@
 {% block scripts %}
 	{{super()}}
 	<script>
-$('.ui.sticky')
-  .sticky({
 
-    context: '.articles'
-  }).sticky('refresh')
-;
+$(document).ready(function() {
+	if (matchMedia('only screen and (max-width: 768px)').matches) {
+		console.log('Currently view mobile version of the site.');
+	} else {
+		$('.ui.sticky').sticky({
+			context: '.article'
+		}).sticky('refresh');
+	}
+});
+
 
 $('#tab-nav .item').tab();
 
@@ -172,32 +178,28 @@ $('.share-article.ui.button').popup({
 	hoverable: true,
 })
   	
-
 $('.avatar').popup();
 
+// Baidu Share JS
+window._bd_share_config = {
+    "common": {
+        "bdSnsKey": {},
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": "",
+        "bdStyle": "1",
+        "bdSize": "24"
+    },
+
+    // bdText   string  自定义 分享的内容
+    // bdDesc  string  自定义 分享的摘要
+    // bdUrl   string  自定义 分享的Url地址
+    // bdPic   string  自定义 分享的图片
+    "share": {}
+};
+with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
 
 	</script>
-
-<!-- Baidu Share JS -->
-    <script>
-    window._bd_share_config = {
-        "common": {
-            "bdSnsKey": {},
-            "bdText": "",
-            "bdMini": "1",
-            "bdMiniList": false,
-            "bdPic": "",
-            "bdStyle": "1",
-            "bdSize": "24"
-        },
-
-        // bdText   string  自定义 分享的内容
-        // bdDesc  string  自定义 分享的摘要
-        // bdUrl   string  自定义 分享的Url地址
-        // bdPic   string  自定义 分享的图片
-        "share": {}
-    };
-    with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
-    </script>
 
 {% endblock scripts %}

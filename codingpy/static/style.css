@@ -161,7 +161,7 @@ div.header.item a {
 
 .article-content blockquote {
     background: #f9f9f9;
-    border-left: 10px solid #ccc;
+    border-left: 4px solid #ccc;
     margin: 1.5em 10px;
     padding: 0.5em 10px;
 }
@@ -176,6 +176,10 @@ div.header.item a {
 
 .article-content blockquote p {
     display: inline;
+}
+
+#wechat-thumbnail {
+    display: none;
 }
 
 .share-article {
@@ -271,11 +275,17 @@ footer .ui.images img {
 /*mobile devices */
 
 @media (max-width: 768px) {
+    #main .articles.eleven.wide.column, aside#related__wrapper.five.wide.column {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
     .secondary.inverted.menu .item {
         display: none;
     }
     .article-thumb {
-        height: 160px;
+        height: 200px;
+        height: 50vw;
     }
     .box {
         height: 200px;
@@ -308,6 +318,7 @@ footer .ui.images img {
         width: 120px;
     }
     .related-thumb {
-        height: 240px;
+        height: 200px;
+        height: 40vw;
     }
 }

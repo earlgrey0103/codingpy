@@ -92,51 +92,11 @@ var _hmt = _hmt || [];
     {{moment.include_moment()}}
     {{ moment.lang('zh-CN')}}
 
-    <script type="text/javascript">
-
-// expand horizontal viewport
-$.extend($.lazyLoadXT, {
-  edgeX:  2500,
-  updateEvent: 'load orientationchange resize scroll switchSlideEvent switchSlideAnimateEvent'
-
-});
-
-$(window).on('ajaxComplete', function() {
-    setTimeout(function() {
-        $(window).lazyLoadXT();
-    }, 50);
-});
-
-
-$(document).ready(function() {
-
-    if (matchMedia('only screen and (max-width: 768px)').matches) {
-        $('#Glide').glide({
-            type: "carousel",
-            autoplay: 4000,
-            animationDuration: 500,
-        });
-        $('.glide__wrapper').removeClass('bug-fix');
-        // 避免加载时的bug带来的不良体验
-    } else {
-            $("#Glide").glide({
-            type: "carousel",
-            paddings: "20%",
-            autoplay: 4000,
-            animationDuration: 500,
-
-        });
-            $('.glide__wrapper').removeClass('bug-fix');
-    };
-
-
-    // create sidebar and attach to menu open
-    $('.ui.sidebar')
-      .sidebar('attach events', '.toc.item')
-    ;
-
-});
-
+    <script>
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
 
     </script>
 

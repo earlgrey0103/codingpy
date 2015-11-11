@@ -24,7 +24,7 @@
 
         <div class="articles eleven wide column">
 
-            <div class="ui raised segment">
+            <div class="ui segment">
 
                 <div class="ui pointing secondary menu brown section-title">
                     <div class="item active"><i class="feed icon"></i>
@@ -73,6 +73,51 @@
 {% block scripts %}
     {{super()}}
 
+    <script type="text/javascript">
+
+// expand horizontal viewport
+$.extend($.lazyLoadXT, {
+  edgeX:  2500,
+  updateEvent: 'load orientationchange resize scroll switchSlideEvent switchSlideAnimateEvent'
+
+});
+
+$(window).on('ajaxComplete', function() {
+    setTimeout(function() {
+        $(window).lazyLoadXT();
+    }, 50);
+});
+
+
+$(document).ready(function() {
+
+    if (matchMedia('only screen and (max-width: 768px)').matches) {
+        $('#Glide').glide({
+            type: "carousel",
+            autoplay: 4000,
+            animationDuration: 500,
+        });
+        $('.glide__wrapper').removeClass('bug-fix');
+        // 避免加载时的bug带来的不良体验
+    } else {
+            $("#Glide").glide({
+            type: "carousel",
+            paddings: "20%",
+            autoplay: 4000,
+            animationDuration: 500,
+
+        });
+            $('.glide__wrapper').removeClass('bug-fix');
+            $('.ui.sticky').sticky({
+
+                context: '.js-infinite-layout'
+              }).sticky('refresh');
+            };
+});
+
+
+    </script>
+
     <script>
 
 
@@ -89,17 +134,13 @@ $('.shape')
   .shape('flip up')
 ;
 
-$('.ui.sticky')
-  .sticky({
 
-    context: '.articles'
-  }).sticky('refresh')
-;
 
 $('#tab-nav .item').tab();
 
 $('.js-infinite-layout').infinitescroll({
   loading: {
+    finished: flask_moment_render_all,
     finishedMsg: "<div style='text-align:center'><em>没有更多文章了~~</em></div>",
     img: "{{ url_for('static', filename='/images/rolling.svg') }}",
   },
