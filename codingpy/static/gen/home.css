@@ -35210,7 +35210,8 @@ div.header.item a {
     text-decoration: none;
 }
 
-.article-content a:hover, .article-content a:focus {
+.article-content a:hover,
+.article-content a:focus {
     color: #004229;
     text-decoration: underline;
 }
@@ -35332,11 +35333,11 @@ footer .ui.images img {
 /*mobile devices */
 
 @media (max-width: 768px) {
-    #main .articles.eleven.wide.column, aside#related__wrapper.five.wide.column {
+    #main .articles.eleven.wide.column,
+    aside#related__wrapper.five.wide.column {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-
     .secondary.inverted.menu .item {
         display: none;
     }
@@ -35380,22 +35381,28 @@ footer .ui.images img {
     }
 }
 
-/*code*/
-pre>code {
-    padding: 2px 4px;
-    background-color: #f9f2f4;
-    white-space: pre-wrap;
-    background-color: transparent;
-    border-radius: 0;
-}
 
-code, kbd, pre, samp {
+/*code*/
+
+code,
+kbd,
+pre,
+samp {
     font-size: 12px;
     line-height: 1.5;
     border: 1px solid #cccccc;
     padding: 10px;
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+p>code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
 .codehilite .hll { background-color: #ffffcc }
 .codehilite  { background: #f8f8f8; }
 .codehilite .c { color: #408080; font-style: italic } /* Comment */
