@@ -35235,7 +35235,8 @@ div.header.item a {
 }
 
 #wechat-thumbnail {
-    display: none;
+    position: absolute;
+    left: -10000px;
 }
 
 .share-article {
