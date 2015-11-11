@@ -3,20 +3,21 @@
                 <h4 class="ui inverted header">关于编程派</h4>
                 <div class="ui inverted link list">
                     <a href="{{ url_for('site.sitemap_xml', _external=True) }}" class="item">站点地图</a>
-                    <a href="/contact" class="item">联系我们</a>
+                    <a href="/" class="item">联系我们</a>
                 </div>
             </div>
             <div class="three wide column">
                 <h4 class="ui inverted header">关注编程派</h4>
-                <button class="ui circular wechat green icon button">
+{#                 <button class="ui circular wechat green icon button">
                     <i class="wechat icon"></i>
-                </button>
-                <button class="ui circular weibo red icon button">
+                </button> #}
+
+                <a href="http://weibo.com/codingpy"><button class="ui circular weibo red icon button">
                     <i class="weibo icon"></i>
-                </button>
-                <button class="ui circular twitter icon button">
+                </button></a>
+                <a href="https://twitter.com/codingpy"><button class="ui circular twitter icon button">
                     <i class="twitter icon"></i>
-                </button>
+                </button></a>
 
                 <a href="http://github.com/bingjin"><button class="ui circular icon button">
                     <i class="github alternate blue icon"></i>
