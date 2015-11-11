@@ -32,6 +32,10 @@ var/
 codingpy/static/.webassets-cache/
 # static files
 codingpy/static/thumbnails
+# log files
+*.log
+# swap files
+*.swp
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
