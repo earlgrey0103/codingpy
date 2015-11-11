@@ -323,3 +323,20 @@ footer .ui.images img {
         height: 40vw;
     }
 }
+
+/*code*/
+pre>code {
+    padding: 2px 4px;
+    background-color: #f9f2f4;
+    white-space: pre-wrap;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+code, kbd, pre, samp {
+    font-size: 12px;
+    line-height: 1.5;
+    border: 1px solid #cccccc;
+    padding: 10px;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
