@@ -117,7 +117,7 @@
 						    {% endif %}
 
 						      <div class="content">
-						        <a class="header">{{ article.title }}</a>
+						        <a class="header">{{ article.title|truncate(20) }}</a>
 						      </div>
 						    </div>
 						    {% endfor %}		
