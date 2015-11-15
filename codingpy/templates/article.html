@@ -152,6 +152,26 @@
 	</div>
 {% endblock main %}
 
+{% block Goole_StructuredData %}
+	{% if request.headers.get('User-Agent') == 'Googlebot' %}
+	<script type="application/ld+json">
+	{
+	  "@context": "http://schema.org",
+	  "@type": "BlogPosting",
+	  "headline": "{{ article.title }}",
+	  "alternativeHeadline": "{{ article.seotitle }}",
+	  "image": [
+	    "{{ article.thumbnail if article.thumbnail }}",
+	  ],
+	  "datePublished": "{{ article.created_at }}",
+	  "description": "{{ article.seodesc }}",
+	  "articleBody": "{{ article.body_html}}"
+	}
+	</script>		
+	{% endif %}
+
+{% endblock Goole_StructuredData %}
+
 {% block scripts %}
 	{{super()}}
 	<script>
