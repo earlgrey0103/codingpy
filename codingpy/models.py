@@ -554,7 +554,7 @@ class ArticleQuery(BaseQuery):
             criteria.append(db.or_(Article.keywords.ilike(keyword),
                                    Article.title.ilike(keyword)))
 
-        q = reduce(db.and_, criteria)
+        q = reduce(db.or_, criteria)
         return self.public().filter(q)
 
     def archives(self, year, month):
