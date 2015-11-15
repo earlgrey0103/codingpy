@@ -10,8 +10,17 @@
     <meta name="baidu-site-verification" content="UF7rINUv36" />
     <meta name="applicable-device"content="pc,mobile">
 	{% block metas %}
-	<meta name="keywords" content="Python, 新闻, 教程, 笔记, 资源下载, 编程练习">
-	<meta name="description" content="分享有关Python的最新资讯、原创编译教程、编程练习题、读书笔记和下载资源">
+  {% if category %}
+    <meta name="keywords" content="{{ category.seodesc }}">
+    <meta name="description" content="{{ category.seokey }}">
+    {% elif tag %}
+    <meta name="keywords" content="{{ tag.seodesc }}">
+    <meta name="description" content="{{ tag.seokey }}">
+    {% else %}
+    <meta name="keywords" content="Python, 新闻, 教程, 笔记, 资源下载, 编程练习">
+    <meta name="description" content="分享有关Python的最新资讯、原创编译教程、编程练习题、读书笔记和下载资源">    
+  {% endif %}
+
 	<meta name="author" content="EarlGrey@codingpy.com">
 	{% endblock metas %}
 	{% block styles %}	
