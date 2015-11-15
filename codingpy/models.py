@@ -283,6 +283,7 @@ class User(UserMixin, db.Model):
 
 
 class AnonymousUser(AnonymousUserMixin):
+
     def can(self, permissions):
         return False
 
@@ -545,14 +546,15 @@ class ArticleQuery(BaseQuery):
     def public(self):
         return self.filter_by(published=True)
 
-    def search(self, keyword):
+    def search(self, keywords):
         criteria = []
 
-        for keyword in keywords_split(keyword):
+        for keyword in keywords_split(keywords):
             keyword = '%{0}%'.format(keyword)
-            criteria.append(db.or_(Article.title.ilike(keyword),))
+            criteria.append(db.or_(Article.keywords.ilike(keyword),
+                                   Article.title.ilike(keyword)))
 
-        q = reduce(db.or_, criteria)
+        q = reduce(db.and_, criteria)
         return self.public().filter(q)
 
     def archives(self, year, month):
