@@ -550,7 +550,7 @@ class ArticleQuery(BaseQuery):
 
         for keyword in keywords_split(keyword):
             keyword = '%{0}%'.format(keyword)
-            criteria.append(db.or_(Article.keywords.ilike(keyword),))
+            criteria.append(db.or_(Article.title.ilike(keyword),))
 
         q = reduce(db.or_, criteria)
         return self.public().filter(q)
