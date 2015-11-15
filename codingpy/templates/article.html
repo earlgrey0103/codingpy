@@ -130,9 +130,9 @@
 	            </div>
 
 	            <div id="comment__wrapper" class="ui segment">
-					<div class="ui pointing secondary menu section-title">
+{# 					<div class="ui pointing secondary menu section-title">
 					    <div class="item active"><i class="comments icon"></i>文章评论</div>                 
-					</div>
+					</div> #}
 
 					{% include "includes/comment.html" %}
 
@@ -174,7 +174,11 @@
 
 {% block scripts %}
 	{{super()}}
+
+	<script id="dsq-count-scr" src="//codingpy.disqus.com/count.js" async></script>
+	
 	<script>
+
 
 $(document).ready(function() {
 	if (matchMedia('only screen and (max-width: 768px)').matches) {
