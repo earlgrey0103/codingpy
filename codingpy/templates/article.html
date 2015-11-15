@@ -101,13 +101,11 @@
 					</div>
 				</div>
 
-
+				{% if related_articles.count()  > 0 %}
 	            <div id="related__wrapper" class="ui segment related-articles">
 	                <div class="ui pointing secondary menu section-title">
 	                    <div class="item active"><i class="tags icon"></i>相关文章</div>                 
 	                </div>
-
-
 						<div class="ui three stackable cards">
 							{# 相关文章暂时限制为3篇 #}
 							{% for article in related_articles %}
@@ -124,10 +122,10 @@
 						    </div>
 						    {% endfor %}		
 						</div>						    		
-				    	
+				    	                          
+	            </div>					
+				{% endif %}
 
-                          
-	            </div>
 
 	            <div id="comment__wrapper" class="ui segment">
 {# 					<div class="ui pointing secondary menu section-title">
