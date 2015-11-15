@@ -34,6 +34,7 @@ codingpy/static/.webassets-cache/
 codingpy/static/thumbnails
 # log files
 *.log
+*.log.*
 # swap files
 *.swp
 

@@ -241,3 +241,16 @@ def feed():
     res = make_response(render_template('rssfeed.xml', articles=articles))
     res.headers['Content-type'] = 'application/xml; charset=utf-8'
     return res
+
+
+@bp.route('/search/<query>')
+def search(query):
+    keywords = query
+    search_results = Article.query.search(keywords)
+    items = [
+        {'title': item.title, 'url': item.link} for item in search_results
+    ]
+    resp = {
+        'items': items,
+    }
+    return jsonify(resp)

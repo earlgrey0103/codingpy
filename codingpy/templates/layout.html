@@ -107,6 +107,23 @@ var _hmt = _hmt || [];
         .sidebar('attach events', '.toc.item')
       ;
 
+      $('.ui.search')
+        .search(
+        {
+          apiSettings: {
+            // url: "http://192.168.33.10:5000/search/{query}",
+            url: "{{ request.host_url }}/search/{query}",
+            cache: true,
+          },
+          fields: {
+            results : 'items',
+            title   : 'title',
+            url     : 'url',
+          },
+          minCharacters : 3,
+        })
+      ;
+
     </script>
 
 	{% endblock scripts %}
