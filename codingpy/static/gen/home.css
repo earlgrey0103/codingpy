@@ -35202,7 +35202,7 @@ code {
     -ms-transform-origin: 50% 50%;
     -o-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
-    min-height: 320px;
+    height: 320px;
 }
 
 .slider__slide.active {
