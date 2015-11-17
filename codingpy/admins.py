@@ -52,7 +52,29 @@ class ArticleAdmin(ModelView):
     @expose('/<article_id>/')
     def preview(self, article_id):
         article = Article.query.get_or_404(article_id)
-        return self.render('article.html', article=article)
+        related_articles = Article.query.search(article.keywords).\
+            filter(Article.id != article.id).limit(3)
+
+        _base_query = Article.query.public()
+
+        # Tags
+        tags = Tag.query.order_by(Tag.views.desc()).limit(10)
+
+        # recommended articles top 5
+        recommended_articles = _base_query.filter_by(recommended=True).limit(5)
+        popular_articles = _base_query.\
+            order_by(Article.views.desc()).limit(5)
+
+        from sqlalchemy.sql.expression import func
+        random_articles = _base_query.order_by(func.random()).limit(5)
+
+        return self.render('article.html',
+                           article=article,
+                           tags=tags,
+                           related_articles=related_articles,
+                           recommended_articles=recommended_articles,
+                           popular_articles=popular_articles,
+                           random_articles=random_articles)
 
     create_template = "admin/a_create.html"
     edit_template = "admin/a_edit.html"
