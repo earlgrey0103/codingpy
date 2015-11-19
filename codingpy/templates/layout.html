@@ -11,11 +11,11 @@
     <meta name="applicable-device"content="pc,mobile">
 	{% block metas %}
   {% if category %}
-    <meta name="keywords" content="{{ category.seodesc }}">
-    <meta name="description" content="{{ category.seokey }}">
+    <meta name="keywords" content="{{ category.seokey }}">
+    <meta name="description" content="{{ category.seodesc }}">
     {% elif tag %}
-    <meta name="keywords" content="{{ tag.seodesc }}">
-    <meta name="description" content="{{ tag.seokey }}">
+    <meta name="keywords" content="{{ tag.seokey }}">
+    <meta name="description" content="{{ tag.seodesc }}">
     {% else %}
     <meta name="keywords" content="Python, 新闻, 教程, 笔记, 资源下载, 编程练习">
     <meta name="description" content="分享有关Python的最新资讯、原创编译教程、编程练习题、读书笔记和下载资源">    
