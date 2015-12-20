@@ -66,8 +66,9 @@ def article(article_slug):
     db.session.add(article)
     db.session.commit()
 
+    from sqlalchemy.sql.expression import func
     related_articles = Article.query.search(article.keywords[0]).\
-        filter(Article.id != article.id).limit(3)
+        filter(Article.id != article.id).order_by(func.random()).limit(3)
 
     _base_query = Article.query.public()
 
@@ -79,7 +80,6 @@ def article(article_slug):
     popular_articles = _base_query.\
         order_by(Article.views.desc()).limit(9)
 
-    from sqlalchemy.sql.expression import func
     random_articles = _base_query.order_by(func.random()).limit(9)
 
     return render_template('article.html',
