@@ -35459,18 +35459,8 @@ footer .ui.images img {
 
 /*code*/
 
-code,
-kbd,
-pre,
-samp {
-    font-size: 12px;
-    line-height: 1.5;
-    border: 1px solid #cccccc;
-    padding: 10px;
+p>code, li>code, kbd{
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-p>code, li>code {
     padding: 2px 4px;
     font-size: 90%;
     color: #c7254e;

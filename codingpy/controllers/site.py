@@ -3,8 +3,8 @@
 import datetime
 
 from flask import Blueprint, abort
-from flask import render_template, redirect, url_for, flash, request,\
-    current_app, jsonify, make_response
+from flask import render_template, url_for, request,\
+    jsonify, make_response
 from werkzeug.contrib.atom import AtomFeed, FeedEntry
 
 # from ..models import Permission
@@ -31,18 +31,18 @@ def index(page=1):
         paginate(page, Article.PER_PAGE, False).items
 
     # Tags
-    tags = Tag.query.order_by(Tag.views.desc()).limit(10)
+    tags = Tag.query.order_by(Tag.views.desc()).all()
 
     slides = _base_query.filter_by(slider=True).order_by(
         Article.created_at.desc()).limit(5)
 
     # recommended articles top 5
-    recommended_articles = _base_query.filter_by(recommended=True).limit(5)
+    recommended_articles = _base_query.filter_by(recommended=True).limit(9)
     popular_articles = _base_query.\
-        order_by(Article.views.desc()).limit(5)
+        order_by(Article.views.desc()).limit(9)
 
     from sqlalchemy.sql.expression import func
-    random_articles = _base_query.order_by(func.random()).limit(5)
+    random_articles = _base_query.order_by(func.random()).limit(9)
 
     return render_template(template_name,
                            all_articles=all_articles,
@@ -66,21 +66,21 @@ def article(article_slug):
     db.session.add(article)
     db.session.commit()
 
-    related_articles = Article.query.search(article.keywords).\
+    related_articles = Article.query.search(article.keywords[0]).\
         filter(Article.id != article.id).limit(3)
 
     _base_query = Article.query.public()
 
     # Tags
-    tags = Tag.query.order_by(Tag.views.desc()).limit(10)
+    tags = Tag.query.order_by(Tag.views.desc()).all()
 
     # recommended articles top 5
-    recommended_articles = _base_query.filter_by(recommended=True).limit(5)
+    recommended_articles = _base_query.filter_by(recommended=True).limit(9)
     popular_articles = _base_query.\
-        order_by(Article.views.desc()).limit(5)
+        order_by(Article.views.desc()).limit(9)
 
     from sqlalchemy.sql.expression import func
-    random_articles = _base_query.order_by(func.random()).limit(5)
+    random_articles = _base_query.order_by(func.random()).limit(9)
 
     return render_template('article.html',
                            article=article,
@@ -102,7 +102,7 @@ def category(slug, page=1):
         paginate(page, Article.PER_PAGE, False).items
 
     # Tags
-    tags = Tag.query.order_by(Tag.views.desc()).limit(10)
+    tags = Tag.query.order_by(Tag.views.desc()).all()
 
     # recommended articles top 5
     recommended_articles = _base_query.filter_by(recommended=True).limit(5)
@@ -134,7 +134,7 @@ def tag(slug, page=1):
         paginate(page, Article.PER_PAGE, False).items
 
     # Tags
-    tags = Tag.query.order_by(Tag.views.desc()).limit(10)
+    tags = Tag.query.order_by(Tag.views.desc()).all()
 
     # recommended articles top 5
     recommended_articles = _base_query.filter_by(recommended=True).limit(5)

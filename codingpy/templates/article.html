@@ -40,10 +40,11 @@
 					    </div>
 
 					    {% if article.thumbnail %}
-					    <div id="wechat-thumbnail"><img src="{{ url_for('static', filename=article.thumbnail, _external=True )}}"></div>
-					    <div class="image" style="padding-top: 0;">
-					        <div class="article-thumb" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}">
-					        </div>
+
+					    <div class="image" style="padding-top: 0;text-align:center">
+{# 					        <div class="article-thumb" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}">
+					        </div> #}
+					        <img src="{{ url_for('static', filename=article.thumbnail, _external=True )}}" alt="{{article.title}}">
 					    </div>					    	
 					    {% endif %}
 
@@ -111,13 +112,15 @@
 							{% for article in related_articles %}
 						    <div class="ui fluid link card">
 						    {% if article.thumbnail %}
-						      <div class="image">
+						      <a href="{{ article.link }}" title="{{article.title}}">
+						      	<div class="image">
 						      	<div class="related-thumb" data-bg="{{ url_for('static', filename=article.thumbnail, _external=True )}}"></div>
-						      </div>						    	
+						      </div>
+						      </a>						    	
 						    {% endif %}
 
 						      <div class="content">
-						        <a class="header" href="{{ article.link }}">{{ article.title|truncate(18, True) }}</a>
+						        <a class="header" href="{{ article.link }}">{{ article.title|truncate(30, True) }}</a>
 						      </div>
 						    </div>
 						    {% endfor %}		
@@ -143,6 +146,7 @@
 	        <div class="ui sticky">
 	        	{% include "includes/popular.html" %}
 	        	{% include "includes/tags.html" %}
+	        	{% include "includes/music_player.html" %}
 	        </div>
 	        </aside>
 	    </div>
