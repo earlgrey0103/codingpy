@@ -35408,6 +35408,9 @@ footer .ui.images img {
 /*mobile devices */
 
 @media (max-width: 768px) {
+    #related__wrapper {
+        max-width: 100%;
+    }
     #main .articles.eleven.wide.column,
     aside#related__wrapper.five.wide.column {
         padding-left: 0 !important;
