@@ -35412,7 +35412,7 @@ footer .ui.images img {
         max-width: 100%;
     }
     #main .articles.eleven.wide.column,
-    aside#related__wrapper.five.wide.column {
+    aside#aside__wrapper.five.wide.column {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
@@ -35461,9 +35461,13 @@ footer .ui.images img {
 
 
 /*code*/
+.codehilite {
+    font-family: Arial, Helvetica, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 90%;
+}
 
 p>code, li>code, kbd{
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-family: Arial, Helvetica, Menlo, Monaco, Consolas, "Courier New", monospace;
     padding: 2px 4px;
     font-size: 90%;
     color: #c7254e;
