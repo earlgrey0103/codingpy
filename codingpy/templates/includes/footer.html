@@ -1,58 +1,44 @@
-        <div class="ui stackable inverted divided equal height stackable grid">
-            <div class="three wide column">
-                <h4 class="ui inverted header">关于编程派</h4>
-                <div class="ui inverted link list">
-                    <a href="{{ url_for('site.sitemap_xml', _external=True) }}" class="item">站点地图</a>
-                    <a href="/" class="item">联系我们</a>
-                </div>
-            </div>
-            <div class="three wide column">
-                <h4 class="ui inverted header">关注编程派</h4>
-{#                 <button class="ui circular wechat green icon button">
-                    <i class="wechat icon"></i>
-                </button> #}
-
-                <a href="http://weibo.com/codingpy"><button class="ui circular weibo red icon button">
-                    <i class="weibo icon"></i>
-                </button></a>
-                <a href="https://twitter.com/codingpy"><button class="ui circular twitter icon button">
-                    <i class="twitter icon"></i>
-                </button></a>
-
-                <a href="http://github.com/bingjin"><button class="ui circular icon button">
-                    <i class="github alternate blue icon"></i>
-                </button></a>
-                <a href="{{ url_for('site.feed', _external=True) }}">
-                    <button class="ui circular icon button" style="margin-top: 1rem;">
-                        <i class="rss brown icon"></i>
-                    </button>
-                </a>
-
-            </div>
-
-            <div class="three wide column">
-                <h4 class="ui inverted header">导航</h4>
-                <div class="ui inverted link list">
-                    <a target="_blank" href="/category/news/" class="item">资讯</a>
-                    <a target="_blank" href="/category/tutorials/" class="item">教程</a>
-                    <a target="_blank" href="/category/katas/" class="item">练习</a>
-{#                     <a target="_blank" href="/category/notes/" class="item">笔记</a> #}
-                    <a target="_blank" href="/category/downloads/" class="item">资源</a>
-                    <a target="_blank" href="/category/other-thinkings/" class="item"  >其他</a>
-                </div>
-            </div>
-
-            <div class="seven wide column">
-                <h4 class="ui inverted header">Powered by</h4>
-                <div class="ui images">
-                    <a target="_blank" href="http://www.python.org"><img data-src="/static/images/python-favico.ico" alt="python"></a>
-
-                    <a target="_blank" href="http://flask.pocoo.org/"><img data-src="/static/images/flask.png" alt="flask"></a>
-                    
-                </div>
-{#                 <a target="_blank" href="https://www.digitalocean.com/?refcode=70fd6733d655"><img class="ui image" src="/static/images/digitalocean.png" alt="digitalocean" width="160"></a> #}
-            </div>
-
-
-
+<div class="ui stackable inverted divided equal height stackable grid">
+    <div class="three wide column">
+        <h4 class="ui inverted header">关于编程派</h4>
+        <div class="ui inverted link list">
+            <a href="{{ url_for('site.sitemap_xml', _external=True) }}" class="item">站点地图</a>
+            <a href="/" class="item">联系我们</a>
         </div>
+    </div>
+    <div class="three wide column">
+        <h4 class="ui inverted header">关注编程派</h4>
+        <a class="ui circular weibo red icon button" href="http://weibo.com/codingpy" target="_blank">
+            <i class="weibo icon"></i>
+        </a>
+        <a class="ui circular twitter icon button" href="https://twitter.com/codingpy" target="_blank">
+            <i class="twitter icon"></i>
+        </a>
+        <a class="ui circular icon button" href="http://github.com/bingjin" target="_blank">
+            <i class="github alternate blue icon"></i>
+        </a>
+        <a class="ui circular icon button" href="{{ url_for('site.feed', _external=True) }}" target="_blank">
+            <i class="rss brown icon"></i>
+        </a>
+
+    </div>
+    <div class="three wide column">
+        <h4 class="ui inverted header">导航</h4>
+        <div class="ui inverted link list">
+            <a target="_blank" href="/category/news/" class="item">资讯</a>
+            <a target="_blank" href="/category/tutorials/" class="item">教程</a>
+            <a target="_blank" href="/category/katas/" class="item">练习</a> {# <a target="_blank" href="/category/notes/" class="item">笔记</a> #}
+            <a target="_blank" href="/category/downloads/" class="item">资源</a>
+            <a target="_blank" href="/category/other-thinkings/" class="item">其他</a>
+        </div>
+    </div>
+    <div class="seven wide column">
+        <h4 class="ui inverted header">Powered by</h4>
+        <div class="ui images">
+            <a target="_blank" href="http://www.python.org"><img src="/static/images/python-favico.ico" alt="python"></a>
+            <a target="_blank" href="http://flask.pocoo.org/"><img src="/static/images/flask.png" alt="flask"></a>
+        </div>
+        {#
+        <a target="_blank" href="https://www.digitalocean.com/?refcode=70fd6733d655"><img class="ui image" src="/static/images/digitalocean.png" alt="digitalocean" width="160"></a> #}
+    </div>
+</div>
