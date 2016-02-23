@@ -137,11 +137,11 @@
 	        </div>
 
 	        <aside id="aside__wrapper" class="five wide column">
-	        	{% include "includes/follow_us.html" %}
-	        <div class="ui sticky">
 	        	{% include "includes/popular.html" %}
 	        	{% include "includes/tags.html" %}
+	        <div class="ui sticky">
 	        	{# {% include "includes/adsense.html" %} #}
+	        	{% include "includes/follow_us.html" %}
 	        	{% include "includes/music_player.html" %}
 	        </div>
 	        </aside>
@@ -183,7 +183,7 @@ $(document).ready(function() {
 		console.log('Currently view mobile version of the site.');
 	} else {
 		$('.ui.sticky').sticky({
-			context: '.article'
+			context: '.articles'
 		}).sticky('refresh');
 	}
 });
