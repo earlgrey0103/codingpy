@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第一章：程序之道 &mdash; 《Think Python 2ed》中译本 1.0 文档</title>
+  
+
+  
+    <meta name="keywords" content="《Think Python》第二版中译文, Python 3版入门教材, Allen Downey, EarlGrey, 编程派">
+    <meta name="description" content="编程派翻译的《Think Python 2ed》中文版，为最新支持Python 3版的教材。">
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="《Think Python 2ed》中译本 1.0 文档" href="index.html"/>
+        <link rel="prev" title="前言" href="00-preface.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69612020-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 《Think Python 2ed》中译本
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">第一章：程序之道</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">什么是程序？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python">运行Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">第一个程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">算术运算符</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">值和类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">形式语言和自然语言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">词汇表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">练习题</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">《Think Python 2ed》中译本</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>第一章：程序之道</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/01-the-way-of-the-program.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第一章：程序之道<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>本书的目标是教你像计算机科学家一样思考。这一思考方式集成了数学、工程以及自然科学的一些最好的特点。像数学家一样，计算机科学家使用形式语言表示思想（具体来说是计算）。像工程师一样，计算机科学家设计东西，将零件组成系统，在各种选择之间寻求平衡。像科学家一样，计算机科学家观察复杂系统的行为，形成假设并且对预测进行检验。</p>
+<p>对于计算机科学家，最重要的技能是 <strong>解决问题的能力</strong> 。解决问题（problem solving）意味着对问题进行形式化，寻求创新型的解决方案，并且清晰、准确地表达解决方案的能力。事实证明，学习编程的过程是锻炼问题解决能力的一个绝佳机会。这就是为什么本章被称为“编程之道”。</p>
+<p>一方面，你将学习如何编程，这本身就是一个有用的技能。另一方面，你将把编程作为实现自己目的的手段。随着学习的深入，你会更清楚自己的目的。</p>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>什么是程序？<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p><strong>程序</strong> 是一系列说明如何执行计算（computation）的指令。计算可以是数学上的计算，例如寻找公式的解或多项式的根，但它也可以是一个符号计算（symbolic computation），例如在文档中搜索并替换文本或者图片，就像处理图片或播放视频。</p>
+<p>不同编程语言中，程序的具体细节也不一样，但是有一些基本的指令几乎出现在每种语言当中：</p>
+<dl class="docutils">
+<dt><em>输入（input）：</em></dt>
+<dd>从键盘、文件、网络或者其他设备获取数据。</dd>
+<dt><em>输出（output）：</em></dt>
+<dd>在屏幕上显示数据，将数据保存至文件，通过网络传送数据，等等。</dd>
+<dt><em>数学（math）：</em></dt>
+<dd>执行基本的数学运算，如加法和乘法。</dd>
+<dt><em>有条件执行（conditional execution）：</em></dt>
+<dd>检查符合某个条件后，执行相应的代码。</dd>
+<dt><em>重复（repetition）：</em></dt>
+<dd>重复执行某个动作，通常会有一些变化。</dd>
+</dl>
+<p>无论你是否相信，这几乎是程序的全部指令了。每个你曾经用过的程序，无论多么复杂，都是由跟这些差不多的指令构成的。因此，你可以认为编程就是将庞大、复杂的任务分解为越来越小的子任务，直到这些子任务简单到可以用这其中的一个基本指令执行。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="python">
+<h2>运行Python<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h2>
+<p>Python入门的一个障碍，是你可能需要在电脑上安装Python和相关软件。如果你熟悉电脑的操作系统，特别是如果你能熟练使用命令行（command-line interface），安装Python对你来说就不是问题了。但是对于初学者，同时学习系统管理（system administration）和编程这两方面的知识是件痛苦的事。</p>
+<p>为了避免这个问题，我建议你首先在浏览器中运行Python。等你对Python更加了解之后，我会建议你在电脑上安装Python。</p>
+<p>网络上有许多网页可以让你运行Python。如果你已经有最喜欢的网站，那就打开网页运行Python吧。如果没有，我推荐PythonAnywhere。我在 <a class="reference external" href="http://tinyurl.com/thinkpython2e">http://tinyurl.com/thinkpython2e</a> 给出了详细的使用指南。</p>
+<p>目前Python有两个版本，分别是Python 2和Python 3。二者十分相似，因此如果你学过某个版本，可以很容易地切换到另一个版本。事实上，作为初学者，你只会接触到很少数的不同之处。本书采用的是Python 3，但是我会加入一些关于Python 2的说明。</p>
+<p>Python的 <strong>解释器</strong> 是一个读取并执行Python代码的程序。根据你的电脑环境不同，你可以通过双击图标，或者在命令行输入`python`的方式来启动解释器。解释器启动后，你应该看到类似下面的输出：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Python 3.4.0 (default, Jun 19 2015, 14:20:21)
+[GCC 4.8.2] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<p>前三行中包含了关于解释器及其运行的操作系统的信息，因此你看到的内容可能不一样。但是你应该检查下版本号是否以3开头，上面示例中的版本号是3.4.0。如果以3开头，那说明你正在运行Python 3。如果以2开头，那说明你正在运行（你猜对了）Python 2。</p>
+<p>最后一行是一个提示符（prompt），表明你可以在解释器中输入代码了。如果你输入一行代码然后按回车（Enter），解释器就会显示结果：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>现在你已经做好了开始学习的准备。接下来，我将默认你已经知道如何启动Python解释器和执行代码。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id3">
+<h2>第一个程序<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>根据传统，你用一门新语言写的第一个程序叫做“Hello, World!”，因为它的功能只不过是显示单词“Hello, World!”。在Python中，它看起来是这样：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这是一个 <code class="docutils literal"><span class="pre">print</span></code> 函数的示例，尽管它并不会真的在纸上打印。它将结果显示在屏幕上。在此例中，结果是单词：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Hello, World!
+</pre></div>
+</div>
+<p>程序中的单引号标记了被打印文本的首尾；它们不会出现在结果中。</p>
+<p>括号说明 <code class="docutils literal"><span class="pre">print</span></code> 是一个函数。我们将在第三章介绍函数。在Python 2中， print是一个语句；不是函数，所以不需要使用括号。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s1">&#39;Hello, World!&#39;</span>
+</pre></div>
+</div>
+<p>很快你就会明白二者之间的区别，现在知道这些就足够了。</p>
+<blockquote>
+<div>译者注：Python核心开发者Brett Cannon详细解释了 <a class="reference external" href="http://codingpy.com/article/why-print-became-a-function-in-python-3/">为什么print在Python 3中变成了函数</a>。</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="id4">
+<h2>算术运算符<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>接下来介绍算术。Python提供了许多代表加法和乘法等运算的特殊符号，叫做 <strong>运算符</strong> （operators）。</p>
+<p>运算符 <code class="docutils literal"><span class="pre">+</span></code> 、<code class="docutils literal"><span class="pre">-</span></code> 和 <code class="docutils literal"><span class="pre">*</span></code> 分别执行加法、减法和乘法，详见以下示例：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">40</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="go">42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">43</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="go">42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">6</span> <span class="o">*</span> <span class="mi">7</span>
+<span class="go">42</span>
+</pre></div>
+</div>
+<p>运算符 / 执行除法运算：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">84</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="go">42.0</span>
+</pre></div>
+</div>
+<p>你可能会问，为什么结果是42.0，而不是42。在下节中，我会进行解释。</p>
+<p>最后，运算符 <code class="docutils literal"><span class="pre">*</span></code> 执行乘方运算；也就是说，它将某个数字乘以相应的次数：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">6</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span>
+<span class="go">42</span>
+</pre></div>
+</div>
+<p>某些语言使用 <code class="docutils literal"><span class="pre">^</span></code> 运算符执行乘方运算，但是在Python中，它却属于一种位运算符，叫做XOR。如果你对位运算符不太了解，那么下面的结果会让你感到惊讶：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">6</span> <span class="o">^</span> <span class="mi">2</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>我不打算在本书中介绍位运算符，但是你可以阅读 <a class="reference external" href="http://wiki.python.org/moin/BitwiseOperators">Python官方百科</a> ，了解相关内容。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id6">
+<h2>值和类型<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p><strong>值（value）</strong> 是程序处理的基本数据之一，比如说一个单词或一个数字。我们目前已经接触到的值有：2，42.0，和 <code class="docutils literal"><span class="pre">'Hello</span> <span class="pre">World!'</span></code> 。</p>
+<p>这些值又属于不同的 <strong>类型（types）</strong> ：2是一个 <strong>整型数（integer）</strong>，42.0 是一个 <strong>浮点数（floating point number）</strong>，而 <code class="docutils literal"><span class="pre">'Hello,</span> <span class="pre">World!'</span></code> 则是一个 <strong>字符串（string）</strong>，之所以这么叫是因为其中的字符被串在了一起（strung together）。</p>
+<p>如果你不确定某个值的类型是什么，解释器可以告诉你：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&lt;class &#39;int&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mf">42.0</span><span class="p">)</span>
+<span class="go">&lt;class &#39;float&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">)</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+<p>“class”一词在上面的结果中，是类别的意思；一个类型就是一个类别的值。</p>
+<p>不出意料，整型数属于 <code class="docutils literal"><span class="pre">int</span></code> 类型，字符串属于 <code class="docutils literal"><span class="pre">str</span></code> 类型，浮点数属于 <code class="docutils literal"><span class="pre">float</span></code> 类型。</p>
+<p>那么像 <code class="docutils literal"><span class="pre">'2'</span></code> 和 <code class="docutils literal"><span class="pre">'42.0'</span></code> 这样的值呢？它们看上去像数字，但是又和字符串一样被引号包围？</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;42.0&#39;</span><span class="p">)</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+<p>它们其实是字符串。</p>
+<p>当你输入一个大数值的整型数时，你可能会想用逗号进行区分，比如说这样：1,000,000。在Python中，这不是一个合法的 <em>整型数</em>，但是确实合法的值。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span>
+<span class="go">(1, 0, 0)</span>
+</pre></div>
+</div>
+<p>结果和我们预料的完全不同！Python把1,000,000当作成了一个以逗号区分的整型数序列。在后面的章节中，我们会介绍更多有关这种序列的知识。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id7">
+<h2>形式语言和自然语言<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p><strong>自然语言（natural language）</strong> 是人们交流所使用的语言，例如英语、西班牙语和法语。它们不是人为设计出来的（尽管有人试图这样做）；而是自然演变而来。</p>
+<p><strong>形式语言（formal languages）</strong>是人类为了特殊用途而设计出来的。例如，数学家使用的记号（notation）就是形式语言，特别擅长表示数字和符号之间的关系。化学家使用形式语言表示分子的化学结构。 最重要的是：</p>
+<blockquote>
+<div><strong>编程语言是被设计用于表达计算的形式语言。</strong></div></blockquote>
+<p>形式语言通常拥有严格的 <strong>语法</strong> 规则，规定了详细的语句结构。例如，<span class="math">\(3 + 3 = 6\)</span>是语法正确的数学表达式，而<span class="math">\(3 + = 3 \$ 6\)</span>则不是；<span class="math">\(H_2O\)</span>是语法正确的化学式，而<span class="math">\(_2Zz\)</span>则不是。</p>
+<p>语法规则有两种类型，分别涉及<strong>记号（tokens）</strong>和结构。记号是语言的基本元素，例如单词、数字和化学元素。
+<span class="math">\(3 + = 3 \$ 6\)</span>这个式子的问题之一，就是 $ 在数学中不是一个合法的记号
+（至少据我所知）。类似的，<span class="math">\(_2Zz\)</span> 也不合法，因为没有一个元素的简写是 <span class="math">\(Zz\)</span>。</p>
+<p>第二种语法规则与标记的组合方式有关。<span class="math">\(3 + = 3\)</span>这个方程是非法的，因为即使<span class="math">\(+\)</span>和<span class="math">\(=\)</span>都是合法的记号，但是你却不能把它们俩紧挨在一起。类似的，在化学式中，下标位于元素之后，而不是之前。</p>
+<p>“This is &#64; well-structured Engli$h sentence with invalid t*kens in it.
+This sentence all valid tokens has, but invalid structure with.”</p>
+<blockquote>
+<div>译者注：上面两句英文都是不符合语法的，一个包含非法标记，另一个结构不符合语法。</div></blockquote>
+<p>当你读一个用英语写的句子或者用形式语言写的语句时，你都必须要理清各自的结构（尽管在阅读自然语言时，你是下意识地进行的）。这个过程被称为 <strong>解析（parsing）</strong>。</p>
+<p>虽然形式语言和自然语言有很多共同点——标记、结构和语法，它们也有一些不同：</p>
+<dl class="docutils">
+<dt><em>歧义性</em>：</dt>
+<dd>自然语言充满歧义，人们使用上下文线索以及其它信息处理这些歧义。形式语言被设计成几乎或者完全没有歧义，这意味着不管上下文是什么，任何语句都只有一个意义。</dd>
+<dt><em>冗余性</em>：</dt>
+<dd>为了弥补歧义性并减少误解，自然语言使用很多冗余。结果，自然语言经常很冗长。形式语言则冗余较少，更简洁。</dd>
+<dt><em>字面性</em>：</dt>
+<dd>自然语言充满成语和隐喻。如果我说“The penny dropped”，可能根本没有便士、也没什么东西掉下来（这个成语的意思是，经过一段时间的困惑后终于理解某事）。形式语言的含义，与它们字面的意思完全一致。</dd>
+</dl>
+<p>由于我们都是说着自然语言长大的，我们有时候很难适应形式语言。形式语言与自然语言之间的不同，类似诗歌与散文之间的差异，而且更加明显：</p>
+<dl class="docutils">
+<dt><em>诗歌</em>：</dt>
+<dd>单词的含义和声音都有作用，
+整首诗作为一个整理，会对人产生影响，或是引发情感上的共鸣。
+歧义不但常见，而且经常是故意为之。</dd>
+<dt><em>散文</em>：</dt>
+<dd>单词表面的含义更重要，句子结构背后的寓意更深。
+散文比诗歌更适合分析，但仍然经常有歧义。</dd>
+<dt><em>程序</em>：</dt>
+<dd>计算机程序的含义是无歧义、无引申义的，
+通过分析程序的标记和结构，即可完全理解。</dd>
+</dl>
+<p>形式语言的信息密度要高于自然语言，因此阅读的时间会更长。另外，形式语言的结构也很重要，所以从上往下、从左往右阅读，并不总是最好的策略。相反，你得学会在脑海里分析一个程序，识别不同的标记并理解其结构。最后，注重细节。拼写和标点方面的小错误在自然语言中无伤大雅，但是在形式语言中却会产生很大的影响。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id8">
+<h2>调试<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>程序员都会犯错。由于比较奇怪的原因，编程错误被称为 <strong>故障（译者注：英文为bug，一般指虫子）</strong>，追踪错误的过程被称为 <strong>调试（debugging）</strong>。</p>
+<p>编程，尤其是调试，有时会让人动情绪。如果你有个很难的bug解决不了，你可能会感到愤怒、忧郁抑或是丢人。</p>
+<p>有证据表明，人们很自然地把计算机当人来对待。当计算机表现好的时候，我们认为它们是队友，而当它们固执或无礼的时候，我们也会像对待固执或无礼人的一样对待它们（Reeves and Nass, <em>The Media Equation:
+How People Treat Computers, Television, and New Media Like Real People
+and Places</em>）。</p>
+<p>对这些反应做好准备有助于你对付它们。
+一种方法是将计算机看做是一个雇员，拥有特定的长处，
+例如速度和精度，也有些特别的缺点，像缺乏沟通以及不善于把握大局。</p>
+<p>你的工作是当一个好的管理者：找到充分利用优点、摒弃弱点的方法。
+并且找到使用你的情感来解决问题的方法，
+而不是让你的情绪干扰你有效工作的能力。</p>
+<p>学习调试可能很令人泄气，
+但是它对于许多编程之外的活动也是一个非常有价值的技能。
+在每一章的结尾，我都会花一节内容介绍一些调试建议，比如说这一节。希望能帮到你！</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id9">
+<h2>词汇表<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<dl class="docutils">
+<dt><em>解决问题</em>：</dt>
+<dd>将问题形式化、寻找并表达解决方案的过程。</dd>
+<dt><em>高级语言（high-level language）</em>：</dt>
+<dd>像Python这样被设计成人类容易阅读和编写的编程语言。</dd>
+<dt><em>低级语言(low-level language)</em>：</dt>
+<dd>被设计成计算机容易运行的编程语言；也被称为“机器语言”或“汇编语言（assembly language）”。</dd>
+<dt><em>可移植性</em>：</dt>
+<dd>程序能够在多种计算机上运行的特性。</dd>
+<dt><em>解释器</em>：</dt>
+<dd>读取另一个程序并执行该程序的程序。</dd>
+<dt><em>提示符</em>：</dt>
+<dd>解释器所显示的字符，表明已准备好接受用户的输入。</dd>
+<dt><em>程序</em>：</dt>
+<dd>说明一个计算的一组指令。</dd>
+<dt><em>打印语句</em>：</dt>
+<dd>使Python解释器在屏幕上显示某个值的指令。</dd>
+<dt><em>运算符</em>：</dt>
+<dd>代表类似加法、乘法或者字符串连接（string concatenation）等简单计算的特殊符号。</dd>
+<dt><em>值</em>：</dt>
+<dd>程序所处理数据的基本元素之一，例如数字或字符串。</dd>
+<dt><em>类型</em>：</dt>
+<dd>值的类别。我们目前接触的类型有整型数（类型为 <code class="docutils literal"><span class="pre">int</span></code>）、浮点数（类型为 <code class="docutils literal"><span class="pre">float</span></code> ）和字符串（类型为 <code class="docutils literal"><span class="pre">str</span></code> ）</dd>
+<dt><em>整型数</em>：</dt>
+<dd>代表整数的类型。</dd>
+<dt><em>浮点数</em>：</dt>
+<dd>代表一个有小数点的数字的类型。</dd>
+<dt><em>字符串</em>：</dt>
+<dd>代表一系列字符的类型。</dd>
+<dt><em>自然语言</em>：</dt>
+<dd>任意一种人们日常使用的、自然演变而来的语言。</dd>
+<dt><em>形式语言</em>：</dt>
+<dd>任意一种人类为了某种目的而设计的语言，例如用来表示数学概念或者电脑程序；所有的编程语言都是形式语言。</dd>
+<dt><em>记号</em>：</dt>
+<dd>程序语法结构中的基本元素之一，与自然语言中的单词类似。</dd>
+<dt><em>语法</em>：</dt>
+<dd>规定了程序结构的规则。</dd>
+<dt><em>解析</em>：</dt>
+<dd>阅读程序，并分析其语法结构的过程</dd>
+<dt><em>故障</em>：</dt>
+<dd>程序中的错误。</dd>
+<dt><em>调试</em>：</dt>
+<dd>寻找并解决错误的过程。</dd>
+</dl>
+</div>
+<hr class="docutils" />
+<div class="section" id="id10">
+<h2>练习题<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>你最好在电脑前阅读此书，因为你可以随时测试书中的示例。</p>
+<p>每当你试验一个新特性的时候，你应该试着去犯错。举个例子，在“Hello, World!”程序中，如果你漏掉一个引号会发生什么情况？如果你去掉两个引号呢？如果你把print写错了呢？</p>
+<p>这类试验能帮助你记忆阅读到的内容；对你平时编程业余帮助，因为你可以了解不同的错误信息代表的意思。现在故意犯错误，总胜过以后不小心犯错。</p>
+<ol class="arabic simple">
+<li>在打印语句中，如果你去掉一个或两个括号，会发生什么？</li>
+<li>如果你想打印一个字符串，如果你去掉一个或两个引号，会发生什么？</li>
+<li>你可以使用减号创建一个负数，如-2。如果你在一个数字前再加上个加号，会发生什么？2++2会得出什么结果？</li>
+<li>在数学标记中，前导零（leading zeros）没有问题，如02。如果我们在Python中这样做，会发生什么？</li>
+<li>如果两个值之间没有运算符，又会发什么？</li>
+</ol>
+<p>启动Python解释器，把它当计算器使用。</p>
+<ol class="arabic simple">
+<li>42分42秒一共有多少秒？</li>
+<li>10公里可以换算成多少英里？提示：一英里等于1.61公里。</li>
+<li>如果你花42分42秒跑完了10公里，你的平均速度是多少（英里每分和英里每秒）？你平均每小时跑了多少英里？</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="00-preface.html" class="btn btn-neutral" title="前言" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, EarlGrey et.al.
+      最后更新于 Mar 01, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

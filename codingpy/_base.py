@@ -68,7 +68,6 @@ def register_routes(app):
 
     app.register_blueprint(site.bp, url_prefix='')
     app.register_blueprint(account.bp, url_prefix='/account')
-    # app.register_blueprint(admin.bp, url_prefix='/admin')
 
 
 def register_managers(app):
