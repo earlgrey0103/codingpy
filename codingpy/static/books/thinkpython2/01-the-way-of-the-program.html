@@ -172,12 +172,12 @@ var _hmt = _hmt || [];
   <div class="section" id="id1">
 <h1>第一章：程序之道<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>本书的目标是教你像计算机科学家一样思考。这一思考方式集成了数学、工程以及自然科学的一些最好的特点。像数学家一样，计算机科学家使用形式语言表示思想（具体来说是计算）。像工程师一样，计算机科学家设计东西，将零件组成系统，在各种选择之间寻求平衡。像科学家一样，计算机科学家观察复杂系统的行为，形成假设并且对预测进行检验。</p>
-<p>对于计算机科学家，最重要的技能是 <strong>解决问题的能力</strong> 。解决问题（problem solving）意味着对问题进行形式化，寻求创新型的解决方案，并且清晰、准确地表达解决方案的能力。事实证明，学习编程的过程是锻炼问题解决能力的一个绝佳机会。这就是为什么本章被称为“编程之道”。</p>
+<p>对于计算机科学家，最重要的技能是 <strong>解决问题的能力</strong> 。解决问题（problem solving）意味着对问题进行形式化，寻求创新型的解决方案，并且清晰、准确地表达解决方案的能力。事实证明，学习编程的过程是锻炼问题解决能力的一个绝佳机会。这就是为什么本章被称为“程序之道”。</p>
 <p>一方面，你将学习如何编程，这本身就是一个有用的技能。另一方面，你将把编程作为实现自己目的的手段。随着学习的深入，你会更清楚自己的目的。</p>
 <hr class="docutils" />
 <div class="section" id="id2">
 <h2>什么是程序？<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p><strong>程序</strong> 是一系列说明如何执行计算（computation）的指令。计算可以是数学上的计算，例如寻找公式的解或多项式的根，但它也可以是一个符号计算（symbolic computation），例如在文档中搜索并替换文本或者图片，就像处理图片或播放视频。</p>
+<p><strong>程序</strong> 是一系列说明如何执行计算（computation）的指令。计算可以是数学上的计算，例如寻找公式的解或多项式的根，也可以是一个符号计算（symbolic computation），例如在文档中搜索并替换文本或者图片，就像处理图片或播放视频。</p>
 <p>不同编程语言中，程序的具体细节也不一样，但是有一些基本的指令几乎出现在每种语言当中：</p>
 <dl class="docutils">
 <dt><em>输入（input）：</em></dt>
@@ -200,7 +200,7 @@ var _hmt = _hmt || [];
 <p>为了避免这个问题，我建议你首先在浏览器中运行Python。等你对Python更加了解之后，我会建议你在电脑上安装Python。</p>
 <p>网络上有许多网页可以让你运行Python。如果你已经有最喜欢的网站，那就打开网页运行Python吧。如果没有，我推荐PythonAnywhere。我在 <a class="reference external" href="http://tinyurl.com/thinkpython2e">http://tinyurl.com/thinkpython2e</a> 给出了详细的使用指南。</p>
 <p>目前Python有两个版本，分别是Python 2和Python 3。二者十分相似，因此如果你学过某个版本，可以很容易地切换到另一个版本。事实上，作为初学者，你只会接触到很少数的不同之处。本书采用的是Python 3，但是我会加入一些关于Python 2的说明。</p>
-<p>Python的 <strong>解释器</strong> 是一个读取并执行Python代码的程序。根据你的电脑环境不同，你可以通过双击图标，或者在命令行输入`python`的方式来启动解释器。解释器启动后，你应该看到类似下面的输出：</p>
+<p>Python的 <strong>解释器</strong> 是一个读取并执行Python代码的程序。根据你的电脑环境不同，你可以通过双击图标，或者在命令行输入<code class="docutils literal"><span class="pre">python</span></code>的方式来启动解释器。解释器启动后，你应该看到类似下面的输出：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>Python 3.4.0 (default, Jun 19 2015, 14:20:21)
 [GCC 4.8.2] on linux
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
@@ -248,13 +248,13 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <span class="go">42</span>
 </pre></div>
 </div>
-<p>运算符 / 执行除法运算：</p>
+<p>运算符 <code class="docutils literal"><span class="pre">/</span></code> 执行除法运算：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">84</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="go">42.0</span>
 </pre></div>
 </div>
 <p>你可能会问，为什么结果是42.0，而不是42。在下节中，我会进行解释。</p>
-<p>最后，运算符 <code class="docutils literal"><span class="pre">*</span></code> 执行乘方运算；也就是说，它将某个数字乘以相应的次数：</p>
+<p>最后，运算符 <code class="docutils literal"><span class="pre">*</span></code> 执行乘方运算；也就是说，它将某个数字乘以自身相应的次数：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">6</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span>
 <span class="go">42</span>
 </pre></div>
@@ -280,9 +280,9 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <span class="go">&lt;class &#39;str&#39;&gt;</span>
 </pre></div>
 </div>
-<p>“class”一词在上面的结果中，是类别的意思；一个类型就是一个类别的值。</p>
+<p>“class”一词在上面的输出结果中，是类别的意思；一个类型就是一个类别的值。</p>
 <p>不出意料，整型数属于 <code class="docutils literal"><span class="pre">int</span></code> 类型，字符串属于 <code class="docutils literal"><span class="pre">str</span></code> 类型，浮点数属于 <code class="docutils literal"><span class="pre">float</span></code> 类型。</p>
-<p>那么像 <code class="docutils literal"><span class="pre">'2'</span></code> 和 <code class="docutils literal"><span class="pre">'42.0'</span></code> 这样的值呢？它们看上去像数字，但是又和字符串一样被引号包围？</p>
+<p>那么像 <code class="docutils literal"><span class="pre">'2'</span></code> 和 <code class="docutils literal"><span class="pre">'42.0'</span></code> 这样的值呢？它们看上去像数字，但是又和字符串一样被引号括在了一起？</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
 <span class="go">&lt;class &#39;str&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;42.0&#39;</span><span class="p">)</span>
@@ -290,7 +290,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 </pre></div>
 </div>
 <p>它们其实是字符串。</p>
-<p>当你输入一个大数值的整型数时，你可能会想用逗号进行区分，比如说这样：1,000,000。在Python中，这不是一个合法的 <em>整型数</em>，但是确实合法的值。</p>
+<p>当你输入一个大数值的整型数时，你可能会想用逗号进行区分，比如说像这样：1,000,000。在Python中，这不是一个合法的 <em>整型数</em>，但是确实合法的值。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span>
 <span class="go">(1, 0, 0)</span>
 </pre></div>
@@ -309,8 +309,8 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <span class="math">\(3 + = 3 \$ 6\)</span>这个式子的问题之一，就是 $ 在数学中不是一个合法的记号
 （至少据我所知）。类似的，<span class="math">\(_2Zz\)</span> 也不合法，因为没有一个元素的简写是 <span class="math">\(Zz\)</span>。</p>
 <p>第二种语法规则与标记的组合方式有关。<span class="math">\(3 + = 3\)</span>这个方程是非法的，因为即使<span class="math">\(+\)</span>和<span class="math">\(=\)</span>都是合法的记号，但是你却不能把它们俩紧挨在一起。类似的，在化学式中，下标位于元素之后，而不是之前。</p>
-<p>“This is &#64; well-structured Engli$h sentence with invalid t*kens in it.
-This sentence all valid tokens has, but invalid structure with.”</p>
+<p>This is &#64; well-structured Engli$h sentence with invalid t*kens in it.
+This sentence all valid tokens has, but invalid structure with.</p>
 <blockquote>
 <div>译者注：上面两句英文都是不符合语法的，一个包含非法标记，另一个结构不符合语法。</div></blockquote>
 <p>当你读一个用英语写的句子或者用形式语言写的语句时，你都必须要理清各自的结构（尽管在阅读自然语言时，你是下意识地进行的）。这个过程被称为 <strong>解析（parsing）</strong>。</p>
@@ -336,7 +336,7 @@ This sentence all valid tokens has, but invalid structure with.”</p>
 <dd>计算机程序的含义是无歧义、无引申义的，
 通过分析程序的标记和结构，即可完全理解。</dd>
 </dl>
-<p>形式语言的信息密度要高于自然语言，因此阅读的时间会更长。另外，形式语言的结构也很重要，所以从上往下、从左往右阅读，并不总是最好的策略。相反，你得学会在脑海里分析一个程序，识别不同的标记并理解其结构。最后，注重细节。拼写和标点方面的小错误在自然语言中无伤大雅，但是在形式语言中却会产生很大的影响。</p>
+<p>形式语言要比自然语言更加稠密，因此阅读起来花的时间会更长。另外，形式语言的结构也很重要，所以从上往下、从左往右阅读，并不总是最好的策略。相反，你得学会在脑海里分析一个程序，识别不同的标记并理解其结构。最后，注重细节。拼写和标点方面的小错误在自然语言中无伤大雅，但是在形式语言中却会产生很大的影响。</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="id8">
@@ -407,16 +407,18 @@ and Places</em>）。</p>
 <hr class="docutils" />
 <div class="section" id="id10">
 <h2>练习题<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p><em>习题 1-1.</em></p>
 <p>你最好在电脑前阅读此书，因为你可以随时测试书中的示例。</p>
 <p>每当你试验一个新特性的时候，你应该试着去犯错。举个例子，在“Hello, World!”程序中，如果你漏掉一个引号会发生什么情况？如果你去掉两个引号呢？如果你把print写错了呢？</p>
-<p>这类试验能帮助你记忆阅读到的内容；对你平时编程业余帮助，因为你可以了解不同的错误信息代表的意思。现在故意犯错误，总胜过以后不小心犯错。</p>
+<p>这类试验能帮助你记忆读过的内容；对你平时编程也有帮助，因为你可以了解不同的错误信息代表的意思。现在故意犯错误，总胜过以后不小心犯错。</p>
 <ol class="arabic simple">
 <li>在打印语句中，如果你去掉一个或两个括号，会发生什么？</li>
-<li>如果你想打印一个字符串，如果你去掉一个或两个引号，会发生什么？</li>
+<li>你想打印一个字符串，如果你去掉一个或两个引号，会发生什么？</li>
 <li>你可以使用减号创建一个负数，如-2。如果你在一个数字前再加上个加号，会发生什么？2++2会得出什么结果？</li>
 <li>在数学标记中，前导零（leading zeros）没有问题，如02。如果我们在Python中这样做，会发生什么？</li>
-<li>如果两个值之间没有运算符，又会发什么？</li>
+<li>如果两个值之间没有运算符，又会发生什么？</li>
 </ol>
+<p><em>习题 1-2.</em></p>
 <p>启动Python解释器，把它当计算器使用。</p>
 <ol class="arabic simple">
 <li>42分42秒一共有多少秒？</li>
@@ -444,7 +446,7 @@ and Places</em>）。</p>
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Mar 01, 2016.
+      最后更新于 Mar 02, 2016.
 
     </p>
   </div>
