@@ -1,0 +1,537 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第二章：变量、表达式和语句 &mdash; 《Think Python 2ed》中译本 1.0 文档</title>
+  
+
+  
+    <meta name="keywords" content="《Think Python》第二版中译文, Python 3版入门教材, Allen Downey, EarlGrey, 编程派">
+    <meta name="description" content="编程派翻译的《Think Python 2ed》中文版，为最新支持Python 3版的教材。">
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="《Think Python 2ed》中译本 1.0 文档" href="index.html"/>
+        <link rel="prev" title="第一章：程序之道" href="01-the-way-of-the-program.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69612020-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 《Think Python 2ed》中译本
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">第二章：变量、表达式和语句</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">赋值语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">变量名</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">表达式和语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">脚本模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">运算顺序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">字符串运算</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">注释</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">词汇表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">练习题</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">《Think Python 2ed》中译本</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>第二章：变量、表达式和语句</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+            <a href="http://codingpy.com" title="编程派" >前往编程派</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第二章：变量、表达式和语句<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>编程语言最强大的特性之一，是操作<strong>变量</strong>的能力。变量是指向某个值的名称。</p>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>赋值语句<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p><strong>赋值语句（assignment statement）</strong>会新建变量，并为这个变量赋值。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;And now for something completely different&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.141592653589793</span>
+</pre></div>
+</div>
+<p>这个例子进行了三次赋值。 第一次将一个字符串赋给一个叫message的新变量；
+第二次将整型数17赋给n； 第三次将<span class="math">\(\pi\)</span>的（近似）值赋给pi。</p>
+<p>在纸上表示变量的一个常见方法，是写下变量名，并用箭头指向变量的值。
+这种图被称为<strong>状态图（state
+diagram）</strong>，因为它展示了每个变量所处的状态（可以把其看成是变量的心理状态）。
+图2-1展示了前面例子的结果。</p>
+<div class="figure" id="id12">
+<img alt="状态图。" src="_images/state2.png" />
+<p class="caption"><span class="caption-text">图2-1：状态图。</span></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id3">
+<h2>变量名<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>程序员通常为变量选择有意义的名字—它们可以记录该变量的用途。</p>
+<p>变量名可以任意长。它们可以包括字母和数字，但是不能以数字开头。
+使用大写字母是合法的，但是根据惯例，变量名只使用小写字母。</p>
+<p>下划线<code class="docutils literal"><span class="pre">_</span></code>可以出现在变量名中。
+它经常用于有多个单词的变量名，例如<code class="docutils literal"><span class="pre">my_name</span></code>或者<code class="docutils literal"><span class="pre">airspeed_of_unladen_swallow</span></code>。</p>
+<p>如果你给了变量一个非法的名称，解释器将抛出一个语法错误：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 76trombones = &#39;big parade&#39;
+SyntaxError: invalid syntax
+&gt;&gt;&gt; more@ = 1000000
+SyntaxError: invalid syntax
+&gt;&gt;&gt; class = &#39;Advanced Theoretical Zymurgy&#39;
+SyntaxError: invalid syntax
+</pre></div>
+</div>
+<p>76trombones是非法的，因为它以数字开头。more&#64;是非法的，因为它包含了一个非法字符&#64;。 但是，class错在哪儿了呢?</p>
+<p>原来，class是Python的<strong>关键字（keywords）</strong>之一。
+解释器使用关键字识别程序的结构，它们不能被用作变量名。</p>
+<p>Python 3有以下关键词：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>False      class      finally    is         return
+None       continue   for        lambda     try
+True       def        from       nonlocal   while
+and        del        global     not        with
+as         elif       if         or         yield
+assert     else       import     pass
+break      except     in         raise
+</pre></div>
+</div>
+<p>你没有必要背诵上面的关键词。大部分的开发环境会用不同的颜色区别显示关键词；如果你不小心使用关键词作为变量名，你肯定会发现的。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id4">
+<h2>表达式和语句<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p><strong>表达式（expression）</strong>是值、变量和运算符的组合。
+值自身也被认为是一个表达式，变量也是，因此下面都是合法的表达式：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">42</span>
+<span class="go">42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span>
+<span class="go">17</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">+</span> <span class="mi">25</span>
+<span class="go">42</span>
+</pre></div>
+</div>
+<p>当你在提示符后输入表达式时，解释器会 ** 计算（evaluate）**该表达式，这就意味着解释器会求它的值。在上面的例子中，n的值是17，n + 25的值是42。</p>
+<p><strong>语句（statement）</strong>是一个会产生影响的代码单元，例如新建一个变量或显示某个值。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>第一行是一个赋值语句，将某个值赋给了n。第二行是一个打印语句，在屏幕上显示n的值。</p>
+<p>当你输入一个语句后，解释器会<strong>执行（execute）</strong>这个语句，即按照语句的指令完成操作。一般来说，语句是没有值的。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id5">
+<h2>脚本模式<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>到目前为止，我们都是在<strong>交互模式（interactive mode）</strong>下运行Python，即直接与解释器进行交互。交互模式对学习入门很有帮助，但是如果你需要编写很多行代码，使用交互模式就不太方便了。</p>
+<p>另一种方法是将代码保存到一个被称为<strong>脚本（script）</strong>的文件里，然后以<strong>脚本模式（script mode）</strong>运行解释器并执行脚本。按照惯例，Python脚本文件名的后缀是.py。</p>
+<p>如果你知道如何在本地电脑新建并运行脚本，那你可以开始编码了。否则的话，我再次建议使用PythonAnywhere。我在 <a class="reference external" href="http://tinyurl.com/thinkpython2e">http://tinyurl.com/thinkpython2e</a> 上贴出了如何以脚本模式运行解释器的指南。</p>
+<p>由于Python支持这两种模式，在将代码写入脚本之前，你可以在交互模式下对代码片段进行测试。不过，交互模式和脚本模式之间存在一些差异，可能会让你感到疑惑。</p>
+<p>举个例子，如果你把Python当计算器使用，你可能会输入下面这样的代码：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">miles</span> <span class="o">=</span> <span class="mf">26.2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">miles</span> <span class="o">*</span> <span class="mf">1.61</span>
+<span class="go">42.182</span>
+</pre></div>
+</div>
+<p>第一行将一个值赋给miles，但是并没有产生可见的效果。
+第二行是一个表达式，因此解释器计算它并将结果显示出来。
+结果告诉我们，一段马拉松大概是42公里。</p>
+<p>但是如果你将相同的代码键入一个脚本并且运行它，你得不到任何输出。
+在脚本模式下，表达式自身不会产生可见的效果。虽然Python实际上计算了表达式，但是如果你不告诉它要显示结果，它是不会那么做的。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">miles</span> <span class="o">=</span> <span class="mf">26.2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">miles</span> <span class="o">*</span> <span class="mf">1.61</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这个行为开始可能有些令人费解。</p>
+<p>一个脚本通常包括一系列语句。
+如果有多于一条的语句，那么随着语句逐个执行，解释器会逐一显示计算结果。</p>
+<p>例如，以下脚本</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>产生的输出结果是</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+<p>赋值语句不产生输出。</p>
+<p>在Python解释器中键入以下的语句，看看他们的结果是否符合你的理解：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>现在将同样的语句写入一个脚本中并执行它。输出结果是什么？
+修改脚本，将每个表达式变成打印语句，再次运行它。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id6">
+<h2>运算顺序<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>当一个表达式中有多于一个运算符时，计算的顺序由<strong>运算顺序（order of operations）</strong>决定。 对于算数运算符，Python遵循数学里的惯例。 缩写<strong>PEMDAS</strong>有助于帮助大家记住这些规则：</p>
+<ul class="simple">
+<li>括号（<strong>P</strong>arentheses）具有最高的优先级，并且可以强制表达式按你希望的顺序计算。
+因为在括号中的表达式首先被计算，那么2 *
+(3-1)的结果是4，(1+1)**(5-2)的结果是8。
+你也可以用括号提高表达式的可读性，如写成(minute * 100) /
+60，即使这样并不改变运算的结果。</li>
+<li>指数运算（<strong>E</strong>xponentiation）具有次高的优先级，因此1 + 2**3的结果是9而非27，
+2 * 3**2的结果是18而非36。</li>
+<li>乘法（<strong>M</strong>ultiplication）和除法（<strong>D</strong>ivision）有相同的优先级，
+比加法（<strong>A</strong>ddition）和减法（<strong>S</strong>ubtraction）高，加法和减法也具有相同的优先级。
+因此2*3-1是5而非4，6+4/2是8而非5。</li>
+<li>具有相同优先级的运算符按照从左到右的顺序进行计算（除了指数运算）。
+因此表达式degrees / 2 * pi中，除法先运算，然后结果被乘以pi。
+为了被<span class="math">\(2 \pi\)</span>除，你可以使用括号，或者写成degrees / 2 / pi。</li>
+</ul>
+<p>我不会费力去记住这些运算符的优先级规则。如果看完表达式后分不出优先级，我会使用括号使计算顺序变得更明显。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id7">
+<h2>字符串运算<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>一般来讲，你不能对字符串执行数学运算，即使字符串看起来很像数字，
+因此下面这些表达式是非法的：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;2&#39;</span><span class="o">-</span><span class="s1">&#39;1&#39;</span>    <span class="s1">&#39;eggs&#39;</span><span class="o">/</span><span class="s1">&#39;easy&#39;</span>    <span class="s1">&#39;third&#39;</span><span class="o">*</span><span class="s1">&#39;a charm&#39;</span>
+</pre></div>
+</div>
+<p>但有两个例外，+ 和 *。</p>
+<p>加号运算符 + 可用于 <strong>字符串拼接（string concatenation）</strong>，也就是将字符串首尾相连起来。例如：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">first</span> <span class="o">=</span> <span class="s1">&#39;throat&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">second</span> <span class="o">=</span> <span class="s1">&#39;warbler&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">first</span> <span class="o">+</span> <span class="n">second</span>
+<span class="go">throatwarbler</span>
+</pre></div>
+</div>
+<p>乘法运算符* 也可应用于字符串；它执行重复运算。
+例如，<code class="docutils literal"><span class="pre">'Spam'*3</span></code>的结果是<code class="docutils literal"><span class="pre">'SpamSpamSpam'</span></code>。
+如果其中一个运算数是字符串，则另外一个必须是整型数。</p>
+<p>+和*的这个用法，类比加法和乘法也讲得通。 就像4*3与4+4+4等价一样，
+我们也会期望<code class="docutils literal"><span class="pre">'Spam'*3</span></code>和<code class="docutils literal"><span class="pre">'Spam'+'Spam'+'Spam'</span></code>等价，而事实上的确如此。
+另一方面，字符串拼接和重复与整数的加法和乘法也有很大的不同。
+你能想出来一个加法具有而字符串拼接不具有的特性么？</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id8">
+<h2>注释<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>随着程序变得越来越大，越来越复杂，它们的可读性也越来越差。
+形式语言是稠密的，通常很难在读一段代码后，说出其做什么或者为什么这样做。</p>
+<p>因此，在你的程序中用自然语言做笔记，解释程序做什么通常是比较好的办法。
+这些标注被称为<strong>注释（comments）</strong>，以<code class="docutils literal"><span class="pre">#</span></code>符号开始。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># 计算逝去的时间占一小时的比例</span>
+<span class="n">percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">minute</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+</pre></div>
+</div>
+<p>此例中，注释独立一行。你也可以将注释放在行尾：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">minute</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>     <span class="c1"># 逝去时间占一小时的比例</span>
+</pre></div>
+</div>
+<p>从#开始到行尾的所有内容都会被解释器忽略—其对程序执行没有影响。</p>
+<p>在注释中记录代码不明显的特征，是最有帮助的。
+假设读者能够读懂代码做了<em>什么</em>是合理的；
+但是解释代码<em>为什么</em>这么做则更有用。</p>
+<p>下面这个注释只是重复了代码，没有什么用：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="mi">5</span>     <span class="c1"># 将5赋值给v</span>
+</pre></div>
+</div>
+<p>下面的注释包括了代码中没有的有用信息：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="mi">5</span>     <span class="c1"># 加速度，单位：米/秒</span>
+</pre></div>
+</div>
+<p>好的变量名能够减少对注释的需求，但是长变量名使得表达式很难读，
+因此这里有个平衡问题。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id9">
+<h2>调试<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>程序中可能会出现下面三种错误：语法错误（syntax error）、运行时错误(runtime error)和语义错误(semantic error)。我们如果能够分辨出三者区别，有助于快速追踪这些错误。</p>
+<dl class="docutils">
+<dt>语法错误：</dt>
+<dd><p class="first">语法指的是程序的结构及其背后的规则。例如，括号必须要成对出现，所以(1 + 2)是合法的，但是8)则是一个 <strong>语法错误</strong>。</p>
+<p class="last">如果你的程序中存在一个语法错误，Python会显示一条错误信息，然后退出运行。你无法顺利运行程序。在你编程生涯的头几周里，你可能会花大量时间追踪语法错误。随着你的经验不断积累，犯的语法错误会越来越少，发现错误的速度也会更快。</p>
+</dd>
+<dt>运行时错误：</dt>
+<dd><p class="first">第二种错误类型是运行时错误，这么称呼是因为这类错误只有在程序开始运行后才会出现。这类错误也被称为 <strong>异常（exception）</strong>，因为它们的出现通常说明发生了某些特别的（而且不好的）事情。</p>
+<p class="last">在前几章提供的简单程序中，你很少会碰到运行时错误，所以你可能需要一段时间才会接触到这种错误。</p>
+</dd>
+<dt>语义错误：</dt>
+<dd><p class="first">第三类错误是“语义”错误，即与程序的意思的有关。如果你的程序中有语义错误，程序在运行时不会产生错误信息，但是不会返回正确的结果。它会返回另外的结果。严格来说，它是按照你的指令在运行。</p>
+<p class="last">识别语义错误可能是棘手的，因为这需要你反过来思考，通过观察程序的输出来搞清楚它在做什么。</p>
+</dd>
+</dl>
+</div>
+<hr class="docutils" />
+<div class="section" id="id10">
+<h2>词汇表<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<dl class="docutils">
+<dt>变量：</dt>
+<dd>变量是指向某个值的名称。</dd>
+<dt>赋值语句：</dt>
+<dd>将某个值赋给变量的语句。</dd>
+<dt>状态图：</dt>
+<dd>变量及其所指的值的图形化表示。</dd>
+<dt>关键字：</dt>
+<dd>关键字是用于解析程序的；你不能使用if、def和while这样的关键词作为变量名。</dd>
+<dt>运算数（operand）：</dt>
+<dd>运算符所操作的值之一。</dd>
+<dt>表达式：</dt>
+<dd>变量、运算符和值的组合，代表一个单一的结果。</dd>
+<dt>计算（evaluate）：</dt>
+<dd>通过执行运算以简化表达式，从而得出一个单一的值。</dd>
+<dt>语句：</dt>
+<dd>代表一个命令或行为的一段代码。目前为止我们接触的语句有赋值语句和打印语句。</dd>
+<dt>执行：</dt>
+<dd>运行一个语句，并按照语句的指令操作。</dd>
+<dt>交互式模式：</dt>
+<dd>通过在提示符中输入代码，使用Python解释器的一种方式。</dd>
+<dt>脚本模式：</dt>
+<dd>使用Python解释器从脚本中读取代码，并运行脚本的方式。</dd>
+<dt>脚本：</dt>
+<dd>保存在文件中的程序。</dd>
+<dt>运算顺序：</dt>
+<dd>有关多个运算符和运算数时计算顺序的规则。</dd>
+<dt>拼接：</dt>
+<dd>将两个运算数首尾相连。</dd>
+<dt>注释：</dt>
+<dd>程序中提供给其他程序员（任何阅读源代码的人）阅读的信息，对程序的执行没有影响。</dd>
+<dt>语法错误：</dt>
+<dd>使得程序无法进行解析（因此无法进行解释）的错误。</dd>
+<dt>异常：</dt>
+<dd>只有在程序运行时才发现的错误。</dd>
+<dt>语义：</dt>
+<dd>程序中表达的意思。</dd>
+<dt>语义错误：</dt>
+<dd>使得程序偏离程序员原本期望的错误。</dd>
+</dl>
+</div>
+<hr class="docutils" />
+<div class="section" id="id11">
+<h2>练习题<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<p>习题 2-1.</p>
+<p>和上一章一样，我还是要建议大家在学习新特性之后，在交互模式下充分试验，故意犯一些错误，看看到底会出什么问题。</p>
+<ul class="simple">
+<li>我们已经知道 <code class="docutils literal"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">42</span></code> 是合法的。那么 <code class="docutils literal"><span class="pre">42</span> <span class="pre">=</span> <span class="pre">n</span></code> 呢？</li>
+<li><code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">1</span></code> 又合法吗？</li>
+<li>在某些编程语言中，每个语句都是以分号 <code class="docutils literal"><span class="pre">；</span></code> 结束的。如果你在一个Python语句后也以分号结尾，会发生什么？</li>
+<li>如果在语句最后带上分号呢？</li>
+<li>在数学记法中，你可以将 <span class="math">\(x\)</span> 和 <span class="math">\(y\)</span> 像这样相乘：<span class="math">\(x y\)</span>。如果你在Python中也这么写的话，会发生什么？</li>
+</ul>
+<p>习题 2-2.</p>
+<p>继续练习将Python解释器当做计算器使用：</p>
+<ol class="arabic">
+<li><p class="first">半径为<span class="math">\(r\)</span>的球体积是<span class="math">\(\frac{4}{3} \pi r^3\)</span>。
+半径为5的球体积是多少？</p>
+</li>
+<li><p class="first">假设一本书的零售价是$24.95，但书店有40%的折扣。运费则是第一本$3，以后每本75美分。
+购买60本的总价是多少？</p>
+</li>
+<li><p class="first">如果我上午6:52离开家，
+以放松跑（easy pace）的速度跑1英里（每英里8:15，即每英里耗时8分15秒），再以
+节奏跑（tempo）的速度跑3英里（每英里7:12，即每英里耗时7分12秒)，之后又以放松跑的速度跑1英里，我什么时候回到家吃早饭？</p>
+<blockquote>
+<div><p>译者注：配速（pace）是在马拉松运动的训练中常使用的一个概念，配速是速度的一种，是每公里所需要的时间。配速=时间/距离。Tempo run一般被翻译成「节奏跑」或「乳酸门槛跑」，是指以比10K或5K比赛速度稍慢（每公里大约慢10-15秒）的速度进行训练，或者以平时15K-半程的配速来跑。参考：<a class="reference external" href="https://www.zhihu.com/question/22237002">https://www.zhihu.com/question/22237002</a></p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="01-the-way-of-the-program.html" class="btn btn-neutral" title="第一章：程序之道" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, EarlGrey et.al.
+      最后更新于 Mar 04, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
