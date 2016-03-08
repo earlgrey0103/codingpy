@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-《Think Python 2ed》最新版中文翻译
+《Think Python 2e》最新版中文翻译
 ========================================================================
 
 Contents:
