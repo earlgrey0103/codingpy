@@ -12,6 +12,8 @@ from flask.ext.login import UserMixin, AnonymousUserMixin
 from flask.ext.sqlalchemy import BaseQuery
 from itsdangerous import URLSafeTimedSerializer as Serializer
 from werkzeug import cached_property
+from sqlalchemy.sql.expression import cast
+from sqlalchemy import Unicode
 from jinja2.filters import do_striptags, do_truncate
 
 from .ext import db, bcrypt, keywords_split, login_manager
@@ -550,12 +552,12 @@ class ArticleQuery(BaseQuery):
         criteria = []
 
         for keyword in keywords_split(keywords):
-            keyword = '%{0}%'.format(keyword)
-            criteria.append(db.or_(Article.keywords.ilike(keyword),
-                                   Article.title.ilike(keyword)))
-
-        q = reduce(db.or_, criteria)
-        return self.public().filter(q)
+            if keyword:
+                keyword = '%{0}%'.format(keyword)
+                criteria.append(cast(Article.title, Unicode).ilike(keyword))
+                criteria.append(cast(Article.keywords, Unicode).ilike(keyword))
+                
+        return self.public().filter(db.or_(*criteria))
 
     def archives(self, year, month):
         if not year:
