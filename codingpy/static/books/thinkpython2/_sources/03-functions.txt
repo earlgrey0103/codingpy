@@ -675,3 +675,12 @@ None：
 
 答案： http://thinkpython2.com/code/grid.py 。致谢：这个习题基于 *Practical C Programming, Third
 Edition* 一书中的习题改编，此书由O’Reilly出版社于1997年出版。
+
+**贡献者**
+
+#. 翻译：`@bingjin`_
+#. 校对：`@bingjin`_
+#. 参考：`@carfly`_
+
+.. _@bingjin: https://github.com/bingjin
+.. _@carfly: https://github.com/carfly

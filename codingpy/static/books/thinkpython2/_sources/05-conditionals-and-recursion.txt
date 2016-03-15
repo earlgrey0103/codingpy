@@ -642,3 +642,13 @@ Python 提供了一个内建函数 ``input`` ，可以暂停程序运行，并�
 
 #. 科赫曲线能够以多种方式泛化。
    点击\ http://en.wikipedia.org/wiki/Koch_snowflake \ 查看例子，并实现你最喜欢的那种方式。
+
+**贡献者**
+
+#. 翻译：`@iphyer`_
+#. 校对：`@bingjin`_
+#. 参考：`@carfly`_
+
+.. _@iphyer: https://github.com/iphyer
+.. _@bingjin: https://github.com/bingjin
+.. _@carfly: https://github.com/carfly

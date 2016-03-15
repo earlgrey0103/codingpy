@@ -349,3 +349,12 @@ and Places*）。
 #. 如果你花42分42秒跑完了10公里，你的平均配速（pace）是多少（每英里耗时，分别精确到分和秒）？你每小时平均跑了多少英里（英里/时）？
 
     译者注：配速（pace）是在马拉松运动的训练中常使用的一个概念，配速是速度的一种，是每公里所需要的时间。配速=时间/距离。
+
+**贡献者**
+
+#. 翻译：`@bingjin`_
+#. 校对：`@bingjin`_
+#. 参考：`@carfly`_
+
+.. _@bingjin: https://github.com/bingjin
+.. _@carfly: https://github.com/carfly

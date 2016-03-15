@@ -514,3 +514,12 @@ http://thinkpython2.com/code/polygon.py.
 然后编写一个绘制阿基米德螺线（或者其他种类的螺线）的程序。
 
 答案：\ http://thinkpython2.com/code/spiral.py \ 。
+
+**贡献者**
+
+#. 翻译：`@bingjin`_
+#. 校对：`@bingjin`_
+#. 参考：`@carfly`_
+
+.. _@bingjin: https://github.com/bingjin
+.. _@carfly: https://github.com/carfly
