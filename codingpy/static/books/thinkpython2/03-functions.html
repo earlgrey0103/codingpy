@@ -38,6 +38,7 @@
 
   
     <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="next" title="第四章：案例研究：接口设计" href="04-case-study-interface-design.html"/>
         <link rel="prev" title="第二章：变量、表达式和语句" href="02-variables-expressions-and-statements.html"/> 
 
   
@@ -124,7 +125,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#id7">执行流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id8">形参和实参</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id9">变量和形参都是局部的</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">堆栈图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stackdiagram">堆栈图</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id11">有返回值函数和无返回值函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id12">为什么写函数？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id13">调试</a></li>
@@ -132,6 +133,8 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#id15">练习题</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
 </ul>
 
             
@@ -182,7 +185,6 @@ var _hmt = _hmt || [];
 <p>在编程的语境下，<strong>函数（function）</strong>指的是一个有命名的、执行某个计算的语句序列（sequence of statements）。
 在定义一个函数的时候，你需要指定函数的名字和语句序列。
 之后，你可以通过这个名字“调用（call）”该函数。</p>
-<hr class="docutils" />
 <div class="section" id="id2">
 <h2>函数调用<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>我们已经看见过一个<strong>函数调用（function call）</strong>的例子。</p>
@@ -224,7 +226,6 @@ var _hmt = _hmt || [];
 </pre></div>
 </div>
 </div>
-<hr class="docutils" />
 <div class="section" id="id3">
 <h2>数学函数<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>Python中有一个数学模块（<code class="docutils literal"><span class="pre">math</span></code>），提供了大部分常用的数学函数。
@@ -269,7 +270,6 @@ math模块也提供了 <code class="docutils literal"><span class="pre">log</spa
 </pre></div>
 </div>
 </div>
-<hr class="docutils" />
 <div class="section" id="id4">
 <h2>组合<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>目前为止，我们已经分别介绍了程序的基本元素——变量、表达式和语句，但是还没有讨论如何将它们组合在一起。</p>
@@ -291,7 +291,6 @@ math模块也提供了 <code class="docutils literal"><span class="pre">log</spa
 </pre></div>
 </div>
 </div>
-<hr class="docutils" />
 <div class="section" id="id5">
 <h2>增加新函数<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <p>目前为止，我们只使用了Python自带的函数， 但是增加新函数也是可能的。
@@ -354,7 +353,6 @@ math模块也提供了 <code class="docutils literal"><span class="pre">log</spa
 </div>
 <p>不过，这首歌的歌词实际上不是这样的。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id6">
 <h2>定义和使用<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <p>将上一节的多个代码段组合在一起，整个程序看起来是这样的：</p>
@@ -376,7 +374,6 @@ math模块也提供了 <code class="docutils literal"><span class="pre">log</spa
 <p>我们做个小练习，将程序的最后一行移到顶部，使得函数调用出现在函数定义之前。运行程序，看看会得到怎样的错误信息。</p>
 <p>现在将函数调用移回底部，然后将<code class="docutils literal"><span class="pre">print_lyrics</span></code>的定义移到<code class="docutils literal"><span class="pre">repeat_lyrics</span></code>的定义之后。这次运行程序时会发生什么？</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id7">
 <h2>执行流程<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <p>为了保证函数第一次使用之前已经被定义，你必须要了解语句执行的顺序，
@@ -392,7 +389,6 @@ math模块也提供了 <code class="docutils literal"><span class="pre">log</spa
 程序会回到调用它的那个函数原来执行的位置。当到达程序的结尾时，程序才会终止。</p>
 <p>总之，阅读程序时，你没有必要总是从上往下读。有时候，跟着执行流程阅读反而更加合理。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id8">
 <h2>形参和实参<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <p>我们之前接触的一些函数需要实参。例如，当你调用 <code class="docutils literal"><span class="pre">math.sin</span></code> 时，你传递一个数字作为实参。
@@ -438,7 +434,6 @@ math模块也提供了 <code class="docutils literal"><span class="pre">log</spa
 <p>我们传递的实参名（<code class="docutils literal"><span class="pre">michael</span></code>）与形参的名字（<code class="docutils literal"><span class="pre">bruce</span></code>）没有任何关系。
 这个值在传入函数之前叫什么都没有关系；只要传入了<code class="docutils literal"><span class="pre">print_twice</span></code>函数，我们将所有人都称为 <code class="docutils literal"><span class="pre">bruce</span></code> 。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id9">
 <h2>变量和形参都是局部的<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <p>当你在函数里面创建变量时，这个变量是<strong>局部的（local）</strong>，
@@ -464,9 +459,8 @@ math模块也提供了 <code class="docutils literal"><span class="pre">log</spa
 </div>
 <p>形参也都是局部的。例如，在<code class="docutils literal"><span class="pre">print_twice</span></code>函数的外部并没有 <code class="docutils literal"><span class="pre">bruce</span></code> 这个变量。</p>
 </div>
-<hr class="docutils" />
-<div class="section" id="id10">
-<h2>堆栈图<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<div class="section" id="stackdiagram">
+<span id="id10"></span><h2>堆栈图<a class="headerlink" href="#stackdiagram" title="永久链接至标题">¶</a></h2>
 <p>有时，画一个<strong>堆栈图（stack diagram）</strong>可以帮助你跟踪哪个变量能在哪儿用。
 与状态图类似，堆栈图要说明每个变量的值，但是它们也要说明每个变量所属的函数。</p>
 <p>每个函数用一个<strong>栈帧（frame）</strong>表示。
@@ -501,7 +495,6 @@ NameError: name &#39;cat&#39; is not defined
 它还会显示引起错误的那一行代码。</p>
 <p>回溯中的函数顺序，与堆栈图中的函数顺序一致。出错时正在运行的那个函数则位于回溯信息的底部。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id11">
 <h2>有返回值函数和无返回值函数<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
 <p>有一些我们之前用过的函数，例如数学函数，会返回结果；
@@ -543,7 +536,6 @@ NameError: name &#39;cat&#39; is not defined
 <p>目前为止，我们写的函数都是无返回值函数。
 我们将在几章之后开始编写有返回值函数。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id12">
 <h2>为什么写函数？<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
 <p>你可能还不明白为什么值得将一个程序分解成多个函数。 原因包括以下几点：</p>
@@ -556,7 +548,6 @@ NameError: name &#39;cat&#39; is not defined
 <li>设计良好的函数经常对多个程序都有帮助。一旦你写出并调试好一个函数，你就可以重复使用它。</li>
 </ul>
 </div>
-<hr class="docutils" />
 <div class="section" id="id13">
 <h2>调试<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
 <p>调试，是你能获得的最重要的技能之一。
@@ -577,7 +568,6 @@ Torvalds写的一个用于研究Intel 80386芯片的简单程序。 根据Larry
 Greenfield的描述，“Linus的早期项目中，有一个能够交替打印AAAA和BBBB的程序。
 这个程序后来演变为了Linux。”（<em>Linux用户手册</em> Beta 版本1）。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id14">
 <h2>词汇表<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
 <dl class="docutils">
@@ -627,7 +617,6 @@ Greenfield的描述，“Linus的早期项目中，有一个能够交替打印AA
 <dd>当出现异常时，解释器打印出的出错时正在执行的函数列表。</dd>
 </dl>
 </div>
-<hr class="docutils" />
 <div class="section" id="id15">
 <h2>练习题<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h2>
 <p>习题 3-1.</p>
@@ -707,6 +696,8 @@ Edition</em> 一书中的习题改编，此书由O’Reilly出版社于1997年�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="04-case-study-interface-design.html" class="btn btn-neutral float-right" title="第四章：案例研究：接口设计" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
       
         <a href="02-variables-expressions-and-statements.html" class="btn btn-neutral" title="第二章：变量、表达式和语句" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
@@ -718,7 +709,7 @@ Edition</em> 一书中的习题改编，此书由O’Reilly出版社于1997年�
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Mar 08, 2016.
+      最后更新于 Mar 15, 2016.
 
     </p>
   </div>

@@ -38,6 +38,7 @@
 
   
     <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="next" title="第五章：条件和递归" href="05-conditionals-and-recursion.html"/>
         <link rel="prev" title="第三章：函数" href="03-functions.html"/> 
 
   
@@ -131,6 +132,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#id12">练习题</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
 </ul>
 
             
@@ -182,7 +184,6 @@ var _hmt = _hmt || [];
 <p>本章会介绍 <code class="docutils literal"><span class="pre">turtle</span></code> 模块，它可以让你使用海龟图形（turtle graphics）绘制图像。大部分的Python安装环境下都包含了这个模块，但是如果你是在PythonAnywhere上运行Python的，你将无法运行本章中的代码示例（至少在我写这章时是做不到的）。</p>
 <p>如果你已经在自己的电脑上安装了Python，那么不会有问题。如果没有，现在就是安装Python的好时机。我在 <a class="reference external" href="http://tinyurl.com/thinkpython2e">http://tinyurl.com/thinkpython2e</a> 这个页面上发布了相关指南。</p>
 <p>本章的示例代码可以从<a class="reference external" href="http://thinkpython2.com/code/polygon.py">http://thinkpython2.com/code/polygon.py</a> 获得。</p>
-<hr class="docutils" />
 <div class="section" id="turtle">
 <h2>turtle模块<a class="headerlink" href="#turtle" title="永久链接至标题">¶</a></h2>
 <p>打开Python解释器，输入以下代码，检查你是否安装了 <code class="docutils literal"><span class="pre">turltle</span></code> 模块：</p>
@@ -221,7 +222,6 @@ var _hmt = _hmt || [];
 <p>当你运行此程序时，你应该会看到 <code class="docutils literal"><span class="pre">bob</span></code> 先朝东移动，然后向北移动，同时在身后留下两条线段（line segment）。</p>
 <p>现在修改程序，画一个正方形。在没有成功之前，不要继续往下看。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id2">
 <h2>简单的重复<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>很有可能你刚才写了像下面这样的一个程序：</p>
@@ -268,7 +268,6 @@ Hello!
 但是如果我们每次都通过循环来做这件事情，这样反而是简化了代码。
 这个版本还让海龟回到了初始位置，朝向也与出发时一致。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id3">
 <h2>练习<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>下面是一系列学习使用 <code class="docutils literal"><span class="pre">Turtle</span></code> 的练习。
@@ -300,7 +299,6 @@ Hello!
 </li>
 </ol>
 </div>
-<hr class="docutils" />
 <div class="section" id="id4">
 <h2>封装<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>第一个练习要求你将画正方形的代码放到一个函数定义中,然后调用该函数，
@@ -328,7 +326,6 @@ Hello!
 这充当了某种文档说明。另一个好处是，如果你重复使用这些代码，
 调用函数两次比拷贝粘贴函数体要更加简洁！</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id5">
 <h2>泛化<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <p>下一个练习是给 <code class="docutils literal"><span class="pre">square</span></code> 增加一个 <code class="docutils literal"><span class="pre">length</span></code> 形参。下面是一个解法：</p>
@@ -366,7 +363,6 @@ Hello!
 <p>这一语法使得程序的可读性更强。它也提醒了我们实参和形参的工作方式：
 当你调用函数时，实参被赋给形参。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id6">
 <h2>接口设计<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <p>下一个练习是编写接受半径r作为形参的 <code class="docutils literal"><span class="pre">circle</span></code> 函数。
@@ -406,7 +402,6 @@ n就不太合适，因为它是关于 <strong>如何</strong> 画圆的细节。
 所以每条线段的长度（大概）是3，小到足以使圆看上去逼真，
 又大到效率足够高，对任意大小的圆都能接受。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id7">
 <h2>重构<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <p>当我写 <code class="docutils literal"><span class="pre">circle</span></code> 程序的时候，我能够复用 <code class="docutils literal"><span class="pre">polygon</span></code> ，
@@ -463,7 +458,6 @@ n就不太合适，因为它是关于 <strong>如何</strong> 画圆的细节。
 一旦你开始编码后，你才能更好地理解问题。
 有时重构是一个说明你已经学到某些东西的预兆。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id8">
 <h2>开发方案<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <p><strong>开发计划（development plan）</strong>是一种编写程序的过程。
@@ -481,7 +475,6 @@ n就不太合适，因为它是关于 <strong>如何</strong> 画圆的细节。
 但是如果你事先不知道如何将程序分解为函数，这是个很有用办法。
 该方法可以让你一边编程，一边设计。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id9">
 <h2>文档字符串<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <p><strong>文档字符串（docstring）</strong>是位于函数开始位置的一个字符串，
@@ -504,7 +497,6 @@ n就不太合适，因为它是关于 <strong>如何</strong> 画圆的细节。
 <p>写这种文档是接口设计中很重要的一部分。 一个设计良好的接口应该很容易解释，
 如果你很难解释你的某个函数，那么你的接口也许还有改进空间。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id10">
 <h2>调试<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
 <p>接口就像是函数和调用者之间的合同。
@@ -521,7 +513,6 @@ n就不太合适，因为它是关于 <strong>如何</strong> 画圆的细节。
 先决条件，导致函数没有正确工作，则故障（bug）出现在调用者一方，而不是函数。</p>
 <p>如果满足了先决条件，没有满足后置条件，故障就在函数一方。如果你的先决条件和后置条件都很清楚，将有助于调试。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id11">
 <h2>词汇表<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
 <dl class="docutils">
@@ -550,7 +541,6 @@ ends.</dd>
 <dd>函数终止之前应该满足的条件。</dd>
 </dl>
 </div>
-<hr class="docutils" />
 <div class="section" id="id12">
 <h2>练习题<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
 <p>习题 4-1.</p>
@@ -596,6 +586,8 @@ ends.</dd>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="05-conditionals-and-recursion.html" class="btn btn-neutral float-right" title="第五章：条件和递归" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
       
         <a href="03-functions.html" class="btn btn-neutral" title="第三章：函数" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
@@ -607,7 +599,7 @@ ends.</dd>
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Mar 12, 2016.
+      最后更新于 Mar 15, 2016.
 
     </p>
   </div>

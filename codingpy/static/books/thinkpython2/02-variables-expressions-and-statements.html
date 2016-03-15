@@ -129,6 +129,8 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
 </ul>
 
             
@@ -177,7 +179,6 @@ var _hmt = _hmt || [];
   <div class="section" id="id1">
 <h1>第二章：变量、表达式和语句<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>编程语言最强大的特性之一，是操作<strong>变量</strong>的能力。变量是指向某个值的名称。</p>
-<hr class="docutils" />
 <div class="section" id="id2">
 <h2>赋值语句<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p><strong>赋值语句（assignment statement）</strong>会新建变量，并为这个变量赋值。</p>
@@ -197,7 +198,6 @@ diagram）</strong>，因为它展示了每个变量所处的状态（可以把�
 <p class="caption"><span class="caption-text">图2-1：状态图。</span></p>
 </div>
 </div>
-<hr class="docutils" />
 <div class="section" id="id3">
 <h2>变量名<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>程序员通常为变量选择有意义的名字—它们可以记录该变量的用途。</p>
@@ -229,7 +229,6 @@ break      except     in         raise
 </div>
 <p>你没有必要背诵上面的关键词。大部分的开发环境会用不同的颜色区别显示关键词；如果你不小心使用关键词作为变量名，你肯定会发现的。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id4">
 <h2>表达式和语句<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p><strong>表达式（expression）</strong>是值、变量和运算符的组合。
@@ -251,7 +250,6 @@ break      except     in         raise
 <p>第一行是一个赋值语句，将某个值赋给了n。第二行是一个打印语句，在屏幕上显示n的值。</p>
 <p>当你输入一个语句后，解释器会<strong>执行（execute）</strong>这个语句，即按照语句的指令完成操作。一般来说，语句是没有值的。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id5">
 <h2>脚本模式<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <p>到目前为止，我们都是在<strong>交互模式（interactive mode）</strong>下运行Python，即直接与解释器进行交互。交互模式对学习入门很有帮助，但是如果你需要编写很多行代码，使用交互模式就不太方便了。</p>
@@ -297,7 +295,6 @@ break      except     in         raise
 <p>现在将同样的语句写入一个脚本中并执行它。输出结果是什么？
 修改脚本，将每个表达式变成打印语句，再次运行它。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id6">
 <h2>运算顺序<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <p>当一个表达式中有多于一个运算符时，计算的顺序由<strong>运算顺序（order of operations）</strong>决定。 对于算数运算符，Python遵循数学里的惯例。 缩写<strong>PEMDAS</strong>有助于帮助大家记住这些规则：</p>
@@ -318,7 +315,6 @@ break      except     in         raise
 </ul>
 <p>我不会费力去记住这些运算符的优先级规则。如果看完表达式后分不出优先级，我会使用括号使计算顺序变得更明显。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id7">
 <h2>字符串运算<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <p>一般来讲，你不能对字符串执行数学运算，即使字符串看起来很像数字，
@@ -342,7 +338,6 @@ break      except     in         raise
 另一方面，字符串拼接和重复与整数的加法和乘法也有很大的不同。
 你能想出来一个加法具有而字符串拼接不具有的特性么？</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id8">
 <h2>注释<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <p>随着程序变得越来越大，越来越复杂，它们的可读性也越来越差。
@@ -372,7 +367,6 @@ break      except     in         raise
 <p>好的变量名能够减少对注释的需求，但是长变量名使得表达式很难读，
 因此这里有个平衡问题。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id9">
 <h2>调试<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <p>程序中可能会出现下面三种错误：语法错误（syntax error）、运行时错误(runtime error)和语义错误(semantic error)。我们如果能够分辨出三者区别，有助于快速追踪这些错误。</p>
@@ -391,7 +385,6 @@ break      except     in         raise
 </dd>
 </dl>
 </div>
-<hr class="docutils" />
 <div class="section" id="id10">
 <h2>词汇表<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
 <dl class="docutils">
@@ -435,7 +428,6 @@ break      except     in         raise
 <dd>使得程序偏离程序员原本期望的错误。</dd>
 </dl>
 </div>
-<hr class="docutils" />
 <div class="section" id="id11">
 <h2>练习题<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
 <p>习题 2-1.</p>
@@ -487,7 +479,7 @@ break      except     in         raise
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Mar 08, 2016.
+      最后更新于 Mar 15, 2016.
 
     </p>
   </div>

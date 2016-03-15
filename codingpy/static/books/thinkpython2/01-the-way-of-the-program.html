@@ -128,6 +128,8 @@ var _hmt = _hmt || [];
 </li>
 <li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
 </ul>
 
             
@@ -178,7 +180,6 @@ var _hmt = _hmt || [];
 <p>本书的目标是教你像计算机科学家一样思考。这一思考方式集成了数学、工程以及自然科学的一些最好的特点。像数学家一样，计算机科学家使用形式语言表示思想（具体来说是计算）。像工程师一样，计算机科学家设计东西，将零件组成系统，在各种选择之间寻求平衡。像科学家一样，计算机科学家观察复杂系统的行为，形成假设并且对预测进行检验。</p>
 <p>对于计算机科学家，最重要的技能是 <strong>解决问题的能力</strong> 。解决问题（problem solving）意味着对问题进行形式化，寻求创新型的解决方案，并且清晰、准确地表达解决方案的能力。事实证明，学习编程的过程是锻炼问题解决能力的一个绝佳机会。这就是为什么本章被称为“程序之道”。</p>
 <p>一方面，你将学习如何编程，这本身就是一个有用的技能。另一方面，你将把编程作为实现自己目的的手段。随着学习的深入，你会更清楚自己的目的。</p>
-<hr class="docutils" />
 <div class="section" id="id2">
 <h2>什么是程序？<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p><strong>程序</strong> 是一系列说明如何执行计算（computation）的指令。计算可以是数学上的计算，例如寻找公式的解或多项式的根，也可以是一个符号计算（symbolic computation），例如在文档中搜索并替换文本或者图片，就像处理图片或播放视频。</p>
@@ -197,7 +198,6 @@ var _hmt = _hmt || [];
 </dl>
 <p>无论你是否相信，这几乎是程序的全部指令了。每个你曾经用过的程序，无论多么复杂，都是由跟这些差不多的指令构成的。因此，你可以认为编程就是将庞大、复杂的任务分解为越来越小的子任务，直到这些子任务简单到可以用这其中的一个基本指令执行。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="python">
 <h2>运行Python<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h2>
 <p>Python入门的一个障碍，是你可能需要在电脑上安装Python和相关软件。如果你熟悉电脑的操作系统，特别是如果你能熟练使用命令行（command-line interface），安装Python对你来说就不是问题了。但是对于初学者，同时学习系统管理（system administration）和编程这两方面的知识是件痛苦的事。</p>
@@ -219,7 +219,6 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 </div>
 <p>现在你已经做好了开始学习的准备。接下来，我将默认你已经知道如何启动Python解释器和执行代码。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id3">
 <h2>第一个程序<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>根据传统，你用一门新语言写的第一个程序叫做“Hello, World!”，因为它的功能只不过是显示单词“Hello, World!”。在Python中，它看起来是这样：</p>
@@ -239,7 +238,6 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <blockquote>
 <div>译者注：Python核心开发者Brett Cannon详细解释了 <a class="reference external" href="http://codingpy.com/article/why-print-became-a-function-in-python-3/">为什么print在Python 3中变成了函数</a>。</div></blockquote>
 </div>
-<hr class="docutils" />
 <div class="section" id="id4">
 <h2>算术运算符<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>接下来介绍算术。Python提供了许多代表加法和乘法等运算的特殊符号，叫做 <strong>运算符</strong> （operators）。</p>
@@ -270,7 +268,6 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 </div>
 <p>我不打算在本书中介绍位运算符，但是你可以阅读 <a class="reference external" href="http://wiki.python.org/moin/BitwiseOperators">Python官方百科</a> ，了解相关内容。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id6">
 <h2>值和类型<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <p><strong>值（value）</strong> 是程序处理的基本数据之一，比如说一个单词或一个数字。我们目前已经接触到的值有：2，42.0，和 <code class="docutils literal"><span class="pre">'Hello</span> <span class="pre">World!'</span></code> 。</p>
@@ -301,7 +298,6 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 </div>
 <p>结果和我们预料的完全不同！Python把1,000,000当作成了一个以逗号区分的整型数序列。在后面的章节中，我们会介绍更多有关这种序列的知识。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id7">
 <h2>形式语言和自然语言<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <p><strong>自然语言（natural language）</strong> 是人们交流所使用的语言，例如英语、西班牙语和法语。它们不是人为设计出来的（尽管有人试图这样做）；而是自然演变而来。</p>
@@ -342,7 +338,6 @@ This sentence all valid tokens has, but invalid structure with.</p>
 </dl>
 <p>形式语言要比自然语言更加稠密，因此阅读起来花的时间会更长。另外，形式语言的结构也很重要，所以从上往下、从左往右阅读，并不总是最好的策略。相反，你得学会在脑海里分析一个程序，识别不同的标记并理解其结构。最后，注重细节。拼写和标点方面的小错误在自然语言中无伤大雅，但是在形式语言中却会产生很大的影响。</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id8">
 <h2>调试<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <p>程序员都会犯错。由于比较奇怪的原因，编程错误被称为 <strong>故障（译者注：英文为bug，一般指虫子）</strong>，追踪错误的过程被称为 <strong>调试（debugging）</strong>。</p>
@@ -360,7 +355,6 @@ and Places</em>）。</p>
 但是它对于许多编程之外的活动也是一个非常有价值的技能。
 在每一章的结尾，我都会花一节内容介绍一些调试建议，比如说这一节。希望能帮到你！</p>
 </div>
-<hr class="docutils" />
 <div class="section" id="id9">
 <h2>词汇表<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <dl class="docutils">
@@ -408,7 +402,6 @@ and Places</em>）。</p>
 <dd>寻找并解决错误的过程。</dd>
 </dl>
 </div>
-<hr class="docutils" />
 <div class="section" id="id10">
 <h2>练习题<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
 <p><em>习题 1-1.</em></p>
@@ -458,7 +451,7 @@ and Places</em>）。</p>
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Mar 08, 2016.
+      最后更新于 Mar 15, 2016.
 
     </p>
   </div>
