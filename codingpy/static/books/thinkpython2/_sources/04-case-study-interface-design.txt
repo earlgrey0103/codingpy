@@ -152,7 +152,7 @@ for语句的语法和函数定义类似。
    然后以合适的边长和边数调用 ``polygon`` ，画一个近似圆形。
    用一系列r值测试你的函数。
 
-   提示：算出圆的周长，并确保 ``length \* n = circumference`` 。
+   提示：算出圆的周长，并确保 ``length * n = circumference`` 。
 
 #. 完成一个更泛化（general）的 ``circle`` 函数，称其为 ``arc`` ，接受一个额外的参数 ``angle`` ，确定画多完整的圆。``angle`` 的单位是度，因此当 ``angle=360`` 时， ``arc`` 
    应该画一个完整的圆。
