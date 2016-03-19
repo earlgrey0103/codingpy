@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第六章：有返回值的函数 &mdash; 《Think Python 2e》中译本 1.0 文档</title>
+  
+
+  
+    <meta name="keywords" content="《Think Python》第二版中译文, Python 3版入门教材, Allen Downey, EarlGrey, 编程派">
+    <meta name="description" content="编程派翻译的《Think Python 2ed》中文版，为最新支持Python 3版的教材。">
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="prev" title="第五章：条件和递归" href="05-conditionals-and-recursion.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69612020-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 《Think Python 2e》中译本
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                持续更新中
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">第六章：有返回值的函数</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">返回值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#incremental-development">增量式开发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">组合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boolean-functions">布尔函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">再谈递归</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">信仰之跃</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">再举一例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">检查类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">术语表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">练习题</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">《Think Python 2e》中译本</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>第六章：有返回值的函数</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+            <a href="http://codingpy.com" title="编程派" >前往编程派</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第六章：有返回值的函数<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>许多我们前面使用过的 Python 函数都会产生返回值， 如数学函数。
+但目前我们所写的函数都是空函数（void）: 它们产生某种效果，像打印一个值或是移动乌龟，但是并没有返回值。
+在本章中，你将学习如何写一个有返回值的函数。</p>
+<div class="section" id="id2">
+<h2>返回值<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>调用一个有返回值的函数会生成一个返回值， 我们通常将其赋值给某个变量或是作为表达式的一部分。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>目前我们所写的函数都是空函数。泛泛地来看，它们没有返回值；更准确地说，它们的返回值是 None 。</p>
+<p>本章中， 我们（终于）要开始写有返回值的函数了。
+第一个例子是 <code class="docutils literal"><span class="pre">area</span></code> ， 返回给定半径的圆的面积。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p>之前我们已经见过 <code class="docutils literal"><span class="pre">return</span></code> 语句了，但是在一个有返回值的函数中， <code class="docutils literal"><span class="pre">return</span></code> 语句包含一个表达式。 这条语句的意思是：“马上从该函数返回，并使用接下来的表达式作为返回值”。 此表达式可以是任意复杂的，因此我们可以将该函数写得更简洁些：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>另一方面， 像 a 这样的 <strong>临时变量（temporary
+variables）</strong> 能使调试变得更简单。</p>
+<p>有时，在条件语句的每一个分支内各有一个返回语句会很有用，。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">absolute_value</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">x</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>因为这些 <code class="docutils literal"><span class="pre">return</span></code> 语句在不同的条件内，最后只有一个会被执行。</p>
+<p>一旦一条返回语句执行，函数则终止，不再执行后续的语句。出现在某条return语句之后的代码，或者在执行流程永远不会到达之处的代码，被称为<strong>死代码（dead code）</strong>。</p>
+<p>在一个有返回值的函数中， 最好保证程序执行的每一个流程最终都会碰到一个 <code class="docutils literal"><span class="pre">return</span></code> 语句。例如：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">absolute_value</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">x</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>这个函数是有问题的。 原因是如果 <code class="docutils literal"><span class="pre">x</span></code> 恰好是 0， 则没有条件为真， 函数将会在未执行任何 <code class="docutils literal"><span class="pre">return</span></code> 语句的情况下终止。 如果函数按照这种执行流程执行完毕，返回值将是 <code class="docutils literal"><span class="pre">None</span></code>， 这可不是 0 的绝对值。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">absolute_value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+<p>顺便说一下，Python提供了一个的内建函数 <code class="docutils literal"><span class="pre">abs</span></code> 用来计算绝对值。</p>
+<p>我们来做个练习，写一个比较函数，接受两个值 x 和 y 。
+如果 <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code>， 则返回 1 ；如果 <code class="docutils literal"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span></code>， 则返回 0 ；如果 <code class="docutils literal"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span></code>，则返回 -1 。</p>
+</div>
+<div class="section" id="incremental-development">
+<span id="id3"></span><h2>增量式开发<a class="headerlink" href="#incremental-development" title="永久链接至标题">¶</a></h2>
+<p>随着你写的函数越来越大，你在调试上花的时候可能会越来越多。</p>
+<p>为了应对越来越复杂的程序，你可能会想尝试一种叫作 <strong>增量式开发（ incremental development )</strong> 的方法。增量式开发的目标，是通过每次只增加和测试少量代码，来避免长时间的调试。</p>
+<p>举个例子，假设你想计算两个给定坐标点  <span class="math">\((x_1, y_1)\)</span>  和  <span class="math">\((x_2, y_2)\)</span> 之间的距离。根据勾股定理（the Pythagorean theorem），二者的距离是：</p>
+<div class="math">
+\[\mathrm{distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\]</div>
+<p>第一步要考虑的是在 Python 中，距离函数看起来会是什么样。换句话说，输入（形参）和输出（返回值）是什么？</p>
+<p>本例中，输入是可以用 4 个数表示的两个点。返回值是距离， 用浮点数表示。</p>
+<p>现在你就可以写出此函数的轮廓了：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>显然，此版本不能计算距离；它总是返回 0 。但是在语法上它是正确的，并且能运行，这意味着你可以在使它变得更复杂之前测试它。</p>
+<p>用样例实参调用它来进行测试。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">distance</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+<p>我选择的这些值，可以使水平距离为 3 ，垂直距离为 4 ；这样结果自然是 5（勾三股四弦五）。
+测试一个函数时，知道正确的答案是很有用的。</p>
+<p>此时我们已经确认这个函数在语法上是正确的，我们可以开始往函数体中增加代码。
+下一步合理的操作，应该是求 <span class="math">\(x_2 - x_1\)</span> 和 <span class="math">\(y_2 - y_1\)</span> 这两个差值。
+下一个版本在临时变量中存储这些值并打印出来。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">):</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;dx is&#39;</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;dy is&#39;</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>如果这个函数正常运行，它应该显示 <code class="docutils literal"><span class="pre">dx</span> <span class="pre">is</span> <span class="pre">3</span></code>  以及 <code class="docutils literal"><span class="pre">dy</span> <span class="pre">is</span> <span class="pre">4</span></code> 。
+这样的话我们就知道函数获得了正确的实参并且正确执行了第一步计算。
+如果不是，也只要检查几行代码。</p>
+<p>下一步我们计算 <code class="docutils literal"><span class="pre">dx</span></code> 和 <code class="docutils literal"><span class="pre">dy</span></code> 的平方和。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">):</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span>
+    <span class="n">dsquared</span> <span class="o">=</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">dy</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;dsquared is: &#39;</span><span class="p">,</span> <span class="n">dsquared</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>再一次运行程序并检查结果（应该是 25 ）。最后，你可以使用 <code class="docutils literal"><span class="pre">math.sqrt</span></code> 计算并返回结果。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">):</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span>
+    <span class="n">dsquared</span> <span class="o">=</span> <span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">dy</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dsquared</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>如果其正确运行的话，你就成功了。否则你可能想在 <code class="docutils literal"><span class="pre">return</span></code> 语句前打印结果检查一下。</p>
+<p>该函数的最终版不会在运行时显示任何东西，仅仅返回一个值。
+我们之前写的 <code class="docutils literal"><span class="pre">print</span></code> 语句在调试时是很有用的，不过在函数能够正确运行之后，你就该删了它们。
+我们称这样的代码为 <strong>脚手架代码（scaffolding)</strong> ， 因为它对程序的构建很有用，但不是最终产品的一部分。</p>
+<p>当你刚开始的时候，最好每次只加入一两行代码。
+随着经验见长，你会发现自己可以编写、调试更大的代码块了。
+无论哪种方式，增量式开发都能节省你大量的调试时间。</p>
+<p>这种开发方式的关键是：</p>
+<ol class="arabic simple">
+<li>从一个能运行的程序开始，并且每次只增加少量改动。无论你何时遇到错误，都能够清楚定位错误的源头。</li>
+<li>用临时变量存储中间值，这样你就能显示并检查它们。</li>
+<li>一旦程序正确运行，你要删除一些脚手架代码，或者将多条语句组成复合表达式，但是前提是不会影响程序的可读性。</li>
+</ol>
+<p>我们来做个练习：运用增量开发方式，写一个叫作 <code class="docutils literal"><span class="pre">hypotenuse</span></code> 的函数，接受直角三角形的两直角边长作为实参，返回该三角形斜边的长度。记录下你开发过程中的每一步。</p>
+</div>
+<div class="section" id="id4">
+<h2>组合<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>你现在应该已经猜到了，你可以从一个函数内部调用另一个函数。
+作为示例，我们接下来写一个函数，接受两个点为参数，分别是圆心和圆周上一点，然后计算圆的面积。</p>
+<p>假设圆心坐标存储在变量 <code class="docutils literal"><span class="pre">xc</span></code> 和 <code class="docutils literal"><span class="pre">yc</span></code> 中，圆周上的点的坐标存储在 <code class="docutils literal"><span class="pre">xp</span></code> 和 <code class="docutils literal"><span class="pre">yp</span></code> 中。第一步是计算圆半径，也就是这两个点的距离。我们刚写的 `` distance`` 函数就可以计算距离：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">radius</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>下一步是用得到的半径计算圆面积；我们也刚写了这样的函数：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">area</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>将这些步骤封装在一个函数中，可以得到下面的函数：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">circle_area</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">):</span>
+    <span class="n">radius</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">area</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>临时变量 <code class="docutils literal"><span class="pre">radius</span></code> 和 <code class="docutils literal"><span class="pre">result</span></code> 对于开发调试很有用的，但是
+一旦函数正确运行了，我们可以通过合并函数调用，将程序变得更简洁：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">circle_area</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">area</span><span class="p">(</span><span class="n">distance</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="boolean-functions">
+<span id="id5"></span><h2>布尔函数<a class="headerlink" href="#boolean-functions" title="永久链接至标题">¶</a></h2>
+<p>函数可以返回布尔值（booleans），通常对于隐藏函数内部的复杂测试代码非常方便。
+例如：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_divisible</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</pre></div>
+</div>
+<p>通常布尔函数名听起来像是一个疑问句，回答不是 Yes 就是 No， <code class="docutils literal"><span class="pre">is_divisible</span></code> 通过返回 <code class="docutils literal"><span class="pre">True</span></code> 或 <code class="docutils literal"><span class="pre">False</span></code> 来表示 x 是否可以被 y 整除。</p>
+<p>请看下面的示例：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_divisible</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_divisible</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">==</span></code>运算符的结果是布尔值，因此我们直接返回它，让代码变得更简洁。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_divisible</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>布尔函数通常被用于条件语句中：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">is_divisible</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x is divisible by y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>很容易写出下面这样的代码：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">is_divisible</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x is divisible by y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>但这里的比较是多余的。</p>
+<p>我们来做个练习：写一个函数  <code class="docutils literal"><span class="pre">is_between(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code> ，如果 <span class="math">\(x \le y \le z\)</span> 返回 <code class="docutils literal"><span class="pre">True</span></code> 否则返回 <code class="docutils literal"><span class="pre">False</span></code>。</p>
+</div>
+<div class="section" id="id6">
+<h2>再谈递归<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>我们目前只介绍了 Python 中一个很小的子集，但是当你知道这个子集已经是一个 <strong>完备的</strong> 编程语言，你可能会觉得很有意思。这意味任何能被计算的东西都能用这个语言表达。
+有史以来所有的程序，你都可以仅用目前学过的语言特性重写（事实上，你可能还需要一些命令来控制鼠标、磁盘等设备，但仅此而已）。</p>
+<p>阿兰·图灵第一个证明了这种说法的正确性，这可是一项非凡的工作。他是首批计算机科学家之一（一些人认为他是数学家，但很多早期的计算机科学家也是出身于数学家）。
+相应地，这被称为图灵理论。关于图灵理论更完整（和更准确）的讨论，我推荐Michael Sipser的书 <em>《Introduction to the Theory of Computation》</em>。</p>
+<p>为了让你明白能用目前学过的工具做什么，我们将计算一些递归定义的数学函数。
+递归定义类似循环定义，因为定义中包含一个对已经被定义的事物的引用。
+一个纯粹的循环定义并没有什么用：</p>
+<dl class="docutils">
+<dt>漩涡状：</dt>
+<dd>一个用以描述漩涡状物体的形容词。</dd>
+</dl>
+<p>如果你看到字典里是这样定义的，你大概会生气。
+另一方面，如果你查找用 <span class="math">\(!\)</span> 符号表示的阶乘函数的定义，你可能看到类似下面的内容：</p>
+<div class="math">
+\[\begin{split}\begin{aligned}
+&amp;&amp;  0! = 1 \\
+&amp;&amp;  n! = n (n-1)!\end{aligned}\end{split}\]</div>
+<p>该定义指出 0 的阶乘是 1 ，任何其他值 <span class="math">\(n\)</span> 的阶乘是 <span class="math">\(n\)</span> 乘以 <span class="math">\(n-1\)</span> 的阶乘。</p>
+<p>所以 <span class="math">\(3!\)</span> 的阶乘是 3 乘以 <span class="math">\(2!\)</span> ，它又是 2 乘以 <span class="math">\(1!\)</span> ， 后者又是 1 乘以  <span class="math">\(0!\)</span> 。 放到一起， <span class="math">\(3!\)</span> 等于 3 乘以 2 乘以 1 乘以 1 ，结果是 6 。</p>
+<p>如果你可以递归定义某个东西，你就可以写一个 Python 程序计算它。
+第一步是决定应该有哪些形参。在此例中 <code class="docutils literal"><span class="pre">factorial</span></code> 函数很明显接受一个整型数：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>def factorial(n):
+</pre></div>
+</div>
+<p>如果实参刚好是 0 ，我们就返回 1 ：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>否则，就到了有意思的部分，我们要进行递归调用来找到 <span class="math">\(n-1\)</span> 的阶乘然后乘以 <span class="math">\(n\)</span>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">recurse</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">recurse</span>
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>程序的执行流程和第五章<a class="reference internal" href="05-conditionals-and-recursion.html#recursion"><span>递归</span></a>一节中的 <code class="docutils literal"><span class="pre">countdown</span></code> 类似。如果我们传入参数的值是 3 ：</p>
+<p>由于3不等于0，我们执行第二个分支并计算n-1的阶乘...</p>
+<blockquote>
+<div><p>由于2不等于0，我们执行第二个分支并计算n-1的阶乘...</p>
+<blockquote>
+<div><p>由于1不等于0，我们执行第二个分支并计算n-1的阶乘...</p>
+<blockquote>
+<div>由于0等于0，我们执行第一个分支并返回1，不再进行任何递归调用。</div></blockquote>
+<p>返回值 1 与 <span class="math">\(n\)</span> （其为1）相乘，并返回结果。</p>
+</div></blockquote>
+<p>返回值 1 与 <span class="math">\(n\)</span> （其为2）相乘，并返回结果。</p>
+</div></blockquote>
+<p>返回值 2 与 <span class="math">\(n\)</span> （其为3）相乘，而结果6也就成为一开始那个函数调用的返回值。</p>
+<p><a class="reference internal" href="#fig-stack3"><span>图6-1：堆栈图</span></a>显示了该函数调用序列的堆栈图看上去是什么样子。</p>
+<div class="figure" id="id17">
+<span id="fig-stack3"></span><img alt="图6-1：堆栈图" src="_images/stack3.png" />
+<p class="caption"><span class="caption-text">图6-1：堆栈图</span></p>
+</div>
+<p>该图中的返回值被描绘为不断被传回到栈顶。 在每个栈帧中，返回值就是结果值，即是 <code class="docutils literal"><span class="pre">n</span></code> 和 <code class="docutils literal"><span class="pre">recurse</span></code> 的乘积。</p>
+<p>最后一帧中，局部变量 <code class="docutils literal"><span class="pre">recurse</span></code> 和 <code class="docutils literal"><span class="pre">result</span></code> 并不存在， 因为生成它们的分支并没有执行。</p>
+</div>
+<div class="section" id="id7">
+<h2>信仰之跃<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>跟随程序执行流程是阅读程序代码的一种方法，但它可能很快会变得错综复杂。
+有另外一种替代方法，我称之为“信仰之跃”。
+当你遇到一个函数调用时，不再去跟踪执行流程，而是 <strong>假设</strong> 这个函数正确运行并返回了正确的结果。</p>
+<p>事实上，当你使用内建函数时，你已经在实践这种方法了。
+当你调用 <code class="docutils literal"><span class="pre">math.cos</span></code> 或 <code class="docutils literal"><span class="pre">math.exp</span></code> 时，你并没有检查那些函数的函数体。
+你只是假设了它们能用，因为编写这些内建函数的人都是优秀的程序员。</p>
+<p>当你调用一个自己写的函数时也是一样。
+例如，在<a class="reference internal" href="#boolean-functions"><span>布尔函数</span></a> 一节中，我们写了一个 <code class="docutils literal"><span class="pre">is_divisible</span></code> 函数来判断一个数能否被另一个数整除。
+通过对代码的检查，一旦我们确信这个函数能够正确运行，我们就能不用再查看函数体而直接使用了。</p>
+<p>递归程序也是这样。
+当你遇到递归调用时， 不用顺着执行流程，你应该假设每次递归调用能够正确工作（返回正确的结果），然后问你自己，“假设我可以找到 <span class="math">\(n-1\)</span> 的阶乘，我可以找到 <span class="math">\(n\)</span> 的阶乘吗？
+很明显你能，只要再乘以 <span class="math">\(n\)</span> 即可。</p>
+<p>当然，在你没写完函数的时就假设函数正确工作有一点儿奇怪， 但这也是为什么这被称作信仰之跃了！</p>
+</div>
+<div class="section" id="id8">
+<h2>再举一例<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>除了阶乘以外，使用递归定义的最常见数学函数是 <code class="docutils literal"><span class="pre">fibonacci</span></code> （斐波那契数列），其定义见 <a class="reference external" href="http://en.wikipedia.org/wiki/Fibonacci_number">http://en.wikipedia.org/wiki/Fibonacci_number</a> ：</p>
+<div class="math">
+\[\begin{split}\begin{aligned}
+&amp;&amp; \mathrm{fibonacci}(0) = 0 \\
+&amp;&amp; \mathrm{fibonacci}(1) = 1 \\
+&amp;&amp; \mathrm{fibonacci}(n) = \mathrm{fibonacci}(n-1) + \mathrm{fibonacci}(n-2)\end{aligned}\end{split}\]</div>
+<p>翻译成 Python ，看起来就像这样：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibonacci</span> <span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">elif</span>  <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这里，如果你试图跟踪执行流程，即使是相当小的 <span class="math">\(n\)</span> ，也足够你头疼的。但遵循信仰之跃这种方法，如果你假设这两个递归调用都能正确运行，很明显将他们两个相加就是正确结果。</p>
+</div>
+<div class="section" id="id9">
+<h2>检查类型<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>如果我们将 1.5 作为参数调用阶乘函数会怎样？</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">factorial</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="go">RuntimeError: Maximum recursion depth exceeded</span>
+</pre></div>
+</div>
+<p>看上去像是一个无限循环。但那是如何发生的？ 函数的基础情形是 <code class="docutils literal"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">0</span></code> 。
+但是如果 <code class="docutils literal"><span class="pre">n</span></code> 不是一个整型数呢，我们会 <em>错过</em> 基础情形，永远递归下去。</p>
+<p>在第一次递归调用中，<code class="docutils literal"><span class="pre">n</span></code> 的值是 0.5 。下一次，是 -0.5 。自此它会越来越小，但永远不会是 0 。</p>
+<p>我们有两个选择。我们可以试着泛化 <code class="docutils literal"><span class="pre">factorial</span></code> 函数，使其能处理浮点数，或者我们可以让 <code class="docutils literal"><span class="pre">factorial</span></code> 检查实参的类型。第一个选择被称作 <code class="docutils literal"><span class="pre">gamma</span></code> 函数，它有点儿超过本书的范围了。 所以我们将采用第二种方法。</p>
+<p>我们可以使用内建函数 <code class="docutils literal"><span class="pre">isinstance</span></code> 来验证实参的类型。 同时，我们也可以确保该实参是正数：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span> <span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Factorial is only defined for integers.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Factorial is not defined for negative integers.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>第一个基础情形处理非整型数；第二个处理负整型数。
+在这两个情形中，程序打印一条错误信息，并返回None以指明出现了错误：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">factorial</span><span class="p">(</span><span class="s1">&#39;fred&#39;</span><span class="p">)</span>
+<span class="go">Factorial is only defined for integers.</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">factorial</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">Factorial is not defined for negative integers.</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+<p>如果我们通过了这两个检查，那么我们知道 <span class="math">\(n\)</span> 是一个正数或 0 ， 因此我们可以证明递归会终止。</p>
+<p>此程序演示了一个有时被称作 <strong>监护人（guardian）</strong> 的模式。
+前两个条件扮演监护人的角色，避免接下来的代码使用引发错误的值。
+监护人使得验证代码的正确性成为可能。</p>
+<p>在反向查找（Reverse Lookup）一节中，我们将看到更灵活地打印错误信息的方式：抛出异常。</p>
+</div>
+<div class="section" id="id10">
+<h2>调试<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>将一个大程序分解为较小的函数为调试生成了自然的检查点。
+如果一个函数不如预期的运行，有三个可能性需要考虑：</p>
+<ul class="simple">
+<li>该函数获得的实参有些问题，违反先决条件。</li>
+<li>该函数有些问题，违反后置条件。</li>
+<li>返回值或者它的使用方法有问题。</li>
+</ul>
+<p>为了排除第一种可能，你可以在函数的开始增加一条 <code class="docutils literal"><span class="pre">print</span></code> 语句来打印形参的值（也可以是它们的类型）。
+或者你可以写代码来显示地检查先决条件。</p>
+<p>如果形参看起来没问题，就在每个 <code class="docutils literal"><span class="pre">return</span></code> 语句之前增加一条 <code class="docutils literal"><span class="pre">print</span></code> 语句，来打印返回值。
+如果可能，手工检查结果。
+考虑用一些容易检查的值来调用该函数（类似在<a class="reference internal" href="#incremental-development"><span>增量式开发</span></a> 一节中那样）。</p>
+<p>如果该函数看起来正常工作，则检查函数调用，确保返回值被正确的使用（或者的确被使用了！）。</p>
+<p>在一个函数的开始和结尾处增加打印语句，可以使执行流程更明显。
+例如，下面是一个带打印语句的阶乘函数：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">space</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="s1">&#39;factorial&#39;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="s1">&#39;returning 1&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">recurse</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">recurse</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="s1">&#39;returning&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">space</span></code>是一个空格字符的字符串，用来控制输出的缩进。 下面是 <code class="docutils literal"><span class="pre">factorial(4)</span></code> 的输出结果：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>                factorial 4
+            factorial 3
+        factorial 2
+    factorial 1
+factorial 0
+returning 1
+    returning 1
+        returning 2
+            returning 6
+                returning 24
+</pre></div>
+</div>
+<p>如果你对执行流程感到困惑，这种输出可能有助于理解。
+开发有效的脚手架代码会花些时间，但是一点点的脚手架代码能够节省很多的调试时间。</p>
+</div>
+<div class="section" id="id11">
+<h2>术语表<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<dl class="docutils">
+<dt>临时变量（temporary variable）：</dt>
+<dd>一个在复杂计算中用于存储过度值的变量。</dd>
+<dt>死代码（dead code）：</dt>
+<dd>程序中永远无法执行的那部分代码，通常是因为其出现在一个返回语句之后。</dd>
+<dt>增量式开发（incremental development）：</dt>
+<dd>一种程序开发计划，目的是通过一次增加及测试少量代码的方式，来避免长时间的调试。</dd>
+<dt>脚手架代码（scaffolding）：</dt>
+<dd>程序开发中使用的代码，但并不是最终版本的一部分。</dd>
+<dt>监护人（guardian）：</dt>
+<dd>一种编程模式，使用条件语句来检查并处理可能引发错误的情形。</dd>
+</dl>
+</div>
+<div class="section" id="id12">
+<h2>练习题<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<p>习题6-1。</p>
+<p>画出下面程序的堆栈图。这个程序的最终输出是什么？</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">b</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="n">prod</span> <span class="o">=</span> <span class="n">a</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">prod</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">prod</span>
+
+<span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">c</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+    <span class="n">square</span> <span class="o">=</span> <span class="n">b</span><span class="p">(</span><span class="n">total</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">square</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>习题6-2。</p>
+<p>Ackermann 函数 <span class="math">\(A(m, n)\)</span> 的定义如下：</p>
+<div class="math">
+\[\begin{split}\begin{aligned}
+A(m, n) = \begin{cases}
+              n+1 &amp; \mbox{if } m = 0 \\
+        A(m-1, 1) &amp; \mbox{if } m &gt; 0 \mbox{ and } n = 0 \\
+A(m-1, A(m, n-1)) &amp; \mbox{if } m &gt; 0 \mbox{ and } n &gt; 0.
+\end{cases} \end{aligned}\end{split}\]</div>
+<p>查看 <a class="reference external" href="http://en.wikipedia.org/wiki/Ackermann_function">http://en.wikipedia.org/wiki/Ackermann_function</a> 。
+编写一个叫作<a href="#id13"><span class="problematic" id="id14">``</span></a>ack <a href="#id15"><span class="problematic" id="id16">``</span></a>的函数来计算 Ackermann 函数。
+使用你的函数计算 ack（3，4），其结果应该为 125 。
+如果m 和 n 的值较大时，会发生什么？
+答案： <a class="reference external" href="http://thinkpython2.com/code/ackermann.py">http://thinkpython2.com/code/ackermann.py</a> 。</p>
+<p>习题6-3。</p>
+<p>回文词（palindrome）指的是正着拼反着拼都一样的单词，如 “noon”和“redivider”。
+按照递归定义的话，如果某个词的首字母和尾字母相同，而且中间部分也是一个回文词，那它就是一个回文词。</p>
+<p>下面的函数接受一个字符串实参，并返回第一个、最后一个和中间的字母：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">first</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">last</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">middle</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>在第八章中我们将介绍他们是如何工作的。</p>
+<ol class="arabic simple">
+<li>将它们录入到文件 <code class="docutils literal"><span class="pre">palindrome.py</span></code> 中并测试。当你用一个两个字母的字符串调用 <code class="docutils literal"><span class="pre">middle</span></code> 时会发生什么？一个字母的呢？空字符串呢？空字符串这样 <code class="docutils literal"><span class="pre">''</span></code> 表示，中间不含任何字母。</li>
+<li>编写一个叫 <code class="docutils literal"><span class="pre">is_palindrome</span></code> 的函数，接受一个字符串作为实参。如果是回文词，就返回 <code class="docutils literal"><span class="pre">True</span></code> ，反之则返回 <code class="docutils literal"><span class="pre">False</span></code>。记住，你可以使用内建函数 <code class="docutils literal"><span class="pre">len</span></code> 来检查字符串的长度。</li>
+</ol>
+<p>答案： <a class="reference external" href="http://thinkpython2.com/code/palindrome_soln.py">http://thinkpython2.com/code/palindrome_soln.py</a> 。</p>
+<p>习题6-4。</p>
+<p>当数字 <span class="math">\(a\)</span> 能被  <span class="math">\(b\)</span> 整除，并且 <span class="math">\(a/b\)</span> 是 <span class="math">\(b\)</span> 的幂时， 它就是  <span class="math">\(b\)</span> 的幂。编写一个叫 <code class="docutils literal"><span class="pre">is_power</span></code> 的函数，接受两个参数 a 和 b， 并且当 a 是 b 的幂时返回 True。注意：你必须要想好基础情形。</p>
+<p>习题6-5。</p>
+<p><span class="math">\(a\)</span>和 <span class="math">\(b\)</span> 的最大公约数（GCD）是能被二者整除的最大数。</p>
+<p>求两个数的最大公约数的一种方法，是基于这样一个原理：如果 <span class="math">\(r\)</span> 是 <span class="math">\(a\)</span> 被 <span class="math">\(b\)</span> 除后的余数，那么  <span class="math">\(gcd(a,b) = gcd(b, r)\)</span> 。我们可以把 <span class="math">\(gcd(a, 0) = a\)</span> 当做基础情形。</p>
+<p>习题6-6。</p>
+<p>编写一个叫 <code class="docutils literal"><span class="pre">gcd</span></code> 的函数，接受两个参数 a 和 b，并返回二者的最大公约数。</p>
+<p>致谢：这道习题基于 Abelson 和 Sussman 编写的 <em>《Structure and Interpretation of Computer Programs》</em> 其中的例子。</p>
+<p><strong>贡献者</strong></p>
+<ol class="arabic simple">
+<li>翻译：<a class="reference external" href="https://github.com/thejian">&#64;theJian</a></li>
+<li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
+<li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="05-conditionals-and-recursion.html" class="btn btn-neutral" title="第五章：条件和递归" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, EarlGrey et.al.
+      最后更新于 Mar 19, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
