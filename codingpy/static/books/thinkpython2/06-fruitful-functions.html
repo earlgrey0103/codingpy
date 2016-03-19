@@ -304,7 +304,7 @@ variables）</strong> 能使调试变得更简单。</p>
 <h2>组合<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>你现在应该已经猜到了，你可以从一个函数内部调用另一个函数。
 作为示例，我们接下来写一个函数，接受两个点为参数，分别是圆心和圆周上一点，然后计算圆的面积。</p>
-<p>假设圆心坐标存储在变量 <code class="docutils literal"><span class="pre">xc</span></code> 和 <code class="docutils literal"><span class="pre">yc</span></code> 中，圆周上的点的坐标存储在 <code class="docutils literal"><span class="pre">xp</span></code> 和 <code class="docutils literal"><span class="pre">yp</span></code> 中。第一步是计算圆半径，也就是这两个点的距离。我们刚写的 `` distance`` 函数就可以计算距离：</p>
+<p>假设圆心坐标存储在变量 <code class="docutils literal"><span class="pre">xc</span></code> 和 <code class="docutils literal"><span class="pre">yc</span></code> 中，圆周上的点的坐标存储在 <code class="docutils literal"><span class="pre">xp</span></code> 和 <code class="docutils literal"><span class="pre">yp</span></code> 中。第一步是计算圆半径，也就是这两个点的距离。我们刚写的 <code class="docutils literal"><span class="pre">distance</span></code> 函数就可以计算距离：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">radius</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">)</span>
 </pre></div>
 </div>
