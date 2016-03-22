@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Iteration 迭代 &mdash; 《Think Python 2e》中译本 1.0 文档</title>
+  <title>第七章：迭代 &mdash; 《Think Python 2e》中译本 1.0 文档</title>
   
 
   
@@ -119,16 +119,16 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Iteration 迭代</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">重新赋值</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">更新变量</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">第七章：迭代</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">重新赋值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">更新变量</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#while">while 语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#break">break</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#squareroot">平方根</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">算法</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">调试</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">术语表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">练习题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">算法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">术语表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">练习题</a></li>
 </ul>
 </li>
 </ul>
@@ -161,7 +161,7 @@ var _hmt = _hmt || [];
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Iteration 迭代</li>
+    <li>第七章：迭代</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -176,12 +176,12 @@ var _hmt = _hmt || [];
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="iteration">
-<h1>Iteration 迭代<a class="headerlink" href="#iteration" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="id1">
+<h1>第七章：迭代<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>本章介绍迭代，即重复运行某个代码块的能力。我们已经在<a class="reference internal" href="05-conditionals-and-recursion.html#recursion"><span>递归</span></a>一节接触了一种利用递归进行迭代的方式；在<a class="reference internal" href="04-case-study-interface-design.html#repetition"><span>简单的重复</span></a>一节中，接触了另一种利用 <code class="docutils literal"><span class="pre">for</span></code> 循环进行迭代的方式。在本章中，我们将讨论另外一种利用 <code class="docutils literal"><span class="pre">while</span></code> 语句实现迭代的方式。
 不过，首先我想再多谈谈有关变量赋值的问题。</p>
-<div class="section" id="id1">
-<h2>重新赋值<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h2>重新赋值<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>你应该已经发现了，对同一变量进行多次赋值是合法的。新的赋值会使得已有的变量指向
 新的值（同时不再指向旧的值）。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
@@ -210,13 +210,13 @@ var _hmt = _hmt || [];
 <p>第三行改变了 a 的值，但是没有改变 b 的值，所以它们不再相等了。</p>
 <p>给变量重新赋值经常会有帮助，但是你应该小心使用。变量值频繁改变会使得代码不易读，
 而且不好调试。</p>
-<div class="figure" id="id8">
+<div class="figure" id="id9">
 <span id="fig-assign2"></span><img alt="图7-1状态图" src="_images/assign2.png" />
 <p class="caption"><span class="caption-text">图7-1状态图</span></p>
 </div>
 </div>
-<div class="section" id="id2">
-<h2>更新变量<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h2>更新变量<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>重新赋值的一个常见方式是 <strong>更新（update）</strong>，这时新的变量值将取决于旧值。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
@@ -312,7 +312,7 @@ Done!
 而不是消极地表示（“继续运行直到出现这个情况”）。</p>
 </div>
 <div class="section" id="squareroot">
-<span id="id3"></span><h2>平方根<a class="headerlink" href="#squareroot" title="永久链接至标题">¶</a></h2>
+<span id="id4"></span><h2>平方根<a class="headerlink" href="#squareroot" title="永久链接至标题">¶</a></h2>
 <p>循环常用于计算数值的程序中，这类程序一般从一个大概的值开始，然后迭代式地进行改进。</p>
 <p>举个例子，牛顿法（Newton&#8217;s method）是计算平方根的一种方法。假设你想求 <span class="math">\(a`的平方根。如果你从任意一个估算值 :math:`x\)</span> 开始，则可以利用下面的公式计算出更为较为精确的估算值：</p>
 <div class="math">
@@ -374,8 +374,8 @@ Done!
 </div>
 <p>这里，变量 <code class="docutils literal"><span class="pre">epsilon</span></code> 是一个决定其精确度的值，如 0.0000001。</p>
 </div>
-<div class="section" id="id4">
-<h2>算法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id5">
+<h2>算法<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <p>牛顿法就是一个 <strong>算法（Algorithm）</strong> 示例：它是解决一类问题的机械化过程
 （这个例子中是计算平方根）。</p>
 <p>为了理解算法是什么，先了解什么不是算法或许有点帮助。你在学习一位数乘法时，
@@ -391,8 +391,8 @@ Done!
 力上的挑战，更是计算机科学中的核心。</p>
 <p>人们轻轻松松或者下意识自然而然做的一些事情，往往是最难用算法来表达的。理解自然语言就是个很好的例子。我们每个人都听得懂自然语言，但是目前还没有人能够解释我们是 <em>怎么</em> 做到的，至少不是以算法的形式解释。</p>
 </div>
-<div class="section" id="id5">
-<h2>调试<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id6">
+<h2>调试<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <p>当你开始写更为复杂的程序时，你会发现大部分时间都花费在调试上。更多的
 代码意味着更高的出错概率，并且会有更多隐藏bug的地方。</p>
 <p>减少调试时间的一个方法就是“对分调试”。例如，如果程序有100行，你一次检查一行，就需要100步。</p>
@@ -404,8 +404,8 @@ Done!
 计算行数并且取其中间行是没有意义的。相反，多考虑下程序中哪些地方比较容易出问题，或者
 哪些地方比较容易进行检查。然后选定一个检查点，在这个断点前后出现bug的概念差不多。</p>
 </div>
-<div class="section" id="id6">
-<h2>术语表<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id7">
+<h2>术语表<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <dl class="docutils">
 <dt>重新赋值（reassignment）：</dt>
 <dd>给已经存在的变量赋一个新的值。</dd>
@@ -425,8 +425,8 @@ Done!
 <dd>解决一类问题的通用过程。</dd>
 </dl>
 </div>
-<div class="section" id="id7">
-<h2>练习题<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id8">
+<h2>练习题<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <p>习题7-1.</p>
 <p>复制<a class="reference internal" href="#squareroot"><span>平方根</span></a>一节中的循环，将其封装进一个叫 <code class="docutils literal"><span class="pre">mysqrt</span></code> 的函数中。这个函数接受 a 作为形参，选择一个合适的 x 值，并返回 a 的平方根估算值。</p>
 <p>为测试上面的函数，编写一个名为 <code class="docutils literal"><span class="pre">test_squre_root</span></code> 的函数，打印出如下表格：</p>
