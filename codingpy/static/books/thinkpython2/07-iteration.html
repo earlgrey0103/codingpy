@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Iteration 迭代 &mdash; 《Think Python 2e》中译本 1.0 文档</title>
+  
+
+  
+    <meta name="keywords" content="《Think Python》第二版中译文, Python 3版入门教材, Allen Downey, EarlGrey, 编程派">
+    <meta name="description" content="编程派翻译的《Think Python 2ed》中文版，为最新支持Python 3版的教材。">
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="prev" title="第六章：有返回值的函数" href="06-fruitful-functions.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69612020-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 《Think Python 2e》中译本
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                持续更新中
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Iteration 迭代</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">重新赋值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">更新变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#while">while 语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#break">break</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#squareroot">平方根</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">算法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">术语表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">练习题</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">《Think Python 2e》中译本</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Iteration 迭代</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+            <a href="http://codingpy.com" title="编程派" >前往编程派</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="iteration">
+<h1>Iteration 迭代<a class="headerlink" href="#iteration" title="永久链接至标题">¶</a></h1>
+<p>本章介绍迭代，即重复运行某个代码块的能力。我们已经在<a class="reference internal" href="05-conditionals-and-recursion.html#recursion"><span>递归</span></a>一节接触了一种利用递归进行迭代的方式；在<a class="reference internal" href="04-case-study-interface-design.html#repetition"><span>简单的重复</span></a>一节中，接触了另一种利用 <code class="docutils literal"><span class="pre">for</span></code> 循环进行迭代的方式。在本章中，我们将讨论另外一种利用 <code class="docutils literal"><span class="pre">while</span></code> 语句实现迭代的方式。
+不过，首先我想再多谈谈有关变量赋值的问题。</p>
+<div class="section" id="id1">
+<h2>重新赋值<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>你应该已经发现了，对同一变量进行多次赋值是合法的。新的赋值会使得已有的变量指向
+新的值（同时不再指向旧的值）。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+<p>第一次打印 x 时， 它的值为 5；第二次打印时，它的值是 7。</p>
+<p><a class="reference internal" href="#fig-assign2"><span>图7-1状态图</span></a>展示了 <strong>重新赋值</strong> 在状态图中看起来是什么样子。</p>
+<p>这里我想探讨一个常见的疑惑点。由于 Python 用等号（=）来赋值，所以很容易将 <code class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">b</span></code> 这样的语句理解为数学上的相等命题；即a 和 b 相等。但是这种理解是错误的。</p>
+<p>首先，相等是一种对称关系，赋值不是。例如，在数学上，如果 <span class="math">\(a=7\)</span>，
+则 <span class="math">\(7=a\)</span>。但是在 Python 中，语句 <code class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">7</span></code> 是合法的，<code class="docutils literal"><span class="pre">7</span> <span class="pre">=</span> <span class="pre">a</span></code> 不合法。</p>
+<p>此外，在数学中，相等命题不是对的就是错的。如果 <span class="math">\(a=b\)</span>，那么 <span class="math">\(a\)</span>
+则是永远与 <span class="math">\(b\)</span> 相等。在 Python 中，赋值语句可以使得两个变量相等，
+但是这两个变量不一定必须保持这个状态：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>    <span class="c1"># a 和 b 现在相等</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>    <span class="c1"># a 和 b 不再相等</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<p>第三行改变了 a 的值，但是没有改变 b 的值，所以它们不再相等了。</p>
+<p>给变量重新赋值经常会有帮助，但是你应该小心使用。变量值频繁改变会使得代码不易读，
+而且不好调试。</p>
+<div class="figure" id="id8">
+<span id="fig-assign2"></span><img alt="图7-1状态图" src="_images/assign2.png" />
+<p class="caption"><span class="caption-text">图7-1状态图</span></p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>更新变量<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>重新赋值的一个常见方式是 <strong>更新（update）</strong>，这时新的变量值将取决于旧值。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>这个语句的意思是，“获得 x 的当前值，加1，然后将 x 的值更新为新的值。”</p>
+<p>如果试图去更新一个不存在的变量，则会返回一个错误。这是因为 Python 是先求
+式子右边的值，然后再把所求的值赋给 x：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="go">NameError: name &#39;x&#39; is not defined</span>
+</pre></div>
+</div>
+<p>在更新变量之前，你得先 <strong>初始化（initialize）</strong> 它，通常是通过一个简单的赋值实现：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>通过加1来更新变量叫做 <strong>递增（increment）</strong>；减1叫做 <strong>递减（decrement）</strong>。</p>
+</div>
+<div class="section" id="while">
+<h2>while 语句<a class="headerlink" href="#while" title="永久链接至标题">¶</a></h2>
+<p>计算机经常被用来自动处理重复性的任务。计算机很擅长无纰漏地重复相同或者相似的任务，
+而人类在这方面做的不好。在计算机程序中，重复也被称为**迭代（iteration）**。</p>
+<p>我们已经见识过两个利用递归来迭代的函数： <code class="docutils literal"><span class="pre">`countdown</span></code> 和 <code class="docutils literal"><span class="pre">print_n</span></code>。由于迭代如此普遍，
+所以 Python 提供了使其更容易实现的语言特性。其中之一就是我们在<a class="reference internal" href="04-case-study-interface-design.html#repetition"><span>简单的重复</span></a>一节看到的
+<code class="docutils literal"><span class="pre">for</span></code> 语句。后面我们还会继续介绍。</p>
+<p>另外一个则是 <code class="docutils literal"><span class="pre">while</span></code> 语句。下面是使用 <code class="docutils literal"><span class="pre">while</span></code> 语句实现的 <code class="docutils literal"><span class="pre">countdown</span></code>：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Blastoff!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你可以像读英语句子一样来读 <code class="docutils literal"><span class="pre">`while</span></code> 语句。它的意思是：“只要 n 的值大于 0，
+则打印出 n 的值，然后让 n 减1。当 n 递减至 0 时，打印单词 Blastoff！”。</p>
+<p>更正式地来说，<code class="docutils literal"><span class="pre">while</span></code> 语句的执行流程如下：</p>
+<ol class="arabic simple">
+<li>首先判断条件为真还是为假。</li>
+<li>如果为假，退出 <code class="docutils literal"><span class="pre">while</span></code> 语句，然后执行接下来的语句；</li>
+<li>如果条件为真，则运行 <code class="docutils literal"><span class="pre">while</span></code> 语句体，运行完再返回第一步；</li>
+</ol>
+<p>这种形式的流程叫做循环（loop），因为第三步后又循环回到了第一步。</p>
+<p>循环语句体应该改变一个或多个变量的值，这样的话才能让条件判断最终变为假，
+从而终止循环。不然的话，循环将会永远重复下去，这被称为**无限循环（infinite loop）**。
+在计算机科学家看来，洗发水的使用说明——“抹洗发水，
+清洗掉，重复”便是个无限循环，这总是会让他们觉得好笑。</p>
+<p>对于 <code class="docutils literal"><span class="pre">countdown</span></code> 来说，我们可以证明循环是一定会终止的：当 n 是 0 或者负数，该循环就不会执行；不然 n 通过每次循环之后慢慢减小，最终也是会变成 0 的。</p>
+<p>对于其他循环，可能就没那么好理解了。例如：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sequence</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>       <span class="c1"># n 是偶数</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">else</span><span class="p">:</span>                <span class="c1"># n 是奇数</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>循环的条件是 <code class="docutils literal"><span class="pre">n</span> <span class="pre">!=</span> <span class="pre">1</span></code>，所以循环会一直执行到 n 等于 1，条件判断为假时循环才终止。</p>
+<p>每次循环，该程序打印出 n 的值，然后检查它是偶数还是奇数。如果它是偶数，
+那么 n 可以被2整除；如果是奇数，则它的值被替换为 n*3 + 1。例如，如果传递给 <code class="docutils literal"><span class="pre">sequence</span></code> 的实参为3，那么打印出的结果将会是：3、10、5、16、8、4、2、1。</p>
+<p>由于 n 的值时增时减，所以不能轻易保证 n 会最终变成 1，或者说这个程序能够终止。
+对于某些特殊的 n 的值，可以很好地证明它是可以终止的。例如，当 n 的初始值是 2
+的倍数时，则每次循环后 n 一直为偶数，直到最终变为 1。上一个示例中，程序就打印了类似的序列，从16开始全部为偶数。</p>
+<p>难点是能否证明程序对于 <em>所有</em> 的正整数 n 都会终止的。目前为止，
+还没有人证明 <em>或者</em> 证伪该命题。（见： <a class="reference external" href="http://en.wikipedia.org/wiki/Collatz_conjecture">http://en.wikipedia.org/wiki/Collatz_conjecture</a> 。）</p>
+<p>我们做个练习，利用迭代而非递归，重写之前<a class="reference internal" href="05-conditionals-and-recursion.html#recursion"><span>递归</span></a>一节中的 <code class="docutils literal"><span class="pre">print_n</span></code> 函数。</p>
+</div>
+<div class="section" id="break">
+<h2>break<a class="headerlink" href="#break" title="永久链接至标题">¶</a></h2>
+<p>有些时候循环执行到一半你才知道循环该结束了。这种情况下，你可以使用 <code class="docutils literal"><span class="pre">break</span></code> 语句
+来跳出循环。</p>
+<p>例如，假设你想从用户那里获取输入，直到用户键入“done”。你可以这么写：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;&gt; &#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="s1">&#39;done&#39;</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>循环条件是True，其总是为真，所以该循环会一直执行直到碰到 <code class="docutils literal"><span class="pre">break</span></code>。</p>
+<p>每次循环时，程序都会给出一个尖括号（&gt;）提示。如果用户输入“done”，执行 <code class="docutils literal"><span class="pre">break</span></code> 语句
+跳出循环。否则，程序就会一直打印出用户所输入的内容并且跳到循环开始，以下是一个运行示例：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>&gt; not done
+not done
+&gt; done
+Done!
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">while</span></code>循环的这种写法很常见，因为你可以在循环的任何地方判断条件
+（而不只是在循环开始），而且你可以积极地表达终止条件（“当出现这个情况是终止”），
+而不是消极地表示（“继续运行直到出现这个情况”）。</p>
+</div>
+<div class="section" id="squareroot">
+<span id="id3"></span><h2>平方根<a class="headerlink" href="#squareroot" title="永久链接至标题">¶</a></h2>
+<p>循环常用于计算数值的程序中，这类程序一般从一个大概的值开始，然后迭代式地进行改进。</p>
+<p>举个例子，牛顿法（Newton&#8217;s method）是计算平方根的一种方法。假设你想求 <span class="math">\(a`的平方根。如果你从任意一个估算值 :math:`x\)</span> 开始，则可以利用下面的公式计算出更为较为精确的估算值：</p>
+<div class="math">
+\[y = \frac{x + a/x}{2}\]</div>
+<p>例如，假定 <span class="math">\(a\)</span> 是 4，<span class="math">\(x\)</span> 是 3：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">2.16666666667</span>
+</pre></div>
+</div>
+<p>可以看到，结果与真实值（<span class="math">\(\sqrt{4} = 2\)</span>）已经很接近了，如果我们用这个值
+再重新运算一遍，它将得到更为接近的值。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">2.00641025641</span>
+</pre></div>
+</div>
+<p>再通过多几次的运算，这个估算可以说已经是很精确了。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">2.00001024003</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">2.00000000003</span>
+</pre></div>
+</div>
+<p>一般来说，我们事先不会知道要多少步才能得到真实值，但是我们知道当估算值不再变动时，我们就获得了正确的答案。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">2.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">2.0</span>
+</pre></div>
+</div>
+<p>当 <code class="docutils literal"><span class="pre">y</span> <span class="pre">==</span> <span class="pre">x</span></code> 时，我们可以停止计算了。下面这个循环就是利用一个初始估值 x，
+循序渐进地计算，直到估值不再变化。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">x</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>对于大部分a的值，这个程序运行正常，不过一般来说，检查两个浮点数是否相等比较危险。浮点数只能大约表示：大多数有理数，如 <span class="math">\(1/3\)</span>，以及无理数，
+如 <span class="math">\(\sqrt{2}\)</span>，是不能用浮点数来精确表示的。</p>
+<p>与其检查 x 和 y 的值是否完全相等，使用内置函数 <code class="docutils literal"><span class="pre">abs</span></code> 来计算二者之差的绝对值或数量级更为安全：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+<p>这里，变量 <code class="docutils literal"><span class="pre">epsilon</span></code> 是一个决定其精确度的值，如 0.0000001。</p>
+</div>
+<div class="section" id="id4">
+<h2>算法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>牛顿法就是一个 <strong>算法（Algorithm）</strong> 示例：它是解决一类问题的机械化过程
+（这个例子中是计算平方根）。</p>
+<p>为了理解算法是什么，先了解什么不是算法或许有点帮助。你在学习一位数乘法时，
+可能背出了乘法表。实际上，你只是记住了100个确切的答案。这种知识并不是算法性的。</p>
+<p>不过，如果你比较 “懒”，你可能就会找到一些诀窍。比如说为了计算 <span class="math">\(n\)</span>
+和 9 的乘积，你可以把 <span class="math">\(n-1\)</span> 作为乘积的第一位数，再把 <span class="math">\(10-n\)</span>
+作为第二位数，从而得到它们的乘积。这个诀窍是将任意个位数
+与 9 相乘的普遍解法。这就是一种算法。</p>
+<p>类似地，你所学过的进位加法、借位减法、以及长除法都是算法。算法的特点之一
+就是不需要过多的脑力计算。算法是一个机械的过程，每一步都是依
+据一组简单的规则跟着上一步来执行的。</p>
+<p>执行算法的过程是很乏味的，但是设计算法就比较有趣了，不但是智
+力上的挑战，更是计算机科学中的核心。</p>
+<p>人们轻轻松松或者下意识自然而然做的一些事情，往往是最难用算法来表达的。理解自然语言就是个很好的例子。我们每个人都听得懂自然语言，但是目前还没有人能够解释我们是 <em>怎么</em> 做到的，至少不是以算法的形式解释。</p>
+</div>
+<div class="section" id="id5">
+<h2>调试<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>当你开始写更为复杂的程序时，你会发现大部分时间都花费在调试上。更多的
+代码意味着更高的出错概率，并且会有更多隐藏bug的地方。</p>
+<p>减少调试时间的一个方法就是“对分调试”。例如，如果程序有100行，你一次检查一行，就需要100步。</p>
+<p>相反，试着将问题拆为两半。在代码中间部分或者附近的地方，寻找一个可以检查的中间值。加上一行
+<code class="docutils literal"><span class="pre">print</span></code> 语句（或是其他具有可验证效果的代码），然后运行程序。</p>
+<p>如果中间点检查出错了，那么就说明程序的前半部分存在问题。如果没问题，则说明是后半部分出错了。</p>
+<p>每次你都这样检查，就可以将需要搜索的代码行数减少一半。经过6步之后（这比100小多了），你将会找到那或者两行出错的代码，至少理论上是这样。</p>
+<p>在实践中，可能并不能很好的确定程序的 “中间部分” 是什么，也有可能并不是那么好检查。
+计算行数并且取其中间行是没有意义的。相反，多考虑下程序中哪些地方比较容易出问题，或者
+哪些地方比较容易进行检查。然后选定一个检查点，在这个断点前后出现bug的概念差不多。</p>
+</div>
+<div class="section" id="id6">
+<h2>术语表<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<dl class="docutils">
+<dt>重新赋值（reassignment）：</dt>
+<dd>给已经存在的变量赋一个新的值。</dd>
+<dt>更新（update）：</dt>
+<dd>变量的新值取决于旧值的一种赋值方法。</dd>
+<dt>初始化（initialize）：</dt>
+<dd>给后面将要更新的变量一个初始值的一种赋值方法。</dd>
+<dt>递增（increment）：</dt>
+<dd>通过增加变量的值的方式更新变量（通常是加 1）。</dd>
+<dt>递减（decrement）：</dt>
+<dd>通过减少变量的值的方式来更新变量。</dd>
+<dt>迭代（iteration）：</dt>
+<dd>利用递归或者循环的方式来重复执行代一组语句的过程。</dd>
+<dt>无限循环（infinite loop）：</dt>
+<dd>无法满足终止条件的循环。</dd>
+<dt>算法（algorithm）：</dt>
+<dd>解决一类问题的通用过程。</dd>
+</dl>
+</div>
+<div class="section" id="id7">
+<h2>练习题<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>习题7-1.</p>
+<p>复制<a class="reference internal" href="#squareroot"><span>平方根</span></a>一节中的循环，将其封装进一个叫 <code class="docutils literal"><span class="pre">mysqrt</span></code> 的函数中。这个函数接受 a 作为形参，选择一个合适的 x 值，并返回 a 的平方根估算值。</p>
+<p>为测试上面的函数，编写一个名为 <code class="docutils literal"><span class="pre">test_squre_root</span></code> 的函数，打印出如下表格：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>a   mysqrt(a)     math.sqrt(a)  diff
+-   ---------     ------------  ----
+1.0 1.0           1.0           0.0
+2.0 1.41421356237 1.41421356237 2.22044604925e-16
+3.0 1.73205080757 1.73205080757 0.0
+4.0 2.0           2.0           0.0
+5.0 2.2360679775  2.2360679775  0.0
+6.0 2.44948974278 2.44948974278 0.0
+7.0 2.64575131106 2.64575131106 0.0
+8.0 2.82842712475 2.82842712475 4.4408920985e-16
+9.0 3.0           3.0           0.0
+</pre></div>
+</div>
+<p>其中第一列是 <span class="math">\(a\)</span> 的值；第二列是通过 <code class="docutils literal"><span class="pre">mysqrt</span></code> 计算得到的 <span class="math">\(a\)</span> 的平方根；第三列是用 <code class="docutils literal"><span class="pre">math.sqrt</span></code> 计算得到的平方根；第四列则是这两个平方根之差的绝对值。</p>
+<p>习题7-2.</p>
+<p>内置函数 <code class="docutils literal"><span class="pre">eval</span></code> 接受一个字符串，并使用 Python 解释器来计算该字符串。例如：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;1 + 2 * 3&#39;</span><span class="p">)</span>
+<span class="go">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;math.sqrt(5)&#39;</span><span class="p">)</span>
+<span class="go">2.2360679774997898</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;type(math.pi)&#39;</span><span class="p">)</span>
+<span class="go">&lt;class &#39;float&#39;&gt;</span>
+</pre></div>
+</div>
+<p>编写一个名为 <code class="docutils literal"><span class="pre">eval_loop</span></code> 的函数，迭代式地提示用户输入，获取输入的内容，并利用 <code class="docutils literal"><span class="pre">eval</span></code> 来计算其值，最后打印该值。</p>
+<p>该程序应持续运行，知道用户输入 <code class="docutils literal"><span class="pre">'done'</span></code>，然后返回它最后一次计算的表达式的值。</p>
+<p>习题7-3.</p>
+<p>数学家斯里尼瓦瑟·拉马努金（Srinivasa Ramanujan） 发现了一个可以用来生成 <span class="math">\(1 / \pi\)</span>
+近似值的无穷级数（infinite series）：</p>
+<div class="math">
+\[\frac{1}{\pi} = \frac{2\sqrt{2}}{9801}
+\sum^\infty_{k=0} \frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}\]</div>
+<p>编写一个名为 <code class="docutils literal"><span class="pre">estimate_pi</span></code> 的函数，利用上面公式来估算并返回 <span class="math">\(\pi\)</span>
+的值。这个函数应该使用 <code class="docutils literal"><span class="pre">while</span></code> 循环来计算所有项的和，直到最后一项小于 1e-15
+（Python 中用于表达 <span class="math">\(10^{-15}\)</span> 的写法）时终止循环。你可以将该值与 <code class="docutils literal"><span class="pre">math.pi</span></code> 进行比较，检测是否准确。</p>
+<p>答案: <a class="reference external" href="http://thinkpython2.com/code/pi.py">http://thinkpython2.com/code/pi.py</a> 。</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="06-fruitful-functions.html" class="btn btn-neutral" title="第六章：有返回值的函数" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, EarlGrey et.al.
+      最后更新于 Mar 22, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
