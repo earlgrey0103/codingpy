@@ -38,7 +38,7 @@
 
   
     <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
-        <link rel="next" title="Iteration 迭代" href="07-iteration.html"/>
+        <link rel="next" title="第七章：迭代" href="07-iteration.html"/>
         <link rel="prev" title="第五章：条件和递归" href="05-conditionals-and-recursion.html"/> 
 
   
@@ -127,13 +127,14 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#id6">再谈递归</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id7">信仰之跃</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id8">再举一例</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">检查类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#guardian">检查类型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id10">调试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id11">术语表</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id12">练习题</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="07-iteration.html">Iteration 迭代</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
 </ul>
 
             
@@ -464,8 +465,8 @@ variables）</strong> 能使调试变得更简单。</p>
 </div>
 <p>这里，如果你试图跟踪执行流程，即使是相当小的 <span class="math">\(n\)</span> ，也足够你头疼的。但遵循信仰之跃这种方法，如果你假设这两个递归调用都能正确运行，很明显将他们两个相加就是正确结果。</p>
 </div>
-<div class="section" id="id9">
-<h2>检查类型<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<div class="section" id="guardian">
+<span id="id9"></span><h2>检查类型<a class="headerlink" href="#guardian" title="永久链接至标题">¶</a></h2>
 <p>如果我们将 1.5 作为参数调用阶乘函数会怎样？</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">factorial</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
 <span class="go">RuntimeError: Maximum recursion depth exceeded</span>
@@ -647,7 +648,7 @@ A(m-1, A(m, n-1)) &amp; \mbox{if } m &gt; 0 \mbox{ and } n &gt; 0.
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="07-iteration.html" class="btn btn-neutral float-right" title="Iteration 迭代" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="07-iteration.html" class="btn btn-neutral float-right" title="第七章：迭代" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="05-conditionals-and-recursion.html" class="btn btn-neutral" title="第五章：条件和递归" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -660,7 +661,7 @@ A(m-1, A(m, n-1)) &amp; \mbox{if } m &gt; 0 \mbox{ and } n &gt; 0.
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Mar 22, 2016.
+      最后更新于 Mar 27, 2016.
 
     </p>
   </div>
