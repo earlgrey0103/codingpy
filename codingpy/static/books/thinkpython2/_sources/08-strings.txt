@@ -599,3 +599,13 @@ Python处理大写和小写字母的方式和人不同。所有的大写字母�
 
 网上一些可能冒犯人的笑话有时以ROT13编码，即以13为偏移量的凯撒
 密码。如果你不是很容易就被冒犯，那么可以找些这样的笑话，并解码。答案： http://thinkpython2.com/code/rotate.py 。
+
+**贡献者**
+
+#. 翻译：`@xpeng`_
+#. 校对：`@bingjin`_
+#. 参考：`@carfly`_
+
+.. _@xpgeng: https://github.com/xpgeng
+.. _@bingjin: https://github.com/bingjin
+.. _@carfly: https://github.com/carfly

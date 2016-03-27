@@ -117,6 +117,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">第七章：迭代</a><ul>
@@ -179,7 +180,7 @@ var _hmt = _hmt || [];
             
   <div class="section" id="id1">
 <h1>第七章：迭代<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>本章介绍迭代，即重复运行某个代码块的能力。我们已经在<a class="reference internal" href="05-conditionals-and-recursion.html#recursion"><span>递归</span></a>一节接触了一种利用递归进行迭代的方式；在<span class="xref std std-ref">repetition</span>一节中，接触了另一种利用 <code class="docutils literal"><span class="pre">for</span></code> 循环进行迭代的方式。在本章中，我们将讨论另外一种利用 <code class="docutils literal"><span class="pre">while</span></code> 语句实现迭代的方式。
+<p>本章介绍迭代，即重复运行某个代码块的能力。我们已经在<a class="reference internal" href="05-conditionals-and-recursion.html#recursion"><span>递归</span></a>一节接触了一种利用递归进行迭代的方式；在<a class="reference internal" href="04-case-study-interface-design.html#repetition"><span>简单的重复</span></a>一节中，接触了另一种利用 <code class="docutils literal"><span class="pre">for</span></code> 循环进行迭代的方式。在本章中，我们将讨论另外一种利用 <code class="docutils literal"><span class="pre">while</span></code> 语句实现迭代的方式。
 不过，首先我想再多谈谈有关变量赋值的问题。</p>
 <div class="section" id="id2">
 <h2>重新赋值<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
@@ -241,7 +242,7 @@ var _hmt = _hmt || [];
 <p>计算机经常被用来自动处理重复性的任务。计算机很擅长无纰漏地重复相同或者相似的任务，
 而人类在这方面做的不好。在计算机程序中，重复也被称为**迭代（iteration）**。</p>
 <p>我们已经见识过两个利用递归来迭代的函数： <code class="docutils literal"><span class="pre">`countdown</span></code> 和 <code class="docutils literal"><span class="pre">print_n</span></code>。由于迭代如此普遍，
-所以 Python 提供了使其更容易实现的语言特性。其中之一就是我们在<span class="xref std std-ref">repetition</span>一节看到的
+所以 Python 提供了使其更容易实现的语言特性。其中之一就是我们在<a class="reference internal" href="04-case-study-interface-design.html#repetition"><span>简单的重复</span></a>一节看到的
 <code class="docutils literal"><span class="pre">for</span></code> 语句。后面我们还会继续介绍。</p>
 <p>另外一个则是 <code class="docutils literal"><span class="pre">while</span></code> 语句。下面是使用 <code class="docutils literal"><span class="pre">while</span></code> 语句实现的 <code class="docutils literal"><span class="pre">countdown</span></code>：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -468,6 +469,12 @@ Done!
 的值。这个函数应该使用 <code class="docutils literal"><span class="pre">while</span></code> 循环来计算所有项的和，直到最后一项小于 1e-15
 （Python 中用于表达 <span class="math">\(10^{-15}\)</span> 的写法）时终止循环。你可以将该值与 <code class="docutils literal"><span class="pre">math.pi</span></code> 进行比较，检测是否准确。</p>
 <p>答案: <a class="reference external" href="http://thinkpython2.com/code/pi.py">http://thinkpython2.com/code/pi.py</a> 。</p>
+<p><strong>贡献者</strong></p>
+<ol class="arabic simple">
+<li>翻译：<a class="reference external" href="https://github.com/lroolle">&#64;lroolle</a></li>
+<li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
+<li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
+</ol>
 </div>
 </div>
 

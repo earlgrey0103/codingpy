@@ -393,3 +393,13 @@ break
 （Python 中用于表达 :math:`10^{-15}` 的写法）时终止循环。你可以将该值与 ``math.pi`` 进行比较，检测是否准确。
 
 答案: http://thinkpython2.com/code/pi.py 。
+
+**贡献者**
+
+#. 翻译：`@lroolle`_
+#. 校对：`@bingjin`_
+#. 参考：`@carfly`_
+
+.. _@lroolle: https://github.com/lroolle
+.. _@bingjin: https://github.com/bingjin
+.. _@carfly: https://github.com/carfly
