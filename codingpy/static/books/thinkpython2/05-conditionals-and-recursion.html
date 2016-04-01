@@ -132,10 +132,22 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#id12">键盘输入</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id13">调试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id14">术语表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id15">练习题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">习题 5-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">习题 5-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">习题 5-3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">习题 5-4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">习题 5-５</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">习题 5-６</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22"><strong>贡献者</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
 </ul>
 
             
@@ -423,7 +435,7 @@ Blastoff!
 <p>每当一个函数被调用时，Python生成一个新的栈帧，用于保存函数的局部变量和形参。
 对于一个递归函数，在堆栈上可能同时有多个栈帧。</p>
 <p><a class="reference internal" href="#fig-stack2"><span>图5-1：堆栈图</span></a>展示了一个以n = 3调用 <code class="docutils literal"><span class="pre">countdown</span></code> 的堆栈图。</p>
-<div class="figure" id="id16">
+<div class="figure" id="id23">
 <span id="fig-stack2"></span><img alt="图5-1：堆栈图" src="_images/stack2.png" />
 <p class="caption"><span class="caption-text">图5-1：堆栈图</span></p>
 </div>
@@ -586,7 +598,8 @@ ValueError: math domain error
 </div>
 <div class="section" id="id15">
 <h2>练习题<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h2>
-<p>习题 5-1</p>
+<div class="section" id="id16">
+<h3>习题 5-1<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">time</span></code> 模块提供了一个可以返回当前格林威治标准时间的函数，名字也是time。这里的格林威治标准时间用纪元(the epoch)以来的秒数表示，
 纪元是一个任意的参考点。在 Unix 系统中，纪元是1970年1月1号。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
@@ -595,7 +608,9 @@ ValueError: math domain error
 </pre></div>
 </div>
 <p>请写一个脚本读取当前时间，并且将其转换为纪元以来经过了多少天、小时、分钟和秒。</p>
-<p>习题 5-2</p>
+</div>
+<div class="section" id="id17">
+<h3>习题 5-2<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <p>费马大定理（Fermat’s Last Theorem ）称，没有任何整型数<span class="math">\(a\)</span>、<span class="math">\(b\)</span>和<span class="math">\(c\)</span>能够使</p>
 <div class="math">
 \[a^n + b^n = c^n\]</div>
@@ -612,7 +627,9 @@ that doesn’t work.”。</p>
 然后使用<code class="docutils literal"><span class="pre">check_fermat</span></code>检查他们是否会违反了费马大定理。</p>
 </li>
 </ol>
-<p>习题 5-3</p>
+</div>
+<div class="section" id="id18">
+<h3>习题 5-3<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
 <p>如果你有三根棍子，你有可能将它们组成三角形，也可能不行。
 比如，如果一根棍子是12英寸长，其它两根都是1英寸长，显然
 你不可能让两根短的在中间接合。对于任意三个长度，有一个简单的测试
@@ -625,7 +642,9 @@ that doesn’t work.”。</p>
 <li>写一个函数，提示用户输入三根棍子的长度，将它们转换成整型数，然后使用
 <code class="docutils literal"><span class="pre">is_triangle</span></code>检查给定长度的棍子能否构成三角形。</li>
 </ol>
-<p>习题 5-4</p>
+</div>
+<div class="section" id="id19">
+<h3>习题 5-4<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
 <p>下面程序的输出是什么？画出展示程序每次打印输出时的堆栈图。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recurse</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -640,7 +659,9 @@ that doesn’t work.”。</p>
 <li>如果你这样调用函数： <code class="docutils literal"><span class="pre">recurse(-1,0)</span></code> ，会有什么结果？</li>
 <li>请写一个文档字符串，解释调用该函数时需要了解的全部信息（仅此而已）。</li>
 </ol>
-<p>习题 5-５</p>
+</div>
+<div class="section" id="id20">
+<h3>习题 5-５<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
 <p>后面的习题要用到第四章中的Turtle：</p>
 <p>阅读如下的函数，看看你能否看懂它是做什么的。然后运行它（见第四章的例子）。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -656,8 +677,10 @@ that doesn’t work.”。</p>
     <span class="n">bk</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">length</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>习题 5-６</p>
-<div class="figure" id="id17">
+</div>
+<div class="section" id="id21">
+<h3>习题 5-６<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<div class="figure" id="id24">
 <img alt="图5-2：科赫曲线（Koch Curve）。" src="_images/koch.png" />
 <p class="caption"><span class="caption-text">图5-2：科赫曲线（Koch Curve）。</span></p>
 </div>
@@ -684,12 +707,15 @@ that doesn’t work.”。</p>
 点击<a class="reference external" href="http://en.wikipedia.org/wiki/Koch_snowflake">http://en.wikipedia.org/wiki/Koch_snowflake</a> 查看例子，并实现你最喜欢的那种方式。</p>
 </li>
 </ol>
-<p><strong>贡献者</strong></p>
+</div>
+<div class="section" id="id22">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
 <li>翻译：<a class="reference external" href="https://github.com/iphyer">&#64;iphyer</a></li>
 <li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
 <li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
 </ol>
+</div>
 </div>
 </div>
 
@@ -713,7 +739,7 @@ that doesn’t work.”。</p>
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Mar 19, 2016.
+      最后更新于 Apr 01, 2016.
 
     </p>
   </div>

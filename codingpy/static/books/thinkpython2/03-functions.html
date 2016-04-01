@@ -130,7 +130,12 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#id12">为什么写函数？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id13">调试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id14">术语表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id15">练习题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">习题 3-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">习题 3-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18"><strong>贡献者</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
@@ -138,6 +143,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
 </ul>
 
             
@@ -469,7 +475,7 @@ math模块也提供了 <code class="docutils literal"><span class="pre">log</spa
 <p>每个函数用一个<strong>栈帧（frame）</strong>表示。
 一个栈帧就是一个线框，函数名在旁边，形参以及函数内部的变量则在里面。
 前面例子的堆栈图如图3-1所示。</p>
-<div class="figure" id="id16">
+<div class="figure" id="id19">
 <img alt="堆栈图。" src="_images/stack.png" />
 <p class="caption"><span class="caption-text">图3-1：堆栈图。</span></p>
 </div>
@@ -622,7 +628,8 @@ Greenfield的描述，“Linus的早期项目中，有一个能够交替打印AA
 </div>
 <div class="section" id="id15">
 <h2>练习题<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h2>
-<p>习题 3-1.</p>
+<div class="section" id="id16">
+<h3>习题 3-1<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 <p>编写一个名为<code class="docutils literal"><span class="pre">right_justify</span></code>的函数，函数接受一个名为``s``的字符串作为形参，
 并在打印足够多的前导空格（leading space）之后打印这个字符串，使得字符串的最后一个字母位于显示屏的第70列。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">right_justify</span><span class="p">(</span><span class="s1">&#39;monty&#39;</span><span class="p">)</span>
@@ -656,7 +663,9 @@ Greenfield的描述，“Linus的早期项目中，有一个能够交替打印AA
 </ol>
 <p>答案： <a class="reference external" href="http://thinkpython2.com/code/do_four.py">http://thinkpython2.com/code/do_four.py</a> 。</p>
 <p>注意：这一习题只能使用我们目前学过的语句和特性来完成。</p>
-<p>习题 3-2.</p>
+</div>
+<div class="section" id="id17">
+<h3>习题 3-2<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">编写一个能画出如下网格（grid）的函数：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>+ - - - - + - - - - +
@@ -689,12 +698,15 @@ Greenfield的描述，“Linus的早期项目中，有一个能够交替打印AA
 </ol>
 <p>答案： <a class="reference external" href="http://thinkpython2.com/code/grid.py">http://thinkpython2.com/code/grid.py</a> 。致谢：这个习题基于 <em>Practical C Programming, Third
 Edition</em> 一书中的习题改编，此书由O’Reilly出版社于1997年出版。</p>
-<p><strong>贡献者</strong></p>
+</div>
+<div class="section" id="id18">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
 <li>翻译：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
 <li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
 <li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
 </ol>
+</div>
 </div>
 </div>
 
@@ -718,7 +730,7 @@ Edition</em> 一书中的习题改编，此书由O’Reilly出版社于1997年�
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Mar 27, 2016.
+      最后更新于 Apr 01, 2016.
 
     </p>
   </div>

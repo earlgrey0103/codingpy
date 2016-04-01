@@ -536,7 +536,8 @@ variables）** 能使调试变得更简单。
 练习题
 --------
 
-习题6-1。
+习题6-1
+^^^^^^^^^^^
 
 
 画出下面程序的堆栈图。这个程序的最终输出是什么？
@@ -561,7 +562,8 @@ variables）** 能使调试变得更简单。
     y = x + 1
     print(c(x, y+3, x+y))
 
-习题6-2。
+习题6-2
+^^^^^^^^^^^
 
 Ackermann 函数 :math:`A(m, n)` 的定义如下：
 
@@ -580,7 +582,10 @@ Ackermann 函数 :math:`A(m, n)` 的定义如下：
 如果m 和 n 的值较大时，会发生什么？
 答案： http://thinkpython2.com/code/ackermann.py 。
 
-习题6-3。
+.. _palindrome:
+
+习题6-3
+^^^^^^^^^^^
 
 回文词（palindrome）指的是正着拼反着拼都一样的单词，如 “noon”和“redivider”。
 按照递归定义的话，如果某个词的首字母和尾字母相同，而且中间部分也是一个回文词，那它就是一个回文词。
@@ -607,25 +612,28 @@ Ackermann 函数 :math:`A(m, n)` 的定义如下：
 
 答案： http://thinkpython2.com/code/palindrome_soln.py 。
 
-习题6-4。
-
+习题6-4
+^^^^^^^^^^^
 
 当数字 :math:`a` 能被  :math:`b` 整除，并且 :math:`a/b` 是 :math:`b` 的幂时， 它就是  :math:`b` 的幂。编写一个叫 ``is_power`` 的函数，接受两个参数 a 和 b， 并且当 a 是 b 的幂时返回 True。注意：你必须要想好基础情形。
 
-习题6-5。
+习题6-5
+^^^^^^^^^^^
 
 \ :math:`a`\ 和 :math:`b` 的最大公约数（GCD）是能被二者整除的最大数。
 
 
 求两个数的最大公约数的一种方法，是基于这样一个原理：如果 :math:`r` 是 :math:`a` 被 :math:`b` 除后的余数，那么  :math:`gcd(a,b) = gcd(b, r)` 。我们可以把 :math:`gcd(a, 0) = a` 当做基础情形。
 
-习题6-6。
+习题6-6
+^^^^^^^^^^^
 
 编写一个叫 ``gcd`` 的函数，接受两个参数 a 和 b，并返回二者的最大公约数。
 
 致谢：这道习题基于 Abelson 和 Sussman 编写的 *《Structure and Interpretation of Computer Programs》* 其中的例子。
 
 **贡献者**
+^^^^^^^^^^^
 
 #. 翻译：`@theJian`_
 #. 校对：`@bingjin`_

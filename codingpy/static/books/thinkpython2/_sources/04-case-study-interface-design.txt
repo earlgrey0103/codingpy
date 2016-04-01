@@ -466,7 +466,8 @@ n就不太合适，因为它是关于 **如何** 画圆的细节。
 练习题
 ---------
 
-习题 4-1.
+习题 4-1
+^^^^^^^^^^^^^^^
 
 可从\ http://thinkpython2.com/code/polygon.py \ 下载本章的代码。
 
@@ -474,7 +475,8 @@ n就不太合适，因为它是关于 **如何** 画圆的细节。
 
 #. “重构”一节中给出的 ``arc`` 函数版本并不太精确，因为圆形的线性近似（linear approximation）永远处在真正的圆形之外。因此，``Turtle`` 总是和正确的终点相差几个像素。我的答案中展示了降低这个错误影响的一种方法。阅读其中的代码，看看你是否能够理解。如果你画一个堆栈图的话，你可能会更容易明白背后的原理。
 
-习题 4-2.
+习题 4-2
+^^^^^^^^^^^^^^^
 
 .. figure:: figs/flowers.png
    :alt: 使用Turtle绘制的花朵。
@@ -487,7 +489,8 @@ n就不太合适，因为它是关于 **如何** 画圆的细节。
 http://thinkpython2.com/code/polygon.py.
 
 
-习题 4-3.
+习题 4-3
+^^^^^^^^^^^^^^^
 
 .. figure:: figs/pies.png
    :alt: 图4-2：使用Turtle画的饼状图。
@@ -498,7 +501,8 @@ http://thinkpython2.com/code/polygon.py.
 
 答案： http://thinkpython2.com/code/pie.py 。
 
-习题 4-4.
+习题 4-4
+^^^^^^^^^^^^^^^
 
 字母表中的字母可以由少量基本元素构成，例如竖线和横线，以及一些曲线。
 设计一种可用由最少的基本元素绘制出的字母表，然后编写能画出各个字母的函数。
@@ -510,7 +514,8 @@ http://thinkpython2.com/code/polygon.py.
 
 你可以在 http://thinkpython2.com/code/letters.py 中找到答案；这个解法还要求使用 http://thinkpython2.com/code/polygon.py 。
 
-习题 4-5.
+习题 4-5
+^^^^^^^^^^^^^^^
 
 前往\ http://en.wikipedia.org/wiki/Spiral \ 阅读螺线（spiral）的相关知识；
 然后编写一个绘制阿基米德螺线（或者其他种类的螺线）的程序。
@@ -518,6 +523,7 @@ http://thinkpython2.com/code/polygon.py.
 答案：\ http://thinkpython2.com/code/spiral.py \ 。
 
 **贡献者**
+^^^^^^^^^^^^^^^
 
 #. 翻译：`@bingjin`_
 #. 校对：`@bingjin`_

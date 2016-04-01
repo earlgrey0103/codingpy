@@ -38,6 +38,7 @@
 
   
     <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="next" title="第九章：文字游戏" href="09-case-study-word-play.html"/>
         <link rel="prev" title="第七章：迭代" href="07-iteration.html"/> 
 
   
@@ -126,16 +127,25 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#for">使用for循环遍历</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">字符串切片</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">字符串是不可变的</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#search">搜索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#counter">循环和计数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id7">字符串方法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#in">in运算符</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id8">字符串比较</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id9">调试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id10">术语表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">练习题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">习题8-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">习题8-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">习题8-3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">习题8-4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">习题8-5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17"><strong>贡献者</strong></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
 </ul>
 
             
@@ -305,7 +315,7 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 </div>
 <p><code class="docutils literal"><span class="pre">[n:m]</span></code>操作符返回从第n个字符到第m个字符的字符串片段，包括第一个，但是不包括最后一个。
 这个行为违反直觉，但是将指向两个字符之间的索引， 想象成 <a class="reference internal" href="#fig-banana"><span>图8-1：切片索引</span></a>中那样或许有帮助。</p>
-<div class="figure" id="id12">
+<div class="figure" id="id18">
 <span id="fig-banana"></span><img alt="图8-1：切片索引" src="_images/banana.png" />
 <p class="caption"><span class="caption-text">图8-1：切片索引</span></p>
 </div>
@@ -348,8 +358,8 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 </div>
 <p>上面的示例中，我们将一个新的首字母拼接到 <code class="docutils literal"><span class="pre">greeting</span></code> 的一个切片上。它不影响原字符串。</p>
 </div>
-<div class="section" id="id5">
-<h2>搜索<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<div class="section" id="search">
+<span id="id5"></span><h2>搜索<a class="headerlink" href="#search" title="永久链接至标题">¶</a></h2>
 <p>下面的函数起什么作用?</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>def find(word， letter):
     index = 0
@@ -526,7 +536,7 @@ True
 </pre></div>
 </div>
 <p>这次我们获得了正确的答案，但是看起来循环只运行了三次，这很奇怪。画栈图可以帮我们更好的理解发生了什么。在第一次迭代期间， <code class="docutils literal"><span class="pre">is_reverse</span></code> 的栈帧如<a class="reference internal" href="#fig-state4"><span>图8-2：堆栈图</span></a>所示。</p>
-<div class="figure" id="id13">
+<div class="figure" id="id19">
 <span id="fig-state4"></span><img alt="图8-2：堆栈图" src="_images/state4.png" />
 <p class="caption"><span class="caption-text">图8-2：堆栈图</span></p>
 </div>
@@ -564,12 +574,17 @@ True
 </div>
 <div class="section" id="id11">
 <h2>练习题<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
-<p>习题8-1.</p>
+<div class="section" id="id12">
+<h3>习题8-1<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
 <p>点击如下链接，阅读字符串方法的文档 <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#string-methods">http://docs.python.org/3/library/stdtypes.html#string-methods</a> 。为了确保你理解他们是怎么工作的，可以尝试使用其中的一些方法。<code class="docutils literal"><span class="pre">strip</span></code> 和 <code class="docutils literal"><span class="pre">replace</span></code> 尤其有用。</p>
 <p>文档中使用了可能会引起困惑的句法。例如， 在 <code class="docutils literal"><span class="pre">find(sub[，</span> <span class="pre">start[，</span> <span class="pre">end]])</span></code> 中，方括号意味着这是可选参数。所以，<code class="docutils literal"><span class="pre">sub</span></code> 是必填参数，但是 <code class="docutils literal"><span class="pre">start</span></code> 是可选的，而且如果你提供了 <code class="docutils literal"><span class="pre">start</span></code> ，也不一定必须提供 <code class="docutils literal"><span class="pre">end</span></code> 。</p>
-<p>习题8-2.</p>
+</div>
+<div class="section" id="id13">
+<h3>习题8-2<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
 <p>有一个字符串方法叫 <code class="docutils literal"><span class="pre">count</span></code> ，它类似于之前<a class="reference internal" href="#counter"><span>循环和计数</span></a>一节中的 <code class="docutils literal"><span class="pre">counter</span></code> 。 阅读这个方法的文档， 写一个计算 <code class="docutils literal"><span class="pre">`banana`</span></code> 中a的个数的方法调用。</p>
-<p>习题8-3.</p>
+</div>
+<div class="section" id="id14">
+<h3>习题8-3<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 <p>一个字符串切片可以接受指定步长的第三个索引; 也就是连续字符间空格的个数。步长为2，意味着每隔一个字符；步长为3，意味着每隔两个字符，以此类推。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
@@ -578,7 +593,9 @@ True
 </div>
 <p>步长为-1就是从单词的尾部开始进行， 所以切片 <code class="docutils literal"><span class="pre">[::-1]</span></code> 生成一个倒序的字符串。</p>
 <p>利用这个惯用法（idiom），将习题6-3中 <code class="docutils literal"><span class="pre">is_palindrome</span></code> 函数改写为一行代码版。</p>
-<p>习题8-4.</p>
+</div>
+<div class="section" id="id15">
+<h3>习题8-4<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
 <p>下面这些函数，都是 <em>用于</em> 检查一个字符串是否包含一些小写字母的，但是其中至少有一些是错误的函数。
 检查每个函数，描述这个函数实际上做了什么(假设形参是字符串)。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">any_lowercase1</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
@@ -613,7 +630,9 @@ True
     <span class="k">return</span> <span class="bp">True</span>
 </pre></div>
 </div>
-<p>习题8-5.</p>
+</div>
+<div class="section" id="id16">
+<h3>习题8-5<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 <p>凯撒密码是一种强度较弱的加密形式，它将每一个字母偏移固定的位置。偏移一个字母，指的是按着字母表
 偏移，如果需要的话再从尾部跳转至首字母，所以“A”偏移三个位置即为“D”， “Z”偏移一个位置是“A”。</p>
 <p>要偏移一个单词，可以将其中每一个字母偏移相同的量。例如， &#8220;cheer&#8221;偏移7个位置后变成了&#8221;jolly&#8221;，&#8221;melon&#8221;
@@ -628,12 +647,15 @@ True
 <p>因为 <code class="docutils literal"><span class="pre">'c'</span></code> 是字母表中的第二个字母。但是请注意：大写字母的数值代码是不同的。</p>
 <p>网上一些可能冒犯人的笑话有时以ROT13编码，即以13为偏移量的凯撒
 密码。如果你不是很容易就被冒犯，那么可以找些这样的笑话，并解码。答案： <a class="reference external" href="http://thinkpython2.com/code/rotate.py">http://thinkpython2.com/code/rotate.py</a> 。</p>
-<p><strong>贡献者</strong></p>
+</div>
+<div class="section" id="id17">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
-<li>翻译：<a href="#id14"><span class="problematic" id="id15">`&#64;xpeng`_</span></a></li>
+<li>翻译：<a class="reference external" href="https://github.com/xpgeng">&#64;xpgeng</a></li>
 <li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
 <li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
 </ol>
+</div>
 </div>
 </div>
 
@@ -643,6 +665,8 @@ True
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="09-case-study-word-play.html" class="btn btn-neutral float-right" title="第九章：文字游戏" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="07-iteration.html" class="btn btn-neutral" title="第七章：迭代" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -655,7 +679,7 @@ True
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Mar 27, 2016.
+      最后更新于 Apr 01, 2016.
 
     </p>
   </div>

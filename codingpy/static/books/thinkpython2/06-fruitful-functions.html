@@ -130,11 +130,21 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#guardian">检查类型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id10">调试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id11">术语表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">练习题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">习题6-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">习题6-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#palindrome">习题6-3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">习题6-4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">习题6-5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">习题6-6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23"><strong>贡献者</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
 </ul>
 
             
@@ -422,7 +432,7 @@ variables）</strong> 能使调试变得更简单。</p>
 </div></blockquote>
 <p>返回值 2 与 <span class="math">\(n\)</span> （其为3）相乘，而结果6也就成为一开始那个函数调用的返回值。</p>
 <p><a class="reference internal" href="#fig-stack3"><span>图6-1：堆栈图</span></a>显示了该函数调用序列的堆栈图看上去是什么样子。</p>
-<div class="figure" id="id17">
+<div class="figure" id="id24">
 <span id="fig-stack3"></span><img alt="图6-1：堆栈图" src="_images/stack3.png" />
 <p class="caption"><span class="caption-text">图6-1：堆栈图</span></p>
 </div>
@@ -569,7 +579,8 @@ returning 1
 </div>
 <div class="section" id="id12">
 <h2>练习题<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
-<p>习题6-1。</p>
+<div class="section" id="id13">
+<h3>习题6-1<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
 <p>画出下面程序的堆栈图。这个程序的最终输出是什么？</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">b</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
     <span class="n">prod</span> <span class="o">=</span> <span class="n">a</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
@@ -590,7 +601,9 @@ returning 1
 <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>习题6-2。</p>
+</div>
+<div class="section" id="id14">
+<h3>习题6-2<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 <p>Ackermann 函数 <span class="math">\(A(m, n)\)</span> 的定义如下：</p>
 <div class="math">
 \[\begin{split}\begin{aligned}
@@ -600,11 +613,13 @@ A(m, n) = \begin{cases}
 A(m-1, A(m, n-1)) &amp; \mbox{if } m &gt; 0 \mbox{ and } n &gt; 0.
 \end{cases} \end{aligned}\end{split}\]</div>
 <p>查看 <a class="reference external" href="http://en.wikipedia.org/wiki/Ackermann_function">http://en.wikipedia.org/wiki/Ackermann_function</a> 。
-编写一个叫作<a href="#id13"><span class="problematic" id="id14">``</span></a>ack <a href="#id15"><span class="problematic" id="id16">``</span></a>的函数来计算 Ackermann 函数。
+编写一个叫作<a href="#id15"><span class="problematic" id="id16">``</span></a>ack <a href="#id17"><span class="problematic" id="id18">``</span></a>的函数来计算 Ackermann 函数。
 使用你的函数计算 ack（3，4），其结果应该为 125 。
 如果m 和 n 的值较大时，会发生什么？
 答案： <a class="reference external" href="http://thinkpython2.com/code/ackermann.py">http://thinkpython2.com/code/ackermann.py</a> 。</p>
-<p>习题6-3。</p>
+</div>
+<div class="section" id="palindrome">
+<span id="id19"></span><h3>习题6-3<a class="headerlink" href="#palindrome" title="永久链接至标题">¶</a></h3>
 <p>回文词（palindrome）指的是正着拼反着拼都一样的单词，如 “noon”和“redivider”。
 按照递归定义的话，如果某个词的首字母和尾字母相同，而且中间部分也是一个回文词，那它就是一个回文词。</p>
 <p>下面的函数接受一个字符串实参，并返回第一个、最后一个和中间的字母：</p>
@@ -624,20 +639,29 @@ A(m-1, A(m, n-1)) &amp; \mbox{if } m &gt; 0 \mbox{ and } n &gt; 0.
 <li>编写一个叫 <code class="docutils literal"><span class="pre">is_palindrome</span></code> 的函数，接受一个字符串作为实参。如果是回文词，就返回 <code class="docutils literal"><span class="pre">True</span></code> ，反之则返回 <code class="docutils literal"><span class="pre">False</span></code>。记住，你可以使用内建函数 <code class="docutils literal"><span class="pre">len</span></code> 来检查字符串的长度。</li>
 </ol>
 <p>答案： <a class="reference external" href="http://thinkpython2.com/code/palindrome_soln.py">http://thinkpython2.com/code/palindrome_soln.py</a> 。</p>
-<p>习题6-4。</p>
+</div>
+<div class="section" id="id20">
+<h3>习题6-4<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
 <p>当数字 <span class="math">\(a\)</span> 能被  <span class="math">\(b\)</span> 整除，并且 <span class="math">\(a/b\)</span> 是 <span class="math">\(b\)</span> 的幂时， 它就是  <span class="math">\(b\)</span> 的幂。编写一个叫 <code class="docutils literal"><span class="pre">is_power</span></code> 的函数，接受两个参数 a 和 b， 并且当 a 是 b 的幂时返回 True。注意：你必须要想好基础情形。</p>
-<p>习题6-5。</p>
+</div>
+<div class="section" id="id21">
+<h3>习题6-5<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
 <p><span class="math">\(a\)</span>和 <span class="math">\(b\)</span> 的最大公约数（GCD）是能被二者整除的最大数。</p>
 <p>求两个数的最大公约数的一种方法，是基于这样一个原理：如果 <span class="math">\(r\)</span> 是 <span class="math">\(a\)</span> 被 <span class="math">\(b\)</span> 除后的余数，那么  <span class="math">\(gcd(a,b) = gcd(b, r)\)</span> 。我们可以把 <span class="math">\(gcd(a, 0) = a\)</span> 当做基础情形。</p>
-<p>习题6-6。</p>
+</div>
+<div class="section" id="id22">
+<h3>习题6-6<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
 <p>编写一个叫 <code class="docutils literal"><span class="pre">gcd</span></code> 的函数，接受两个参数 a 和 b，并返回二者的最大公约数。</p>
 <p>致谢：这道习题基于 Abelson 和 Sussman 编写的 <em>《Structure and Interpretation of Computer Programs》</em> 其中的例子。</p>
-<p><strong>贡献者</strong></p>
+</div>
+<div class="section" id="id23">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
 <li>翻译：<a class="reference external" href="https://github.com/thejian">&#64;theJian</a></li>
 <li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
 <li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
 </ol>
+</div>
 </div>
 </div>
 
@@ -661,7 +685,7 @@ A(m-1, A(m, n-1)) &amp; \mbox{if } m &gt; 0 \mbox{ and } n &gt; 0.
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Mar 27, 2016.
+      最后更新于 Apr 01, 2016.
 
     </p>
   </div>

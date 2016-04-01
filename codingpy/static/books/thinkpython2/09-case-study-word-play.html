@@ -1,0 +1,564 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第九章：文字游戏 &mdash; 《Think Python 2e》中译本 1.0 文档</title>
+  
+
+  
+    <meta name="keywords" content="《Think Python》第二版中译文, Python 3版入门教材, Allen Downey, EarlGrey, 编程派">
+    <meta name="description" content="编程派翻译的《Think Python 2ed》中文版，为最新支持Python 3版的教材。">
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="prev" title="第八章：字符串" href="08-strings.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69612020-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 《Think Python 2e》中译本
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                持续更新中
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">第九章：文字游戏</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">读取单词列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">习题 9-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">习题 9-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">习题 9-3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">习题 9-4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">习题 9-5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">习题 9-6</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">搜索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">使用索引进行循环</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">术语表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id15">习题 9-7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">习题 9-8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">习题 9-9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18"><strong>贡献者</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">《Think Python 2e》中译本</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>第九章：文字游戏</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+            <a href="http://codingpy.com" title="编程派" >前往编程派</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第九章：文字游戏<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>这一章将介绍第二个案例研究，即通过查找具有特定属性的单词来解答字谜游戏。
+例如，我们将找出英文中最长的回文单词，以及字符按照字符表顺序出现的单词。
+另外，我还将介绍另一种程序开发方法：简化为之前已解决的问题。</p>
+<div class="section" id="id2">
+<h2>读取单词列表<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>为了完成本章的习题，我们需要一个英语单词的列表。
+网络上有许多单词列表，但是最符合我们目的列表之一是由 Grady
+Ward收集并贡献给公众的列表，这也是Moby词典项目的一部分
+（见：<a class="reference external" href="http://wikipedia.org/wiki/Moby_Project">http://wikipedia.org/wiki/Moby_Project</a> ）。
+它由113,809个填字游戏单词组成，即在填字游戏以及其它文字游戏中被认为有效的单词。
+在Moby集合中，该列表的文件名是113809of.fic ；你可以从<a class="reference external" href="http://thinkpython.com/code/words.txt">http://thinkpython.com/code/words.txt</a> 下载一个拷贝，文件名已被简化为 words.txt。</p>
+<p>该文件是纯文本，因此你可以用一个文本编辑器打开它，但是你也可以从Python中读取它。
+内建函数 <code class="docutils literal"><span class="pre">open</span></code> 接受文件名作为形参，并返回一个 <strong>文件对象（file object）</strong> ，你可以使用它读取该文件。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fin</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;words.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">fin</span></code>是输入文件对象的一个常用名。该文件对象提供了几个读取方法，
+包括 <code class="docutils literal"><span class="pre">readline</span></code> ，其从文件中读取字符直到碰到新行，并将结果作为字符串返回：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="go">&#39;aa\r\n&#39;</span>
+</pre></div>
+</div>
+<p>在此列表中，第一个单词是“aa”，它是一种岩浆。
+序列<code class="docutils literal"><span class="pre">\r\n</span></code>代表两个空白字符，回车和换行， 它们将这个单词和下一个分开。</p>
+<p>此文件对象跟踪它在文件中的位置，
+所以如果你再次调用readline，你获得下一个单词：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="go">&#39;aah\r\n&#39;</span>
+</pre></div>
+</div>
+<p>下一个单词是“aah”，它是一个完全合法的单词， 所以不要那样看我。
+或者，如果空格困扰了你，我们可以用字符串方法 <code class="docutils literal"><span class="pre">strip</span></code> 删掉它：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="n">fin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">word</span>
+<span class="go">&#39;aahed&#39;</span>
+</pre></div>
+</div>
+<p>你也可以将文件对象用做for循环的一部分。
+此程序读取 <code class="docutils literal"><span class="pre">words.txt</span></code> 并打印每个单词，每行一个：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fin</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;words.txt&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fin</span><span class="p">:</span>
+    <span class="n">word</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>练习题<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>下一节给出了这些习题的答案。
+在你看这些答案之前，应该至少试着解答一下。</p>
+<div class="section" id="id4">
+<h3>习题 9-1<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>编程写一个程序，使得它可以读取 <code class="docutils literal"><span class="pre">words.txt</span></code>　，然后只打印出那些长度超过20个字符的单词(不包括空格)。</p>
+</div>
+<div class="section" id="id5">
+<h3>习题 9-2<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>1939年，Ernest Vincent Wright出版了一本名为 <em>《Gadsby》</em> 的小说，
+该小说里完全没有使用字符“e”。由于“e”是最常用的英文字符，因此这并容易做到。</p>
+<p>事实上，不使用这个最常用的符号(字符e)来构建一个孤立的想法是很难的。
+开始进展缓慢，但是经过有意识的、长时间的训练，你可以逐渐地熟练。</p>
+<p>好啦，不再说题外话了（让我们开始编程练习）。</p>
+<p>写一个叫做<code class="docutils literal"><span class="pre">has_no_e</span></code>的函数，如果给定的单词中不包含字符“e”，其返回 <code class="docutils literal"><span class="pre">True</span></code> 。</p>
+<p>修改上一节中的程序，只打印不包含“e”的单词，并且计算列表中不含“e”单词的比例。</p>
+</div>
+<div class="section" id="id6">
+<h3>习题 9-3<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>编写一个名为 <code class="docutils literal"><span class="pre">avoids</span></code> 的函数，接受一个单词和一个指定禁止使用字符的字符串，
+如果单词中不包含任意被禁止的字符，则返回True 。</p>
+<p>修改你的程序，提示用户输入一个禁止使用的字符，然后打印不包含这些字符的单词的数量。
+你能找到一个5个禁止使用字符的组合，使得其排除的单词数目最少么？</p>
+</div>
+<div class="section" id="id7">
+<h3>习题 9-4<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>编写一个名为<code class="docutils literal"><span class="pre">uses_only</span></code>的函数，接受一个单词和一个字符串。
+如果该单词只包括此字符串中的字符，则返回True。
+你能只用 <code class="docutils literal"><span class="pre">acefhlo</span></code> 这几个字符造一个句子么？ 除了“Hoe alfalfa”外。</p>
+</div>
+<div class="section" id="id8">
+<h3>习题 9-5<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>编写一个名为<code class="docutils literal"><span class="pre">uses_all</span></code>的函数，接受一个单词和一个必须使用的字符组成的字符串。
+如果该单词包括此字符串中的全部字符至少一次，则返回True。
+你能统计出多少单词包含了所有的元音字符aeiou吗？如果换成aeiouy呢？</p>
+</div>
+<div class="section" id="id9">
+<h3>习题 9-6<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>编写一个名为<code class="docutils literal"><span class="pre">is_abecedarian</span></code>的函数，
+如果单词中的字符以字符表的顺序出现（允许重复字符），则返回True 。
+有多少个具备这种特征的单词？</p>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>搜索<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>前一节的所有习题有一个共同点；都可以用在<a class="reference internal" href="08-strings.html#search"><span>搜索</span></a>一节中看到的搜索模式解决。
+举一个最简单的例子：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_no_e</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">for</span></code>循环遍历 <code class="docutils literal"><span class="pre">word</span></code> 中的字符。
+如果我们找到字符“e”，那么我们可以马上返回 <code class="docutils literal"><span class="pre">False</span></code> ；
+否则我们必须检查下一个字符。
+如果我们正常退出循环，就意味着我们没有找到一个“e”， 所以我们返回 <code class="docutils literal"><span class="pre">True</span></code> 。</p>
+<p>你也可以用 <code class="docutils literal"><span class="pre">in</span></code> 操作符简化上述函数，但是我之所以一开始写成这样，是因为它展示了搜索模式的逻辑。</p>
+<p><code class="docutils literal"><span class="pre">avoid</span></code>　是一个更通用的<code class="docutils literal"><span class="pre">has_no_e</span></code>函数，但是结构是相同的：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">avoids</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">forbidden</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">forbidden</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>一旦我们找到一个禁止使用的字符，我们返回 <code class="docutils literal"><span class="pre">False</span></code> ；
+如果我们到达循环结尾，我们返回 <code class="docutils literal"><span class="pre">True</span></code> 。</p>
+<p>除了检测条件相反以外，下面<code class="docutils literal"><span class="pre">uses_only</span></code>函数与上面的函数很像：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">uses_only</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">available</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">available</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>这里我们传入一个允许使用字符的列表，而不是禁止使用字符的列表。
+如果我们在 <code class="docutils literal"><span class="pre">word</span></code> 中找到一个不在 <code class="docutils literal"><span class="pre">available</span></code> 中的字符，我们就可以返回 <code class="docutils literal"><span class="pre">False</span></code> 。</p>
+<p>除了将 <code class="docutils literal"><span class="pre">word</span></code> 与所要求的字符的角色进行了调换之外，
+下面的<code class="docutils literal"><span class="pre">uses_all</span></code>函数也是类似的。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">uses_all</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">required</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">required</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>该循环遍历需要的字符，而不是遍历 <code class="docutils literal"><span class="pre">word</span></code> 中的字符。如果任何要求的字符没出现在单词中， 则我们返回 <code class="docutils literal"><span class="pre">False</span></code> 。</p>
+<p>如果你真的像计算机科学家一样思考，
+你可能已经意识到<code class="docutils literal"><span class="pre">uses_all</span></code>是前面已经解决的问题的一个实例，
+你可能会写成：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">uses_all</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">required</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">uses_only</span><span class="p">(</span><span class="n">required</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这是一种叫做<strong>简化为之前已解决的问题（reduction to a
+previously solved problem）</strong>的程序开发方法的一个示例，
+也就是说，你认识到当前面临的问题是之前已经解决的问题的一个实例，
+然后应用了已有的解决方案。</p>
+</div>
+<div class="section" id="id11">
+<h2>使用索引进行循环<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<p>前一节我用 <code class="docutils literal"><span class="pre">for</span></code> 循环来编写函数，因为我只需要处理字符串中的字符；
+我不必用索引做任何事情。</p>
+<p>对于下面的<code class="docutils literal"><span class="pre">is_abecedarian</span></code>，我们必须比较邻接的字符，
+用 <code class="docutils literal"><span class="pre">for</span></code> 循环来写的话有点棘手。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_abecedarian</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">previous</span> <span class="o">=</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">previous</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">previous</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>一种替代方法是使用递归：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_abecedarian</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="n">is_abecedarian</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</pre></div>
+</div>
+<p>另一中方法是使用 <code class="docutils literal"><span class="pre">while</span></code> 循环：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_abecedarian</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>循环起始于 <code class="docutils literal"><span class="pre">i=0</span></code> ， <code class="docutils literal"><span class="pre">i=len(word)-1</span></code> 时结束。
+每次循环，函数会比较第<span class="math">\(i\)</span>个字符（可以将其认为是当前字符）
+和第<span class="math">\(i+1\)</span>个字符（可以将其认为是下一个字符）。</p>
+<p>如果下一个字符比当前的小（字符序靠前），
+那么我们在递增趋势中找到了断点，即可返回 <code class="docutils literal"><span class="pre">False</span></code> 。</p>
+<p>如果到循环结束时我们也没有找到一点错误，那么该单词通过测试。
+为了让你相信循环正确地结束了，我们用<code class="docutils literal"><span class="pre">'flossy'</span></code>这个单词来举例。
+它的长度为6，因此最后一次循环运行时，i是4，这是倒数第2个字符的索引。
+最后一次迭代时，函数比较倒数第二个和最后一个字符，这正是我们希望的。</p>
+<p>下面是<code class="docutils literal"><span class="pre">is_palindrome</span></code>函数的一种版本（详见<a class="reference internal" href="06-fruitful-functions.html#palindrome"><span>习题6-3</span></a>）
+，其中使用了两个索引；一个从最前面开始并往前上， 另一个从最后面开始并往下走。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_palindrome</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">while</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">j</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">word</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>或者，我们可以把问题简化为之前已经解决的问题，这样来写:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_palindrome</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">is_reverse</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>使用<a class="reference internal" href="08-strings.html#fig-state4"><span>图8-2：堆栈图</span></a>中描述的 <code class="docutils literal"><span class="pre">is_reverse</span></code>。</p>
+</div>
+<div class="section" id="id12">
+<h2>调试<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<p>程序测试很困难。本章中介绍的函数相对容易测试，因为你可以手工检查结果。
+即使这样，选择一可以测试所有可能错误的单词集合，是很困难的，介于困难和不可能之间。</p>
+<p>以 <code class="docutils literal"><span class="pre">has_no_e</span></code>为例，有两个明显的用例需要检查：
+含有‘e’的单词应该返回 <code class="docutils literal"><span class="pre">False</span></code> ，不含的单词应该返回 <code class="docutils literal"><span class="pre">True</span></code> 。
+你应该可以很容易就能想到这两种情况。</p>
+<p>在每个用例中，还有一些不那么明显的子用例。
+在含有“e”的单词中，你应该测试“e”在开始、结尾以及在中间的单词。
+你还应该测试长单词、短单词以及非常短的单词，如空字符串。
+空字符串是一个<strong>特殊用例（special case）</strong>，及一个经常出现错误的不易想到的用例。</p>
+<p>除了你生成的测试用例，你也可以用一个类似 <code class="docutils literal"><span class="pre">words.txt</span></code> 中的单词列表测试你的程序。
+通过扫描输出，你可能会捕获错误，但是请注意：
+你可能捕获一类错误（包括了不应该包括的单词）
+却没能捕获另一类错误（没有包括应该包括的单词）。</p>
+<p>一般来讲，测试能帮助你找到错误， 但是生成好的测试用例并不容易，
+并且即便你做到了，你仍然不能保证你的程序是正确的。正如一位传奇计算机科学家所说：</p>
+<blockquote>
+<div><p>程序测试能用于展示错误的存在，但是无法证明不存在错误！</p>
+<p class="attribution">&mdash;Edsger W. Dijkstra</p>
+</div></blockquote>
+</div>
+<div class="section" id="id13">
+<h2>术语表<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<dl class="docutils">
+<dt>文件对象（file object）:</dt>
+<dd>代表打开文件的变量。</dd>
+<dt>简化为之前已经解决的问题：</dt>
+<dd>通过把未知问题简化为已经解决的问题来解决问题的方法。</dd>
+<dt>特殊用例（special case）:</dt>
+<dd>一种不典型或者不明显的测试用例(而且很可能无法正确解决的用例)。</dd>
+</dl>
+</div>
+<div class="section" id="id14">
+<h2>练习题<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id15">
+<h3>习题 9-7<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>这个问题基于广播节目 <em>《Car Talk》</em> (<a class="reference external" href="http://www.cartalk.com/content/puzzlers">http://www.cartalk.com/content/puzzlers</a>)上介绍的一个字谜：</p>
+<blockquote>
+<div>找出一个包含三个连续双字符的单词。我将给你一系列几乎能够符合条件但实际不符合的单词。
+比如，committee这个单词，c-o-m-m-i-t-t-e-e。
+如果中间没有i的话，就太棒了。
+或者Mississippi这个单词: M-i-s-s-i-s-s-i-p-p-i。假如将这些i剔除出去，就会符合条件。但是确实存在一个包含三个连续的单词对，
+而且据我了解，它可能是唯一符合条件的单词。
+当然也可能有500多个，但是我只能想到一个。那么这个单词是什么？</div></blockquote>
+<p>编写一个程序，找到这个单词。答案： <a class="reference external" href="http://thinkpython2.com/code/cartalk1.py">http://thinkpython2.com/code/cartalk1.py</a> 。</p>
+</div>
+<div class="section" id="id16">
+<h3>习题 9-8<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p>下面是另一个来自 <em>《Car Talk》</em> 的谜题（ <a class="reference external" href="http://www.cartalk.com/content/puzzlers">http://www.cartalk.com/content/puzzlers</a> ）:</p>
+<blockquote>
+<div><p>&#8220;有一天，我正在高速公路上开车，我偶然注意到我的里程表。和大多数里程表一样，它只显示6位数字的整数英里数。
+所以，如果我的车开了300,000英里，我能够看到的数字是:3-0-0-0-0-0。</p>
+<p>我当天看到的里程数非常有意思。我注意到后四位数字是回文数；也就是说，正序读和逆序读是一样的。例如，5-4-4-5就是回文数。
+所以我的里程数可能是3-1-5-4-4-5。</p>
+<p>一英里后，后五位数字变成了回文数。例如，里程数可能变成了是3-6-5-4-5-6。又过了一英里后，6位数字的中间四位变成了回文数。
+你相信吗？一英里后，所有的6位数字都变成了回文数。</p>
+<p>那么问题来了，当我第一次看到里程表时，里程数是多少?”</p>
+</div></blockquote>
+<p>编写写一个程序，测试所有的6位数字，然后输出所有符合要求的结果。答案： <a class="reference external" href="http://thinkpython2.com/code/cartalk2.py">http://thinkpython2.com/code/cartalk2.py</a> 。</p>
+</div>
+<div class="section" id="id17">
+<h3>习题 9-9<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<p>还是 <em>《Car Talk》</em> 的谜题（ <a class="reference external" href="http://www.cartalk.com/content/puzzlers">http://www.cartalk.com/content/puzzlers</a> ），你可以通过利用搜索模式解答：</p>
+<blockquote>
+<div><p>“最近我探望了我的妈妈，我们忽然意识到把我的年纪数字反过来就是她的年龄。比如，如果她73岁，那么我就是37岁。
+我们想知道过去这些年来，发生了多少次这样的巧合，但是我们很快偏离到其他话题上，最后并没有找到答案。</p>
+<p>回到家后，我计算出我的年龄数字有6次反过来就是妈妈的年龄。
+同时，我也发现如果幸运的话，将来几年还可能发生这样的巧合，
+运气再好点的话，之后还会出现一次这样的巧合。
+换句话说，这样的巧合一共会发生8次。那么，问题来了，我现在多大了？”</p>
+</div></blockquote>
+<p>编写一个查找谜题答案的Python函数。提示：字符串的 <code class="docutils literal"><span class="pre">zfill</span></code> 方法特别有用。
+答案：<a class="reference external" href="http://thinkpython2.com/code/cartalk3.py">http://thinkpython2.com/code/cartalk3.py</a> 。</p>
+</div>
+<div class="section" id="id18">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li>翻译：<a class="reference external" href="https://github.com/iphyer">&#64;iphyer</a></li>
+<li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
+<li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="08-strings.html" class="btn btn-neutral" title="第八章：字符串" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, EarlGrey et.al.
+      最后更新于 Apr 01, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

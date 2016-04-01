@@ -129,10 +129,17 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#id5">算法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id6">调试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id7">术语表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">练习题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">习题7-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">习题7-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">习题7-3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12"><strong>贡献者</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
 </ul>
 
             
@@ -184,7 +191,7 @@ var _hmt = _hmt || [];
 不过，首先我想再多谈谈有关变量赋值的问题。</p>
 <div class="section" id="id2">
 <h2>重新赋值<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>你应该已经发现了，对同一变量进行多次赋值是合法的。新的赋值会使得已有的变量指向
+<p>可能你已发现对同一变量进行多次赋值是合法的。新的赋值会使得已有的变量指向
 新的值（同时不再指向旧的值）。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
@@ -198,8 +205,8 @@ var _hmt = _hmt || [];
 <p><a class="reference internal" href="#fig-assign2"><span>图7-1状态图</span></a>展示了 <strong>重新赋值</strong> 在状态图中看起来是什么样子。</p>
 <p>这里我想探讨一个常见的疑惑点。由于 Python 用等号（=）来赋值，所以很容易将 <code class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">b</span></code> 这样的语句理解为数学上的相等命题；即a 和 b 相等。但是这种理解是错误的。</p>
 <p>首先，相等是一种对称关系，赋值不是。例如，在数学上，如果 <span class="math">\(a=7\)</span>，
-则 <span class="math">\(7=a\)</span>。但是在 Python 中，语句 <code class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">7</span></code> 是合法的，<code class="docutils literal"><span class="pre">7</span> <span class="pre">=</span> <span class="pre">a</span></code> 不合法。</p>
-<p>此外，在数学中，相等命题不是对的就是错的。如果 <span class="math">\(a=b\)</span>，那么 <span class="math">\(a\)</span>
+则 <span class="math">\(7=a\)</span>。但是在 Python 中，语句 <code class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">7</span></code> 是合法的，<code class="docutils literal"><span class="pre">7</span> <span class="pre">=</span> <span class="pre">a</span></code> 则不合法。</p>
+<p>此外，数学中，相等命题不是对的就是错的。如果 <span class="math">\(a=b\)</span>，那么 <span class="math">\(a\)</span>
 则是永远与 <span class="math">\(b\)</span> 相等。在 Python 中，赋值语句可以使得两个变量相等，
 但是这两个变量不一定必须保持这个状态：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
@@ -210,16 +217,16 @@ var _hmt = _hmt || [];
 </pre></div>
 </div>
 <p>第三行改变了 a 的值，但是没有改变 b 的值，所以它们不再相等了。</p>
-<p>给变量重新赋值经常会有帮助，但是你应该小心使用。变量值频繁改变会使得代码不易读，
-而且不好调试。</p>
-<div class="figure" id="id9">
+<p>给变量重新赋值非常有用，但是需要小心使用。对变量频繁重新赋值会使代码难于阅读，
+不易调试。</p>
+<div class="figure" id="id13">
 <span id="fig-assign2"></span><img alt="图7-1状态图" src="_images/assign2.png" />
 <p class="caption"><span class="caption-text">图7-1状态图</span></p>
 </div>
 </div>
 <div class="section" id="id3">
 <h2>更新变量<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<p>重新赋值的一个常见方式是 <strong>更新（update）</strong>，这时新的变量值将取决于旧值。</p>
+<p>重新赋值的一个常见方式是 <strong>更新（update）</strong>，更新操作中变量的新值会取决于旧值。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
@@ -241,10 +248,11 @@ var _hmt = _hmt || [];
 <h2>while 语句<a class="headerlink" href="#while" title="永久链接至标题">¶</a></h2>
 <p>计算机经常被用来自动处理重复性的任务。计算机很擅长无纰漏地重复相同或者相似的任务，
 而人类在这方面做的不好。在计算机程序中，重复也被称为**迭代（iteration）**。</p>
-<p>我们已经见识过两个利用递归来迭代的函数： <code class="docutils literal"><span class="pre">`countdown</span></code> 和 <code class="docutils literal"><span class="pre">print_n</span></code>。由于迭代如此普遍，
+<p>所以 Python 提供了使其更容易实现的语言特性。其中之一就是我们在<a class="reference internal" href="04-case-study-interface-design.html#repetition"><span>简单的重复</span></a>一节看到的
+我们已经见过两个利用递归来迭代的函数： <code class="docutils literal"><span class="pre">`countdown</span></code> 和 <code class="docutils literal"><span class="pre">print_n</span></code>。由于迭代如此普遍，
 所以 Python 提供了使其更容易实现的语言特性。其中之一就是我们在<a class="reference internal" href="04-case-study-interface-design.html#repetition"><span>简单的重复</span></a>一节看到的
 <code class="docutils literal"><span class="pre">for</span></code> 语句。后面我们还会继续介绍。</p>
-<p>另外一个则是 <code class="docutils literal"><span class="pre">while</span></code> 语句。下面是使用 <code class="docutils literal"><span class="pre">while</span></code> 语句实现的 <code class="docutils literal"><span class="pre">countdown</span></code>：</p>
+<p>另外一个用于迭代的语句是 <code class="docutils literal"><span class="pre">while</span></code> 。下面是使用 <code class="docutils literal"><span class="pre">while</span></code> 语句实现的 <code class="docutils literal"><span class="pre">countdown</span></code>：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
@@ -261,12 +269,12 @@ var _hmt = _hmt || [];
 <li>如果条件为真，则运行 <code class="docutils literal"><span class="pre">while</span></code> 语句体，运行完再返回第一步；</li>
 </ol>
 <p>这种形式的流程叫做循环（loop），因为第三步后又循环回到了第一步。</p>
-<p>循环语句体应该改变一个或多个变量的值，这样的话才能让条件判断最终变为假，
+<p>循环主体应该改变一个或多个变量的值，这样的话才能让条件判断最终变为假，
 从而终止循环。不然的话，循环将会永远重复下去，这被称为**无限循环（infinite loop）**。
 在计算机科学家看来，洗发水的使用说明——“抹洗发水，
 清洗掉，重复”便是个无限循环，这总是会让他们觉得好笑。</p>
 <p>对于 <code class="docutils literal"><span class="pre">countdown</span></code> 来说，我们可以证明循环是一定会终止的：当 n 是 0 或者负数，该循环就不会执行；不然 n 通过每次循环之后慢慢减小，最终也是会变成 0 的。</p>
-<p>对于其他循环，可能就没那么好理解了。例如：</p>
+<p>有些其他循环，可能就没那么好理解了。例如：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sequence</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">while</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
@@ -316,7 +324,7 @@ Done!
 <div class="section" id="squareroot">
 <span id="id4"></span><h2>平方根<a class="headerlink" href="#squareroot" title="永久链接至标题">¶</a></h2>
 <p>循环常用于计算数值的程序中，这类程序一般从一个大概的值开始，然后迭代式地进行改进。</p>
-<p>举个例子，牛顿法（Newton&#8217;s method）是计算平方根的一种方法。假设你想求 <span class="math">\(a`的平方根。如果你从任意一个估算值 :math:`x\)</span> 开始，则可以利用下面的公式计算出更为较为精确的估算值：</p>
+<p>例如，牛顿法 (Newton&#8217;s method) 是计算平方根的一种方法。 假设你想求 <span class="math">\(a`的平方根。如果你从任意一个估算值 :math:`x\)</span> 开始，则可以利用下面的公式计算出更为较为精确的估算值：</p>
 <div class="math">
 \[y = \frac{x + a/x}{2}\]</div>
 <p>例如，假定 <span class="math">\(a\)</span> 是 4，<span class="math">\(x\)</span> 是 3：</p>
@@ -346,7 +354,7 @@ Done!
 <span class="go">2.00000000003</span>
 </pre></div>
 </div>
-<p>一般来说，我们事先不会知道要多少步才能得到真实值，但是我们知道当估算值不再变动时，我们就获得了正确的答案。</p>
+<p>一般来说，我们事先不知道要多少步才能得到正确答案，但是我们知道当估算值不再变动时，我们就获得了正确的答案。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="o">/</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
@@ -378,7 +386,7 @@ Done!
 </div>
 <div class="section" id="id5">
 <h2>算法<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
-<p>牛顿法就是一个 <strong>算法（Algorithm）</strong> 示例：它是解决一类问题的机械化过程
+<p>牛顿法就是一个 <strong>算法（Algorithm）</strong> 示例：它是解决一类问题的计算机制
 （这个例子中是计算平方根）。</p>
 <p>为了理解算法是什么，先了解什么不是算法或许有点帮助。你在学习一位数乘法时，
 可能背出了乘法表。实际上，你只是记住了100个确切的答案。这种知识并不是算法性的。</p>
@@ -390,7 +398,7 @@ Done!
 就是不需要过多的脑力计算。算法是一个机械的过程，每一步都是依
 据一组简单的规则跟着上一步来执行的。</p>
 <p>执行算法的过程是很乏味的，但是设计算法就比较有趣了，不但是智
-力上的挑战，更是计算机科学中的核心。</p>
+力上的挑战，更是计算机科学的核心。</p>
 <p>人们轻轻松松或者下意识自然而然做的一些事情，往往是最难用算法来表达的。理解自然语言就是个很好的例子。我们每个人都听得懂自然语言，但是目前还没有人能够解释我们是 <em>怎么</em> 做到的，至少不是以算法的形式解释。</p>
 </div>
 <div class="section" id="id6">
@@ -429,7 +437,8 @@ Done!
 </div>
 <div class="section" id="id8">
 <h2>练习题<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
-<p>习题7-1.</p>
+<div class="section" id="id9">
+<h3>习题7-1<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <p>复制<a class="reference internal" href="#squareroot"><span>平方根</span></a>一节中的循环，将其封装进一个叫 <code class="docutils literal"><span class="pre">mysqrt</span></code> 的函数中。这个函数接受 a 作为形参，选择一个合适的 x 值，并返回 a 的平方根估算值。</p>
 <p>为测试上面的函数，编写一个名为 <code class="docutils literal"><span class="pre">test_squre_root</span></code> 的函数，打印出如下表格：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>a   mysqrt(a)     math.sqrt(a)  diff
@@ -446,7 +455,9 @@ Done!
 </pre></div>
 </div>
 <p>其中第一列是 <span class="math">\(a\)</span> 的值；第二列是通过 <code class="docutils literal"><span class="pre">mysqrt</span></code> 计算得到的 <span class="math">\(a\)</span> 的平方根；第三列是用 <code class="docutils literal"><span class="pre">math.sqrt</span></code> 计算得到的平方根；第四列则是这两个平方根之差的绝对值。</p>
-<p>习题7-2.</p>
+</div>
+<div class="section" id="id10">
+<h3>习题7-2<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <p>内置函数 <code class="docutils literal"><span class="pre">eval</span></code> 接受一个字符串，并使用 Python 解释器来计算该字符串。例如：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;1 + 2 * 3&#39;</span><span class="p">)</span>
 <span class="go">7</span>
@@ -459,7 +470,9 @@ Done!
 </div>
 <p>编写一个名为 <code class="docutils literal"><span class="pre">eval_loop</span></code> 的函数，迭代式地提示用户输入，获取输入的内容，并利用 <code class="docutils literal"><span class="pre">eval</span></code> 来计算其值，最后打印该值。</p>
 <p>该程序应持续运行，知道用户输入 <code class="docutils literal"><span class="pre">'done'</span></code>，然后返回它最后一次计算的表达式的值。</p>
-<p>习题7-3.</p>
+</div>
+<div class="section" id="id11">
+<h3>习题7-3<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 <p>数学家斯里尼瓦瑟·拉马努金（Srinivasa Ramanujan） 发现了一个可以用来生成 <span class="math">\(1 / \pi\)</span>
 近似值的无穷级数（infinite series）：</p>
 <div class="math">
@@ -469,12 +482,15 @@ Done!
 的值。这个函数应该使用 <code class="docutils literal"><span class="pre">while</span></code> 循环来计算所有项的和，直到最后一项小于 1e-15
 （Python 中用于表达 <span class="math">\(10^{-15}\)</span> 的写法）时终止循环。你可以将该值与 <code class="docutils literal"><span class="pre">math.pi</span></code> 进行比较，检测是否准确。</p>
 <p>答案: <a class="reference external" href="http://thinkpython2.com/code/pi.py">http://thinkpython2.com/code/pi.py</a> 。</p>
-<p><strong>贡献者</strong></p>
+</div>
+<div class="section" id="id12">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
 <li>翻译：<a class="reference external" href="https://github.com/lroolle">&#64;lroolle</a></li>
 <li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
 <li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
 </ol>
+</div>
 </div>
 </div>
 
@@ -498,7 +514,7 @@ Done!
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Mar 27, 2016.
+      最后更新于 Apr 01, 2016.
 
     </p>
   </div>
