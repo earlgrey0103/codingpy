@@ -779,6 +779,7 @@ Python为列表提供了一些方法. 例如, ``append`` 添加一个新元素�
 编写一个叫做 ``is_anagram`` 的函数，接受两个字符串作为参数，
 如果它们是变位词则返回 ``True`` 。
 
+.. _exercise10-7:
 
 习题10-7
 ^^^^^^^^^^^^
@@ -810,6 +811,7 @@ Python为列表提供了一些方法. 例如, ``append`` 添加一个新元素�
 
 答案： http://thinkpython2.com/code/wordlist.py 。
 
+.. _exercise10-10:
 
 习题10-10
 ^^^^^^^^^^^^

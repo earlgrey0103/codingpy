@@ -1,0 +1,773 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第十一章：字典 &mdash; 《Think Python 2e》中译本 1.0 文档</title>
+  
+
+  
+    <meta name="keywords" content="《Think Python》第二版中译文, Python 3版入门教材, Allen Downey, EarlGrey, 编程派">
+    <meta name="description" content="编程派翻译的《Think Python 2ed》中文版，为最新支持Python 3版的教材。">
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="prev" title="第十章：列表" href="10-lists.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69612020-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 《Think Python 2e》中译本
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                持续更新中
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-lists.html">第十章：列表</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第十一章：字典</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">字典即映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">字典作为计数器集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">循环和字典</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">逆向查找</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">字典和列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">备忘录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">全局变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">术语表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exercise11-1">习题11-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">习题11-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">习题11-3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">习题11-4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">习题11-5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">习题11-6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18"><strong>贡献者</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">《Think Python 2e》中译本</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>第十一章：字典</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+            <a href="http://codingpy.com" title="编程派" >前往编程派</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第十一章：字典<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>本章介绍另一个内建数据类型：字典(dictionary)。
+字典是Python中最优秀的特性之一；许多高效、优雅的算法即以此为基础。</p>
+<div class="section" id="id2">
+<h2>字典即映射<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p><strong>字典</strong> 与列表类似，但是更加通用。
+在列表中，索引必须是整数；但在字典中，它们可以是（几乎）任何类型。</p>
+<p>字典包含了一个索引的集合，被称为 <strong>键（keys）</strong> ，和一个值(values)的集合。
+一个键对应一个值。这种一一对应的关联被称为 <strong>键值对（key-value pair)</strong> ，
+有时也被称为 <strong>项（item）</strong>。</p>
+<p>在数学语言中，字典表示的是从键到值的 <strong>映射</strong>，所以你也可以说每一个键 “映射到” 一个值。
+举个例子，我们接下来创建一个字典，将英语单词映射至西班牙语单词，因此键和值都是字符串。</p>
+<p><code class="docutils literal"><span class="pre">dict</span></code>函数生成一个不含任何项的新字典。
+由于 <code class="docutils literal"><span class="pre">dict</span></code> 是内建函数名，你应该避免使用它来命名变量。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eng2sp</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eng2sp</span>
+<span class="go">{}</span>
+</pre></div>
+</div>
+<p>花括号 <code class="docutils literal"><span class="pre">{}</span></code> 表示一个空字典。你可以使用方括号向字典中增加项：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eng2sp</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;uno&#39;</span>
+</pre></div>
+</div>
+<p>这行代码创建一个新项，将键 <code class="docutils literal"><span class="pre">'one'</span></code> 映射至值 <code class="docutils literal"><span class="pre">'uno'</span></code>。
+如果我们再次打印该字典，会看到一个以冒号分隔的键值对：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eng2sp</span>
+<span class="go">{&#39;one&#39;: &#39;uno&#39;}</span>
+</pre></div>
+</div>
+<p>输出的格式同样也是输入的格式。
+例如，你可以像这样创建一个包含三个项的字典：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eng2sp</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="s1">&#39;uno&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">:</span> <span class="s1">&#39;dos&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">:</span> <span class="s1">&#39;tres&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>但是，如果你打印 <code class="docutils literal"><span class="pre">eng2sp</span></code> ，结果可能会让你感到意外：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eng2sp</span>
+<span class="go">{&#39;one&#39;: &#39;uno&#39;, &#39;three&#39;: &#39;tres&#39;, &#39;two&#39;: &#39;dos&#39;}</span>
+</pre></div>
+</div>
+<p>键-值对的顺序和原来不同。
+同样的例子在你的电脑上可能有不同的结果。通常来说，字典中项的顺序是不可预知的。</p>
+<p>但这没有关系，因为字典的元素不使用整数索引来索引，而是用键来查找对应的值：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eng2sp</span><span class="p">[</span><span class="s1">&#39;two&#39;</span><span class="p">]</span>
+<span class="go">&#39;dos&#39;</span>
+</pre></div>
+</div>
+<p>键 <code class="docutils literal"><span class="pre">'two'</span></code> 总是映射到值 <code class="docutils literal"><span class="pre">'dos'</span></code> ，因此项的顺序没有关系。</p>
+<p>如果键不存在字典中，会抛出一个异常：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eng2sp</span><span class="p">[</span><span class="s1">&#39;four&#39;</span><span class="p">]</span>
+<span class="go">KeyError: &#39;four&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">len</span></code>函数也适用于字典；它返回键值对的个数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">eng2sp</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">in</span></code>操作符也适用于字典；它可以用来检验字典中是否存在某个 <em>键</em> （仅仅有这个值还不够）。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;one&#39;</span> <span class="ow">in</span> <span class="n">eng2sp</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;uno&#39;</span> <span class="ow">in</span> <span class="n">eng2sp</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>想要知道字典中是否存在某个值，你可以使用 <code class="docutils literal"><span class="pre">values</span></code> 方法，它返回值的集合，然后你可以使用 <code class="docutils literal"><span class="pre">in</span></code> 操作符来验证：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vals</span> <span class="o">=</span> <span class="n">eng2sp</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;uno&#39;</span> <span class="ow">in</span> <span class="n">vals</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">in</span></code>操作符对列表和字典采用不同的算法。
+对于列表，它按顺序依次查找目标，如<a class="reference internal" href="08-strings.html#search"><span class="std std-ref">搜索</span></a>一节所示。
+随着列表的增长，搜索时间成正比增长。</p>
+<p>对于字典，Python使用一种叫做 <strong>哈希表（hashtable）</strong> 的算法，
+这种算法具备一种了不起的特性：
+无论字典中有多少项，<code class="docutils literal"><span class="pre">in</span></code> 运算符搜索所需的时间都是一样的。我将在第二十一章的哈希表一节中具体解释背后的原理，
+但是如果你不再多学习几章内容，现在去看解释的话可能很难理解。</p>
+</div>
+<div class="section" id="id3">
+<h2>字典作为计数器集合<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>假设给你一个字符串，你想计算每个字母出现的次数。
+有多种方法可以使用：</p>
+<ol class="arabic simple">
+<li>你可以生成26个变量，每个对应一个字母表中的字母。然后你可以遍历字符串，对于 每个字符，递增相应的计数器，你可能会用到链式条件。</li>
+<li>你可以生成具有26个元素的列表。然后你可以将每个字符转化为一个数字（使用内建函数 <code class="docutils literal"><span class="pre">ord</span></code> ），使用这些数字作为列表的索引，并递增适当的计数器。</li>
+<li>你可以生成一个字典，将字符作为键，计数器作为相应的值。字母第一次出现时，你应该向字典中增加一项。 这之后，你应该递增一个已有项的值。</li>
+</ol>
+<p>每个方法都是为了做同一件事，但是各自的实现方法不同。</p>
+<p><strong>实现</strong> 是指执行某种计算的方法；有的实现更好。
+例如，使用字典的实现有一个优势，即我们不需要事先知道字符串中有几种字母，
+只要在出现新字母时分配空间就好了。</p>
+<p>代码可能是这样的：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">histogram</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">d</span>
+</pre></div>
+</div>
+<p>函数名叫 <code class="docutils literal"><span class="pre">histogram</span></code> (直方图) ，是计数器（或是频率）集合的统计术语。</p>
+<p>函数的第一行生成一个空字典。<code class="docutils literal"><span class="pre">for</span></code> 循环遍历该字符串。
+每次循环，如果字符 <code class="docutils literal"><span class="pre">c</span></code> 不在字典中， 我们用键 <code class="docutils literal"><span class="pre">c</span></code> 和初始值 <code class="docutils literal"><span class="pre">1</span></code> 生成一个新项 （因为该字母出现了一次）。 如果 <code class="docutils literal"><span class="pre">c</span></code> 已经在字典中了，那么我们递增 <code class="docutils literal"><span class="pre">d[c]</span></code> 。</p>
+<p>下面是运行结果：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">histogram</span><span class="p">(</span><span class="s1">&#39;brontosaurus&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span>
+<span class="go">{&#39;a&#39;: 1, &#39;b&#39;: 1, &#39;o&#39;: 2, &#39;n&#39;: 1, &#39;s&#39;: 2, &#39;r&#39;: 2, &#39;u&#39;: 2, &#39;t&#39;: 1}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">histogram</span></code>函数表明字母 <code class="docutils literal"><span class="pre">'a'</span></code> 和 <code class="docutils literal"><span class="pre">'b'</span></code> 出现了一次，  <code class="docutils literal"><span class="pre">'o'</span></code> 出现了两次，等等。</p>
+<p>字典类有一个 <code class="docutils literal"><span class="pre">get</span></code> 方法，接受一个键和一个默认值作为参数。
+如果字典中存在该键，则返回对应值；否则返回传入的默认值。例如：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">histogram</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span>
+<span class="go">{&#39;a&#39;: 1}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>我们做个练习，试着用 <code class="docutils literal"><span class="pre">get</span></code> 简化 <code class="docutils literal"><span class="pre">histogram</span></code> 函数。你应该能够不再使用 <code class="docutils literal"><span class="pre">if</span></code> 语句。</p>
+</div>
+<div class="section" id="id4">
+<h2>循环和字典<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>在 <code class="docutils literal"><span class="pre">for</span></code> 循环中使用字典会遍历其所有的键。
+例如，下面的 <code class="docutils literal"><span class="pre">print_hist</span></code> 会打印所有键与对应的值：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_hist</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">h</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>输出类似：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">histogram</span><span class="p">(</span><span class="s1">&#39;parrot&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">print_hist</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="go">a 1</span>
+<span class="go">p 1</span>
+<span class="go">r 2</span>
+<span class="go">t 1</span>
+<span class="go">o 1</span>
+</pre></div>
+</div>
+<p>重申一遍，字典中的键是无序的。
+如果要以确定的顺序遍历字典，你可以使用内建方法 <code class="docutils literal"><span class="pre">sorted</span></code>：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">h</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+<span class="go">a 1</span>
+<span class="go">o 1</span>
+<span class="go">p 1</span>
+<span class="go">r 2</span>
+<span class="go">t 1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>逆向查找<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>给定一个字典 <code class="docutils literal"><span class="pre">d</span></code> 以及一个键 <code class="docutils literal"><span class="pre">t</span></code> ，很容易找到相应的值 <code class="docutils literal"><span class="pre">v</span> <span class="pre">=</span> <span class="pre">d[k]</span></code> 。
+该运算被称作 <strong>查找（lookup）</strong> 。</p>
+<p>但是如果你想通过 <code class="docutils literal"><span class="pre">v</span></code> 找到 <code class="docutils literal"><span class="pre">k</span></code> 呢？
+有两个问题：第一，可能有不止一个的键其映射到值v。
+你可能可以找到唯一一个，不然就得用 <code class="docutils literal"><span class="pre">list</span></code> 把所有的键包起来。
+第二，没有简单的语法可以完成 <strong>逆向查找（reverse lookup）</strong>；你必须搜索。</p>
+<p>下面这个函数接受一个值并返回映射到该值的第一个键：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reverse_lookup</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">v</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">k</span>
+    <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>该函数是搜索模式的另一个例子，但是它使用了一个我们之前没有见过的特性，<code class="docutils literal"><span class="pre">raise</span></code>。
+<strong>raise 语句</strong> 能触发异常，这里它触发了 <code class="docutils literal"><span class="pre">ValueError</span></code>，这是一个表示查找操作失败的内建异常。</p>
+<p>如果我们到达循环结尾，这意味着字典中不存在 <code class="docutils literal"><span class="pre">v</span></code> 这个值，所以我们触发一个异常。</p>
+<p>下面是一个成功逆向查找的例子：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">histogram</span><span class="p">(</span><span class="s1">&#39;parrot&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">key</span> <span class="o">=</span> <span class="n">reverse_lookup</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">key</span>
+<span class="go">&#39;r&#39;</span>
+</pre></div>
+</div>
+<p>和一个失败的例子：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">key</span> <span class="o">=</span> <span class="n">reverse_lookup</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">5</span>, in <span class="n">reverse_lookup</span>
+<span class="gr">LookupError</span>
+</pre></div>
+</div>
+<p>你触发的异常和 <code class="docutils literal"><span class="pre">Python</span></code> 触发的产生效果一样：都打印一条回溯和错误信息。</p>
+<p><code class="docutils literal"><span class="pre">raise</span></code>语句接受一个详细的错误信息作为可选的实参。 例如：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="s1">&#39;value does not appear in the dictionary&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">?</span>
+<span class="gr">LookupError</span>: <span class="n">value does not appear in the dictionary</span>
+</pre></div>
+</div>
+<p>逆向查找比正向查找慢得多；
+如果你频繁执行这个操作或是字典很大，程序性能会变差。</p>
+</div>
+<div class="section" id="id6">
+<h2>字典和列表<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>在字典中，列表可以作为值出现。
+例如，如果你有一个从字母映射到频率的字典， 而你想倒转它；
+也就是生成一个从频率映射到字母的字典。
+因为可能有些字母具有相同的频率，所以在倒转字典中的每个值应该是一个字母组成的列表。</p>
+<p>下面是一个倒转字典的函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">invert_dict</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+    <span class="n">inverse</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">inverse</span><span class="p">:</span>
+            <span class="n">inverse</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">inverse</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">inverse</span>
+</pre></div>
+</div>
+<p>每次循环，<code class="docutils literal"><span class="pre">key</span></code> 从 <code class="docutils literal"><span class="pre">d</span></code> 获得一个键和相应的值 <code class="docutils literal"><span class="pre">val</span></code> 。
+如果 <code class="docutils literal"><span class="pre">val</span></code> 不在 <code class="docutils literal"><span class="pre">inverse</span></code> 中，意味着我们之前没有见过它，
+因此我们生成一个新项并用一个 <strong>单元素集合（singleton）</strong> （只包含一个元素的列表）初始化它。
+否则就意味着之前已经见过该值，因此将其对应的键添加至列表。</p>
+<p>举个例子：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hist</span> <span class="o">=</span> <span class="n">histogram</span><span class="p">(</span><span class="s1">&#39;parrot&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hist</span>
+<span class="go">{&#39;a&#39;: 1, &#39;p&#39;: 1, &#39;r&#39;: 2, &#39;t&#39;: 1, &#39;o&#39;: 1}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inverse</span> <span class="o">=</span> <span class="n">invert_dict</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inverse</span>
+<span class="go">{1: [&#39;a&#39;, &#39;p&#39;, &#39;t&#39;, &#39;o&#39;], 2: [&#39;r&#39;]}</span>
+</pre></div>
+</div>
+<div class="figure" id="id19">
+<span id="fig-dict1"></span><img alt="图11-1：状态图" src="_images/dict1.png" />
+<p class="caption"><span class="caption-text">图11-1：状态图</span></p>
+</div>
+<p><a class="reference internal" href="#fig-dict1"><span class="std std-ref">图11-1：状态图</span></a>是关于 <code class="docutils literal"><span class="pre">hist</span></code> 与 <code class="docutils literal"><span class="pre">inverse</span></code> 的状态图。字典用标有类型dict的方框表示，方框中是键值对。如果值是整数、浮点数或字符串，
+我就把它们画在方框内部，但我通常把列表画在方框外面，目的只是为了不让图表变复杂。</p>
+<p>如本例所示，列表可以作为字典中的值，但是不能是键。
+下面演示了这样做的结果：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;oops&#39;</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">?</span>
+<span class="gr">TypeError</span>: <span class="n">list objects are unhashable</span>
+</pre></div>
+</div>
+<p>我之前提过，字典使用哈希表实现，这意味着键必须是 <strong>可哈希的（hashable）</strong> 。</p>
+<p><strong>哈希（hash）</strong> 函数接受一个值（任何类型）并返回一个整数。
+字典使用被称作哈希值的这些整数，来存储和查找键值对。</p>
+<p>如果键是不可变的，那么这种实现可以很好地工作。
+但是如果键是可变的，如列表，那么就会发生糟糕的事情。
+例如，当你生成一个键值对时，Python哈希该键并将其存储在相应的位置。
+如果你改变键然后再次哈希它，它将被存储到另一个位置。
+在那种情况下，对于相同的键，你可能有两个值， 或者你可能无法找到一个键。
+无论如何，字典都不会正确的工作。</p>
+<p>这就是为什么键必须是可哈希的，以及为什么如列表这种可变类型不能作为键。
+绕过这种限制最简单的方法是使用元组， 我们将在下一章中介绍。</p>
+<p>因为字典是可变的，因此它们不能作为键，但是 <em>可以</em> 用作值。</p>
+</div>
+<div class="section" id="id7">
+<h2>备忘录<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>如果你在 <a class="reference internal" href="06-fruitful-functions.html#onemoreexample"><span class="std std-ref">再举一例</span></a>一节中接触过 <code class="docutils literal"><span class="pre">fibonacci</span></code> 函数，你可能注意到输入的实参越大，函数运行就需要越多时间。
+而且运行时间增长得非常快。</p>
+<p>要理解其原因，思考&nbsp;<a class="reference internal" href="#fig-fibonacci"><span class="std std-ref">图11-2：调用图</span></a>，它展示了当 <code class="docutils literal"><span class="pre">n=4</span></code> 时 <code class="docutils literal"><span class="pre">fibonacci</span></code> 的 <strong>调用图（call graph）</strong> ：</p>
+<div class="figure" id="id20">
+<span id="fig-fibonacci"></span><img alt="图11-2：调用图" src="_images/fibonacci.png" />
+<p class="caption"><span class="caption-text">图11-2：调用图</span></p>
+</div>
+<p>调用图中列出了一系列函数栈帧，每个栈帧之间通过线条与调用它的函数栈帧相连。
+在图的顶端，<code class="docutils literal"><span class="pre">n=4</span></code> 的 <code class="docutils literal"><span class="pre">fibonacci</span></code> 调用 <code class="docutils literal"><span class="pre">n=3</span></code> 和 <code class="docutils literal"><span class="pre">n=2</span></code> 的 <code class="docutils literal"><span class="pre">fibonacci</span></code> 。
+接着，<code class="docutils literal"><span class="pre">n=3</span></code> 的 <code class="docutils literal"><span class="pre">fibonacci</span></code> 调用 <code class="docutils literal"><span class="pre">n=2</span></code> 和 <code class="docutils literal"><span class="pre">n=1</span></code> 的 <code class="docutils literal"><span class="pre">fibonacci</span></code> 。以此类推。</p>
+<p>数数 <code class="docutils literal"><span class="pre">fibonacci(0)</span></code> 和 <code class="docutils literal"><span class="pre">fibonacci(1)</span></code> 总共被调用了几次。
+对该问题，这不是一个高效的解，并且随着实参的变大会变得更糟。</p>
+<p>一个解决办法是保存已经计算过的值，将它们存在一个字典中。
+存储之前计算过的值以便今后使用，它被称作 <strong>备忘录（memo）</strong> 。
+下面是使用备忘录（memoized）的 <code class="docutils literal"><span class="pre">fibonacci</span></code> 的实现：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">known</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">known</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">known</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">known</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">known</span></code>是一个字典，记录了我们已经计算过的裴波那切数字。
+它一开始包含两个项：0映射到0，1映射到1。</p>
+<p>当 <code class="docutils literal"><span class="pre">fibonacci</span></code> 被调用时，它先检查 <code class="docutils literal"><span class="pre">known</span></code> 。 如果结果存在，则立即返回。 否则，它必须计算新的值，将其加入字典，并返回它。</p>
+<p>将两个版本的 <code class="docutils literal"><span class="pre">fibonacci</span></code> 函数比比看，你就知道后者快了很多。</p>
+</div>
+<div class="section" id="id8">
+<h2>全局变量<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>在前面的例子中，<code class="docutils literal"><span class="pre">known</span></code> 是在函数的外部创建的，
+因此它属于被称作 <code class="docutils literal"><span class="pre">__main__</span></code> 的特殊帧。
+因为 <code class="docutils literal"><span class="pre">__main__</span></code> 中的变量可以被任何函数访问，它们也被称作 <strong>全局变量（global）</strong> 。
+与函数结束时就会消失的局部变量不同，不同函数调用时全局变量一直都存在。</p>
+<p>全局变量普遍用作 <strong>标记（flag）</strong>； 也就是说明（标记）一个条件是否为真的布尔变量。
+例如，一些程序使用一个被称作 <code class="docutils literal"><span class="pre">verbose</span></code> 的标记来控制输出的丰富程度：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">example1</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Running example1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果你试图对一个全局变量重新赋值，结果可能出乎意料。
+下面的例子本应该记录函数是否已经被调用过了：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">been_called</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">example2</span><span class="p">():</span>
+    <span class="n">been_called</span> <span class="o">=</span> <span class="kc">True</span>         <span class="c1"># 错误</span>
+</pre></div>
+</div>
+<p>但是如果你运行它，你会发现 <code class="docutils literal"><span class="pre">been_called</span></code> 的值并未发生改变。
+问题在于 <code class="docutils literal"><span class="pre">example2</span></code> 生成了一个新的被称作 <code class="docutils literal"><span class="pre">been_called</span></code> 的局部变量。
+当函数结束的时候，该局部变量也消失了，并且对全局变量没有影响。</p>
+<p>要在函数内对全局变量重新赋值，你必须在使用之前 <strong>声明(declare)</strong> 该全局变量：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">been_called</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">example2</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">been_called</span>
+    <span class="n">been_called</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p><strong>global 语句</strong> 告诉编译器，“在这个函数里，当我说 <code class="docutils literal"><span class="pre">been_called</span></code> 时，我指的是那个全局变量，别生成局部变量”。</p>
+<p>下面是一个试图更新全局变量的例子：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">example3</span><span class="p">():</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>          <span class="c1"># 错误</span>
+</pre></div>
+</div>
+<p>一旦运行，你会发现：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ne">UnboundLocalError</span><span class="p">:</span> <span class="n">local</span> <span class="n">variable</span> <span class="s1">&#39;count&#39;</span> <span class="n">referenced</span> <span class="n">before</span> <span class="n">assignment</span>
+</pre></div>
+</div>
+<p>Python默认 <code class="docutils literal"><span class="pre">count</span></code> 是局部变量，在这个假设下，你这是在未写入任何东西前就试图读取。
+解决方法还是声明 <code class="docutils literal"><span class="pre">count</span></code> 是全局变量。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">example3</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">count</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>如果全局变量是可变的，你可以不加声明地修改它：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">known</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">example4</span><span class="p">():</span>
+    <span class="n">known</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>因此你可以增加、删除和替代全局列表或者字典的元素，
+但是如果你想对变量重新赋值，你必须声明它：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">example5</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">known</span>
+    <span class="n">known</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>全局变量有时是很有用的，但如果你的程序中有很多全局变量，而且修改频繁，
+这样会增加程序调试的难度。</p>
+</div>
+<div class="section" id="id9">
+<h2>调试<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>当你操作较大的数据集时，通过打印并手工检查数据来调试很不方便。
+下面是针对调试大数据集的一些建议：</p>
+<p>缩小输入：</p>
+<blockquote>
+<div><p>如果可能，减小数据集合的大小。
+例如，如果程序读入一个文本文件，从前10行开始分析，或是找到更小的样例。
+你可以选择编辑读入的文件，或是（最好）修改程序使它只读入前 n 行。</p>
+<p>如果出错了，你可以将 n 缩小为会导致该错误的最小值，然后在查找和解决错误的同时，逐步增加 n 的值。</p>
+</div></blockquote>
+<p>检查摘要和类型：</p>
+<blockquote>
+<div><p>考虑打印数据的摘要，而不是打印并检查全部数据集合：
+例如，字典中项的数目或者数字列表的总和。</p>
+<p>运行时错误的一个常见原因，是值的类型不正确。
+为了调试此类错误，打印值的类型通常就足够了。</p>
+</div></blockquote>
+<p>编写自检代码：</p>
+<blockquote>
+<div><p>有时你可以写代码来自动检查错误。 例如，如果你正在计算数字列表的平均数，你可以检查其结果是不是大于列表中最大的元素，或者小于最小的元素。 这被称 作“合理性检查”，因为它能检测出“不合理的”结果。</p>
+<p>另一类检查是比较两个不同计算的结果，来看一下它们是否一致。这被称作“一致性检查”。</p>
+</div></blockquote>
+<p>格式化输出：</p>
+<blockquote>
+<div>格式化调试输出能够更容易定位一个错误。 我们在<a class="reference internal" href="06-fruitful-functions.html#factdebug"><span class="std std-ref">调试</span></a>一节中看过一个示例。<code class="docutils literal"><span class="pre">pprint</span></code> 模块提供了一个 <code class="docutils literal"><span class="pre">pprint</span></code> 函数，它可以更可读的格式显示内建类型（ <code class="docutils literal"><span class="pre">pprint</span></code> 代表 “pretty print”）。</div></blockquote>
+<p>重申一次，你花在搭建脚手架上的时间能减少你花在调试上的时间。</p>
+</div>
+<div class="section" id="id10">
+<h2>术语表<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>映射（mapping）：</p>
+<blockquote>
+<div>一个集合中的每个元素对应另一个集合中的一个元素的关系。</div></blockquote>
+<p>字典（dictionary）：</p>
+<blockquote>
+<div>将键映射到对应值的映射。</div></blockquote>
+<p>键值对（key-value pair）：</p>
+<blockquote>
+<div>键值之间映射关系的呈现形式。</div></blockquote>
+<p>项（item）：</p>
+<blockquote>
+<div>在字典中，这是键值对的另一个名称。</div></blockquote>
+<p>键（key）：</p>
+<blockquote>
+<div>字典中作为键值对第一部分的对象。</div></blockquote>
+<p>值（value）：</p>
+<blockquote>
+<div>字典中作为键值对第二部分的对象。它比我们之前所用的“值”一词更具体。</div></blockquote>
+<p>实现（implementation）：</p>
+<blockquote>
+<div>执行计算的一种形式。</div></blockquote>
+<p>哈希表（hashtable）：</p>
+<blockquote>
+<div>用来实现Python字典的算法。</div></blockquote>
+<p>哈希函数（hash function）：</p>
+<blockquote>
+<div>哈希表用来计算键的位置的函数。</div></blockquote>
+<p>可哈希的（hashable）：</p>
+<blockquote>
+<div>具备哈希函数的类型。诸如整数、浮点数和字符串这样的不可变类型是可哈希的；诸如列表和字典这样的可变对象是不可哈希的。</div></blockquote>
+<p>查找（lookup）：</p>
+<blockquote>
+<div>接受一个键并返回相应值的字典操作。</div></blockquote>
+<p>逆向查找（reverse lookup）：</p>
+<blockquote>
+<div>接受一个值并返回一个或多个映射至该值的键的字典操作。</div></blockquote>
+<p>raise语句：</p>
+<blockquote>
+<div>专门印发异常的一个语句。</div></blockquote>
+<p>单元素集合（singleton）：</p>
+<blockquote>
+<div>只有一个元素的列表（或其他序列）。</div></blockquote>
+<p>调用图（call graph）：</p>
+<blockquote>
+<div>绘出程序执行过程中创建的每个栈帧的调用图，其中的箭头从调用者指向被调用者。</div></blockquote>
+<p>备忘录（memo）：</p>
+<blockquote>
+<div>一个存储的计算值，避免之后进行不必要的计算。</div></blockquote>
+<p>全局变量（global variable）：</p>
+<blockquote>
+<div>在函数外部定义的变量。任何函数都可以访问全局变量。</div></blockquote>
+<p>global语句：</p>
+<blockquote>
+<div>将变量名声明为全局变量的语句。</div></blockquote>
+<p>标记（flag）：</p>
+<blockquote>
+<div>用于说明一个条件是否为真的布尔变量。</div></blockquote>
+<p>声明（declaration）：</p>
+<blockquote>
+<div>类似global这种告知解释器如何处理变量的语句。</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h2>练习题<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<div class="section" id="exercise11-1">
+<span id="id12"></span><h3>习题11-1<a class="headerlink" href="#exercise11-1" title="永久链接至标题">¶</a></h3>
+<p>编写一函数，读取 <code class="docutils literal"><span class="pre">words.txt</span></code> 中的单词并存储为字典中的键。值是什么无所谓。
+然后，你可以使用 <code class="docutils literal"><span class="pre">in</span></code> 操作符检查一个字符串是否在字典中。</p>
+<p>如果你做过<a class="reference internal" href="10-lists.html#exercise10-10"><span class="std std-ref">习题10-10</span></a>，可以比较一下 <code class="docutils literal"><span class="pre">in</span></code> 操作符
+和二分查找的速度。</p>
+</div>
+<div class="section" id="id13">
+<h3>习题11-2<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>查看字典方法 <code class="docutils literal"><span class="pre">setdefault</span></code> 的文档，并使用该方法写一个更简洁的 <code class="docutils literal"><span class="pre">invert_dict</span></code> 。</p>
+<p>答案： <a class="reference external" href="http://thinkpython2.com/code/invert_dict.py">http://thinkpython2.com/code/invert_dict.py</a> 。</p>
+</div>
+<div class="section" id="id14">
+<h3>习题11-3<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>将<a class="reference internal" href="06-fruitful-functions.html#exercise6-2"><span class="std std-ref">习题6-2</span></a>中的Ackermann函数备忘录化（memoize），看看备忘录化（memoization）是否可以支持解决更大的参数。没有提示！</p>
+<p>答案： <a class="reference external" href="http://thinkpython2.com/code/ackermann_memo.py">http://thinkpython2.com/code/ackermann_memo.py</a> 。</p>
+</div>
+<div class="section" id="id15">
+<h3>习题11-4<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>如果你做了<a class="reference internal" href="10-lists.html#exercise10-7"><span class="std std-ref">习题10-7</span></a>，你就已经写过一个叫 <code class="docutils literal"><span class="pre">has_duplicates</span></code> 的函数，它接受一个列表作为参数，如果其中有某个对象在列表中出现不止一次就返回True。</p>
+<p>用字典写个更快、更简单的版本。</p>
+<p>答案： <a class="reference external" href="http://thinkpython2.com/code/has_duplicates.py">http://thinkpython2.com/code/has_duplicates.py</a> 。</p>
+</div>
+<div class="section" id="id16">
+<h3>习题11-5<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p>两个单词如果反转其中一个就会得到另一个，则被称作“反转对”（参见<a class="reference internal" href="08-strings.html#exercise8-5"><span class="std std-ref">习题8-5</span></a>中的 <code class="docutils literal"><span class="pre">rotate_word</span></code> ）。</p>
+<p>编写一程序，读入单词表并找到所有反转对。</p>
+<p>答案： <a class="reference external" href="http://thinkpython2.com/code/rotate_pairs.py">http://thinkpython2.com/code/rotate_pairs.py</a> 。</p>
+</div>
+<div class="section" id="id17">
+<h3>习题11-6<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<p>下面是取自 <em>Car Talk</em> 的另一个字谜题(<a class="reference external" href="http://www.cartalk.com/content/puzzlers">http://www.cartalk.com/content/puzzlers</a>)：</p>
+<blockquote>
+<div><p>这是来自一位名叫Dan O&#8217;Leary的朋友的分享。他有一次碰到了一个常见的单音节、有五个字母的单词，它具备以下独特的特性。当你移除第一个字母时，剩下的字母组成了原单词的同音词，即发音完全相同的单词。将第一个字母放回，然后取出第二个字母，结果又是原单词的另一个同音词。那么问题来了，这个单词是什么？</p>
+<p>接下来我给大家举一个不满足要求的例子。我们来看一个五个字母的单词“wrack”。W-R-A-C-K，常用短句为“wrack with pain”。如果我移除第一个字母，就剩下了一个四个字母的单词“R-A-C-K”。可以这么用，“Holy cow, did you see the rack
+on that buck! It must have been a nine-pointer!”它是一个完美的同音词。如果你把“w”放回去，移除“r”，你得到的单词是“wack”。这是一个真实的单词，但并不是前两个单词的同音词。</p>
+<p>不过，我们和Dan知道至少有一个单词是满足这个条件的，即移除前两个字母中的任意一个，将会得到两个新的由四个字母组成的单词，而且发音完全一致。那么这个单词是什么呢？</p>
+</div></blockquote>
+<p>你可以使用<a class="reference internal" href="#exercise11-1"><span class="std std-ref">习题11-1</span></a>中的字典检查某字符串是否出现在单词表中。</p>
+<p>你可以使用CMU发音字典检查两个单词是否为同音词。从 <a class="reference external" href="http://www.speech.cs.cmu.edu/cgi-bin/cmudict">http://www.speech.cs.cmu.edu/cgi-bin/cmudict</a> 或 <a class="reference external" href="http://thinkpython2.com/code/c06d">http://thinkpython2.com/code/c06d</a> 即可下载。你还可以下载 <a class="reference external" href="http://thinkpython2.com/code/pronounce.py">http://thinkpython2.com/code/pronounce.py</a> 这个脚本，其中提供了一个名叫 <code class="docutils literal"><span class="pre">read_dictionary</span></code> 的函数，可以读取发音字典，并返回一个将每个单词映射至描述其主要梵音的字符串的Python字典。</p>
+<p>编写一个程序，找到满足字谜题条件的所有单词。</p>
+</div>
+<div class="section" id="id18">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li>翻译：<a class="reference external" href="https://github.com/thejian">&#64;theJian</a> &amp; <a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
+<li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
+<li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="10-lists.html" class="btn btn-neutral" title="第十章：列表" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, EarlGrey et.al.
+      最后更新于 4月 10, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

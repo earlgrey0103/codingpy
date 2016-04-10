@@ -38,6 +38,7 @@
 
   
     <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="next" title="第十一章：字典" href="11-dictionaries.html"/>
         <link rel="prev" title="第九章：文字游戏" href="09-case-study-word-play.html"/> 
 
   
@@ -122,7 +123,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">第十章：列表</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第十章：列表</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">列表是一个序列</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">列表是可变的</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">遍历列表</a></li>
@@ -144,10 +145,10 @@ var _hmt = _hmt || [];
 <li class="toctree-l3"><a class="reference internal" href="#id20">习题10-4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id21">习题10-5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id22">习题10-6</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id23">习题10-7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise10-7">习题10-7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id24">习题10-8</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id25">习题10-9</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id26">习题10-10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise10-10">习题10-10</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id27">习题10-11</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id28">习题10-12</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id29"><strong>贡献者</strong></a></li>
@@ -155,6 +156,7 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="11-dictionaries.html">第十一章：字典</a></li>
 </ul>
 
             
@@ -177,7 +179,7 @@ var _hmt = _hmt || [];
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -209,22 +211,22 @@ var _hmt = _hmt || [];
 <p>与字符串类似，<strong>列表</strong> 是由多个值组成的序列。在字符串中，每个值都是字符；
 在列表中，值可以是任何数据类型。列表中的值称为 <strong>元素（element）</strong> ，有时也被称为 <strong>项（item）</strong> 。</p>
 <p>创建新列表的方法有多种；最简单的方法是用方括号( <code class="docutils literal"><span class="pre">[</span></code> 和 <code class="docutils literal"><span class="pre">]</span></code> )将元素包括起来:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
 <span class="p">[</span><span class="s1">&#39;crunchy frog&#39;</span><span class="p">,</span> <span class="s1">&#39;ram bladder&#39;</span><span class="p">,</span> <span class="s1">&#39;lark vomit&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>第一个例子是包含4个整数的列表。第二个是一个包含3个字符串的列表。
 一个列表中的元素不需要是相同的数据类型。下面的列表包含一个字符串、一个浮点数、一个整数和另一个列表：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>一个列表在另一个列表中，称为**嵌套（nested）列表**。</p>
 <p>一个不包含元素的列表被称为空列表；你可以用空的方括号 <code class="docutils literal"><span class="pre">[]</span></code> 创建一个空列表。</p>
 <p>正如你想的那样，你可以将列表的值赋给变量：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cheeses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Cheddar&#39;</span><span class="p">,</span> <span class="s1">&#39;Edam&#39;</span><span class="p">,</span> <span class="s1">&#39;Gouda&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cheeses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Cheddar&#39;</span><span class="p">,</span> <span class="s1">&#39;Edam&#39;</span><span class="p">,</span> <span class="s1">&#39;Gouda&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">123</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">empty</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cheeses</span><span class="p">,</span> <span class="n">numbers</span><span class="p">,</span> <span class="n">empty</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cheeses</span><span class="p">,</span> <span class="n">numbers</span><span class="p">,</span> <span class="n">empty</span><span class="p">)</span>
 <span class="go">[&#39;Cheddar&#39;, &#39;Edam&#39;, &#39;Gouda&#39;] [42, 123] []</span>
 </pre></div>
 </div>
@@ -233,19 +235,19 @@ var _hmt = _hmt || [];
 <h2>列表是可变的<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>访问列表中元素的语法，与访问字符串中字符的语法相同，都是通过方括号运算符实现的。
 括号中的表达式指定了元素的索引。记住，索引从0开始：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cheeses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cheeses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">&#39;Cheddar&#39;</span>
 </pre></div>
 </div>
 <p>和字符串不同的是，列表是可变的。当括号运算符出现在赋值语句的左边时，它就指向了列表中将被赋值的元素。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">123</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">123</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">numbers</span>
 <span class="go">[42, 5]</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">numbers</span></code>中索引为1的元素，原来是123，现在变成了5。</p>
-<p><a class="reference internal" href="#fig-liststate"><span>图10-1：状态图</span></a> 是 <code class="docutils literal"><span class="pre">cheeses</span></code> 、 <code class="docutils literal"><span class="pre">nubmers</span></code> 和 <code class="docutils literal"><span class="pre">empty</span></code> 的状态图。</p>
+<p><a class="reference internal" href="#fig-liststate"><span class="std std-ref">图10-1：状态图</span></a> 是 <code class="docutils literal"><span class="pre">cheeses</span></code> 、 <code class="docutils literal"><span class="pre">nubmers</span></code> 和 <code class="docutils literal"><span class="pre">empty</span></code> 的状态图。</p>
 <div class="figure" id="id30">
 <span id="fig-liststate"></span><img alt="图10-1：状态图" src="_images/liststate.png" />
 <p class="caption"><span class="caption-text">图10-1：状态图</span></p>
@@ -259,7 +261,7 @@ var _hmt = _hmt || [];
 <li>如果下标是负数，它将从列表的末端开始访问列表。</li>
 </ul>
 <p><code class="docutils literal"><span class="pre">in</span></code>运算符在列表中同样可以使用。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cheeses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Cheddar&#39;</span><span class="p">,</span> <span class="s1">&#39;Edam&#39;</span><span class="p">,</span> <span class="s1">&#39;Gouda&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cheeses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Cheddar&#39;</span><span class="p">,</span> <span class="s1">&#39;Edam&#39;</span><span class="p">,</span> <span class="s1">&#39;Gouda&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;Edam&#39;</span> <span class="ow">in</span> <span class="n">cheeses</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;Brie&#39;</span> <span class="ow">in</span> <span class="n">cheeses</span>
@@ -270,32 +272,32 @@ var _hmt = _hmt || [];
 <div class="section" id="id4">
 <h2>遍历列表<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>最常用的遍历列表的方式是使用for循环。语法和字符串遍历类似：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">cheese</span> <span class="ow">in</span> <span class="n">cheeses</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">cheese</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">cheese</span> <span class="ow">in</span> <span class="n">cheeses</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cheese</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>如果你只需要读取列表中的元素，这种方法已经足够。然而，如果你想要写入或者更新列表中的元素，你需要通过下标访问。一种常用的方法是结合内置函数 <code class="docutils literal"><span class="pre">range</span></code> 和 <code class="docutils literal"><span class="pre">len</span></code> ：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)):</span>
     <span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>这个循环将遍历列表并更新每个元素。<code class="docutils literal"><span class="pre">len</span></code> 返回列表中的元素个数。<code class="docutils literal"><span class="pre">range</span></code> 返回一个包含从0到<span class="math">\(n-1\)</span>下标的列表，其中<span class="math">\(n\)</span>是列表的长度。
 每次循环中，<code class="docutils literal"><span class="pre">i</span></code> 得到下一个元素的下标。循环主体中的赋值语句使用 <code class="docutils literal"><span class="pre">i</span></code> 读取该元素的旧值，并赋予其一个新值。</p>
 <p>对一个空列表执行for循环时，将不会执行循环的主体：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[]:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;This never happens.&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This never happens.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>尽管一个列表可以包含另一个列表，嵌套的列表本身还是被看作一个单个元素。
 下面这个列表的长度是4：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Brie&#39;</span><span class="p">,</span> <span class="s1">&#39;Roquefort&#39;</span><span class="p">,</span> <span class="s1">&#39;Pol le Veq&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Brie&#39;</span><span class="p">,</span> <span class="s1">&#39;Roquefort&#39;</span><span class="p">,</span> <span class="s1">&#39;Pol le Veq&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id5">
 <h2>列表操作<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <p>+运算符拼接多个列表：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
@@ -303,7 +305,7 @@ var _hmt = _hmt || [];
 </pre></div>
 </div>
 <p>运算符 * 以给定次数的重复一个列表:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>
 <span class="go">[0, 0, 0, 0]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
 <span class="go">[1, 2, 3, 1, 2, 3, 1, 2, 3]</span>
@@ -314,7 +316,7 @@ var _hmt = _hmt || [];
 <div class="section" id="id6">
 <h2>列表切片<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <p>切片（slice）运算符同样适用于对列表：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 <span class="go">[&#39;b&#39;, &#39;c&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
@@ -325,13 +327,13 @@ var _hmt = _hmt || [];
 </div>
 <p>如果你省略第一个索引，切片将从列表头开始。如果你省略第二个索引，切片将会到列表尾结束。
 所以如果你两者都省略，切片就是整个列表的一个拷贝。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[:]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[:]</span>
 <span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;]</span>
 </pre></div>
 </div>
 <p>由于列表是可变的，通常在修改列表之前，对列表进行拷贝是很有用的。</p>
 <p>切片运算符放在赋值语句的左边时，可以一次更新多个元素：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
 <span class="go">[&#39;a&#39;, &#39;x&#39;, &#39;y&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;]</span>
@@ -341,14 +343,14 @@ var _hmt = _hmt || [];
 <div class="section" id="id7">
 <h2>列表方法<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <p>Python为列表提供了一些方法. 例如, <code class="docutils literal"><span class="pre">append</span></code> 添加一个新元素到列表的末端:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
 <span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">extend</span></code>将接受一个列表作为参数，并将其其中的所有元素添加至目标列表中：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span>
@@ -357,7 +359,7 @@ var _hmt = _hmt || [];
 </div>
 <p>这个例子中 <code class="docutils literal"><span class="pre">t2</span></code> 没有改动。</p>
 <p><code class="docutils literal"><span class="pre">sort</span></code>将列表中的元素从小到大进行排序：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
 <span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]</span>
@@ -369,7 +371,7 @@ var _hmt = _hmt || [];
 <div class="section" id="id8">
 <h2>映射、筛选和归并<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <p>你可以这样使用循环，对列表中所有元素求和:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_all</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_all</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
         <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>
@@ -378,17 +380,17 @@ var _hmt = _hmt || [];
 </div>
 <p><code class="docutils literal"><span class="pre">total</span></code>被初始化为 0。每次循环时, <code class="docutils literal"><span class="pre">x</span></code> 从列表中获取一个元素。
 运算符 += 提供了一个快捷的更新变量的方法。这个 <strong>增量赋值语句（augmented assignment statement）</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p>等价于</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">x</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p>当循环执行时，<code class="docutils literal"><span class="pre">total</span></code> 将累计元素的和；一个这样的变量有时被称为 <strong>累加器（accumulator）</strong> 。</p>
 <p>把一个列表中的元素加起来是一个很常用的操作，
 所以Python将其设置为一个内建内置函数 <code class="docutils literal"><span class="pre">sum</span></code> ：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="go">6</span>
 </pre></div>
@@ -396,7 +398,7 @@ var _hmt = _hmt || [];
 <p>一个像这样的将一系列的元素合并成一个单一值的操作有时称为 <strong>归并（reduce）</strong> 。</p>
 <p>有时，你在构建一个列表时还需要遍历另一个列表。
 例如，下面的函数接受一个字符串列表作为参数，返回包含大写字符的新列表：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">capitalize_all</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">capitalize_all</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
         <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
@@ -407,7 +409,7 @@ var _hmt = _hmt || [];
 所以 <code class="docutils literal"><span class="pre">res</span></code> 是另一种形式的累加器。</p>
 <p>类似 <code class="docutils literal"><span class="pre">capitalize_all</span></code> 这样的操作有时被称为 <strong>映射(map)</strong> ，因为它“映射”一个函数（在本例中是方法 <code class="docutils literal"><span class="pre">capitalize</span></code> ）到序列中的每个元素上。</p>
 <p>另一个常见的操作是从列表中选择一些元素，并返回一个子列表。例如，下面的函数读取一个字符串列表，并返回一个仅包含大写字符串的列表：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">only_upper</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">only_upper</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
@@ -422,7 +424,7 @@ var _hmt = _hmt || [];
 <div class="section" id="id9">
 <h2>删除元素<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <p>有多种方法可以从列表中删除一个元素。如果你知道元素的下标，你可以使用 <code class="docutils literal"><span class="pre">pop</span></code> ：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
 <span class="go">[&#39;a&#39;, &#39;c&#39;]</span>
@@ -432,14 +434,14 @@ var _hmt = _hmt || [];
 </div>
 <p><code class="docutils literal"><span class="pre">pop</span></code>修改列表，并返回被移除的元素。如果你不提供下标，它将移除并返回最后一个元素。</p>
 <p>如果你不需要被移除的元素，可以使用 <code class="docutils literal"><span class="pre">del</span></code> 运算符：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
 <span class="go">[&#39;a&#39;, &#39;c&#39;]</span>
 </pre></div>
 </div>
 <p>如果你知道要删除的值（但是不知道其下标），你可以使用 <code class="docutils literal"><span class="pre">remove</span></code> ：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
 <span class="go">[&#39;a&#39;, &#39;c&#39;]</span>
@@ -447,7 +449,7 @@ var _hmt = _hmt || [];
 </div>
 <p><code class="docutils literal"><span class="pre">remove</span></code>的返回值是None.</p>
 <p>要移除多个元素，你可以结合切片索引使用 <code class="docutils literal"><span class="pre">del</span></code> ：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
 <span class="go">[&#39;a&#39;, &#39;f&#39;]</span>
@@ -458,7 +460,7 @@ var _hmt = _hmt || [];
 <div class="section" id="id10">
 <h2>列表和字符串<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
 <p>一个字符串是多个字符组成的序列，一个列表是多个值组成的序列。但是一个由字符组成的列表不同于字符串。可以使用 <code class="docutils literal"><span class="pre">list</span></code> 将一个字符串转换为字符的列表:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;spam&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;spam&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
 <span class="go">[&#39;s&#39;, &#39;p&#39;, &#39;a&#39;, &#39;m&#39;]</span>
@@ -466,14 +468,14 @@ var _hmt = _hmt || [];
 </div>
 <p>由于 <code class="docutils literal"><span class="pre">list</span></code> 是内置函数的名称，你应避免将它用作变量名。我同样避免使用 <code class="docutils literal"><span class="pre">l</span></code> ，因为它看起来很像1。这就是为什么我用了 <code class="docutils literal"><span class="pre">t</span></code> 。</p>
 <p><code class="docutils literal"><span class="pre">list</span></code>函数将字符串分割成单独的字符。如果你想将一个字符串分割成一些单词，你可以使用 <code class="docutils literal"><span class="pre">split</span></code> 方法：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;pining for the fjords&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;pining for the fjords&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
 <span class="go">[&#39;pining&#39;, &#39;for&#39;, &#39;the&#39;, &#39;fjords&#39;]</span>
 </pre></div>
 </div>
 <p>可以提高一个叫做 <strong>分隔符（delimiter）</strong> 的可选参数，指定什么字符作为单词之间的分界线。下面的例子使用连字符作为分隔符：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;spam-spam-spam&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;spam-spam-spam&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">delimiter</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
@@ -481,7 +483,7 @@ var _hmt = _hmt || [];
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">join</span></code>的功能和 <code class="docutils literal"><span class="pre">split</span></code> 相反。它将一个字符串列表的元素拼接起来。<code class="docutils literal"><span class="pre">join</span></code> 是一个字符串方法，所以你需要在一个分隔符上调用它，并传入一个列表作为参数：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pining&#39;</span><span class="p">,</span> <span class="s1">&#39;for&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;fjords&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pining&#39;</span><span class="p">,</span> <span class="s1">&#39;for&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;fjords&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">delimiter</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
@@ -493,11 +495,11 @@ var _hmt = _hmt || [];
 <div class="section" id="id11">
 <h2>对象和值<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
 <p>如果我们执行下面的赋值语句:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 </pre></div>
 </div>
-<p>我们知道 <code class="docutils literal"><span class="pre">a</span></code> 和 <code class="docutils literal"><span class="pre">b</span></code> 都指向一个字符串，但是我们不知道是否他们指向 <em>同一个</em> 字符串。这里有两种可能的状态，如<a class="reference internal" href="#fig-list1"><span>图10-2：状态图</span></a>所示。</p>
+<p>我们知道 <code class="docutils literal"><span class="pre">a</span></code> 和 <code class="docutils literal"><span class="pre">b</span></code> 都指向一个字符串，但是我们不知道是否他们指向 <em>同一个</em> 字符串。这里有两种可能的状态，如<a class="reference internal" href="#fig-list1"><span class="std std-ref">图10-2：状态图</span></a>所示。</p>
 <div class="figure" id="id31">
 <span id="fig-list1"></span><img alt="图10-2：状态图" src="_images/list1.png" />
 <p class="caption"><span class="caption-text">图10-2：状态图</span></p>
@@ -505,20 +507,20 @@ var _hmt = _hmt || [];
 <p>一种情况是，<code class="docutils literal"><span class="pre">a</span></code> 和 <code class="docutils literal"><span class="pre">b</span></code> 指向两个有相同值的不同对象。
 第二种情况是，它们指向同一个对象。</p>
 <p>为了查看两个变量是否指向同一个对象，你可以使用 <code class="docutils literal"><span class="pre">is</span></code> 运算符。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 <p>在这个例子中，Python仅生成了一个字符串对象，<code class="docutils literal"><span class="pre">a</span></code> 和 <code class="docutils literal"><span class="pre">b</span></code> 都指向它。但是当你创建两个列表时，你得到的是两个对象：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
 <span class="go">False</span>
 </pre></div>
 </div>
-<p>所以状态图如<a class="reference internal" href="#fig-list2"><span>图10-3：状态图</span></a>所示。</p>
+<p>所以状态图如<a class="reference internal" href="#fig-list2"><span class="std std-ref">图10-3：状态图</span></a>所示。</p>
 <div class="figure" id="id32">
 <span id="fig-list2"></span><img alt="图10-3：状态图" src="_images/list2.png" />
 <p class="caption"><span class="caption-text">图10-3：状态图</span></p>
@@ -531,13 +533,13 @@ var _hmt = _hmt || [];
 <div class="section" id="id12">
 <h2>别名<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
 <p>如果 <code class="docutils literal"><span class="pre">a</span></code> 指向一个对象，然后你赋值 <code class="docutils literal"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span></code> ，那么两个变量指向同一个对象：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="ow">is</span> <span class="n">a</span>
 <span class="go">True</span>
 </pre></div>
 </div>
-<p>状态图如<a class="reference internal" href="#fig-list3"><span>图10-4：状态图</span></a>所示。</p>
+<p>状态图如<a class="reference internal" href="#fig-list3"><span class="std std-ref">图10-4：状态图</span></a>所示。</p>
 <div class="figure" id="id33">
 <span id="fig-list3"></span><img alt="图10-4：状态图" src="_images/list3.png" />
 <p class="caption"><span class="caption-text">图10-4：状态图</span></p>
@@ -547,7 +549,7 @@ var _hmt = _hmt || [];
 <p>如果一个对象有多于一个引用，那它也会有多个名称，
 我们称这个对象是 <strong>有别名的（aliased）</strong> 。</p>
 <p>如果一个有别名的对象是可变的，对其中一个别名（alias）的改变对影响到其它的别名：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">[42, 2, 3]</span>
 </pre></div>
@@ -555,7 +557,7 @@ var _hmt = _hmt || [];
 <p>尽管这个行为很有用，但是容易导致出现错误。
 通常，避免对于可变对象使用别名相对更安全。</p>
 <p>对于像字符串这样的不可变对象，使用别名没有什么问题。例如：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 </pre></div>
 </div>
@@ -564,19 +566,19 @@ var _hmt = _hmt || [];
 <div class="section" id="id13">
 <h2>列表参数<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
 <p>当你将一个列表作为参数传给一个函数，函数将得到这个列表的一个引用。如果函数对这个列表进行了修改，会在调用者中有所体现。例如， <code class="docutils literal"><span class="pre">delete_head</span></code> 删除列表的第一个元素：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_head</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_head</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">del</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>这样使用这个函数：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">delete_head</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span>
 <span class="go">[&#39;b&#39;, &#39;c&#39;]</span>
 </pre></div>
 </div>
 <p>参数 <code class="docutils literal"><span class="pre">t</span></code> 和变量 <code class="docutils literal"><span class="pre">letters</span></code> 是同一个对象的别名。
-其堆栈图如<a class="reference internal" href="#fig-stack5"><span>图10-5：堆栈图</span></a>所示。</p>
+其堆栈图如<a class="reference internal" href="#fig-stack5"><span class="std std-ref">图10-5：堆栈图</span></a>所示。</p>
 <div class="figure" id="id34">
 <span id="fig-stack5"></span><img alt="图10-5：堆栈图" src="_images/stack5.png" />
 <p class="caption"><span class="caption-text">图10-5：堆栈图</span></p>
@@ -584,7 +586,7 @@ var _hmt = _hmt || [];
 <p>由于列表被两个帧共享，我把它画在它们中间。</p>
 <p>需要注意的是修改列表操作和创建列表操作间的区别。
 例如，<code class="docutils literal"><span class="pre">append</span></code> 方法是修改一个列表，而 + 运算符是创建一个新的列表：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span>
 <span class="go">[1, 2, 3]</span>
@@ -593,7 +595,7 @@ var _hmt = _hmt || [];
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">append</span></code>修改列表并返回None。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t3</span> <span class="o">=</span> <span class="n">t1</span> <span class="o">+</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t3</span> <span class="o">=</span> <span class="n">t1</span> <span class="o">+</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span>
 <span class="go">[1, 2, 3]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t3</span>
@@ -604,13 +606,13 @@ var _hmt = _hmt || [];
 <p>运算符 + 创建了一个新列表，而不改变原始的列表。</p>
 <p>如果你要编写一个修改列表的函数，这一点就很重要。
 例如，这个函数 <em>不会</em> 删除列表的第一个元素：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bad_delete_head</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bad_delete_head</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>              <span class="c1"># 错的！</span>
 </pre></div>
 </div>
 <p>切片运算符创建了一个新列表，然后这个表达式让 <code class="docutils literal"><span class="pre">t</span></code> 指向了它，
 但是并不会影响原来被调用的列表。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t4</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t4</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bad_delete_head</span><span class="p">(</span><span class="n">t4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t4</span>
 <span class="go">[1, 2, 3]</span>
@@ -619,12 +621,12 @@ var _hmt = _hmt || [];
 <p>在 <code class="docutils literal"><span class="pre">bad_delete_head</span></code> 的开始处，<code class="docutils literal"><span class="pre">t</span></code> 和 <code class="docutils literal"><span class="pre">t4</span></code> 指向同一个列表。在结束时，<code class="docutils literal"><span class="pre">t</span></code> 指向一个新列表，但是 <code class="docutils literal"><span class="pre">t4</span></code> 仍然指向原来的、没有被改动的列表。</p>
 <p>一个替代的写法是，写一个创建并返回一个新列表的函数。
 例如，<code class="docutils literal"><span class="pre">tail</span></code> 返回列表中除了第一个之外的所有元素：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tail</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tail</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 </pre></div>
 </div>
 <p>这个函数不会修改原来的列表。下面是函数的使用方法：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rest</span> <span class="o">=</span> <span class="n">tail</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rest</span>
 <span class="go">[&#39;b&#39;, &#39;c&#39;]</span>
@@ -638,11 +640,11 @@ var _hmt = _hmt || [];
 <ol class="arabic">
 <li><p class="first">大多数的列表方法会对参数进行修改，然后返回 <code class="docutils literal"><span class="pre">None</span></code> 。这和字符串方法相反，后者保留原始的字符串并返回一个新的字符串。</p>
 <p>如果你习惯这样写字符串代码：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>那么你很可能会写出下面的列表代码：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>           <span class="c1"># 错误！</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>           <span class="c1"># 错误！</span>
 </pre></div>
 </div>
 <p>因为 <code class="docutils literal"><span class="pre">sort</span></code> 返回 <code class="docutils literal"><span class="pre">None</span></code> ，所以你的下一个对 <code class="docutils literal"><span class="pre">t</span></code> 执行的操作很可能会失败。</p>
@@ -652,13 +654,13 @@ var _hmt = _hmt || [];
 <p>列表的一个问题就是有太多方法可以做同样的事情。
 例如，要删除列表中的一个元素，你可以使用 <code class="docutils literal"><span class="pre">pop</span></code> 、<code class="docutils literal"><span class="pre">remove</span></code> 、<code class="docutils literal"><span class="pre">del</span></code> 甚至是切片赋值。</p>
 <p>要添加一个元素，你可以使用 <code class="docutils literal"><span class="pre">append</span></code> 方法或者 + 运算符。假设 <code class="docutils literal"><span class="pre">t</span></code> 是一个列表，<code class="docutils literal"><span class="pre">x</span></code> 是一个列表元素，以下这些写法都是正确的：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
 <span class="n">t</span> <span class="o">+=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>而这些是错误的：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">])</span>          <span class="c1"># 错误！</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">])</span>          <span class="c1"># 错误！</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>        <span class="c1"># 错误！</span>
 <span class="n">t</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>                <span class="c1"># 错误！</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">x</span>              <span class="c1"># 错误！</span>
@@ -670,7 +672,7 @@ var _hmt = _hmt || [];
 <li><p class="first">通过创建拷贝来避免别名.</p>
 <p>如果你要使用类似 <code class="docutils literal"><span class="pre">sort</span></code> 这样的方法来修改参数，
 但同时有要保留原列表，你可以创建一个拷贝。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="n">t</span><span class="p">[:]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
@@ -680,7 +682,7 @@ var _hmt = _hmt || [];
 </pre></div>
 </div>
 <p>在这个例子中，你还可以使用内置函数 <code class="docutils literal"><span class="pre">sorted</span></code> ，它将返回一个新的已排序的列表，原列表将保持不变。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
 <span class="go">[3, 1, 2]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span>
@@ -730,7 +732,7 @@ var _hmt = _hmt || [];
 <h3>习题10-1<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <p>编写一个叫做 <code class="docutils literal"><span class="pre">nested_sum</span></code> 的函数，接受一个由一些整数列表构成的列表作为参数，并将所有嵌套列表中的元素相加。
 例如：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nested_sum</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="go">21</span>
 </pre></div>
@@ -741,7 +743,7 @@ var _hmt = _hmt || [];
 <p>编写一个叫做 <code class="docutils literal"><span class="pre">cumsum</span></code> 的函数，接受一个由数值组成的列表，并返回累加和；
 即一个新列表，其中第<span class="math">\(i\)</span>个元素是原列表中前<span class="math">\(i+1\)</span>个元素的和。
 例如：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cumsum</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="go">[1, 3, 6]</span>
 </pre></div>
@@ -751,7 +753,7 @@ var _hmt = _hmt || [];
 <h3>习题10-3<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
 <p>编写一个叫做 <code class="docutils literal"><span class="pre">middle</span></code> 的函数，接受一个列表作为参数，并返回一个除了第一个和最后一个元素的列表。
 例如：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">middle</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="go">[2, 3]</span>
 </pre></div>
@@ -761,7 +763,7 @@ var _hmt = _hmt || [];
 <h3>习题10-4<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
 <p>编写一个叫做 <code class="docutils literal"><span class="pre">chop</span></code> 的函数，接受一个列表作为参数，移除第一个和最后一个元素，并返回None。
 例如：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">chop</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
 <span class="go">[2, 3]</span>
@@ -773,7 +775,7 @@ var _hmt = _hmt || [];
 <p>编写一个叫做``is_sorted``的函数，接受一个列表作为参数，
 如果列表是递增排列的则返回 <code class="docutils literal"><span class="pre">True</span></code> ，否则返回False。
 例如：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_sorted</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">is_sorted</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">is_sorted</span><span class="p">([</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
 <span class="go">False</span>
@@ -786,8 +788,8 @@ var _hmt = _hmt || [];
 编写一个叫做 <code class="docutils literal"><span class="pre">is_anagram</span></code> 的函数，接受两个字符串作为参数，
 如果它们是变位词则返回 <code class="docutils literal"><span class="pre">True</span></code> 。</p>
 </div>
-<div class="section" id="id23">
-<h3>习题10-7<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<div class="section" id="exercise10-7">
+<span id="id23"></span><h3>习题10-7<a class="headerlink" href="#exercise10-7" title="永久链接至标题">¶</a></h3>
 <p>编写一个叫做 <code class="docutils literal"><span class="pre">has_duplicates</span></code> 的函数，接受一个列表作为参数，
 如果一个元素在列表中出现了不止一次，则返回 <code class="docutils literal"><span class="pre">True</span></code> 。
 这个函数不能改变原列表。</p>
@@ -809,8 +811,8 @@ var _hmt = _hmt || [];
 那个版本运行得慢？为什么？</p>
 <p>答案： <a class="reference external" href="http://thinkpython2.com/code/wordlist.py">http://thinkpython2.com/code/wordlist.py</a> 。</p>
 </div>
-<div class="section" id="id26">
-<h3>习题10-10<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
+<div class="section" id="exercise10-10">
+<span id="id26"></span><h3>习题10-10<a class="headerlink" href="#exercise10-10" title="永久链接至标题">¶</a></h3>
 <p>你可以使用 in 运算符检查一个单词是否在单词表中，但这很慢，因为它是按顺序查找单词。</p>
 <p>由于单词是按照字母顺序排序的，我们可以使用两分法（也称二进制搜索）来加快速度，
 类似你在字典中查找单词的方法。
@@ -857,6 +859,8 @@ var _hmt = _hmt || [];
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="11-dictionaries.html" class="btn btn-neutral float-right" title="第十一章：字典" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
       
         <a href="09-case-study-word-play.html" class="btn btn-neutral" title="第九章：文字游戏" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
@@ -868,7 +872,7 @@ var _hmt = _hmt || [];
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Apr 05, 2016.
+      最后更新于 4月 10, 2016.
 
     </p>
   </div>

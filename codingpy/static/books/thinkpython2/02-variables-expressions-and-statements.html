@@ -115,7 +115,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
 <li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">第二章：变量、表达式和语句</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第二章：变量、表达式和语句</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">赋值语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">变量名</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">表达式和语句</a></li>
@@ -141,6 +141,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10-lists.html">第十章：列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dictionaries.html">第十一章：字典</a></li>
 </ul>
 
             
@@ -163,7 +164,7 @@ var _hmt = _hmt || [];
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -192,7 +193,7 @@ var _hmt = _hmt || [];
 <div class="section" id="id2">
 <h2>赋值语句<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p><strong>赋值语句（assignment statement）</strong>会新建变量，并为这个变量赋值。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;And now for something completely different&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;And now for something completely different&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">17</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.141592653589793</span>
 </pre></div>
@@ -216,7 +217,7 @@ diagram）</strong>，因为它展示了每个变量所处的状态（可以把�
 <p>下划线<code class="docutils literal"><span class="pre">_</span></code>可以出现在变量名中。
 它经常用于有多个单词的变量名，例如<code class="docutils literal"><span class="pre">my_name</span></code>或者<code class="docutils literal"><span class="pre">airspeed_of_unladen_swallow</span></code>。</p>
 <p>如果你给了变量一个非法的名称，解释器将抛出一个语法错误：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 76trombones = &#39;big parade&#39;
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 76trombones = &#39;big parade&#39;
 SyntaxError: invalid syntax
 &gt;&gt;&gt; more@ = 1000000
 SyntaxError: invalid syntax
@@ -228,13 +229,13 @@ SyntaxError: invalid syntax
 <p>原来，class是Python的<strong>关键字（keywords）</strong>之一。
 解释器使用关键字识别程序的结构，它们不能被用作变量名。</p>
 <p>Python 3有以下关键词：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>False      class      finally    is         return
-None       continue   for        lambda     try
-True       def        from       nonlocal   while
-and        del        global     not        with
-as         elif       if         or         yield
-assert     else       import     pass
-break      except     in         raise
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kc">False</span>      <span class="k">class</span>      <span class="nc">finally</span>    <span class="ow">is</span>         <span class="k">return</span>
+<span class="kc">None</span>       <span class="k">continue</span>   <span class="k">for</span>        <span class="k">lambda</span>     <span class="k">try</span>
+<span class="kc">True</span>       <span class="k">def</span>        <span class="nf">from</span>       <span class="k">nonlocal</span>   <span class="k">while</span>
+<span class="ow">and</span>        <span class="k">del</span>        <span class="k">global</span>     <span class="ow">not</span>        <span class="k">with</span>
+<span class="k">as</span>         <span class="k">elif</span>       <span class="k">if</span>         <span class="ow">or</span>         <span class="k">yield</span>
+<span class="k">assert</span>     <span class="k">else</span>       <span class="kn">import</span>     <span class="nn">pass</span>
+<span class="k">break</span>      <span class="k">except</span>     <span class="ow">in</span>         <span class="k">raise</span>
 </pre></div>
 </div>
 <p>你没有必要背诵上面的关键词。大部分的开发环境会用不同的颜色区别显示关键词；如果你不小心使用关键词作为变量名，你肯定会发现的。</p>
@@ -243,7 +244,7 @@ break      except     in         raise
 <h2>表达式和语句<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p><strong>表达式（expression）</strong>是值、变量和运算符的组合。
 值自身也被认为是一个表达式，变量也是，因此下面都是合法的表达式：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">42</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">42</span>
 <span class="go">42</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">n</span>
 <span class="go">17</span>
@@ -253,8 +254,8 @@ break      except     in         raise
 </div>
 <p>当你在提示符后输入表达式时，解释器会 ** 计算（evaluate）**该表达式，这就意味着解释器会求它的值。在上面的例子中，n的值是17，n + 25的值是42。</p>
 <p><strong>语句（statement）</strong>是一个会产生影响的代码单元，例如新建一个变量或显示某个值。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">17</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>第一行是一个赋值语句，将某个值赋给了n。第二行是一个打印语句，在屏幕上显示n的值。</p>
@@ -267,7 +268,7 @@ break      except     in         raise
 <p>如果你知道如何在本地电脑新建并运行脚本，那你可以开始编码了。否则的话，我再次建议使用PythonAnywhere。我在 <a class="reference external" href="http://tinyurl.com/thinkpython2e">http://tinyurl.com/thinkpython2e</a> 上贴出了如何以脚本模式运行解释器的指南。</p>
 <p>由于Python支持这两种模式，在将代码写入脚本之前，你可以在交互模式下对代码片段进行测试。不过，交互模式和脚本模式之间存在一些差异，可能会让你感到疑惑。</p>
 <p>举个例子，如果你把Python当计算器使用，你可能会输入下面这样的代码：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">miles</span> <span class="o">=</span> <span class="mf">26.2</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">miles</span> <span class="o">=</span> <span class="mf">26.2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">miles</span> <span class="o">*</span> <span class="mf">1.61</span>
 <span class="go">42.182</span>
 </pre></div>
@@ -277,27 +278,27 @@ break      except     in         raise
 结果告诉我们，一段马拉松大概是42公里。</p>
 <p>但是如果你将相同的代码键入一个脚本并且运行它，你得不到任何输出。
 在脚本模式下，表达式自身不会产生可见的效果。虽然Python实际上计算了表达式，但是如果你不告诉它要显示结果，它是不会那么做的。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">miles</span> <span class="o">=</span> <span class="mf">26.2</span>
-<span class="k">print</span><span class="p">(</span><span class="n">miles</span> <span class="o">*</span> <span class="mf">1.61</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">miles</span> <span class="o">=</span> <span class="mf">26.2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">miles</span> <span class="o">*</span> <span class="mf">1.61</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>这个行为开始可能有些令人费解。</p>
 <p>一个脚本通常包括一系列语句。
 如果有多于一条的语句，那么随着语句逐个执行，解释器会逐一显示计算结果。</p>
 <p>例如，以下脚本</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>产生的输出结果是</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span>
 <span class="mi">2</span>
 </pre></div>
 </div>
 <p>赋值语句不产生输出。</p>
 <p>在Python解释器中键入以下的语句，看看他们的结果是否符合你的理解：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">5</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">5</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
@@ -329,12 +330,12 @@ break      except     in         raise
 <h2>字符串运算<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <p>一般来讲，你不能对字符串执行数学运算，即使字符串看起来很像数字，
 因此下面这些表达式是非法的：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;2&#39;</span><span class="o">-</span><span class="s1">&#39;1&#39;</span>    <span class="s1">&#39;eggs&#39;</span><span class="o">/</span><span class="s1">&#39;easy&#39;</span>    <span class="s1">&#39;third&#39;</span><span class="o">*</span><span class="s1">&#39;a charm&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;2&#39;</span><span class="o">-</span><span class="s1">&#39;1&#39;</span>    <span class="s1">&#39;eggs&#39;</span><span class="o">/</span><span class="s1">&#39;easy&#39;</span>    <span class="s1">&#39;third&#39;</span><span class="o">*</span><span class="s1">&#39;a charm&#39;</span>
 </pre></div>
 </div>
 <p>但有两个例外，+ 和 *。</p>
 <p>加号运算符 + 可用于 <strong>字符串拼接（string concatenation）</strong>，也就是将字符串首尾相连起来。例如：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">first</span> <span class="o">=</span> <span class="s1">&#39;throat&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">first</span> <span class="o">=</span> <span class="s1">&#39;throat&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">second</span> <span class="o">=</span> <span class="s1">&#39;warbler&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">first</span> <span class="o">+</span> <span class="n">second</span>
 <span class="go">throatwarbler</span>
@@ -354,12 +355,12 @@ break      except     in         raise
 形式语言是稠密的，通常很难在读一段代码后，说出其做什么或者为什么这样做。</p>
 <p>因此，在你的程序中用自然语言做笔记，解释程序做什么通常是比较好的办法。
 这些标注被称为<strong>注释（comments）</strong>，以<code class="docutils literal"><span class="pre">#</span></code>符号开始。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># 计算逝去的时间占一小时的比例</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># 计算逝去的时间占一小时的比例</span>
 <span class="n">percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">minute</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
 </pre></div>
 </div>
 <p>此例中，注释独立一行。你也可以将注释放在行尾：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">minute</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>     <span class="c1"># 逝去时间占一小时的比例</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">minute</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>     <span class="c1"># 逝去时间占一小时的比例</span>
 </pre></div>
 </div>
 <p>从#开始到行尾的所有内容都会被解释器忽略—其对程序执行没有影响。</p>
@@ -367,11 +368,11 @@ break      except     in         raise
 假设读者能够读懂代码做了<em>什么</em>是合理的；
 但是解释代码<em>为什么</em>这么做则更有用。</p>
 <p>下面这个注释只是重复了代码，没有什么用：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="mi">5</span>     <span class="c1"># 将5赋值给v</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="mi">5</span>     <span class="c1"># 将5赋值给v</span>
 </pre></div>
 </div>
 <p>下面的注释包括了代码中没有的有用信息：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="mi">5</span>     <span class="c1"># 加速度，单位：米/秒</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="mi">5</span>     <span class="c1"># 加速度，单位：米/秒</span>
 </pre></div>
 </div>
 <p>好的变量名能够减少对注释的需求，但是长变量名使得表达式很难读，
@@ -501,7 +502,7 @@ break      except     in         raise
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Apr 05, 2016.
+      最后更新于 4月 10, 2016.
 
     </p>
   </div>

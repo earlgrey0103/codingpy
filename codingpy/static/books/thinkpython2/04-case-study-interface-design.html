@@ -117,7 +117,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">第四章：案例研究：接口设计</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第四章：案例研究：接口设计</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#turtle">turtle模块</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#repetition">简单的重复</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">练习</a></li>
@@ -146,6 +146,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10-lists.html">第十章：列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dictionaries.html">第十一章：字典</a></li>
 </ul>
 
             
@@ -168,7 +169,7 @@ var _hmt = _hmt || [];
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -200,26 +201,26 @@ var _hmt = _hmt || [];
 <div class="section" id="turtle">
 <h2>turtle模块<a class="headerlink" href="#turtle" title="永久链接至标题">¶</a></h2>
 <p>打开Python解释器，输入以下代码，检查你是否安装了 <code class="docutils literal"><span class="pre">turltle</span></code> 模块：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">turtle</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">turtle</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bob</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>上述代码运行后，应该会新建一个窗口，窗口中间有一个小箭头，代表的就是海龟。现在关闭窗口。</p>
 <p>新建一个名叫  <code class="docutils literal"><span class="pre">mypolygon.py</span></code> 的文件，输入以下代码：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">turtle</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">turtle</span>
 <span class="n">bob</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">bob</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bob</span><span class="p">)</span>
 <span class="n">turtle</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">turtle</span></code> 模块（小写的t）提供了一个叫作 <code class="docutils literal"><span class="pre">Turtle</span></code> 的函数（大写的T），这个函数会创建一个 <code class="docutils literal"><span class="pre">Turtle</span></code> 对象，我们将其赋值给名为 <code class="docutils literal"><span class="pre">bob</span></code> 的变量。打印 <code class="docutils literal"><span class="pre">bob</span></code> 的话，会输出下面这样的结果：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;turtle.Turtle object at 0xb7bfbf4c&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xb7bfbf4c</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>这意味着，<code class="docutils literal"><span class="pre">bob</span></code> 指向一个类型为Turtle的对象，这个类型是由 <code class="docutils literal"><span class="pre">turtle</span></code> 模块定义的。</p>
 <p><code class="docutils literal"><span class="pre">mainloop</span></code> 告诉窗口等待用户操作，尽管在这个例子中，用户除了关闭窗口之外，并没有其他可做的事情。</p>
 <p>创建了一个 <code class="docutils literal"><span class="pre">Turtle</span></code> 对象之后，你可以调用 <strong>方法（method）</strong> 来在窗口中移动该对象。方法与函数类似，但是其语法略有不同。例如，要让海龟向前走：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bob</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bob</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>方法 <code class="docutils literal"><span class="pre">fd</span></code> 与我们称之为 <code class="docutils literal"><span class="pre">bob</span></code> 的对象是相关联的。调用方法就像提出一个请求：你在请求 <code class="docutils literal"><span class="pre">bob</span></code> 往前走。</p>
@@ -227,7 +228,7 @@ var _hmt = _hmt || [];
 <p><code class="docutils literal"><span class="pre">Turtle</span></code> 对象中你能调用的其他方法还包括：让它向后走的 <code class="docutils literal"><span class="pre">bk</span></code> ，向左转的 <code class="docutils literal"><span class="pre">lt</span></code> ，向右转的 <code class="docutils literal"><span class="pre">rt</span></code> 。 <code class="docutils literal"><span class="pre">lt</span></code> 和 <code class="docutils literal"><span class="pre">rt</span></code> 这两个方法接受的实参是角度。</p>
 <p>另外，每个 <code class="docutils literal"><span class="pre">Turtle</span></code> 都握着一支笔，不是落笔就是抬笔；如果落笔了，<code class="docutils literal"><span class="pre">Turtle</span></code> 就会在移动时留下痕迹。<code class="docutils literal"><span class="pre">pu</span></code> 和 <code class="docutils literal"><span class="pre">pd</span></code> 这两个方法分别代表“抬笔（pen up）”和“落笔（pen down）”。</p>
 <p>如果要画一个直角（right angle），请在程序中添加以下代码（放在创建 <code class="docutils literal"><span class="pre">bob</span></code> 之后，调用 <code class="docutils literal"><span class="pre">mainloop</span></code> 之前）：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bob</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bob</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">bob</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
 <span class="n">bob</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
@@ -238,7 +239,7 @@ var _hmt = _hmt || [];
 <div class="section" id="repetition">
 <span id="id2"></span><h2>简单的重复<a class="headerlink" href="#repetition" title="永久链接至标题">¶</a></h2>
 <p>很有可能你刚才写了像下面这样的一个程序：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bob</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bob</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">bob</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
 
 <span class="n">bob</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
@@ -252,12 +253,12 @@ var _hmt = _hmt || [];
 </div>
 <p>我们可以利用一个 <code class="docutils literal"><span class="pre">for</span></code> 语句，以更简洁的代码来做相同的事情。
 将下面的示例代码加入 <code class="docutils literal"><span class="pre">mypolygon.py</span></code> ，并重新运行：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello!&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>你应该会看到如下输出：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Hello!
+<div class="highlight-default"><div class="highlight"><pre><span></span>Hello!
 Hello!
 Hello!
 Hello!
@@ -266,7 +267,7 @@ Hello!
 <p>这是 <code class="docutils literal"><span class="pre">for</span></code> 语句最简单的用法；后面我们会介绍更多的用法。
 但是这对于让你重写画正方形的程序已经足够了。 如果没有完成，请不要往下看。</p>
 <p>下面是一个画正方形的 <code class="docutils literal"><span class="pre">for</span></code> 语句：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
     <span class="n">bob</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">bob</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
@@ -316,7 +317,7 @@ Hello!
 <h2>封装<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>第一个练习要求你将画正方形的代码放到一个函数定义中,然后调用该函数，
 将海龟作为形参传递给它。下面是一个解法：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
         <span class="n">t</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
         <span class="n">t</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
@@ -330,7 +331,7 @@ Hello!
 <p>在函数内部，<code class="docutils literal"><span class="pre">t</span></code> 指的是同一只海龟 <code class="docutils literal"><span class="pre">bob</span></code> ， 所以 <code class="docutils literal"><span class="pre">t.lt(90)</span></code> 和 <code class="docutils literal"><span class="pre">bob.lt(90)</span></code> 的效果相同。
 那么既然这样，为什么不将形参命名为 <code class="docutils literal"><span class="pre">bob</span></code> 呢？ 因为 <code class="docutils literal"><span class="pre">t</span></code> 可以是任何海龟而不仅仅是 <code class="docutils literal"><span class="pre">bob</span></code> ，
 也就是说你可以创建第二只海龟，并且将它作为实参传递给 <code class="docutils literal"><span class="pre">square</span></code> ：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">alice</span> <span class="o">=</span> <span class="n">Turtle</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">alice</span> <span class="o">=</span> <span class="n">Turtle</span><span class="p">()</span>
 <span class="n">square</span><span class="p">(</span><span class="n">alice</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -342,7 +343,7 @@ Hello!
 <div class="section" id="id5">
 <h2>泛化<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <p>下一个练习是给 <code class="docutils literal"><span class="pre">square</span></code> 增加一个 <code class="docutils literal"><span class="pre">length</span></code> 形参。下面是一个解法：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
         <span class="n">t</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
         <span class="n">t</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
@@ -355,7 +356,7 @@ Hello!
 正方形的边长总是一样的；此版本中，它可以是任意大小。</p>
 <p>下一个练习也是泛化。泛化之后不再是只能画一个正方形，<code class="docutils literal"><span class="pre">polygon</span></code> 可以画任意的正多边形。
 下面是一个解法：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polygon</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polygon</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
     <span class="n">angle</span> <span class="o">=</span> <span class="mi">360</span> <span class="o">/</span> <span class="n">n</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">t</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
@@ -368,7 +369,7 @@ Hello!
 <p>如果你在使用Python 2，<code class="docutils literal"><span class="pre">angle</span></code> 的值可能由于整型数除法（integer division）出现偏差。一个简单的解决办法是这样计算 <code class="docutils literal"><span class="pre">angle</span></code> ：<code class="docutils literal"><span class="pre">angle</span> <span class="pre">=</span> <span class="pre">360.0</span> <span class="pre">/</span> <span class="pre">n</span></code>。因为分子（numerator）是一个浮点数，最终的结果也会是一个浮点数。</p>
 <p>如果一个函数有几个数字实参，很容易忘记它们是什么或者它们的顺序。在这种情况下，
 在实参列表中加入形参的名称是通常是一个很好的办法：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">polygon</span><span class="p">(</span><span class="n">bob</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">polygon</span><span class="p">(</span><span class="n">bob</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>这些被称作<strong>关键字实参（keyword arguments）</strong>，
@@ -380,7 +381,7 @@ Hello!
 <h2>接口设计<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <p>下一个练习是编写接受半径r作为形参的 <code class="docutils literal"><span class="pre">circle</span></code> 函数。
 下面是一个使用 <code class="docutils literal"><span class="pre">polygon</span></code> 画一个50边形的简单解法：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 
 <span class="k">def</span> <span class="nf">circle</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
     <span class="n">circumference</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span>
@@ -404,7 +405,7 @@ Hello!
 <p>在这个例子中，<code class="docutils literal"><span class="pre">r</span></code> 属于接口的一部分，因为它指定了要画多大的圆。
 n就不太合适，因为它是关于 <strong>如何</strong> 画圆的细节。</p>
 <p>与其把接口弄乱，不如根据周长（circumference）选择一个合适的n值：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">circle</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">circle</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
     <span class="n">circumference</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">circumference</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">length</span> <span class="o">=</span> <span class="n">circumference</span> <span class="o">/</span> <span class="n">n</span>
@@ -422,7 +423,7 @@ n就不太合适，因为它是关于 <strong>如何</strong> 画圆的细节。
 但是 <code class="docutils literal"><span class="pre">arc</span></code> 就不那么容易实现了；我们不能使用 <code class="docutils literal"><span class="pre">polygon</span></code> 或者 <code class="docutils literal"><span class="pre">circle</span></code> 来画一个弧。</p>
 <p>一种替代方案是从复制 <code class="docutils literal"><span class="pre">polygon</span></code> 开始，
 然后将它转化为 <code class="docutils literal"><span class="pre">arc</span></code> 。最后的函数看上去可像这样：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">arc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">arc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
     <span class="n">arc_length</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">angle</span> <span class="o">/</span> <span class="mi">360</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">arc_length</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">step_length</span> <span class="o">=</span> <span class="n">arc_length</span> <span class="o">/</span> <span class="n">n</span>
@@ -438,14 +439,14 @@ n就不太合适，因为它是关于 <strong>如何</strong> 画圆的细节。
 我们可以泛化 <code class="docutils literal"><span class="pre">polygon</span></code> 来接受一个角度作为第三个实参，
 但是这样 <code class="docutils literal"><span class="pre">polygon</span></code> 就不再是一个合适的名字了！
 让我们称这个更通用的函数为 <code class="docutils literal"><span class="pre">polyline</span></code> ：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polyline</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polyline</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">t</span><span class="o">.</span><span class="n">fd</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
         <span class="n">t</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>现在，我们可以用 <code class="docutils literal"><span class="pre">polyline</span></code> 重写 <code class="docutils literal"><span class="pre">polygon</span></code> 和 <code class="docutils literal"><span class="pre">arc</span></code> ：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polygon</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polygon</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
     <span class="n">angle</span> <span class="o">=</span> <span class="mf">360.0</span> <span class="o">/</span> <span class="n">n</span>
     <span class="n">polyline</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
 
@@ -458,7 +459,7 @@ n就不太合适，因为它是关于 <strong>如何</strong> 画圆的细节。
 </pre></div>
 </div>
 <p>最后，我们可以用 <code class="docutils literal"><span class="pre">arc</span></code> 重写 <code class="docutils literal"><span class="pre">circle</span></code> ：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">circle</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">circle</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
     <span class="n">arc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mi">360</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -492,7 +493,7 @@ n就不太合适，因为它是关于 <strong>如何</strong> 画圆的细节。
 <h2>文档字符串<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <p><strong>文档字符串（docstring）</strong>是位于函数开始位置的一个字符串，
 解释了函数的接口（“doc”是“documentation”的缩写）。 下面是一个例子：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polyline</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polyline</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draws n line segments with the given length and</span>
 <span class="sd">    angle (in degrees) between them.  t is a turtle.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -630,7 +631,7 @@ ends.</dd>
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Apr 05, 2016.
+      最后更新于 4月 10, 2016.
 
     </p>
   </div>

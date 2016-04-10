@@ -114,7 +114,7 @@ var _hmt = _hmt || [];
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
 <li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">第一章：程序之道</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第一章：程序之道</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">什么是程序？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#python">运行Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">第一个程序</a></li>
@@ -139,6 +139,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10-lists.html">第十章：列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dictionaries.html">第十一章：字典</a></li>
 </ul>
 
             
@@ -161,7 +162,7 @@ var _hmt = _hmt || [];
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -214,15 +215,15 @@ var _hmt = _hmt || [];
 <p>网络上有许多网页可以让你运行Python。如果你已经有最喜欢的网站，那就打开网页运行Python吧。如果没有，我推荐PythonAnywhere。我在 <a class="reference external" href="http://tinyurl.com/thinkpython2e">http://tinyurl.com/thinkpython2e</a> 给出了详细的使用指南。</p>
 <p>目前Python有两个版本，分别是Python 2和Python 3。二者十分相似，因此如果你学过某个版本，可以很容易地切换到另一个版本。事实上，作为初学者，你只会接触到很少数的不同之处。本书采用的是Python 3，但是我会加入一些关于Python 2的说明。</p>
 <p>Python的 <strong>解释器</strong> 是一个读取并执行Python代码的程序。根据你的电脑环境不同，你可以通过双击图标，或者在命令行输入<code class="docutils literal"><span class="pre">python</span></code>的方式来启动解释器。解释器启动后，你应该看到类似下面的输出：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Python 3.4.0 (default, Jun 19 2015, 14:20:21)
-[GCC 4.8.2] on linux
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-&gt;&gt;&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.4</span><span class="o">.</span><span class="mi">0</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Jun</span> <span class="mi">19</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">21</span><span class="p">)</span>
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">4.8</span><span class="o">.</span><span class="mi">2</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
 <p>前三行中包含了关于解释器及其运行的操作系统的信息，因此你看到的内容可能不一样。但是你应该检查下版本号是否以3开头，上面示例中的版本号是3.4.0。如果以3开头，那说明你正在运行Python 3。如果以2开头，那说明你正在运行（你猜对了）Python 2。</p>
 <p>最后一行是一个提示符（prompt），表明你可以在解释器中输入代码了。如果你输入一行代码然后按回车（Enter），解释器就会显示结果：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="go">2</span>
 </pre></div>
 </div>
@@ -231,16 +232,16 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <div class="section" id="id3">
 <h2>第一个程序<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>根据传统，你用一门新语言写的第一个程序叫做“Hello, World!”，因为它的功能只不过是显示单词“Hello, World!”。在Python中，它看起来是这样：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>这是一个 <code class="docutils literal"><span class="pre">print</span></code> 函数的示例，尽管它并不会真的在纸上打印。它将结果显示在屏幕上。在此例中，结果是单词：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Hello, World!
+<div class="highlight-default"><div class="highlight"><pre><span></span>Hello, World!
 </pre></div>
 </div>
 <p>程序中的单引号标记了被打印文本的首尾；它们不会出现在结果中。</p>
 <p>括号说明 <code class="docutils literal"><span class="pre">print</span></code> 是一个函数。我们将在第三章介绍函数。在Python 2中， print是一个语句；不是函数，所以不需要使用括号。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s1">&#39;Hello, World!&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="s1">&#39;Hello, World!&#39;</span>
 </pre></div>
 </div>
 <p>很快你就会明白二者之间的区别，现在知道这些就足够了。</p>
@@ -251,7 +252,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <h2>算术运算符<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>接下来介绍算术。Python提供了许多代表加法和乘法等运算的特殊符号，叫做 <strong>运算符</strong> （operators）。</p>
 <p>运算符 <code class="docutils literal"><span class="pre">+</span></code> 、<code class="docutils literal"><span class="pre">-</span></code> 和 <code class="docutils literal"><span class="pre">*</span></code> 分别执行加法、减法和乘法，详见以下示例：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">40</span> <span class="o">+</span> <span class="mi">2</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">40</span> <span class="o">+</span> <span class="mi">2</span>
 <span class="go">42</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="mi">43</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="go">42</span>
@@ -260,18 +261,18 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 </pre></div>
 </div>
 <p>运算符 <code class="docutils literal"><span class="pre">/</span></code> 执行除法运算：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">84</span> <span class="o">/</span> <span class="mi">2</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">84</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="go">42.0</span>
 </pre></div>
 </div>
 <p>你可能会问，为什么结果是42.0，而不是42。在下节中，我会进行解释。</p>
 <p>最后，运算符 <code class="docutils literal"><span class="pre">*</span></code> 执行乘方运算；也就是说，它将某个数字乘以自身相应的次数：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">6</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">6</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">6</span>
 <span class="go">42</span>
 </pre></div>
 </div>
 <p>某些语言使用 <code class="docutils literal"><span class="pre">^</span></code> 运算符执行乘方运算，但是在Python中，它却属于一种位运算符，叫做XOR。如果你对位运算符不太了解，那么下面的结果会让你感到惊讶：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">6</span> <span class="o">^</span> <span class="mi">2</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">6</span> <span class="o">^</span> <span class="mi">2</span>
 <span class="go">4</span>
 </pre></div>
 </div>
@@ -282,7 +283,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <p><strong>值（value）</strong> 是程序处理的基本数据之一，比如说一个单词或一个数字。我们目前已经接触到的值有：2，42.0，和 <code class="docutils literal"><span class="pre">'Hello</span> <span class="pre">World!'</span></code> 。</p>
 <p>这些值又属于不同的 <strong>类型（types）</strong> ：2是一个 <strong>整型数（integer）</strong>，42.0 是一个 <strong>浮点数（floating point number）</strong>，而 <code class="docutils literal"><span class="pre">'Hello,</span> <span class="pre">World!'</span></code> 则是一个 <strong>字符串（string）</strong>，之所以这么叫是因为其中的字符被串在了一起（strung together）。</p>
 <p>如果你不确定某个值的类型是什么，解释器可以告诉你：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="go">&lt;class &#39;int&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mf">42.0</span><span class="p">)</span>
 <span class="go">&lt;class &#39;float&#39;&gt;</span>
@@ -293,7 +294,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <p>“class”一词在上面的输出结果中，是类别的意思；一个类型就是一个类别的值。</p>
 <p>不出意料，整型数属于 <code class="docutils literal"><span class="pre">int</span></code> 类型，字符串属于 <code class="docutils literal"><span class="pre">str</span></code> 类型，浮点数属于 <code class="docutils literal"><span class="pre">float</span></code> 类型。</p>
 <p>那么像 <code class="docutils literal"><span class="pre">'2'</span></code> 和 <code class="docutils literal"><span class="pre">'42.0'</span></code> 这样的值呢？它们看上去像数字，但是又和字符串一样被引号括在了一起？</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
 <span class="go">&lt;class &#39;str&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;42.0&#39;</span><span class="p">)</span>
 <span class="go">&lt;class &#39;str&#39;&gt;</span>
@@ -301,7 +302,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 </div>
 <p>它们其实是字符串。</p>
 <p>当你输入一个大数值的整型数时，你可能会想用逗号进行区分，比如说像这样：1,000,000。在Python中，这不是一个合法的 <em>整型数</em>，但是确实合法的值。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span><span class="p">,</span><span class="mo">000</span><span class="p">,</span><span class="mo">000</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span><span class="p">,</span><span class="mi">000</span><span class="p">,</span><span class="mi">000</span>
 <span class="go">(1, 0, 0)</span>
 </pre></div>
 </div>
@@ -470,7 +471,7 @@ and Places</em>）。</p>
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Apr 05, 2016.
+      最后更新于 4月 10, 2016.
 
     </p>
   </div>

@@ -121,7 +121,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">第八章：字符串</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第八章：字符串</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">字符串是一个序列</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#len">len</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#for">使用for循环遍历</a></li>
@@ -129,24 +129,25 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#id4">字符串是不可变的</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#search">搜索</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#counter">循环和计数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">字符串方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">字符串方法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#in">in运算符</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">字符串比较</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">调试</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">术语表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">练习题</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id12">习题8-1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">习题8-2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">习题8-3</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">习题8-4</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">习题8-5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17"><strong>贡献者</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">字符串比较</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">术语表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">习题8-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">习题8-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">习题8-3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">习题8-4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise8-5">习题8-5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19"><strong>贡献者</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10-lists.html">第十章：列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dictionaries.html">第十一章：字典</a></li>
 </ul>
 
             
@@ -169,7 +170,7 @@ var _hmt = _hmt || [];
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -195,24 +196,24 @@ var _hmt = _hmt || [];
   <div class="section" id="id1">
 <h1>第八章：字符串<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>字符串不像整数、浮点数和布尔型。字符串是一个 <strong>序列(sequence)</strong> ，这就意味着
-它是其他值的一个有序的集合。在这章中，你将学习怎么去访问字符串里的字符， 同时你也会学习到字符串提供的一些方法.</p>
+它是其他值的一个有序的集合。在这章中，你将学习怎么去访问字符串里的字符， 同时你也会学习到字符串提供的一些方法。</p>
 <div class="section" id="id2">
 <h2>字符串是一个序列<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>字符串是由字符组成的序列. 你可以用括号运算符一次访问一个字符:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<p>字符串是由字符组成的序列。 你可以用括号运算符一次访问一个字符：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">letter</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>第2条语句从 <code class="docutils literal"><span class="pre">fruit</span></code> 中选择索引为1的字符并将它赋给 <code class="docutils literal"><span class="pre">letter</span></code> 。</p>
 <p>括号中的表达式被称作 <strong>索引(index)</strong> 。索引指出在序列中你想要哪个字符(因此而得名)。</p>
 <p>但是你可能不会获得你期望的东西：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letter</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letter</span>
 <span class="go">&#39;a&#39;</span>
 </pre></div>
 </div>
 <p>对于大多数人，<code class="docutils literal"><span class="pre">'banana'</span></code> 的第一个字母是b而不是a。
-但是对于计算机科学家，索引是从字符串起点开始的位移量(offset)，第一个字母的位移量就是0。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letter</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+但是对于计算机科学家，索引是从字符串起点开始的位移量F(offset)，第一个字母的位移量就是0。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letter</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">letter</span>
 <span class="go">&#39;b&#39;</span>
 </pre></div>
@@ -220,15 +221,15 @@ var _hmt = _hmt || [];
 <p>所以b是 <code class="docutils literal"><span class="pre">'banana'</span></code> 的第0个字母(“zero-eth”)， a是第一个字母(“one-eth”)，n是第二个字
 母(“two-eth”)。</p>
 <p>你可以使用一个包含变量名和运算符的表达式作为索引：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="go">&#39;a&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
 <span class="go">&#39;n&#39;</span>
 </pre></div>
 </div>
-<p>但是索引的值必须是一个整数。否则你会得到:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letter</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="mf">1.5</span><span class="p">]</span>
+<p>索引值必须使用整数。 否则你会得到:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">letter</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="mf">1.5</span><span class="p">]</span>
 <span class="go">TypeError: string indices must be integers</span>
 </pre></div>
 </div>
@@ -236,20 +237,20 @@ var _hmt = _hmt || [];
 <div class="section" id="len">
 <h2>len<a class="headerlink" href="#len" title="永久链接至标题">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">len</span></code>是一个内建函数，其返回字符串中的字符数量：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
 <span class="go">6</span>
 </pre></div>
 </div>
-<p>为了获得一个字符串的最后一个字符，你可能想尝试像这样：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+<p>为了获得一个字符串的最后一个字符，你可能会尝试像这样操作：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">last</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="n">length</span><span class="p">]</span>
 <span class="go">IndexError: string index out of range</span>
 </pre></div>
 </div>
 <p>出现IndexError的原因，是在 <code class="docutils literal"><span class="pre">'banana'</span></code> 中没有索引为6的字母。 由于我们从0开始计数，六个字母的编号是0到5。
 为了获得最后一个字符，你必须将 <code class="docutils literal"><span class="pre">length</span></code> 减一：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">last</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">last</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">last</span>
 <span class="go">&#39;a&#39;</span>
 </pre></div>
@@ -262,10 +263,10 @@ var _hmt = _hmt || [];
 <p>许多计算中需要一个字符一个字符地处理字符串。 通常计算从字符串的头部开始，依次选择每个字符，对其做一些处理，
 然后继续直到结束。 这种处理模式被称作 <strong>遍历(traversal)</strong> 。 编写遍历的方法之一是使用
 while循环：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">fruit</span><span class="p">):</span>
     <span class="n">letter</span> <span class="o">=</span> <span class="n">fruit</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
     <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
@@ -275,23 +276,23 @@ while循环：</p>
 <p>我们做个练习，编写一个函数，接受一个字符串作为实参，
 按照从后向前的顺序显示字符，每行只显示一个。</p>
 <p>编写遍历的另一种方法是使用for循环：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">fruit</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">fruit</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>每次循环时，字符串中的下一个字符被赋值给变量 <code class="docutils literal"><span class="pre">letter</span></code> 。 循环继续，直到没有剩余的字符串了。</p>
 <p>下面的例子演示了如何使用拼接（字符串相加）和for循环生成一个字母表序列（即按照字母表顺序排列）。
 在Robert McCloskey的书 <em>《Make Way for Ducklings》</em> 中， 小鸭子的名字是
 Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输出这些名字：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">prefixes</span> <span class="o">=</span> <span class="s1">&#39;JKLMNOPQ&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">prefixes</span> <span class="o">=</span> <span class="s1">&#39;JKLMNOPQ&#39;</span>
 <span class="n">suffix</span> <span class="o">=</span> <span class="s1">&#39;ack&#39;</span>
 
 <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">prefixes</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">letter</span> <span class="o">+</span> <span class="n">suffix</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">letter</span> <span class="o">+</span> <span class="n">suffix</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>输出是：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Jack</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Jack</span>
 <span class="n">Kack</span>
 <span class="n">Lack</span>
 <span class="n">Mack</span>
@@ -307,7 +308,7 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 <div class="section" id="id3">
 <h2>字符串切片<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>字符串的一个片段被称作 <strong>切片(slice)</strong> 。 选择一个切片的操作类似于选择一个字符：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Monty Python&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Monty Python&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 <span class="go">&#39;Monty&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span>
@@ -315,14 +316,14 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">[n:m]</span></code>操作符返回从第n个字符到第m个字符的字符串片段，包括第一个，但是不包括最后一个。
-这个行为违反直觉，但是将指向两个字符之间的索引， 想象成 <a class="reference internal" href="#fig-banana"><span>图8-1：切片索引</span></a>中那样或许有帮助。</p>
-<div class="figure" id="id18">
+这个行为违反直觉，但是将指向两个字符之间的索引， 想象成 <a class="reference internal" href="#fig-banana"><span class="std std-ref">图8-1：切片索引</span></a>中那样或许有帮助。</p>
+<div class="figure" id="id20">
 <span id="fig-banana"></span><img alt="图8-1：切片索引" src="_images/banana.png" />
 <p class="caption"><span class="caption-text">图8-1：切片索引</span></p>
 </div>
 <p>如果你省略第一个索引(冒号前面的值)，切片起始于字符串头部。 如果你省略第二个索引，切片一直
 到字符串结尾：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
 <span class="go">&#39;ban&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
@@ -331,7 +332,7 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 </div>
 <p>如果第一个索引大于或等于第二个，结果是<strong>空字符串（empty string）</strong>，
 用两个引号表示：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 <span class="go">&#39;&#39;</span>
 </pre></div>
@@ -342,7 +343,7 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 <div class="section" id="id4">
 <h2>字符串是不可变的<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>你会很想在赋值语句的左边使用 <code class="docutils literal"><span class="pre">[]</span></code>， 来改变字符串的一个字符。 例如:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greeting</span> <span class="o">=</span> <span class="s1">&#39;Hello， world!&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greeting</span> <span class="o">=</span> <span class="s1">&#39;Hello， world!&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">greeting</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;J&#39;</span>
 <span class="go">TypeError: &#39;str&#39; object does not support item assignment</span>
 </pre></div>
@@ -351,7 +352,7 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 对象(object)和值是同一样的东西，但是我们后面将改进此定义（详见“对象与值”一节）。</p>
 <p>出现此错误的原因是字符串是 <strong>不可变的(immutable)</strong> ，这意味着你不能改变一个已存在的字符串。
 你最多只能创建一个新的字符串，在原有字符串的基础上略有变化：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greeting</span> <span class="o">=</span> <span class="s1">&#39;Hello， world!&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">greeting</span> <span class="o">=</span> <span class="s1">&#39;Hello， world!&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_greeting</span> <span class="o">=</span> <span class="s1">&#39;J&#39;</span> <span class="o">+</span> <span class="n">greeting</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_greeting</span>
 <span class="go">&#39;Jello， world!&#39;</span>
@@ -362,7 +363,7 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 <div class="section" id="search">
 <span id="id5"></span><h2>搜索<a class="headerlink" href="#search" title="永久链接至标题">¶</a></h2>
 <p>下面的函数起什么作用?</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>def find(word， letter):
+<div class="highlight-default"><div class="highlight"><pre><span></span>def find(word， letter):
     index = 0
     while index &lt; len(word):
         if word[index] == letter:
@@ -372,33 +373,33 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 </pre></div>
 </div>
 <p>在某种意义上，<code class="docutils literal"><span class="pre">find</span></code> 和 <code class="docutils literal"><span class="pre">[]</span></code> 运算符相反。与接受一个索引并提取相应的字符不同， 它接受一个
-字符并找到该字符所在的索引。如果没有找到该字符，函数返回-1。</p>
+字符并找到该字符所在的索引。如果没有找到该字符，函数返回 <code class="docutils literal"><span class="pre">-1</span></code>。</p>
 <p>这是我们第一次在循环内部看见 <code class="docutils literal"><span class="pre">return</span></code> 语句。如果 <code class="docutils literal"><span class="pre">word[index]</span> <span class="pre">==</span> <span class="pre">letter</span></code> ，
 函数停止循环并马上返回。</p>
-<p>如果字符没出现在字符串中，那么程序正常退出循环并返回-1。</p>
+<p>如果字符没出现在字符串中，那么程序正常退出循环并返回 <code class="docutils literal"><span class="pre">-1</span></code>。</p>
 <p>这种计算模式——遍历一个序列并在找到寻找的东西时返回——被称作 <strong>搜索(search)</strong> 。</p>
-<p>我们做个练习，修改这个函数使得它接受第三个参数，即从何处开始搜索的索引。</p>
+<p>我们做个练习，修改 <a href="#id6"><span class="problematic" id="id7">``</span></a>find``函数使得它接受第三个参数，即从何处开始搜索的索引。</p>
 </div>
 <div class="section" id="counter">
-<span id="id6"></span><h2>循环和计数<a class="headerlink" href="#counter" title="永久链接至标题">¶</a></h2>
+<span id="id8"></span><h2>循环和计数<a class="headerlink" href="#counter" title="永久链接至标题">¶</a></h2>
 <p>下面的程序计算字母a在字符串中出现的次数：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span>
         <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>此程序演示了另一种被称作**计数器(counter)**的计算模式。变量 <code class="docutils literal"><span class="pre">count</span></code> 初始化为0，然后每次出现a时递增。当循环结束时，<code class="docutils literal"><span class="pre">count</span></code> 包含了字母a出现的总次数。</p>
 <p>我们做一个练习，将这段代码封装在一个名为 <code class="docutils literal"><span class="pre">count</span></code> 的函数中，并泛化该函数，使其接受字符串和字母作为实参。</p>
 <p>然后重写这个函数，不再使用字符串遍历，而是使用上一节中三参数版本的 <code class="docutils literal"><span class="pre">find</span></code> 函数。</p>
 </div>
-<div class="section" id="id7">
-<h2>字符串方法<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id9">
+<h2>字符串方法<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <p>字符串提供了可执行多种有用操作的 <strong>方法(method)</strong> 。方法和函数类似，接受实参并返回一个值，但是语法不同。 例如，<code class="docutils literal"><span class="pre">upper</span></code> 方法接受一个字符串，并返回一个都是大写字母的新字符串。</p>
 <p>不过使用的不是函数语法 <code class="docutils literal"><span class="pre">upper(word)</span></code> ， 而是方法的语法 <code class="docutils literal"><span class="pre">word.upper()</span></code> 。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_word</span>
 <span class="go">&#39;BANANA&#39;</span>
@@ -407,7 +408,7 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 <p>点标记法的形式指出方法的名字，<code class="docutils literal"><span class="pre">upper</span></code>，以及应用该方法的字符串的名字，<code class="docutils literal"><span class="pre">word</span></code> 。 空括号表明该方法不接受实参。</p>
 <p>这被称作 <strong>方法调用(invocation)</strong> ；在此例中， 我们可以说是在 <code class="docutils literal"><span class="pre">word</span></code> 上调用 <code class="docutils literal"><span class="pre">upper</span></code> 。</p>
 <p>事实上，有一个被称为 <code class="docutils literal"><span class="pre">find</span></code> 的字符串方法， 与我们之前写的函数极其相似：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">index</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">index</span>
 <span class="go">1</span>
@@ -415,17 +416,17 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 </div>
 <p>此例中，我们在 <code class="docutils literal"><span class="pre">word</span></code> 上调用 <code class="docutils literal"><span class="pre">find</span></code> ，并将我们要找的字母作为参数传入。</p>
 <p>事实上，<code class="docutils literal"><span class="pre">find</span></code> 方法比我们的函数更通用；它还可以查找子字符串，而不仅仅是字符:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;na&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;na&#39;</span><span class="p">)</span>
 <span class="go">2</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">find</span></code>默认从字符串的首字母开始查找， 但是它还可以接受第二个实参，即从何处开始的索引。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&gt;&gt;&gt; word.find(&#39;na&#39;， 3)
+<p><code class="docutils literal"><span class="pre">find</span></code>默认从字符串的首字母开始查找， 它还可以接受第二个实参，即从何处开始的索引。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt;&gt;&gt; word.find(&#39;na&#39;， 3)
 4
 </pre></div>
 </div>
 <p>这是一个 <strong>可选参数(optional argument)</strong> 的例子；<code class="docutils literal"><span class="pre">find</span></code> 也可以接受结束查找的索引作为第三个实参：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&gt;&gt;&gt; name = &#39;bob&#39;
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt;&gt;&gt; name = &#39;bob&#39;
 &gt;&gt;&gt; name.find(&#39;b&#39;， 1， 2)
 -1
 </pre></div>
@@ -435,14 +436,14 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 <div class="section" id="in">
 <h2>in运算符<a class="headerlink" href="#in" title="永久链接至标题">¶</a></h2>
 <p>单词 <code class="docutils literal"><span class="pre">in</span></code> 是一个布尔运算符，接受两个字符串。如果第一个作为子串出现在第二个中，则返回True：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="s1">&#39;banana&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="s1">&#39;banana&#39;</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;seed&#39;</span> <span class="ow">in</span> <span class="s1">&#39;banana&#39;</span>
 <span class="go">False</span>
 </pre></div>
 </div>
 <p>例如，下面的函数打印所有既出现在 <code class="docutils literal"><span class="pre">word1</span></code> 中，也出现在 <code class="docutils literal"><span class="pre">word2</span></code> 中的字母：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>def in_both(word1， word2):
+<div class="highlight-default"><div class="highlight"><pre><span></span>def in_both(word1， word2):
     for letter in word1:
         if letter in word2:
             print(letter)
@@ -451,40 +452,40 @@ Jack、Kack、Lack、Mack、Nack、Ouack、Pack和Quack。此循环按顺序输�
 <p>变量名挑选得当的话，Python代码有时候读起来像是自然语言。你可以这样读此循环，“对于(每个)
 在(第一个)单词中的字母，如果(该)字母(出现)在(第二个)单词中，打印(该)字母”。</p>
 <p>如果你比较 <code class="docutils literal"><span class="pre">'apples'</span></code> 和 <code class="docutils literal"><span class="pre">'oranges'</span></code>，你会得到下面的结果：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&gt;&gt;&gt; in_both(&#39;apples&#39;， &#39;oranges&#39;)
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt;&gt;&gt; in_both(&#39;apples&#39;， &#39;oranges&#39;)
 a
 e
 s
 </pre></div>
 </div>
 </div>
-<div class="section" id="id8">
-<h2>字符串比较<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id10">
+<h2>字符串比较<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
 <p>关系运算符也适用于字符串。可以这样检查两个字符串是否相等：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;All right， bananas.&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All right， bananas.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>其它的关系运算符对于按字母序放置单词也很有用：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">word</span> <span class="o">&lt;</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Your word， &#39;</span> <span class="o">+</span> <span class="n">word</span> <span class="o">+</span> <span class="s1">&#39;， comes before banana.&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">word</span> <span class="o">&lt;</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your word， &#39;</span> <span class="o">+</span> <span class="n">word</span> <span class="o">+</span> <span class="s1">&#39;， comes before banana.&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">word</span> <span class="o">&gt;</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Your word， &#39;</span> <span class="o">+</span> <span class="n">word</span> <span class="o">+</span> <span class="s1">&#39;， comes after banana.&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Your word， &#39;</span> <span class="o">+</span> <span class="n">word</span> <span class="o">+</span> <span class="s1">&#39;， comes after banana.&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;All right， bananas.&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All right， bananas.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Python处理大写和小写字母的方式和人不同。所有的大写字母出现在所有小写字母之前，所以：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Your word，Pineapple，comes before banana.
+<div class="highlight-default"><div class="highlight"><pre><span></span>Your word，Pineapple，comes before banana.
 </pre></div>
 </div>
 <p>解决此问题的常见方式是，在执行比较之前，将字符串转化为标准格式，例如都是小写字母。请牢记这点，
 万一你不得不防卫一名手持菠萝男子的袭击呢。</p>
 </div>
-<div class="section" id="id9">
-<h2>调试<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id11">
+<h2>调试<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
 <p>当你使用索引遍历序列中的值时，正确地指定遍历的起始和结束点有点困难。下面是一个用来比较两个单词的函数，如果一个单词是另一个的倒序，则返回 <code class="docutils literal"><span class="pre">True</span></code> ， 但其中有两个错误：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>def is_reverse(word1， word2):
+<div class="highlight-default"><div class="highlight"><pre><span></span>def is_reverse(word1， word2):
     if len(word1) != len(word2):
         return False
 
@@ -500,10 +501,10 @@ s
     return True
 </pre></div>
 </div>
-<p>第一条 <code class="docutils literal"><span class="pre">if</span></code> 语句检查两个单词是否等长。如果不是，我们可以马上返回 <code class="docutils literal"><span class="pre">False</span></code> 。否则，在函数其余的部分，我们可以假定单词是等长的。这是<a class="reference internal" href="06-fruitful-functions.html#guardian"><span>检查类型</span></a>一节中提到的监护人模式的一个例子。</p>
+<p>第一条 <code class="docutils literal"><span class="pre">if</span></code> 语句检查两个单词是否等长。如果不是，我们可以马上返回 <code class="docutils literal"><span class="pre">False</span></code> 。否则，在函数其余的部分，我们可以假定单词是等长的。这是<a class="reference internal" href="06-fruitful-functions.html#guardian"><span class="std std-ref">检查类型</span></a>一节中提到的监护人模式的一个例子。</p>
 <p><code class="docutils literal"><span class="pre">i</span></code>和 <code class="docutils literal"><span class="pre">j</span></code> 是索引：<code class="docutils literal"><span class="pre">i</span></code> 向前遍历 <code class="docutils literal"><span class="pre">word1</span></code> ，<code class="docutils literal"><span class="pre">j</span></code> 向后遍历 <code class="docutils literal"><span class="pre">word2</span></code>。如果我们找到两个不匹配的字母，我们可以立即返回 <code class="docutils literal"><span class="pre">False</span></code> 。 如果我们完成整个循环并且所有字母都匹配，我们返回 <code class="docutils literal"><span class="pre">True</span></code> 。</p>
 <p>如果我们用单词“pots”和“stop”测试该函数，我们期望返回 <code class="docutils literal"><span class="pre">True</span></code> ， 但是却得到一个IndexError：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&gt;&gt;&gt; is_reverse(&#39;pots&#39;， &#39;stop&#39;)
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt;&gt;&gt; is_reverse(&#39;pots&#39;， &#39;stop&#39;)
 ...
   File &quot;reverse.py&quot;， line 15， in is_reverse
     if word1[i] != word2[j]:
@@ -511,7 +512,7 @@ IndexError: string index out of range
 </pre></div>
 </div>
 <p>为了调试该类错误， 我第一步是在错误出现的行之前，打印索引的值。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>while j &gt; 0:
+<div class="highlight-default"><div class="highlight"><pre><span></span>while j &gt; 0:
     print(i， j)        # 这里添加打印语句
 
     if word1[i] != word2[j]:
@@ -521,7 +522,7 @@ IndexError: string index out of range
 </pre></div>
 </div>
 <p>现在，当我再次运行该程序时，将获得更多的信息：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&gt;&gt;&gt; is_reverse(&#39;pots&#39;， &#39;stop&#39;)
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt;&gt;&gt; is_reverse(&#39;pots&#39;， &#39;stop&#39;)
 0 4
 ...
 IndexError: string index out of range
@@ -529,23 +530,23 @@ IndexError: string index out of range
 </div>
 <p>第一次循环时， <code class="docutils literal"><span class="pre">j</span></code> 的值是4， 超出字符串 <code class="docutils literal"><span class="pre">'post'</span></code> 的范围了。最后一个字符的索引是3，所以 <code class="docutils literal"><span class="pre">j</span></code> 的初始值应该是 <code class="docutils literal"><span class="pre">len(word2)-1</span></code> 。</p>
 <p>如果我解决了这个错误，然后运行程序， 将获得如下输出:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>&gt;&gt;&gt; is_reverse(&#39;pots&#39;， &#39;stop&#39;)
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt;&gt;&gt; is_reverse(&#39;pots&#39;， &#39;stop&#39;)
 0 3
 1 2
 2 1
 True
 </pre></div>
 </div>
-<p>这次我们获得了正确的答案，但是看起来循环只运行了三次，这很奇怪。画栈图可以帮我们更好的理解发生了什么。在第一次迭代期间， <code class="docutils literal"><span class="pre">is_reverse</span></code> 的栈帧如<a class="reference internal" href="#fig-state4"><span>图8-2：堆栈图</span></a>所示。</p>
-<div class="figure" id="id19">
+<p>这次我们获得了正确的答案，但是看起来循环只运行了三次，这很奇怪。画栈图可以帮我们更好的理解发生了什么。在第一次迭代期间， <code class="docutils literal"><span class="pre">is_reverse</span></code> 的栈帧如<a class="reference internal" href="#fig-state4"><span class="std std-ref">图8-2：堆栈图</span></a>所示。</p>
+<div class="figure" id="id21">
 <span id="fig-state4"></span><img alt="图8-2：堆栈图" src="_images/state4.png" />
 <p class="caption"><span class="caption-text">图8-2：堆栈图</span></p>
 </div>
 <p>我对堆栈图做了些调整，重新排列了栈帧中的变量，增加了虚线来说明 <code class="docutils literal"><span class="pre">i</span></code> 和 <code class="docutils literal"><span class="pre">j</span></code> 的值表示 <code class="docutils literal"><span class="pre">word1</span></code> 和 <code class="docutils literal"><span class="pre">word2</span></code> 中的字符。</p>
 <p>从这个堆栈图开始，在纸上运行程序，每次迭代时修改 <code class="docutils literal"><span class="pre">i</span></code> 和 <code class="docutils literal"><span class="pre">j</span></code> 的值。查找并解决这个函数的中第二个错误。</p>
 </div>
-<div class="section" id="id10">
-<h2>术语表<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id12">
+<h2>术语表<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
 <dl class="docutils">
 <dt>对象（object）：</dt>
 <dd>变量可以引用的东西。现在你将对象和值等价使用。</dd>
@@ -573,21 +574,21 @@ True
 <dd>一个函数或者一个方法中不必要指定的参数。</dd>
 </dl>
 </div>
-<div class="section" id="id11">
-<h2>练习题<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id12">
-<h3>习题8-1<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id13">
+<h2>练习题<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id14">
+<h3>习题8-1<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 <p>点击如下链接，阅读字符串方法的文档 <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#string-methods">http://docs.python.org/3/library/stdtypes.html#string-methods</a> 。为了确保你理解他们是怎么工作的，可以尝试使用其中的一些方法。<code class="docutils literal"><span class="pre">strip</span></code> 和 <code class="docutils literal"><span class="pre">replace</span></code> 尤其有用。</p>
 <p>文档中使用了可能会引起困惑的句法。例如， 在 <code class="docutils literal"><span class="pre">find(sub[，</span> <span class="pre">start[，</span> <span class="pre">end]])</span></code> 中，方括号意味着这是可选参数。所以，<code class="docutils literal"><span class="pre">sub</span></code> 是必填参数，但是 <code class="docutils literal"><span class="pre">start</span></code> 是可选的，而且如果你提供了 <code class="docutils literal"><span class="pre">start</span></code> ，也不一定必须提供 <code class="docutils literal"><span class="pre">end</span></code> 。</p>
 </div>
-<div class="section" id="id13">
-<h3>习题8-2<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
-<p>有一个字符串方法叫 <code class="docutils literal"><span class="pre">count</span></code> ，它类似于之前<a class="reference internal" href="#counter"><span>循环和计数</span></a>一节中的 <code class="docutils literal"><span class="pre">counter</span></code> 。 阅读这个方法的文档， 写一个计算 <code class="docutils literal"><span class="pre">`banana`</span></code> 中a的个数的方法调用。</p>
+<div class="section" id="id15">
+<h3>习题8-2<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>有一个字符串方法叫 <code class="docutils literal"><span class="pre">count</span></code> ，它类似于之前<a class="reference internal" href="#counter"><span class="std std-ref">循环和计数</span></a>一节中的 <code class="docutils literal"><span class="pre">counter</span></code> 。 阅读这个方法的文档， 写一个计算 <code class="docutils literal"><span class="pre">`banana`</span></code> 中a的个数的方法调用。</p>
 </div>
-<div class="section" id="id14">
-<h3>习题8-3<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id16">
+<h3>习题8-3<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 <p>一个字符串切片可以接受指定步长的第三个索引; 也就是连续字符间空格的个数。步长为2，意味着每隔一个字符；步长为3，意味着每隔两个字符，以此类推。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span> <span class="o">=</span> <span class="s1">&#39;banana&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fruit</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
 <span class="go">&#39;bnn&#39;</span>
 </pre></div>
@@ -595,16 +596,16 @@ True
 <p>步长为-1就是从单词的尾部开始进行， 所以切片 <code class="docutils literal"><span class="pre">[::-1]</span></code> 生成一个倒序的字符串。</p>
 <p>利用这个惯用法（idiom），将习题6-3中 <code class="docutils literal"><span class="pre">is_palindrome</span></code> 函数改写为一行代码版。</p>
 </div>
-<div class="section" id="id15">
-<h3>习题8-4<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id17">
+<h3>习题8-4<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <p>下面这些函数，都是 <em>用于</em> 检查一个字符串是否包含一些小写字母的，但是其中至少有一些是错误的函数。
 检查每个函数，描述这个函数实际上做了什么(假设形参是字符串)。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">any_lowercase1</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">any_lowercase1</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">islower</span><span class="p">():</span>
-            <span class="k">return</span> <span class="bp">True</span>
+            <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">False</span>
+            <span class="k">return</span> <span class="kc">False</span>
 
 <span class="k">def</span> <span class="nf">any_lowercase2</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
@@ -619,7 +620,7 @@ True
     <span class="k">return</span> <span class="n">flag</span>
 
 <span class="k">def</span> <span class="nf">any_lowercase4</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="n">flag</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">flag</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
         <span class="n">flag</span> <span class="o">=</span> <span class="n">flag</span> <span class="ow">or</span> <span class="n">c</span><span class="o">.</span><span class="n">islower</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">flag</span>
@@ -627,21 +628,21 @@ True
 <span class="k">def</span> <span class="nf">any_lowercase5</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span><span class="o">.</span><span class="n">islower</span><span class="p">():</span>
-            <span class="k">return</span> <span class="bp">False</span>
-    <span class="k">return</span> <span class="bp">True</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id16">
-<h3>习题8-5<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
-<p>凯撒密码是一种强度较弱的加密形式，它将每一个字母偏移固定的位置。偏移一个字母，指的是按着字母表
+<div class="section" id="exercise8-5">
+<span id="id18"></span><h3>习题8-5<a class="headerlink" href="#exercise8-5" title="永久链接至标题">¶</a></h3>
+<p>凯撒密码是一种弱加密方式，它将每一个字母偏移固定的位置。偏移一个字母，指的是按着字母表
 偏移，如果需要的话再从尾部跳转至首字母，所以“A”偏移三个位置即为“D”， “Z”偏移一个位置是“A”。</p>
 <p>要偏移一个单词，可以将其中每一个字母偏移相同的量。例如， &#8220;cheer&#8221;偏移7个位置后变成了&#8221;jolly&#8221;，&#8221;melon&#8221;
 偏移-10个位置变成了&#8221;cubed&#8221;。 在电影*《2001：太空奥德赛》（2001: A Space Odyssey）*中，飞船上的电脑叫做HAL，也就是IBM偏移1个位置后的单词。</p>
 <p>编写一个叫 <code class="docutils literal"><span class="pre">rotate_word</span></code> 的函数，接受一个字符串和一个整数作为形参，并返回原字符串按照给定整数量偏移后得到的一个新字符串。</p>
 <p>你可能想用内置函数 <code class="docutils literal"><span class="pre">ord</span></code> ，它可以将字符转化成数值代码，还有 <code class="docutils literal"><span class="pre">chr</span></code> ， 它可以将数值代码转
 化成字符. 字母表的字母以字母表顺序编码，例如：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 <span class="go">2</span>
 </pre></div>
 </div>
@@ -649,8 +650,8 @@ True
 <p>网上一些可能冒犯人的笑话有时以ROT13编码，即以13为偏移量的凯撒
 密码。如果你不是很容易就被冒犯，那么可以找些这样的笑话，并解码。答案： <a class="reference external" href="http://thinkpython2.com/code/rotate.py">http://thinkpython2.com/code/rotate.py</a> 。</p>
 </div>
-<div class="section" id="id17">
-<h3><strong>贡献者</strong><a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id19">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
 <li>翻译：<a class="reference external" href="https://github.com/xpgeng">&#64;xpgeng</a></li>
 <li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
@@ -680,7 +681,7 @@ True
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Apr 05, 2016.
+      最后更新于 4月 10, 2016.
 
     </p>
   </div>

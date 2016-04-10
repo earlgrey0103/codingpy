@@ -118,7 +118,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">第五章：条件和递归</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第五章：条件和递归</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">地板除和求余</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">布尔表达式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">逻辑运算符</a></li>
@@ -149,6 +149,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10-lists.html">第十章：列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dictionaries.html">第十一章：字典</a></li>
 </ul>
 
             
@@ -171,7 +172,7 @@ var _hmt = _hmt || [];
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -200,26 +201,26 @@ var _hmt = _hmt || [];
 <div class="section" id="id2">
 <h2>地板除和求余<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p><strong>地板除</strong> 运算符(floor division operator) <code class="docutils literal"><span class="pre">//</span></code> 先做除法，然后将结果保留到整数。例如，如果一部电影时长105 分钟，你可能想知道这代表着多少小时。传统的除法操作会返回一个浮点数：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">minutes</span> <span class="o">=</span> <span class="mi">105</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">minutes</span> <span class="o">=</span> <span class="mi">105</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">minutes</span> <span class="o">/</span> <span class="mi">60</span>
 <span class="go">1.75</span>
 </pre></div>
 </div>
 <p>但是，用小时做单位的时候，我们通常并不写出小数部分。地板除丢弃除法运算结果的小数部分，返回整数个小时:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">minutes</span> <span class="o">=</span> <span class="mi">105</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">minutes</span> <span class="o">=</span> <span class="mi">105</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hours</span> <span class="o">=</span> <span class="n">minutes</span> <span class="o">//</span> <span class="mi">60</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hours</span>
 <span class="go">1</span>
 </pre></div>
 </div>
 <p>如果你希望得到余数，你可以从除数中减去一个小时也就是60分钟:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">remainder</span> <span class="o">=</span> <span class="n">minutes</span> <span class="o">-</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">60</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">remainder</span> <span class="o">=</span> <span class="n">minutes</span> <span class="o">-</span> <span class="n">hours</span> <span class="o">*</span> <span class="mi">60</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">remainder</span>
 <span class="go">45</span>
 </pre></div>
 </div>
 <p>另一个方法就是使用 <strong>求余运算符(modulus operator)</strong>  <code class="docutils literal"><span class="pre">%</span></code> ，它会将两个数相除，返回余数。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">remainder</span> <span class="o">=</span> <span class="n">minutes</span> <span class="o">%</span> <span class="mi">60</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">remainder</span> <span class="o">=</span> <span class="n">minutes</span> <span class="o">%</span> <span class="mi">60</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">remainder</span>
 <span class="go">45</span>
 </pre></div>
@@ -234,21 +235,21 @@ var _hmt = _hmt || [];
 <p><strong>布尔表达式（boolean expression）</strong>的结果要么为真要么为假。
 下面的例子使用 <code class="docutils literal"><span class="pre">==</span></code> 运算符。它比较两个运算数，
 如果它们相等，则结果为 <code class="docutils literal"><span class="pre">True</span></code> ，否则结果为 <code class="docutils literal"><span class="pre">False</span></code> 。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">==</span> <span class="mi">5</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">==</span> <span class="mi">5</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">==</span> <span class="mi">6</span>
 <span class="go">False</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">True</span></code> 和 <code class="docutils literal"><span class="pre">False</span></code> 是属于bool类型的特殊值；它们不是字符串。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">&lt;class &#39;bool&#39;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="go">&lt;class &#39;bool&#39;&gt;</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">==</span></code> 运算符是<strong>关系运算符（relational operators）</strong>之一； 其他关系运算符还有：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">!=</span> <span class="n">y</span>               <span class="c1"># x 不等于 y</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">!=</span> <span class="n">y</span>               <span class="c1"># x 不等于 y</span>
 <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span>                <span class="c1"># x 大于 y</span>
 <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span>                <span class="c1"># x 小于 y</span>
 <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span>               <span class="c1"># x 大于或等于 y</span>
@@ -268,7 +269,7 @@ var _hmt = _hmt || [];
 <span class="pre">y</span></code> 为假，也就是说x小于或等于y， 则 <code class="docutils literal"><span class="pre">not</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">y)</span></code> 为真。</p>
 <p>严格来讲，逻辑运算符的运算数应该是布尔表达式，
 但是Python并不严格要求。任何非0的数字都被解释成为真（ <code class="docutils literal"><span class="pre">True</span></code> ）。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">42</span> <span class="ow">and</span> <span class="bp">True</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">42</span> <span class="ow">and</span> <span class="kc">True</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -279,8 +280,8 @@ var _hmt = _hmt || [];
 <p>为了写出有用的程序，我们几乎总是需要能够检测条件，并相应地改变程序行为。
 <strong>条件语句（Conditional statements）</strong>给予了我们这一能力。
 最简单的形式是 <code class="docutils literal"><span class="pre">if</span></code> 语句：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x is positive&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is positive&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">if</span></code> 之后的布尔表达式被称作<strong>条件（condition）</strong>。
@@ -290,7 +291,7 @@ var _hmt = _hmt || [];
 <p>语句体中可出现的语句数目没有限制，但是至少得有一个。
 有时候，一条语句都没有的语句体也是有用的（通常是为你还没写的代码占一个位子）。
 这种情况下，你可以使用 <code class="docutils literal"><span class="pre">pass</span></code> 语句，它什么也不做。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
     <span class="k">pass</span>          <span class="c1"># 待完成：需要处理负数值！</span>
 </pre></div>
 </div>
@@ -299,10 +300,10 @@ var _hmt = _hmt || [];
 <h2>二选一执行<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">if</span></code> 语句的第二种形式是<strong>二选一执行（alternative execution）</strong>，
 此时有两个可能的选择，由条件决定执行哪一个。 语法看起来是这样：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x is even&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is even&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x is odd&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is odd&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>如果x除以2的余数是0，那么我们知道x是偶数，
@@ -314,18 +315,18 @@ var _hmt = _hmt || [];
 <h2>链式条件<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <p>有时有超过两个可能的情况，于是我们需要多于两个的分支。
 表示像这样的计算的方法之一是<strong>链式条件（chained conditional）</strong>：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x is less than y&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is less than y&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x is greater than y&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is greater than y&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x and y are equal&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x and y are equal&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">elif</span></code> 是“else if”的缩写。同样地，这里只有一个分支会被执行。
 <code class="docutils literal"><span class="pre">elif</span></code> 语句的数目没有限制。如果有一个 <code class="docutils literal"><span class="pre">else</span></code> 从句，
 它必须是在最后，但这个语句并不是必须。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span>
     <span class="n">draw_a</span><span class="p">()</span>
 <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span>
     <span class="n">draw_b</span><span class="p">()</span>
@@ -340,13 +341,13 @@ var _hmt = _hmt || [];
 <div class="section" id="id8">
 <h2>嵌套条件<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <p>一个条件可以嵌到另一个里面。我们可以这样写前一节的例子：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x and y are equal&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x and y are equal&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x is less than y&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is less than y&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x is greater than y&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is greater than y&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>外层的条件（outer conditional）包括两个分支。第一个分支包括一条简单的语句。
@@ -355,20 +356,20 @@ var _hmt = _hmt || [];
 <p>虽然语句的缩进使得结构很明显，但是仍然很难快速地阅读<strong>嵌套条件（nested conditionals）</strong> 。当你可以的时候，避免使用嵌套条件是个好办法。</p>
 <p>逻辑运算符通常是一个简化嵌套条件语句的方法。
 例如，我们可以用一个单一条件重写下面的代码：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x is a positive single-digit number.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is a positive single-digit number.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>只有我们通过了两个条件检测的时候，print语句才被执行，
 因此我们可以用 <code class="docutils literal"><span class="pre">and</span></code> 运算符得到相同的效果：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x is a positive single-digit number.&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is a positive single-digit number.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>对于这样的条件，Python 提供了一种更加简洁的写法。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;x is a positive single-digit number.&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x is a positive single-digit number.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -377,18 +378,18 @@ var _hmt = _hmt || [];
 <p>一个函数调用另一个是合法的；一个函数调用它自己也是合法的。
 这样的好处可能并不是那么明显，但它实际上成为了程序能做到的最神奇的事情之一。
 例如，看一下这个程序：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Blastoff!&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Blastoff!&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
         <span class="n">countdown</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>如果n是0或负数，程序输出单词“Blastoff!”。
 否则，它输出n然后调用一个名为 <code class="docutils literal"><span class="pre">countdown</span></code> 的函数—即它自己— 传递n-1作为实参。</p>
 <p>如果我们像这样调用该函数会发生什么呢？</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">countdown</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">countdown</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">countdown</span></code>开始以n=3执行，由于n大于0， 它输出值3，然后调用它自己...</p>
@@ -406,7 +407,7 @@ var _hmt = _hmt || [];
 </div></blockquote>
 <p>获得n=3的 <code class="docutils literal"><span class="pre">countdown</span></code> 返回。</p>
 <p>然后你回到<code class="docutils literal"><span class="pre">__main__</span></code>中。因此整个输出类似于：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>3
+<div class="highlight-default"><div class="highlight"><pre><span></span>3
 2
 1
 Blastoff!
@@ -415,10 +416,10 @@ Blastoff!
 <p>一个调用它自己的函数是<strong>递归的（recursive）</strong>；
 这个过程被称作<strong>递归（recursion）</strong>。</p>
 <p>再举一例，我们可以写一个函数，其打印一个字符串n次。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_n</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_n</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="n">print_n</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -431,11 +432,11 @@ Blastoff!
 </div>
 <div class="section" id="id10">
 <h2>递归函数的堆栈图<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
-<p>在<a class="reference internal" href="03-functions.html#stackdiagram"><span>堆栈图</span></a>一节中，我们用堆栈图表示了一个函数调用期间程序的状态。
+<p>在<a class="reference internal" href="03-functions.html#stackdiagram"><span class="std std-ref">堆栈图</span></a>一节中，我们用堆栈图表示了一个函数调用期间程序的状态。
 这种图也能帮我们理解递归函数。</p>
 <p>每当一个函数被调用时，Python生成一个新的栈帧，用于保存函数的局部变量和形参。
 对于一个递归函数，在堆栈上可能同时有多个栈帧。</p>
-<p><a class="reference internal" href="#fig-stack2"><span>图5-1：堆栈图</span></a>展示了一个以n = 3调用 <code class="docutils literal"><span class="pre">countdown</span></code> 的堆栈图。</p>
+<p><a class="reference internal" href="#fig-stack2"><span class="std std-ref">图5-1：堆栈图</span></a>展示了一个以n = 3调用 <code class="docutils literal"><span class="pre">countdown</span></code> 的堆栈图。</p>
 <div class="figure" id="id23">
 <span id="fig-stack2"></span><img alt="图5-1：堆栈图" src="_images/stack2.png" />
 <p class="caption"><span class="caption-text">图5-1：堆栈图</span></p>
@@ -455,20 +456,20 @@ n=0的栈底，被称作<strong>基础情形（base case）</strong>。
 <p>如果一个递归永不会到达基础情形，它将永远进行递归调用，
 并且程序永远不会终止。这被称作<strong>无限递归（infinite recursion）</strong>，
 通常这不是一个好主意。下面是一个最简单的无限递归程序：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recurse</span><span class="p">():</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recurse</span><span class="p">():</span>
     <span class="n">recurse</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>在大多数编程环境里，一个具有无限递归的程序并非永远不会终止。
 当达到最大递归深度时，Python会报告一个错误信息：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>  File &quot;&lt;stdin&gt;&quot;, line 2, in recurse
-  File &quot;&lt;stdin&gt;&quot;, line 2, in recurse
-  File &quot;&lt;stdin&gt;&quot;, line 2, in recurse
-                  .
-                  .
-                  .
-  File &quot;&lt;stdin&gt;&quot;, line 2, in recurse
-RuntimeError: Maximum recursion depth exceeded
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="n">recurse</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="n">recurse</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="n">recurse</span>
+                  <span class="o">.</span>
+                  <span class="o">.</span>
+                  <span class="o">.</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="n">recurse</span>
+<span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">Maximum</span> <span class="n">recursion</span> <span class="n">depth</span> <span class="n">exceeded</span>
 </pre></div>
 </div>
 <p>此回溯比我们在前面章节看到的长一些。
@@ -482,7 +483,7 @@ RuntimeError: Maximum recursion depth exceeded
 每次它们都只是做相同的事情。</p>
 <p>Python 提供了一个内建函数 <code class="docutils literal"><span class="pre">input</span></code> ，可以暂停程序运行，并等待用户输入。
 当用户按下回车键(Return or Enter)，程序恢复执行，<code class="docutils literal"><span class="pre">input</span></code>以字符串形式返回用户键入的内容。在Python 2中，这个函数的名字叫<code class="docutils literal"><span class="pre">raw_input</span></code>。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
 <span class="go">What are you waiting for?</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">text</span>
 <span class="go">What are you waiting for?</span>
@@ -490,7 +491,7 @@ RuntimeError: Maximum recursion depth exceeded
 </div>
 <p>在从用户那儿获得输入之前，打印一个提示告诉用户输入什么是个好办法。
 <code class="docutils literal"><span class="pre">input</span></code>接受提示语作为实参。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What...is your name?</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What...is your name?</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="go">What...is your name?</span>
 <span class="go">Arthur, King of the Britons!</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">name</span>
@@ -501,7 +502,7 @@ RuntimeError: Maximum recursion depth exceeded
 它是一个特别的字符，会造成换行。
 这也是用户的输入出现在提示语下面的原因。</p>
 <p>如果你期望用户键入一个整型数，那么你可以试着将返回值转化为 <code class="docutils literal"><span class="pre">int</span></code> ：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;What...is the airspeed velocity of an unladen swallow?</span><span class="se">\n</span><span class="s1">&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prompt</span> <span class="o">=</span> <span class="s1">&#39;What...is the airspeed velocity of an unladen swallow?</span><span class="se">\n</span><span class="s1">&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">speed</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
 <span class="go">What...is the airspeed velocity of an unladen swallow?</span>
 <span class="go">42</span>
@@ -510,7 +511,7 @@ RuntimeError: Maximum recursion depth exceeded
 </pre></div>
 </div>
 <p>但是，如果用户输入不是数字构成的字符串，你会获得一个错误：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">speed</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">speed</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
 <span class="go">What...is the airspeed velocity of an unladen swallow?</span>
 <span class="go">What do you mean, an African or a European swallow?</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span>
@@ -528,7 +529,7 @@ RuntimeError: Maximum recursion depth exceeded
 </ul>
 <p>语法错误通常很容易被找到，但也有一些需要注意的地方。
 空白分隔符错误很棘手，因为空格和制表符是不可见的，而且我们习惯于忽略它们。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span> <span class="n">y</span> <span class="o">=</span> <span class="mi">6</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
     <span class="n">y</span> <span class="o">=</span> <span class="mi">6</span>
@@ -542,16 +543,16 @@ RuntimeError: Maximum recursion depth exceeded
 <p>运行时错误也同样存在这个问题。假设你正试图计算分贝信噪比。
 公式是<span class="math">\(SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})\)</span>。
 在Python中，你可能会写出这样的代码：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="n">signal_power</span> <span class="o">=</span> <span class="mi">9</span>
 <span class="n">noise_power</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">ratio</span> <span class="o">=</span> <span class="n">signal_power</span> <span class="o">//</span> <span class="n">noise_power</span>
 <span class="n">decibels</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">ratio</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">decibels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">decibels</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>但是，当你运行它的时候， 你却获得一个异常。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+<div class="highlight-default"><div class="highlight"><pre><span></span>Traceback (most recent call last):
   File &quot;snr.py&quot;, line 5, in ?
     decibels = 10 * math.log10(ratio)
 ValueError: math domain error
@@ -603,7 +604,7 @@ ValueError: math domain error
 <h3>习题 5-1<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">time</span></code> 模块提供了一个可以返回当前格林威治标准时间的函数，名字也是time。这里的格林威治标准时间用纪元(the epoch)以来的秒数表示，
 纪元是一个任意的参考点。在 Unix 系统中，纪元是1970年1月1号。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="go">1437746094.5735958</span>
 </pre></div>
@@ -647,9 +648,9 @@ that doesn’t work.”。</p>
 <div class="section" id="id19">
 <h3>习题 5-4<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
 <p>下面程序的输出是什么？画出展示程序每次打印输出时的堆栈图。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recurse</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recurse</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">recurse</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="n">s</span><span class="p">)</span>
 
@@ -665,7 +666,7 @@ that doesn’t work.”。</p>
 <h3>习题 5-５<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
 <p>后面的习题要用到第四章中的Turtle：</p>
 <p>阅读如下的函数，看看你能否看懂它是做什么的。然后运行它（见第四章的例子）。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span>
     <span class="n">angle</span> <span class="o">=</span> <span class="mi">50</span>
@@ -740,7 +741,7 @@ that doesn’t work.”。</p>
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 Apr 05, 2016.
+      最后更新于 4月 10, 2016.
 
     </p>
   </div>
