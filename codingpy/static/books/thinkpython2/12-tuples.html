@@ -1,0 +1,742 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第十二章：元组 &mdash; 《Think Python 2e》中译本 1.0 文档</title>
+  
+
+  
+    <meta name="keywords" content="《Think Python》第二版中译文, Python 3版入门教材, Allen Downey, EarlGrey, 编程派">
+    <meta name="description" content="编程派翻译的《Think Python 2ed》中文版，为最新支持Python 3版的教材。">
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="prev" title="第十一章：字典" href="11-dictionaries.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69612020-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 《Think Python 2e》中译本
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                持续更新中
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-lists.html">第十章：列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dictionaries.html">第十一章：字典</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第十二章：元组</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">元组是不可变的</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">元组赋值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">元组作为返回值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">可变长度参数元组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">列表和元组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">字典和元组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">序列嵌套</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">术语表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">习题12-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">习题12-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">习题12-3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">习题12-4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16"><strong>贡献者</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">《Think Python 2e》中译本</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>第十二章：元组</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+            <a href="http://codingpy.com" title="编程派" >前往编程派</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第十二章：元组<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>本章介绍另一个内置类型：元组，同时说明如何结合使用列表、字典和元组。我还将介绍一个有用的特性，即可变长度参数列表，以及<em>汇集</em>和<em>分散</em>操作符。</p>
+<p>说明：“tuple”并没有统一的发音，有些人读成“tuh-ple”，音律类似于“supple”；
+而在编程的语境下，大部分读成“too-ple”，音律类似于“quadruple”。</p>
+<div class="section" id="id2">
+<h2>元组是不可变的<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>元组是一组值的序列。 其中的值可以是任意类型， 使用整数索引，
+因此从这点上看，元组与列表非常相似。 二者不同之处在于元组的不可变性。</p>
+<p>语法上，元组是用逗号隔开一系列值：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span>
+</pre></div>
+</div>
+<p>虽然并非必须，元组通常用括号括起来：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>使用单一元素创建元组时，需要在结尾处添加一个逗号：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<span class="go">&lt;class &#39;tuple&#39;&gt;</span>
+</pre></div>
+</div>
+<p>将值放置在括号中并不会创建元组：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+<p>另一个创建元组的方法是使用内建函数 <code class="docutils literal"><span class="pre">tuple</span></code> 。
+在没有参数传递时，它会创建一个空元组：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">()</span>
+</pre></div>
+</div>
+<p>如果实参是一个序列（字符串、列表或者元组），结果将是一个包含序列内元素的元组。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;lupins&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">(&#39;l&#39;, &#39;u&#39;, &#39;p&#39;, &#39;i&#39;, &#39;n&#39;, &#39;s&#39;)</span>
+</pre></div>
+</div>
+<p>因为 <code class="docutils literal"><span class="pre">tuple</span></code> 是内建函数名，所以应该避免将它用作变量名。</p>
+<p>列表的大多数操作符同样也适用于元组。 方括号运算符将索引一个元素：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&#39;a&#39;</span>
+</pre></div>
+</div>
+<p>切片运算符选取一个范围内的元素:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">(&#39;b&#39;, &#39;c&#39;)</span>
+</pre></div>
+</div>
+<p>但是，如果你试图元组中的一个元素，会得到错误信息：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span>
+<span class="go">TypeError: object doesn&#39;t support item assignment</span>
+</pre></div>
+</div>
+<p>因为元组是不可变的，你无法改变其中的元素。
+但是可以使用其他元组替换现有元组：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,)</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">(&#39;A&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;)</span>
+</pre></div>
+</div>
+<p>这个语句创建了一个新元组，然后让 <code class="docutils literal"><span class="pre">t</span></code> 引用该元组。</p>
+<p>关系型运算符也适用于元组和其他序列；
+Python 会首先比较序列中的第一个元素，如果它们相等，就继续比较下一组元素，以此类推，直至比值不同。
+其后的元素（即便是差异很大）也不会再参与比较。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2000000</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>元组赋值<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>两个变量互换值的操作通常很有用。 按照传统的赋值方法，你需要使用一个临时变量。
+例如，为了交换 <code class="docutils literal"><span class="pre">a</span></code> 和 <code class="docutils literal"><span class="pre">b</span></code> 的值：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span> <span class="o">=</span> <span class="n">a</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">temp</span>
+</pre></div>
+</div>
+<p>这个方法很繁琐；通过<strong>元组赋值</strong>来实现更为优雅：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p>等号左侧是变量组成的元组；右侧是表达式组成的元组。
+每个值都被赋给了对应的变量。
+变量被重新赋值前，将先对右侧的表达式进行求值。</p>
+<p>左侧的变量数和右侧值的数目必须相同：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="go">ValueError: too many values to unpack</span>
+</pre></div>
+</div>
+<p>一般来说，右侧可以是任意类型（字符串、列表或者元组）的序列。
+例如， 将一个电子邮箱地址分成用户名和域名， 你可以这样做：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">addr</span> <span class="o">=</span> <span class="s1">&#39;monty@python.org&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">uname</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">addr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">split</span></code> 函数返回的对象是一个包含两个元素的列表；
+第一个元素被赋给了变量 <code class="docutils literal"><span class="pre">uname</span></code> ，第二个被赋给了 <code class="docutils literal"><span class="pre">domain</span></code> 。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">uname</span>
+<span class="go">&#39;monty&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">domain</span>
+<span class="go">&#39;python.org&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>元组作为返回值<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>严格地说，一个函数只能返回一个值，但是如果这个返回值是元组，其效果等同于返回多个值。
+例如，你想对两个整数做除法，计算出商和余数，依次计算出<span class="math">\(x/y\)</span>和 <span class="math">\(x%y\)</span>的效率并不高。同时计算出这两个值更好。</p>
+<p>内建函数 <code class="docutils literal"><span class="pre">divmod</span></code> 接受两个实参，返回包含两个值的元组：商和余数。
+你可以使用元组来存储返回值:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">(2, 1)</span>
+</pre></div>
+</div>
+<p>或者使用元组赋值分别存储它们：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">quot</span><span class="p">,</span> <span class="n">rem</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quot</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rem</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>下面是一个返回元组作为结果的函数例子：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">min_max</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">max</span></code>和 <code class="docutils literal"><span class="pre">min</span></code> 是用于找出一组元素序列中最大值和最小值的内建函数。
+<code class="docutils literal"><span class="pre">min_max</span></code>函数同时计算出这两个值，并返回二者组成的元组。</p>
+</div>
+<div class="section" id="id5">
+<h2>可变长度参数元组<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>函数可以接受可变数量的参数。 以 “*” 开头的形参将输入的参数 <em>汇集</em> 到一个元组中。
+例如，<code class="docutils literal"><span class="pre">printall</span></code> 可以接受任意数量的参数，并且将它们打印出来：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">printall</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>汇集形参可以使用任意名字，但是习惯使用 <code class="docutils literal"><span class="pre">args</span></code>。
+以下是这个函数的调用效果：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">printall</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="go">(1, 2.0, &#39;3&#39;)</span>
+</pre></div>
+</div>
+<p>与汇集相对的，是 <strong>分散（scatter）</strong> 。
+如果你有一个值序列，并且希望将其作为多个参数传递给一个函数，
+你可以使用运算符*。 例如，<code class="docutils literal"><span class="pre">divmod</span></code> 只接受两个实参；
+元组则无法作为参数传递进去：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">divmod</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">TypeError: divmod expected 2 arguments, got 1</span>
+</pre></div>
+</div>
+<p>但是如果你将这个元组分散，它就可以被传递进函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">divmod</span><span class="p">(</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="go">(2, 1)</span>
+</pre></div>
+</div>
+<p>许多内建函数使用了可变长度参数元组。 例如，<code class="docutils literal"><span class="pre">max</span></code> 和 <code class="docutils literal"><span class="pre">min</span></code> 就可以接受任意数量的实参：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p>但是 <code class="docutils literal"><span class="pre">sum</span></code> 不行：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">TypeError: sum expected at most 2 arguments, got 3</span>
+</pre></div>
+</div>
+<p>我们做个练习，编写一个叫做 <code class="docutils literal"><span class="pre">small</span></code> 的函数，使它能够接受任何数量的实参并返回它们的和。</p>
+</div>
+<div class="section" id="id6">
+<h2>列表和元组<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">zip</span></code>是一个内建函数，可以接受将两个或多个序列组，并返回一个元组列表，
+其中每个元组包含了各个序列中相对位置的一个元素。
+这个函数的名称来自名词拉链(zipper)，后者将两片链齿连接拼合在一起。</p>
+<p>下面的示例对一个字符串和列表使用 <code class="docutils literal"><span class="pre">zip</span></code> 函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">zip</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="go">&lt;zip object at 0x7f7d0a9e7c48&gt;</span>
+</pre></div>
+</div>
+<p>输出的结果是一个 <strong>zip 对象</strong>，包含了如何对其中元素进行迭代的信息。
+<code class="docutils literal"><span class="pre">zip</span></code> 函数最常用于 <code class="docutils literal"><span class="pre">for</span></code> 循环：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">(&#39;a&#39;, 0)</span>
+<span class="go">(&#39;b&#39;, 1)</span>
+<span class="go">(&#39;c&#39;, 2)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">zip</span></code>对象是<strong>迭代器</strong>的一种，即任何能够按照某个序列迭代的对象。
+迭代器在某些方面与列表非常相似，但不同之处在于，你无法通过索引来选择迭代器中的某个元素。</p>
+<p>如果你想使用列表操作符和方法，你可以通过 <code class="docutils literal"><span class="pre">zip</span></code> 对象创建一个列表：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
+<span class="go">[(&#39;a&#39;, 0), (&#39;b&#39;, 1), (&#39;c&#39;, 2)]</span>
+</pre></div>
+</div>
+<p>结果就是一个包含若干元组的列表；在这个例子中，每个元组又包含了字符串中的一个字符和列表
+中对应的一个元素。</p>
+<p>如果用于创建的序列长度不一，返回对象的长度以最短序列的长度为准。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="s1">&#39;Anne&#39;</span><span class="p">,</span> <span class="s1">&#39;Elk&#39;</span><span class="p">))</span>
+<span class="go">[(&#39;A&#39;, &#39;E&#39;), (&#39;n&#39;, &#39;l&#39;), (&#39;n&#39;, &#39;k&#39;)]</span>
+</pre></div>
+</div>
+<p>您可以在 <code class="docutils literal"><span class="pre">for</span></code> 循环中使用元组赋值，遍历包含元组的列表：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">letter</span><span class="p">,</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">letter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>每次循环时，Python 会选择列表中的下一个元组，
+并将其内容赋给 <code class="docutils literal"><span class="pre">letter</span></code> 和 <code class="docutils literal"><span class="pre">number</span></code> 。循环的输出是：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="n">a</span>
+<span class="mi">1</span> <span class="n">b</span>
+<span class="mi">2</span> <span class="n">c</span>
+</pre></div>
+</div>
+<p>如果将 <code class="docutils literal"><span class="pre">zip</span></code> 、<code class="docutils literal"><span class="pre">for</span></code> 循环和元组赋值结合起来使用，你会得到一个可以同时遍历两个（甚至多个）序列的惯用法。
+例如，<code class="docutils literal"><span class="pre">has_match</span></code> 接受两个序列 <code class="docutils literal"><span class="pre">t1</span></code> 和 <code class="docutils literal"><span class="pre">t2</span></code> ，
+如果存在索引 <code class="docutils literal"><span class="pre">i</span></code> 让 <code class="docutils literal"><span class="pre">t1[i]</span> <span class="pre">==</span> <span class="pre">t2[i]</span></code> ，则返回 <code class="docutils literal"><span class="pre">True</span></code> ：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_match</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>如果需要遍历一个序列的元素以及其索引号，您可以使用内建函数 <code class="docutils literal"><span class="pre">enumerate</span></code> ：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">enumerate</span></code>的返回结果是一个枚举对象（enumerate
+object），可迭代一个包含若干个<em>对</em>的序列；
+每个对包含了（从0开始计数）的索引和给定序列中的对应元素。
+在这个例子中，输出结果是：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="n">a</span>
+<span class="mi">1</span> <span class="n">b</span>
+<span class="mi">2</span> <span class="n">c</span>
+</pre></div>
+</div>
+<p>和前一个示例的结果一样。</p>
+</div>
+<div class="section" id="id7">
+<h2>字典和元组<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>字典有一个叫做 <code class="docutils literal"><span class="pre">items</span></code> 的方法，它返回由多个元组组成的序列，其中每个元组是一个键值对。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">dict_items([(&#39;c&#39;, 2), (&#39;a&#39;, 0), (&#39;b&#39;, 1)])</span>
+</pre></div>
+</div>
+<p>其结果是一个 <code class="docutils literal"><span class="pre">dict_items</span></code> 对象，这是一个对键值对进行迭代的迭代器。
+你可以在 <code class="docutils literal"><span class="pre">for</span></code> 循环中像这样使用它:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">c 2</span>
+<span class="go">a 0</span>
+<span class="go">b 1</span>
+</pre></div>
+</div>
+<p>由于是字典生成的对象，你应该也猜到了这些项是无序的。</p>
+<p>另一方面，您可以使用元组的列表初始化一个新的字典：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{&#39;a&#39;: 0, &#39;c&#39;: 2, &#39;b&#39;: 1}</span>
+</pre></div>
+</div>
+<p>将 <code class="docutils literal"><span class="pre">dict</span></code> 和 <code class="docutils literal"><span class="pre">zip</span></code> 结合使用，可以很简洁地创建一个字典：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">{&#39;a&#39;: 0, &#39;c&#39;: 2, &#39;b&#39;: 1}</span>
+</pre></div>
+</div>
+<p>字典的 <code class="docutils literal"><span class="pre">update</span></code> 方法也接受元组列表，并将其作为键值对添加到已有的字典中去。</p>
+<p>在字典中使用元组作为键（主要因为无法使用列表）的做法很常见。
+例如，一个电话簿可能会基于用户的姓-名对，来映射至号码。
+假设我们已经定义了 <code class="docutils literal"><span class="pre">last</span></code> 、 <code class="docutils literal"><span class="pre">first</span></code> 和 <code class="docutils literal"><span class="pre">number</span></code> 三个变量，
+我们可以这样实现映射：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">directory</span><span class="p">[</span><span class="n">last</span><span class="p">,</span> <span class="n">first</span><span class="p">]</span> <span class="o">=</span> <span class="n">number</span>
+</pre></div>
+</div>
+<p>方括号中的表达式是一个元组。我们可以通过元组赋值来遍历这个字典：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">last</span><span class="p">,</span> <span class="n">first</span> <span class="ow">in</span> <span class="n">directory</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">,</span> <span class="n">directory</span><span class="p">[</span><span class="n">last</span><span class="p">,</span><span class="n">first</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>该循环遍历电话簿中的键，它们其实是元组。 循环将元组的元素赋给 <code class="docutils literal"><span class="pre">last</span></code> 和 <code class="docutils literal"><span class="pre">first</span></code> ，
+然后打印出姓名和对应的电话号码。</p>
+<p>在状态图中有两种表示元组的方法。更详细的版本是，
+索引号和对应元素就像列表一样存放在元组中。例如，元组 <code class="docutils literal"><span class="pre">('Cleese',</span> <span class="pre">'John')</span></code> 可像<a class="reference internal" href="#fig-tuple1"><span class="std std-ref">图12-1：状态图</span></a>中那样存放。</p>
+<div class="figure" id="id17">
+<span id="fig-tuple1"></span><img alt="图12-1：状态图" src="_images/tuple1.png" />
+<p class="caption"><span class="caption-text">图12-1：状态图</span></p>
+</div>
+<p>在更大的图表中，你不会想要再描述这些细节。
+例如，该电话簿的状态图可能如<a class="reference internal" href="#fig-dict2"><span class="std std-ref">图12-2：状态图</span></a>所示。</p>
+<div class="figure" id="id18">
+<span id="fig-dict2"></span><img alt="图12-2：状态图" src="_images/dict2.png" />
+<p class="caption"><span class="caption-text">图12-2：状态图</span></p>
+</div>
+<p>在上图中，为了方便起见，使用 Python 语法表示元组。
+此图中的电话号码是 BBC 的投诉热线，请不要拨打它。</p>
+</div>
+<div class="section" id="id8">
+<h2>序列嵌套<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>我已经介绍了包含元组的列表，
+但本章几乎所有示例也适用于列表嵌套列表、元组嵌套元组，以及元组嵌套列表。
+为了避免穷举这类可能的嵌套组合，介绍序列嵌套有时更简单一些。</p>
+<p>在很多情况下，不同类型的序列（字符串、列表、元组）可以互换使用。
+因此，我们该如何选用合适的序列呢？</p>
+<p>首先，显而易见的是，字符串比其他序列的限制更多，因为它的所有元素都必须是字符，且字符串不可变。如果你希望能够改变字符串中的字符，使用列表嵌套字符或许更合适。</p>
+<p>列表比元组更常用，主要是因为它们是可变的。
+但是有些情况下，你可能更倾向于使用元组：</p>
+<ol class="arabic simple">
+<li>在一些情况下（例如 <code class="docutils literal"><span class="pre">return</span></code> 语句），从句式上生成一个元组比列表要简单。</li>
+<li>如果你想使用一个序列作为字典的键，那么你必须使用元组或字符串这样的不可变类型。</li>
+<li>如果你向函数传入一个序列作为参数，那么使用元组可以降低由于别名而产生的意外行为的可能性。</li>
+</ol>
+<p>由于元组的不可变性，它们没有类似（<code class="docutils literal"><span class="pre">sort</span></code>） 和
+（<code class="docutils literal"><span class="pre">reverse</span></code>）这样修改现有列表的方法。
+然而 Python 提供了内建函数 <code class="docutils literal"><span class="pre">sorted</span></code> 和 <code class="docutils literal"><span class="pre">reversed</span></code> ，前者可以接受任意序列，并返回一个正序排列的新列表，后者则接受一个序列，返回一个可逆序迭代列表的迭代器。</p>
+</div>
+<div class="section" id="id9">
+<h2>调试<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>列表、字典和元组都是<em>数据结构</em> （<strong>data
+structures</strong>）；本章中，我们开始接触到复合数据结构（<strong>compound data structures</strong>），如：列表嵌套元组，以及使用元组作为键、列表作为值的字典。
+复合数据结构非常实用，但是使用时容易出现所谓的<em>形状错误（shape
+errors）</em>，也就是由于数据结构的类型、大小或结构问题而引发的错误。
+例如，当你希望使用一个整数组成的列表时，我却给了你一个纯粹的整数（没有放在列表中），就会出现错误。</p>
+<p>为了方便调试这类错误，我编写了一个叫做 <code class="docutils literal"><span class="pre">structshape</span></code> 的模块，
+它提供了一个同名函数，可以接受任意类型的数据结构作为实参，然后返回一个描述它形状的字符串。
+你可以从 <a class="reference external" href="http://thinkpython2.com/code/structshape.py">http://thinkpython2.com/code/structshape.py</a> 下载该模块。</p>
+<p>下面是用该模块调试一个简单列表的示例：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">structshape</span> <span class="k">import</span> <span class="n">structshape</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structshape</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">&#39;list of 3 int&#39;</span>
+</pre></div>
+</div>
+<p>更完美的程序应该显示 “list of 3
+int<em>s</em>”，但是忽略英文复数使程序变得简单的多。
+我们再看一个列表嵌套的例子：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structshape</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+<span class="go">&#39;list of 3 list of 2 int&#39;</span>
+</pre></div>
+</div>
+<p>如果列表内的元素不是相同类型，<code class="docutils literal"><span class="pre">structshape</span></code> 会按照类型的顺序进行分组：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="mi">9</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structshape</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span>
+<span class="go">&#39;list of (3 int, float, 2 str, 2 list of int, int)&#39;</span>
+</pre></div>
+</div>
+<p>下面是一个元组列表的例子：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lt</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structshape</span><span class="p">(</span><span class="n">lt</span><span class="p">)</span>
+<span class="go">&#39;list of 3 tuple of (int, str)&#39;</span>
+</pre></div>
+</div>
+<p>下面是一个字典的例子，其中包含三个将整数映射至字符串的项：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">lt</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structshape</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">&#39;dict of 3 int-&gt;str&#39;</span>
+</pre></div>
+</div>
+<p>如果你在追踪数据结构的类型上遇到了困难，可以使用 <code class="docutils literal"><span class="pre">structshape</span></code> 来帮助分析。</p>
+</div>
+<div class="section" id="id10">
+<h2>术语表<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>元组（tuple）：</p>
+<blockquote>
+<div>一个由多个元素组成的不可变序列。</div></blockquote>
+<p>元组赋值（tuple assignment）：</p>
+<blockquote>
+<div>一种赋值方式，等号右侧为一个序列，等号左侧为一个变量组成的元组。右侧的表达式先求值，然后其元素被赋值给左侧元组中对应的变量。</div></blockquote>
+<p>汇集（gather）：</p>
+<blockquote>
+<div>组装可变长度实参元组的一种操作。</div></blockquote>
+<p>分散（scatter）：</p>
+<blockquote>
+<div>将一个序列变换成一个参数列表的操作。</div></blockquote>
+<p>zip 对象：</p>
+<blockquote>
+<div>使用内建函数 <code class="docutils literal"><span class="pre">zip</span></code> 所返回的结果；它是一个可以对元组序列进行迭代的对象。</div></blockquote>
+<p>迭代器（iterator）：</p>
+<blockquote>
+<div>一个可以对序列进行迭代的对象，但是并不提供列表操作符和方法。</div></blockquote>
+<p>数据结构（data structure）：</p>
+<blockquote>
+<div>一个由关联值组成的的数据集合，通常组织成列表、字典、元组等。</div></blockquote>
+<p>形状错误（shape error）：</p>
+<blockquote>
+<div>由于某个值的形状出错，而导致的错误；即拥有错误的类型或大小。</div></blockquote>
+</div>
+<div class="section" id="id11">
+<h2>练习题<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id12">
+<h3>习题12-1<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<p>编写一个名为 <code class="docutils literal"><span class="pre">most_frequent</span></code> 的函数，接受一个字符串，并按字符出现频率降序打印字母。
+找一些不同语言的文本样本，来试试看不同语言之间字母频率的区别。
+将你的结果和 <a class="reference external" href="http://en.wikipedia.org/wiki/Letter_frequencies">http://en.wikipedia.org/wiki/Letter_frequencies</a> 页面上的表格进行比较。</p>
+<p>答案： <a class="reference external" href="http://thinkpython2.com/code/most_frequent.py">http://thinkpython2.com/code/most_frequent.py</a> 。</p>
+</div>
+<div class="section" id="id13">
+<h3>习题12-2<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>再来练习练习易位构词：</p>
+<ol class="arabic">
+<li><p class="first">编写一个程序，使之能从文件中读取单词列表（参考<a class="reference internal" href="09-case-study-word-play.html#wordlist"><span class="std std-ref">读取单词列表</span></a>一节），
+并且打印出所有属于易位构词的单词组合。</p>
+<p>下面是一个输出结果的示例：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;deltas&#39;</span><span class="p">,</span> <span class="s1">&#39;desalt&#39;</span><span class="p">,</span> <span class="s1">&#39;lasted&#39;</span><span class="p">,</span> <span class="s1">&#39;salted&#39;</span><span class="p">,</span> <span class="s1">&#39;slated&#39;</span><span class="p">,</span> <span class="s1">&#39;staled&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;retainers&#39;</span><span class="p">,</span> <span class="s1">&#39;ternaries&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;generating&#39;</span><span class="p">,</span> <span class="s1">&#39;greatening&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;resmelts&#39;</span><span class="p">,</span> <span class="s1">&#39;smelters&#39;</span><span class="p">,</span> <span class="s1">&#39;termless&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>提示：你也许应该创建一个字典，用于映射一个字母集合到一个该集合可异位构词的词汇集合。但是问题是，你怎样表示这个字母集合才能将其用作字典的键呢？</p>
+</li>
+<li><p class="first">改写前面的程序，使之先打印易位构词数量最多的列表，第二多的次之，依次按易位构词的数量排列。</p>
+</li>
+<li><p class="first">在Scrabble 拼字游戏中，游戏胜利（“bingo”）指的是你利用手里的全部七个字母，与图版上的那个字母一起构成一个8个字母的单词。哪八个字母能够达成最多的“bingo”？提示：最多有7种胜利方式。</p>
+<p>答案： <a class="reference external" href="http://thinkpython2.com/code/anagram_sets.py">http://thinkpython2.com/code/anagram_sets.py</a> 。</p>
+</li>
+</ol>
+</div>
+<div class="section" id="id14">
+<h3>习题12-3<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>如果两个单词中的某一单词可以通过调换两个字母变为另一个，这两个单词就构成了“换位对（metatheisi
+pair）”；比如，“converse”和“conserve”。
+编写一个程序，找出字典里所有的“换位对”。</p>
+<p>提示：不用测试所有的单词组合，也不用测试所有的字母调换组合。致谢：这道习题受 <a class="reference external" href="http://puzzlers.org">http://puzzlers.org</a> 上的案例启发而来。</p>
+<p>答案： <a class="reference external" href="http://thinkpython2.com/code/metathesis.py">http://thinkpython2.com/code/metathesis.py</a> 。</p>
+</div>
+<div class="section" id="id15">
+<h3>习题12-4<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>又是一个来自 Car Talk 的字谜题（ <a class="reference external" href="http://www.cartalk.com/content/puzzlers">http://www.cartalk.com/content/puzzlers</a> ）：</p>
+<blockquote>
+<div><p>如果你每一次从单词中删掉一个字母以后，剩下的字符仍然能构成一个单词，请问世界上符合条件的最长单词是什么？</p>
+<p>注意，被删掉的字母可以位于首尾或是中间，但不允许重新去排列剩下的字母。每次移除一个字母后，你会得到一个新单词。这样一直下去，最终你只剩一个字母，并且它也是一个单词——可以在字典中查到。我想知道，符合条件的最长单词是什么？它由多少个字母构成？</p>
+<p>我先给出一个短小的例子：“Sprite”。一开始是 sprite ，我们可以拿掉中间的
+‘r’ 从而获得单词 spite，然后拿掉字母 ‘e’ 得到 spit，再去掉 ‘s’，剩下
+pit，依次操作得到 it，和 I。</p>
+</div></blockquote>
+<p>编写一个程序，找到所有能够按照这种规则缩减的单词，然后看看其中哪个词最长。</p>
+<p>这道题比大部分的习题都要难，所以我给出一些建议：</p>
+<ol class="arabic simple">
+<li>你可以写一个函数，接受一个单词，然后计算所有“子词”（即拿掉一个字母后所有可能的新词）组成的列表。</li>
+<li>递归地看，如果单词的子词之一也可缩减，那么这个单词也可被缩减。我们可以将空字符串视作也可以缩减，视其为基础情形。</li>
+<li>我提供的词汇列表中，并未包含诸如 ‘I’、 ‘a’
+这样的单个字母词汇，因此，你可能需要加上它们，以及空字符串。</li>
+<li>为了提高程序的性能， 你可能需要暂存（memoize）已知可被缩减的单词。</li>
+</ol>
+<p>答案： <a class="reference external" href="http://thinkpython2.com/code/reducible.py">http://thinkpython2.com/code/reducible.py</a> 。</p>
+</div>
+<div class="section" id="id16">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li>翻译：<a class="reference external" href="https://github.com/SeikaScarlet">&#64;SeikaScarlet</a></li>
+<li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
+<li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="11-dictionaries.html" class="btn btn-neutral" title="第十一章：字典" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, EarlGrey et.al.
+      最后更新于 4月 16, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

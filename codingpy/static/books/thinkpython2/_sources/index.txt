@@ -24,6 +24,7 @@ Contents:
    09-case-study-word-play
    10-lists
    11-dictionaries
+   12-tuples
 
 
 Indices and tables
