@@ -1,0 +1,797 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第十三章：案例研究：数据结构选择 &mdash; 《Think Python 2e》中译本 1.0 文档</title>
+  
+
+  
+    <meta name="keywords" content="《Think Python》第二版中译文, Python 3版入门教材, Allen Downey, EarlGrey, 编程派">
+    <meta name="description" content="编程派翻译的《Think Python 2ed》中文版，为最新支持Python 3版的教材。">
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="prev" title="第十二章：元组" href="12-tuples.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69612020-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 《Think Python 2e》中译本
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                持续更新中
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-lists.html">第十章：列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dictionaries.html">第十一章：字典</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-tuples.html">第十二章：元组</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第十三章：案例研究：数据结构选择</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">词频分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">习题13-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">习题13-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">习题13-3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">习题13-4</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">随机数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">习题13-5</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">单词直方图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">最常用单词</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">可选形参</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">字典差集</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">习题13-6</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">随机单词</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#randhist">习题13-7</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">马尔科夫分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">习题13-8</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">数据结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id19">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">语表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id21">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id22">习题 13-9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23"><strong>贡献者</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">《Think Python 2e》中译本</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>第十三章：案例研究：数据结构选择</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+            <a href="http://codingpy.com" title="编程派" >前往编程派</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第十三章：案例研究：数据结构选择<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>目前为止，你已经学完了 Python 的核心数据结构，同时你也接触了利用到这些数据结构的一些算法。如果你希望学习更多算法知识，
+那么现在是阅读第二十一章的好时机。
+但是不必急着马上读，什么时候感兴趣了再去读即可。</p>
+<p>本章是一个案例研究，同时给出了一些习题，
+目的是启发你思考如何选择数据结构，并练习数据结构使用。</p>
+<div class="section" id="id2">
+<h2>词频分析<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>和之前一样，在查看答案之前，你至少应该试着解答一下这些习题。</p>
+<div class="section" id="id3">
+<h3>习题13-1<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>编写一个程序，读取一个文件，将每一行转换成单词列表，
+删掉单词中的空格和标点，然后将它们转换为小写字母。</p>
+<p>提示：<code class="docutils literal"><span class="pre">string</span></code> 模块提供了名为 <code class="docutils literal"><span class="pre">whitespace</span></code> 的字符串，
+其包括空格、制表符、新行等等，以及名为 <code class="docutils literal"><span class="pre">punctuation</span></code> 的字符串，
+其包括标点字符。试试能否让Python说脏话：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">string</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span>
+<span class="go">&#39;!&quot;#$%&amp;&#39;()*+,-./:;&lt;=&gt;?@[\]^_`{|}~&#39;</span>
+</pre></div>
+</div>
+<p>同时，你可以考虑使用字符串方法 <code class="docutils literal"><span class="pre">strip</span></code> 、<code class="docutils literal"><span class="pre">replace</span></code> 和 <code class="docutils literal"><span class="pre">translate</span></code> 。</p>
+</div>
+<div class="section" id="id4">
+<h3>习题13-2<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>前往古腾堡项目（<a class="reference external" href="gutenberg.org">gutenberg.org</a>），以纯文本格式下载你喜欢的已无版权保护的图书。</p>
+<p>修改前面习题的程序，读取你下载的书，
+跳过文件开始的头部信息，像之前那样处理其余的单词。</p>
+<p>然后修改程序，计算书中单词的总数，以及每个单词使用的次数。</p>
+<p>打印该书使用单词的总数。 比较不同年代、不同作者写的书。
+哪个作者使用的词汇量最大？</p>
+</div>
+<div class="section" id="id5">
+<h3>习题13-3<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>修改上一个习题中的程序，打印书中最常使用的20个单词。</p>
+</div>
+<div class="section" id="id6">
+<h3>习题13-4<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>修改上一个习题中的程序，读取一个单词列表（见<a class="reference internal" href="09-case-study-word-play.html#wordlist"><span class="std std-ref">读取单词列表</span></a>一节），
+然后打印书中所有没有出现在该单词表中的单词。
+它们中有多少是拼写错误的？有多少是词表中 <em>应该</em> 包括的常用词？有多少是生僻词？</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>随机数<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>给定相同的输入，大多数计算机程序每次都会生成相同的输出，
+它们因此被称作<strong>确定性的（deterministic）</strong>。
+确定性通常是个好东西，因为我们期望相同的计算产生相同的结果。
+然而，对于有些应用，我们希望计算机不可预知。
+游戏是一个明显的例子，但是不限于此。</p>
+<p>让程序具备真正意义上的非确定性并不容易，但是有办法使它至少看起来是不确定的。
+其中之一是使用生成<strong>伪随机（pseudorandom）</strong>数的算法。
+伪随机数不是真正的随机数，因为它们由一个确定性的计算生成，
+但是仅看其生成的数字，不可能将它们和随机生成的相区分开。</p>
+<p><code class="docutils literal"><span class="pre">random</span></code>模块提供了生成伪随机数（下文中简称为“随机数”）的函数。</p>
+<p>函数 <code class="docutils literal"><span class="pre">random</span></code> 返回一个 0.0 到 1.0 之间的随机浮点数（包括 0.0 ，但是不包括 1.0 ）。
+每次调用 <code class="docutils literal"><span class="pre">random</span></code> ，你获得一个长序列中的下一个数。
+举个例子，运行此循环：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>函数 <code class="docutils literal"><span class="pre">randint</span></code> 接受参数 <code class="docutils literal"><span class="pre">low</span></code> 和 <code class="docutils literal"><span class="pre">high</span></code> ，
+返回一个 <code class="docutils literal"><span class="pre">low</span></code> 和 <code class="docutils literal"><span class="pre">high</span></code> 之间的整数（两个都包括）。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">9</span>
+</pre></div>
+</div>
+<p>你可以使用 <code class="docutils literal"><span class="pre">choice</span></code> ，从一个序列中随机选择一个元素：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">random</span></code>模块提供的函数，还可以生成符合高斯、指数、伽马等连续分布的随机值。</p>
+<div class="section" id="id8">
+<h3>习题13-5<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>编写一个名为<code class="docutils literal"><span class="pre">choose_from_hist</span></code>的函数，
+其接受一个如<a class="reference internal" href="11-dictionaries.html#histogram"><span class="std std-ref">字典作为计数器集合</span></a>一节中定义的 <code class="docutils literal"><span class="pre">histogram</span></code> 对象作为参数，
+并从该对象中返回一个随机值，其选择概率和值出现的频率成正比。
+例如：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hist</span> <span class="o">=</span> <span class="n">histogram</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hist</span>
+<span class="go">{&#39;a&#39;: 2, &#39;b&#39;: 1}</span>
+</pre></div>
+</div>
+<p>你的函数返回 <code class="docutils literal"><span class="pre">'a'</span></code> 的概率应该是<span class="math">\(2/3\)</span>，返回 <code class="docutils literal"><span class="pre">'b'</span></code> 的概率应该是<span class="math">\(1/3\)</span>。</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>单词直方图<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>在继续下面的习题之前，你应该尝试完成前面的练习。
+你可以从<a class="reference external" href="http://thinkpython2.com/code/analyze_book1.py">http://thinkpython2.com/code/analyze_book1.py</a> 下载我的答案。
+你还需要下载<a class="reference external" href="http://thinkpython2.com/code/emma.txt">http://thinkpython2.com/code/emma.txt</a> 。</p>
+<p>下面这个程序将读取一个文件，并建立文件中单词的直方图：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+
+<span class="k">def</span> <span class="nf">process_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">hist</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="n">process_line</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">hist</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hist</span>
+
+<span class="k">def</span> <span class="nf">process_line</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">hist</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">whitespace</span><span class="p">)</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">hist</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">hist</span> <span class="o">=</span> <span class="n">process_file</span><span class="p">(</span><span class="s1">&#39;emma.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>该程序读取 <code class="docutils literal"><span class="pre">emma.txt</span></code> ，其包括Jane Austen写的<em>《Emma》</em>的文本。</p>
+<p><code class="docutils literal"><span class="pre">process_file</span></code>循环读取文件的每行，依次把它们传递给<code class="docutils literal"><span class="pre">process_line</span></code>。
+直方图 <code class="docutils literal"><span class="pre">hist</span></code> 被用作一个累加器。</p>
+<p>在使用 <code class="docutils literal"><span class="pre">split</span></code> 将一行文件切分成一个字符串列表之前，
+<code class="docutils literal"><span class="pre">process_line</span></code>使用字符串的 <code class="docutils literal"><span class="pre">replace</span></code> 方法将连字符替换成空格。
+它会遍历单词列表，并使用 <code class="docutils literal"><span class="pre">strip</span></code> 和 <code class="docutils literal"><span class="pre">lower</span></code> 来删除标点以及将单词转换为小写。
+（“转换”只是一种简略的说法；记住，字符串是不可变的，
+所以类似 <code class="docutils literal"><span class="pre">strip</span></code> 和 <code class="docutils literal"><span class="pre">lower</span></code> 这样的方法其实返回的是新字符串。）</p>
+<p>最后，<code class="docutils literal"><span class="pre">process_line</span></code>通过生成一个新的项或者递增一个已有的项来更新直方图。</p>
+<p>我们可以通过累加直方图中的频率，来统计文件中的单词总数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">total_words</span><span class="p">(</span><span class="n">hist</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">hist</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>不同单词的数量恰好是词典中项的数目：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">different_words</span><span class="p">(</span><span class="n">hist</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这是打印结果的代码：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total number of words:&#39;</span><span class="p">,</span> <span class="n">total_words</span><span class="p">(</span><span class="n">hist</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of different words:&#39;</span><span class="p">,</span> <span class="n">different_words</span><span class="p">(</span><span class="n">hist</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>结果是：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">words</span><span class="p">:</span> <span class="mi">161080</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">different</span> <span class="n">words</span><span class="p">:</span> <span class="mi">7214</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>最常用单词<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>为了找到最常用的单词，我们可以使用元组列表，其中每个元组包含单词和它的频率，然后排序这个列表。</p>
+<p>下面的函数接受一个直方图并且返回一个
+单词-频率的元组列表：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">most_common</span><span class="p">(</span><span class="n">hist</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">hist</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+
+    <span class="n">t</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">t</span>
+</pre></div>
+</div>
+<p>每一个元组中，频率在前，所以这个列表是按照频率排序。
+下面是输出最常用的十个单词的循环：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">most_common</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The most common words are:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">freq</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">t</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这里我通过关键词参数 <code class="docutils literal"><span class="pre">sep</span></code> ，让 <code class="docutils literal"><span class="pre">print</span></code> 使用一个制表符（Tab）而不是空格键作为分隔符，
+所以第二行将对齐。下面是对小说*《Emma》*的分析结果：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">most</span> <span class="n">common</span> <span class="n">words</span> <span class="n">are</span><span class="p">:</span>
+<span class="n">to</span>      <span class="mi">5242</span>
+<span class="n">the</span>     <span class="mi">5205</span>
+<span class="ow">and</span>     <span class="mi">4897</span>
+<span class="n">of</span>      <span class="mi">4295</span>
+<span class="n">i</span>       <span class="mi">3191</span>
+<span class="n">a</span>       <span class="mi">3130</span>
+<span class="n">it</span>      <span class="mi">2529</span>
+<span class="n">her</span>     <span class="mi">2483</span>
+<span class="n">was</span>     <span class="mi">2400</span>
+<span class="n">she</span>     <span class="mi">2364</span>
+</pre></div>
+</div>
+<p>当然，这段代码也可以通过 <code class="docutils literal"><span class="pre">sort</span></code> 函数的参数 <code class="docutils literal"><span class="pre">key</span></code> 进行简化。
+如果你感兴趣，可以阅读 <a class="reference external" href="https://wiki.python.org/moin/HowTo/Sorting">https://wiki.python.org/moin/HowTo/Sorting</a> 。</p>
+</div>
+<div class="section" id="id11">
+<h2>可选形参<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<p>我们已经见过接受可变数量实参的函数和方法了。
+程序员也可以自己定义具有可选实参的函数。
+例如，下面就是一个打印直方图中最常见单词的函数。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_most_common</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">most_common</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The most common words are:&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">freq</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">t</span><span class="p">[:</span><span class="n">num</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>第一个形参是必须的；第二个是可选的。 <code class="docutils literal"><span class="pre">num</span></code> 的<strong>默认值（default
+value）</strong>是10。</p>
+<p>如果你只提供了一个实参:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">print_most_common</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">num</span></code>将使用默认值。如果你你提供两个实参：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">print_most_common</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">num</span></code>获得实参的值。换句话说，可选实参<strong>覆盖（overrides）</strong>了默认值。</p>
+<p>如果一个函数同时有必选和可选两类形参，则所有的必选形参必须首先出现，可选形参紧随其后。</p>
+</div>
+<div class="section" id="id12">
+<h2>字典差集<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<p>从书中找到所有没出现在词表 <code class="docutils literal"><span class="pre">words.txt</span></code> 中的单词，可以认为是一个差集问题；
+也就是，我们应该从一个集合中（书中的单词）找到所有没出现在另一个集合中
+（列表中的单词）的单词。</p>
+<p><code class="docutils literal"><span class="pre">subtract</span></code>接受词典 <code class="docutils literal"><span class="pre">d1</span></code> 和 <code class="docutils literal"><span class="pre">d2</span></code> ，并返回一个新的词典，
+其包括 <code class="docutils literal"><span class="pre">d1</span></code> 中的所有没出现在 <code class="docutils literal"><span class="pre">d2</span></code> 中的键。
+由于并不真正关心值是什么，我们将它们都设为 <code class="docutils literal"><span class="pre">None</span></code> 。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">subtract</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d2</span><span class="p">:</span>
+            <span class="n">res</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<p>为了找到书中没有出现在 <code class="docutils literal"><span class="pre">words.txt</span></code> 中的单词，
+我们可以使用<code class="docutils literal"><span class="pre">process_file</span></code>来为 <code class="docutils literal"><span class="pre">words.txt</span></code> 构建一个直方图，
+然后使用 <code class="docutils literal"><span class="pre">subtract</span></code> ：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="n">process_file</span><span class="p">(</span><span class="s1">&#39;words.txt&#39;</span><span class="p">)</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">subtract</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="n">words</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Words in the book that aren&#39;t in the word list:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">diff</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这是针对小说<em>《Emma》</em>的部分运行结果：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Words</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">book</span> <span class="n">that</span> <span class="n">aren</span><span class="s1">&#39;t in the word list:</span>
+<span class="n">rencontre</span> <span class="n">jane</span><span class="s1">&#39;s blanche woodhouses disingenuousness</span>
+<span class="n">friend</span><span class="s1">&#39;s venice apartment ...</span>
+</pre></div>
+</div>
+<p>这些单词中，一些是名字和名词所有格。如“rencontre”这样的其他单词已经不常使用了。
+但是有一些真的应该包括在列表中！</p>
+<div class="section" id="id13">
+<h3>习题13-6<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>Python　提供了一个叫做集合（set）的数据结构，支持许多常见的集合操作。
+你可以前往第十九章阅读相关内容，或者在官网上阅读文档 <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#types-set">http://docs.python.org/3/library/stdtypes.html#types-set</a> 。</p>
+<p>编写一个程序，使用集合的差集操作来找出一本书中不在 <code class="docutils literal"><span class="pre">work</span> <span class="pre">list</span></code> 中的单词。</p>
+<p>答案： <a class="reference external" href="http://thinkpython2.com/code/analyze_book2.py">http://thinkpython2.com/code/analyze_book2.py</a> 。</p>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>随机单词<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<p>如果想从直方图中随机选择一个单词，最简单的算法是创建一个列表，
+其中根据其出现的频率，每个单词都有相应个数的拷贝，然后从该列表中选择单词：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_word</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">word</span><span class="p">]</span> <span class="o">*</span> <span class="n">freq</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>表达式 <code class="docutils literal"><span class="pre">[word]</span> <span class="pre">*</span> <span class="pre">freq</span></code> 创建一个具有 <code class="docutils literal"><span class="pre">freq</span></code> 个 <code class="docutils literal"><span class="pre">word</span></code> 字符串拷贝的列表。
+除了它的实参要求是一个序列外，<code class="docutils literal"><span class="pre">extend</span></code>方法和 <code class="docutils literal"><span class="pre">append</span></code>方法很像。</p>
+<p>该算法能够满足要求，但是效率不够高；
+每次你选择一个随机单词，它都重建列表，这个列表和原书一样大。
+一个明显的改进是，创建列表一次，然后进行多次选择， 但是该列表仍然很大。</p>
+<p>一个替代方案是：</p>
+<ol class="arabic simple">
+<li>使用 <code class="docutils literal"><span class="pre">keys</span></code> 来获得该书中单词的列表。</li>
+<li>创建一个包含单词频率累积和的列表（见<a class="reference internal" href="10-lists.html#cumulative"><span class="std std-ref">习题10-2</span></a>）。
+此列表的最后一项是书中单词的数目<span class="math">\(n\)</span>。</li>
+<li>选择一个从 1 到<span class="math">\(n\)</span>的随机数。使用二分搜索（见<a class="reference internal" href="10-lists.html#exercise10-10"><span class="std std-ref">习题10-10</span></a>）
+找到该随机数应该被在累积和中插入的索引。</li>
+<li>使用该索引从单词列表中找到相应的单词。</li>
+</ol>
+<div class="section" id="randhist">
+<span id="id15"></span><h3>习题13-7<a class="headerlink" href="#randhist" title="永久链接至标题">¶</a></h3>
+<p>编写一个使用该算法从书中选择一个随机单词的程序。</p>
+<p>答案：<a class="reference external" href="http://thinkpython2.com/code/analyze_book3.py">http://thinkpython2.com/code/analyze_book3.py</a> 。</p>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>马尔科夫分析<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
+<p>如果你从书中随机选择单词，那么你会大致了解其使用的词汇，但可能不会得到一个完整的句子：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">this</span> <span class="n">the</span> <span class="n">small</span> <span class="n">regard</span> <span class="n">harriet</span> <span class="n">which</span> <span class="n">knightley</span><span class="s1">&#39;s it most things</span>
+</pre></div>
+</div>
+<p>一系列随机单词很少有意义，因为相邻的单词之间没有关系。
+例如，在一个真实的句子中，你可能期望“the”这样的冠词后面跟着的是一个形容词或者名词，
+而大不可能会是一个动词或者副词。</p>
+<p>衡量相邻单词关系的方法之一是马尔科夫分析法，对于一个给定的单词序列，
+马尔科夫分析法将给出接下来单词的概率。 例如，歌曲<em>Eric, the Half a
+Bee</em>的开头是：</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Half a bee, philosophically,</div>
+<div class="line">Must, ipso facto, half not be.</div>
+<div class="line">But half the bee has got to be</div>
+<div class="line">Vis a vis, its entity. D’you see?</div>
+<div class="line">But can a bee be said to be</div>
+<div class="line">Or not to be an entire bee</div>
+<div class="line">When half the bee is not a bee</div>
+<div class="line">Due to some ancient injury?</div>
+</div>
+</div></blockquote>
+<p>在此文本中，短语“half the”后面总是跟着单词“bee”， 但是短语“the
+bee”则可能跟着“has”或者“is”。</p>
+<p>马尔科夫分析的结果是从每个前缀（如“half the”和“the bee”）
+到所有可能的后缀（如“has”和“is”）的映射。</p>
+<p>给定此映射，你能够通过以任意前缀开始并从可能的后缀中随机选择一个的方法，来生成一个随机文本。
+接下来，你可以将前缀的结尾和新的后缀组合成下一个前缀，并重复下去。</p>
+<p>例如，如果你以前缀“Half a”开始，然后下一个但是必须是“bee”，
+因为此前缀在文本中仅出现一次。下一个前缀是“a bee”，
+所以下一个后缀可能是“philosophically”，“be”或“due”。</p>
+<p>此例中，前缀的长度总是2，但是你可以以任意前缀长度进行马尔科夫分析。
+前缀的长度被称作此分析的“阶”。</p>
+<div class="section" id="id17">
+<h3>习题13-8<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<p>马尔科夫分析：</p>
+<ol class="arabic">
+<li><p class="first">编写一个程序，从一个文件中读取文本并执行马尔科夫分析。
+结果应该是一个字典，即从前缀映射到一个可能的后缀集合。
+此后缀集合可以是一个列表、元组或字典；你需要做出合适的选择。
+你可以用长度为2的前缀测试程序，但是在编写程序时，应确保其很容易支持其它长度。</p>
+</li>
+<li><p class="first">在前面的程序中添加一个函数，基于马尔科夫分析生成随机文本。
+下面是使用<em>《Emma》</em>执行前缀为2的马尔科夫分析生成的示例：</p>
+<blockquote>
+<div><p>He was very clever, be it sweetness or be angry, ashamed or only
+amused, at such a stroke. She had never thought of Hannah till
+you were never meant for me?“ ”I cannot make speeches, Emma:&#8221; he
+soon cut it all himself.</p>
+</div></blockquote>
+<p>在此例中，我保留了附在词后面的标点符号。从语法上看，结果几乎是正确的，但不完全。
+语义上讲，它几乎有意义，但也不完全。</p>
+<p>如果你增加前缀的长度，会发生什么？随机文本更有意义是么？</p>
+</li>
+<li><p class="first">一旦程序正常运行，你可以想尝试一下混搭：如果你组合两本或更多书中的文本，
+你生成的随机文本将以有趣的方式混合这些书中的词汇和短语。</p>
+</li>
+</ol>
+<p>致谢：此案例研究基于 Kernighan 与 Pike 所著的 <em>《The Practice of
+Programming》</em> 一书中的示例。</p>
+<p>在继续阅读之前，你应该尝试解决该习题；
+你可以从<a class="reference external" href="http://thinkpython2.com/code/markov.py">http://thinkpython2.com/code/markov.py</a> 下载我的答案。
+你还需要下载<a class="reference external" href="http://thinkpython2.com/code/emma.txt">http://thinkpython2.com/code/emma.txt</a> 。</p>
+</div>
+</div>
+<div class="section" id="id18">
+<h2>数据结构<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h2>
+<p>使用马尔科夫分析生成随机文本很有趣，
+但是上面那道习题的目的是：学习数据结构选择。
+在解答上述习题时，你不得不选择：</p>
+<ul class="simple">
+<li>如何表示前缀。</li>
+<li>如何表示可能后缀的集合。</li>
+<li>如何表示从前缀到可能后缀集合的映射。</li>
+</ul>
+<p>最后一个选择很简单：明显应该选择字典作为键至对应值的映射。</p>
+<p>对于前缀，最明显的选择是字符串、字符串列表或者字符串元组。</p>
+<p>对于后缀，一个选择是列表；另一个是直方图（字典）。</p>
+<p>你如何选择呢？ 第一步是考虑对每个数据结构你需要实现的操作。
+对于前缀，我们需要能从头部删除单词，并在结尾处加入单词。
+例如，如果当前的前缀是“Half a”，下一个词是“bee”，
+你需要能构成下一个前缀“a bee”。</p>
+<p>你的第一个选择可能是列表，因为它能很容易的增加和删除元素，
+但是我们也需要让前缀作为字典的键，这就排除了列表。
+使用元组，你不能追加或删除元素，
+但是你能使用加号运算符来形成一个新的元组：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">prefix</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="p">(</span><span class="n">word</span><span class="p">,)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">shift</span></code>接受一个单词元组 <code class="docutils literal"><span class="pre">prefix</span></code> 和一个字符串 <code class="docutils literal"><span class="pre">word</span></code> ，
+并形成一个新的元组，其具有prefix中除第一个单词外的全部单词，
+然后在结尾增加 <code class="docutils literal"><span class="pre">word</span></code> 。</p>
+<p>对于后缀的集合，我们需要执行的运算包括增加一个新的后缀
+（或者增加一个已有后缀的频率），并选择一个随机后缀。</p>
+<p>对于列表或者直方图，增加一个新的后缀一样容易。
+从列表中选择一个随机元素很容易；
+在直方图中选择的难度更大（见<a class="reference internal" href="#randhist"><span class="std std-ref">习题13-7</span></a>）。</p>
+<p>目前为止，我们主要讨论实现的难易，
+但是选择数据结构时还要考虑其它因素。一个是运行时间。
+有时，一个数据结构比另一个快有理论依据；
+例如，我提到过 <code class="docutils literal"><span class="pre">in</span></code> 运算符对于字典比对列表要快，
+至少当元素的数目很大的时候。</p>
+<p>但是通常你事先不知道哪个实现更快。
+一个选择是两个都实现，然后再看哪个更快。
+此方法被称作<strong>基准测试（benchmarking）</strong>。
+另一个更实际的选择是选择最容易实现的数据结构，
+然后看它对于拟定的应用是否足够快。如果是的话，就不需要继续了。
+如果不是，可以使用一些工具，如 <code class="docutils literal"><span class="pre">profile</span></code> 模块，识别程序中哪处最耗时。</p>
+<p>另一个要考虑的因素是存储空间。例如，使用直方图表示后缀集合可能用更少的空间，
+因为无论一个单词在文本中出现多少次，你只需要存储它一次。
+在一些情况下，节省空间也能让你的程序更快，极端情况下，
+如果内存溢出，你的程序可能根本不能运行。
+但是对于许多应用，空间是运行时间之后的第二位考虑。</p>
+<p>最后一点：在此讨论中，我暗示了我们应该使用一种数据结构同时进行分析和生成。
+但是既然这些是独立的步骤，使用一种数据结构进行分析，
+然后采用另一种结构进行生成也是可能的。
+如果生成节省的时间超过了转化花费的时间，这也会提高程序的性能。</p>
+</div>
+<div class="section" id="id19">
+<h2>调试<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h2>
+<p>在调试一个程序的时候，特别是调试一个很难的错误时，应该做到以下五点：</p>
+<p>细读：</p>
+<blockquote>
+<div>检查你的代码，仔细地阅读，并且检查是否实现了你的期望。</div></blockquote>
+<p>运行：</p>
+<blockquote>
+<div>通过修改和运行不同的版本来不断试验。
+通常，如果你在程序中正确的地方打印了正确的东西，
+问题会变得很明显，但是有时你不得不搭建一些脚手架。</div></blockquote>
+<p>思考：</p>
+<blockquote>
+<div>花些时间思考！错误的类型是什么：语法、运行时、语义？
+你从错误信息或者程序的输出中能获得什么信息？
+什么类型的错误能引起你看到的问题？问题出现前，你最后的修改是什么？</div></blockquote>
+<p>小黄鸭调试法（rubberducking）：</p>
+<blockquote>
+<div>如果将你的问题解释给别人听，有时你会发现在解释完问题之前就能找到答案。
+你通常并不需要真的去问另外一个人；你可以对着一个小黄鸭说。
+这就是著名的小黄鸭调试法(<strong>rubber duck
+debugging</strong>)的由来。这可不是我编造的，你可以看看这个维基页面： <a class="reference external" href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">https://en.wikipedia.org/wiki/Rubber_duck_debugging</a> 。</div></blockquote>
+<p>回退：</p>
+<blockquote>
+<div>有时候，最好的做法是回退，撤销最近的修改，
+直到你回到一个能运行并且你能理解的程序。然后你可以开始重建。</div></blockquote>
+<p>初级程序员有时陷入这些步骤之一，忘记了还可以做其他的事情。
+事实上，每种方法都有失败的可能。</p>
+<p>例如，如果程序是一个排版错误，读代码可能有帮助，
+但是如果问题是概念理解错误，则未必是这样。
+如果你不理解程序要做什么，可能读100遍程序都不会发现错误，因为错误在你的头脑中。</p>
+<p>试验可能会有帮助，特别是如果你运行简单短小的测试。
+但是，如果你不思考或者阅读你的代码，就直接进行实验，
+你可能陷入一种我称为“随机游走编程”的模式。
+这指的是随机修改，直到程序通过测试。
+不用说，随机游走编程会花费很长的时间。</p>
+<p>你必须花时间思考。调试就像是一门实验科学。
+你应该至少有一个关于问题是什么的假设。
+如果有两个或者更多的可能，试着考虑利用测试消除其中一个可能。</p>
+<p>但是，如果有太多的错误，或者你正试图修复的代码太大、太复杂，
+即使最好的调试技巧也会失败。
+有时，最好的选择是回退，简化程序，直到你获得一个正常运行并且能理解的程序。</p>
+<p>初级程序员经常不愿意回退，因为他们舍不得删除一行代码（即使它是错误的）。
+如果能让你好受些，在你开始精简之前，可以将你的代码拷贝到另一个文件中。
+然后你再把修改后的代码一块一块地拷贝回去。</p>
+<p>发现一个错误，需要阅读、运行、沉思、和时而的回退。
+如果其中某个步骤没有进展，试一下其它的。</p>
+</div>
+<div class="section" id="id20">
+<h2>语表<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h2>
+<p>确定性的（deterministic）：</p>
+<blockquote>
+<div>指的是给定相同的输入，一个程序每次运行的结果是一样的。</div></blockquote>
+<p>伪随机（pseudorandom）：</p>
+<blockquote>
+<div>指的是一串数字看上去是随机的，但是实际是由一个确定性程序生成的。</div></blockquote>
+<p>默认值：</p>
+<blockquote>
+<div>没有提供实参时，赋给可选形参的值。</div></blockquote>
+<p>覆盖：</p>
+<blockquote>
+<div>用实参替代默认值。</div></blockquote>
+<p>基准测试（benchmarking）：</p>
+<blockquote>
+<div>通过可能的输入样本对使用不同数据结构的实现进行测试，从而选择数据结构的过程。</div></blockquote>
+<p>小黄鸭调试法（rubberducking）：</p>
+<blockquote>
+<div>通过向小黄鸭这样的非生物体解释你的问题来进行调试。
+清晰地陈述问题可以帮助你解决问题，即使小黄鸭并不懂 Python。</div></blockquote>
+</div>
+<div class="section" id="id21">
+<h2>练习题<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id22">
+<h3>习题 13-9<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<p>单词的&#8221;秩&#8221;是指它在按照单词频率排序的列表中的位置：
+出现频率最高的单词，它的秩是1，频率第二高的单词，它的秩是2，以此类推。</p>
+<p>Zipf定律(<a class="reference external" href="http://en.wikipedia.org/wiki/Zipf's_law">http://en.wikipedia.org/wiki/Zipf&#8217;s_law</a> )描述了自然语言中秩和单词出现频率的关系。特别是，它预测对于秩为 <span class="math">\(r\)</span> 的单词，
+其出现的频率 <span class="math">\(f\)</span> 是：</p>
+<div class="math">
+\[f = c r^{-s}\]</div>
+<p>其中，<span class="math">\(s\)</span>　和　<span class="math">\(c\)</span> 是依赖于语言和文本的参数。如果在上述等式两边取对数的话，你可以得到：</p>
+<div class="math">
+\[\log f = \log c - s \log r\]</div>
+<p>因此，如果绘出 log <span class="math">\(f\)</span>　和　log <span class="math">\(r\)</span>　的图像，你可以得到一条以　<span class="math">\(-s\)</span>　为斜率、以　<span class="math">\(c\)</span>　为截距的直线。</p>
+<p>编写一个程序，从文件中读取文本，计算单词频率，倒序输出每个单词，
+一个单词一行，同时在这行输出对应的 log <span class="math">\(f\)</span> 和 log <span class="math">\(r\)</span>。
+使用你喜欢的绘图程序，画出结果并检查是不是形成一条直线。
+你可以估算出 <span class="math">\(s\)</span> 的值吗？</p>
+<p>答案： <a class="reference external" href="http://thinkpython2.com/code/zipfpy">http://thinkpython2.com/code/zipfpy</a> 。
+如果希望运行我的答案，你需要安装绘图模块 matplotlib。
+当然如果你安装了 Anaconda，你就已经有了matplotlib；否则你需要安装它。</p>
+</div>
+<div class="section" id="id23">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li>翻译：<a class="reference external" href="https://github.com/iphyer">&#64;iphyer</a></li>
+<li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
+<li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="12-tuples.html" class="btn btn-neutral" title="第十二章：元组" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, EarlGrey et.al.
+      最后更新于 4月 20, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
