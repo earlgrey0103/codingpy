@@ -556,6 +556,8 @@ zip 对象：
 
 答案： http://thinkpython2.com/code/most_frequent.py 。
 
+.. _anagrams:
+
 习题12-2
 ^^^^^^^^^^^
 
