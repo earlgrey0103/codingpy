@@ -479,3 +479,13 @@ copy）**\ ，因为它仅复制了对象以及其包含的引用， 但未复�
 
 答案:http://thinkpython2.com/code/draw.py.
 
+**贡献者**
+^^^^^^^^^^^
+
+#. 翻译：`@iphyer`_
+#. 校对：`@bingjin`_
+#. 参考：`@carfly`_
+
+.. _@iphyer: https://github.com/iphyer
+.. _@bingjin: https://github.com/bingjin
+.. _@carfly: https://github.com/carfly
