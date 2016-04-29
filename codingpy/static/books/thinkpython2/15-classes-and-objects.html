@@ -1,0 +1,618 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第十五章：类和对象 &mdash; 《Think Python 2e》中译本 1.0 文档</title>
+  
+
+  
+    <meta name="keywords" content="《Think Python》第二版中译文, Python 3版入门教材, Allen Downey, EarlGrey, 编程派">
+    <meta name="description" content="编程派翻译的《Think Python 2ed》中文版，为最新支持Python 3版的教材。">
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="prev" title="第十四章：文件" href="14-files.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69612020-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 《Think Python 2e》中译本
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                持续更新中
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-lists.html">第十章：列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dictionaries.html">第十一章：字典</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-tuples.html">第十二章：元组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-case-study-data-structure-selection.html">第十三章：案例研究：数据结构选择</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-files.html">第十四章：文件</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第十五章：类和对象</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">程序员自定义类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">矩形</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">实例作为返回值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">对象是可变的</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">复制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">术语表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">习题 15-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">习题 15-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">习题 15-3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">习题 15-4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">习题 15-5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">习题 15-6</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">《Think Python 2e》中译本</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>第十五章：类和对象</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+            <a href="http://codingpy.com" title="编程派" >前往编程派</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第十五章：类和对象<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>目前你已经知道如何使用函数来组织你的代码，同时用内置的类型来管理数据。
+下一步我们将学习“面向对象编程”，即使用
+程序员定义的类来组织代码和数据。
+面向对象编程是一个很大的话题，讲完需要一些章节。</p>
+<p>本章的示例代码可以在<a class="reference external" href="http://thinkpython2.com/code/Point1.py">http://thinkpython2.com/code/Point1.py</a> 获取；
+练习题的答案可以在<a class="reference external" href="http://thinkpython2.com/code/Point1_soln.py">http://thinkpython2.com/code/Point1_soln.py</a> 获取。</p>
+<div class="section" id="id2">
+<h2>程序员自定义类型<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>我们已经使用过了许多 Python 的内置类型；
+现在我们要定义一个新类型。举个例子，我们来创建一个叫做 <code class="docutils literal"><span class="pre">Point</span></code> 的类型，代表二维空间中的一个点。</p>
+<p>在数学记法中，点通常被写成在两个小括号中用一个逗号分隔坐标的形式。
+例如<span class="math">\((0,0)\)</span>代表原点，<span class="math">\((x,y)\)</span>代表原点向右 x 个单位，向上 y 个单位的点。</p>
+<p>在 Python 中，有几种表示点的方法：</p>
+<ul class="simple">
+<li>我们可以将坐标存储在两个独立的变量，x和y中。</li>
+<li>我们可以将坐标作为一个列表或者元组的元素存储。</li>
+<li>我们可以创建一个新类型将点表示为对象。</li>
+</ul>
+<p>创建一个新类型比其他方法更复杂，但是它的优势一会儿会显现出来。</p>
+<p>程序员自定义类型( A programmer-defined type )也被称作<strong>类（class）</strong>。 像这样定义一个对象：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represents a point in 2-D space.&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>头部语句表明新类的名称是 <code class="docutils literal"><span class="pre">Point</span></code> 。
+主体部分是文档字符串，用来解释这个类的用途。
+你可以在一个类的定义中定义变量和函数，稍后会讨论这个。</p>
+<p>定义一个叫做 <code class="docutils literal"><span class="pre">Point</span></code> 的类将创建了一个<strong>类对象（class object）</strong>。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Point</span>
+<span class="go">&lt;class &#39;__main__.Point&#39;&gt;</span>
+</pre></div>
+</div>
+<p>由于 <code class="docutils literal"><span class="pre">Point</span></code> 是定义在顶层的，所以它的“全名”是<code class="docutils literal"><span class="pre">__main__.Point</span></code>。</p>
+<p>类对象就像是一个用来创建对象的工厂。
+要创建一个点，你可以像调用函数那样调用 <code class="docutils literal"><span class="pre">Point</span></code> 。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">blank</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">blank</span>
+<span class="go">&lt;__main__.Point object at 0xb7e9d3ac&gt;</span>
+</pre></div>
+</div>
+<p>返回值是一个 <code class="docutils literal"><span class="pre">Point</span></code> 对象的引用，我们将它赋值给 <code class="docutils literal"><span class="pre">blank</span></code> 。</p>
+<p>创建一个新对象的过程叫做<strong>实例化（instantiation）</strong>，这个新对象叫做这个类的一个<strong>实例（instance）</strong>。</p>
+<p>当你试图打印一个实例，Python 会告诉你它属于哪个类，
+以及它在内存中的存储地址（前缀0x代表紧跟后面的数是以十六进制表示的）。</p>
+<p>每一个对象都是某种类的实例，所以对象和实例可以互换。但是在这章我用“实例”来表示我在讨论程序员自定义类型。</p>
+</div>
+<div class="section" id="id3">
+<h2>属性<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>你可以使用点标记法向一个实例进行赋值操作：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">blank</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">blank</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">4.0</span>
+</pre></div>
+</div>
+<p>这个语法类似于从一个模块中使用变量的语法，比如 <code class="docutils literal"><span class="pre">math.pi</span></code> 和 <code class="docutils literal"><span class="pre">string.whitespace</span></code> 。
+不过在这个例子中，我们是给一个类中已命名的元素赋值。
+这类元素叫做<strong>属性（attributes）</strong>。</p>
+<p>作为名词的时候，“属性”的英文“AT-trib-ute”的重音在第一个音节上，
+作为动词的时候，“a-TRIB-ute”重音在第二个音节上。</p>
+<p>下面这张图展示了这些赋值操作的结果。说明一个对象及其属性的状态图叫做<strong>对象图（object diagram）</strong>；见图<a class="reference internal" href="#fig-point"><span class="std std-ref">图15-1：对象图</span></a>。</p>
+<div class="figure" id="id17">
+<span id="fig-point"></span><img alt="图15-1：对象图" src="_images/point.png" />
+<p class="caption"><span class="caption-text">图15-1：对象图</span></p>
+</div>
+<p>变量 <code class="docutils literal"><span class="pre">blank</span></code> 引用了一个 <code class="docutils literal"><span class="pre">Point</span></code> 类，这个类拥有了两个属性。
+每个属性都引用了一个浮点数。</p>
+<p>你可以使用相同的语法读取一个属性的值：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">blank</span><span class="o">.</span><span class="n">y</span>
+<span class="go">4.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">blank</span><span class="o">.</span><span class="n">x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">3.0</span>
+</pre></div>
+</div>
+<p>表达式 <code class="docutils literal"><span class="pre">blank.x</span></code> 的意思是，“前往 <code class="docutils literal"><span class="pre">blank</span></code> 所引用的对象并且获取 <code class="docutils literal"><span class="pre">x</span></code> 的值”。
+在这个例子中，我们将获取到的值赋值给了一个叫做 <code class="docutils literal"><span class="pre">x</span></code> 的变量。
+变量 <code class="docutils literal"><span class="pre">x</span></code> 和属性 <code class="docutils literal"><span class="pre">x</span></code> 并不会冲突。</p>
+<p>你可以在任何表达式中使用点标记法。例如：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;(</span><span class="si">%g</span><span class="s1">, </span><span class="si">%g</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">blank</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">blank</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+<span class="go">&#39;(3.0, 4.0)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">distance</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">blank</span><span class="o">.</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">blank</span><span class="o">.</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">distance</span>
+<span class="go">5.0</span>
+</pre></div>
+</div>
+<p>你可以将一个实例作为参数传递。例如：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_point</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(</span><span class="si">%g</span><span class="s1">, </span><span class="si">%g</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">print_point</span></code>接受一个点作为参数，打印出其在数学中的表示方法。
+调用它的时候，你可以将 <code class="docutils literal"><span class="pre">blank</span></code> 作为参数传递：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_point</span><span class="p">(</span><span class="n">blank</span><span class="p">)</span>
+<span class="go">(3.0, 4.0)</span>
+</pre></div>
+</div>
+<p>在这个函数内部，<code class="docutils literal"><span class="pre">p</span></code> 是 <code class="docutils literal"><span class="pre">blank</span></code> 的别名，
+所以，如果函数修改了 <code class="docutils literal"><span class="pre">p</span></code> ，<code class="docutils literal"><span class="pre">blank</span></code> 也会随之改变。</p>
+<p>我们做个联系，编写一个叫做<code class="docutils literal"><span class="pre">distance_between_points</span></code>的函数，它接受两个 <code class="docutils literal"><span class="pre">Point</span></code> 作为参数，然后返回这两个点之间的距离。</p>
+</div>
+<div class="section" id="id4">
+<h2>矩形<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>有时候，一个对象该拥有哪些属性是显而易见的，但有时候你需要好好考虑一番。
+比如，你需要设计一个代表矩形的类。
+为了描述一个矩形的位置和大小，你需要设计哪些属性呢？
+角度是可以忽略的；为了使事情更简单，我们假设矩形是水平或者竖直的。</p>
+<p>至少有两种可能的设计：</p>
+<ul class="simple">
+<li>你可以指定矩形的一个角（或是中心）、宽度以及长度。</li>
+<li>你可以指定对角线上的两个角。</li>
+</ul>
+<p>这个时候还不能够说明哪个方法优于哪个方法。我们先来实现前者。</p>
+<p>下面是类的定义：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Rectangle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represents a rectangle.</span>
+
+<span class="sd">    attributes: width, height, corner.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>文档字符串中列出了属性：<code class="docutils literal"><span class="pre">width</span></code> 和 <code class="docutils literal"><span class="pre">height</span></code> 是数字；
+<code class="docutils literal"><span class="pre">corner</span></code>是一个 <code class="docutils literal"><span class="pre">Point</span></code> 对象，代表左下角的那个点。</p>
+<p>为了描述一个矩形，你需要实例化一个 <code class="docutils literal"><span class="pre">Rectangle</span></code> 对象，并且为它的属性赋值：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">box</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">()</span>
+<span class="n">box</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mf">100.0</span>
+<span class="n">box</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mf">200.0</span>
+<span class="n">box</span><span class="o">.</span><span class="n">corner</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+<span class="n">box</span><span class="o">.</span><span class="n">corner</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">box</span><span class="o">.</span><span class="n">corner</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>表达式 <code class="docutils literal"><span class="pre">box.corner.x</span></code> 的意思是，
+“前往 <code class="docutils literal"><span class="pre">box</span></code> 所引用的对象，找到叫做 <code class="docutils literal"><span class="pre">corner</span></code> 的属性；
+然后前往 <code class="docutils literal"><span class="pre">corner</span></code> 所引用的对象，找到叫做 <code class="docutils literal"><span class="pre">x</span></code> 的属性。”</p>
+<div class="figure" id="id18">
+<span id="fig-rectangle"></span><img alt="图15-2：对象图" src="_images/rectangle.png" />
+<p class="caption"><span class="caption-text">图15-2：对象图</span></p>
+</div>
+<p><a class="reference internal" href="#fig-rectangle"><span class="std std-ref">图15-2：对象图</span></a>展示了这个对象的状态。
+一个对象作为另一个对象的属性叫做<strong>嵌套（embedded）</strong>。</p>
+</div>
+<div class="section" id="id5">
+<h2>实例作为返回值<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>函数可以返回实例。例如，<code class="docutils literal"><span class="pre">find_center</span></code>接受一个 <code class="docutils literal"><span class="pre">Rectangle</span></code> 作为参数，
+返回一个 <code class="docutils literal"><span class="pre">Point</span></code> ，代表了这个 <code class="docutils literal"><span class="pre">Rectangle</span></code> 的中心坐标：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_center</span><span class="p">(</span><span class="n">rect</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">corner</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">rect</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">corner</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">rect</span><span class="o">.</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>下面这个例子将 <code class="docutils literal"><span class="pre">box</span></code> 作为参数传递，然后将返回的 <code class="docutils literal"><span class="pre">Point</span></code> 赋值给 <code class="docutils literal"><span class="pre">center</span></code>：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">center</span> <span class="o">=</span> <span class="n">find_center</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">print_point</span><span class="p">(</span><span class="n">center</span><span class="p">)</span>
+<span class="go">(50, 100)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>对象是可变的<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>你可以通过给一个对象的属性赋值来改变这个对象的状态。
+例如，要改变一个矩形的大小而不改变它的位置，你可以修改 <code class="docutils literal"><span class="pre">width</span></code> 和 <code class="docutils literal"><span class="pre">height</span></code> 的值：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">box</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">width</span> <span class="o">+</span> <span class="mi">50</span>
+<span class="n">box</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">box</span><span class="o">.</span><span class="n">height</span> <span class="o">+</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>你也可以编写函数来修改对象。
+例如，<code class="docutils literal"><span class="pre">grow_rectangle</span></code>接受一个 <code class="docutils literal"><span class="pre">Rectangle</span></code> 对象和两个数字，
+<code class="docutils literal"><span class="pre">dwidth</span></code>和 <code class="docutils literal"><span class="pre">dheight</span></code> ，并将其加到矩形的宽度和高度上：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">grow_rectangle</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">dwidth</span><span class="p">,</span> <span class="n">dheight</span><span class="p">):</span>
+    <span class="n">rect</span><span class="o">.</span><span class="n">width</span> <span class="o">+=</span> <span class="n">dwidth</span>
+    <span class="n">rect</span><span class="o">.</span><span class="n">height</span> <span class="o">+=</span> <span class="n">dheight</span>
+</pre></div>
+</div>
+<p>下面的例子展示了具体效果：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">box</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">height</span>
+<span class="go">(150.0, 300.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grow_rectangle</span><span class="p">(</span><span class="n">box</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">box</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">height</span>
+<span class="go">(200.0, 400.0)</span>
+</pre></div>
+</div>
+<p>在函数内部，<code class="docutils literal"><span class="pre">rect</span></code> 是 <code class="docutils literal"><span class="pre">box</span></code> 的一个别名，
+所以如果函数修改了 <code class="docutils literal"><span class="pre">rect</span></code> ，则 <code class="docutils literal"><span class="pre">box</span></code> 也随之改变。</p>
+<p>我们做个练习，编写一个叫做<code class="docutils literal"><span class="pre">move_rectangle</span></code>的函数，接受一个 <code class="docutils literal"><span class="pre">Rectangle</span></code> 以及两个数字<code class="docutils literal"><span class="pre">dx</span></code>和<code class="docutils literal"><span class="pre">dy</span></code>。
+它把 <code class="docutils literal"><span class="pre">corner</span></code> 的 <code class="docutils literal"><span class="pre">x</span></code> 坐标加上 <code class="docutils literal"><span class="pre">dx</span></code>，把 <code class="docutils literal"><span class="pre">corner</span></code> 的 <code class="docutils literal"><span class="pre">y</span></code> 坐标加上 <code class="docutils literal"><span class="pre">dy</span></code> ，
+从而改变矩形的位置。</p>
+</div>
+<div class="section" id="id7">
+<h2>复制<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>别名会降低程序的可读性，因为一个地方的变动可能对另一个地方造成预料之外的影响。
+跟踪所有引用同一个对象的变量是非常困难的。</p>
+<p>通常用复制对象的方法取代为对象起别名。
+<code class="docutils literal"><span class="pre">copy</span></code>模块拥有一个叫做 <code class="docutils literal"><span class="pre">copy</span></code> 的函数，可以复制任何对象：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">4.0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">copy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">p1</span></code>和 <code class="docutils literal"><span class="pre">p2</span></code> 拥有相同的数据，但是它们并不是同一个 <code class="docutils literal"><span class="pre">Point</span></code> 对象。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_point</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+<span class="go">(3, 4)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">print_point</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+<span class="go">(3, 4)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="ow">is</span> <span class="n">p2</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>正如我们预期的，<code class="docutils literal"><span class="pre">is</span></code> 运算符显示了 <code class="docutils literal"><span class="pre">p1</span></code> 和 <code class="docutils literal"><span class="pre">p2</span></code> 并非同一个对象。
+不过你可能会认为 <code class="docutils literal"><span class="pre">==</span></code> 运算的结果应该是 <code class="docutils literal"><span class="pre">True</span></code> ，因为这两个点的数据是相同的。
+然而结果并不如你想象的那样，<code class="docutils literal"><span class="pre">==</span></code> 运算符的默认行为和 <code class="docutils literal"><span class="pre">is</span></code> 运算符相同；
+它检查对象的标识（identity）是否相同，而非对象的值是否相同。
+因为 Python 并不知道什么样可以被认为相同。至少目前不知道。</p>
+<p>如果你使用 <code class="docutils literal"><span class="pre">copy.copy</span></code> 来复制一个 <code class="docutils literal"><span class="pre">Rectangle</span></code> ，
+你会发现它仅仅复制了 <code class="docutils literal"><span class="pre">Rectangle</span></code> 对象，但没有复制嵌套的 <code class="docutils literal"><span class="pre">Point</span></code> 对象。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">box2</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">box2</span> <span class="ow">is</span> <span class="n">box</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">box2</span><span class="o">.</span><span class="n">corner</span> <span class="ow">is</span> <span class="n">box</span><span class="o">.</span><span class="n">corner</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="figure" id="id19">
+<span id="fig-rectangle2"></span><img alt="图15-3：对象图" src="_images/rectangle2.png" />
+<p class="caption"><span class="caption-text">图15-3：对象图</span></p>
+</div>
+<p><a class="reference internal" href="#fig-rectangle2"><span class="std std-ref">图15-3：对象图</span></a>展示了相应的对象图。 这个操作叫做<strong>浅复制（shallow
+copy）</strong>，因为它仅复制了对象以及其包含的引用， 但未复制嵌套的对象。</p>
+<p>对大多数应用来说，这并非是你想要的结果。
+在这个例子中，对其中一个 <code class="docutils literal"><span class="pre">Rectangle</span></code> 对象调用<code class="docutils literal"><span class="pre">grow_rectangle</span></code>并不会影响到另外一个，
+然而当对任何一个 <code class="docutils literal"><span class="pre">Rectangle</span></code> 对象调用<code class="docutils literal"><span class="pre">move_rectangle</span></code>的时候，两者都会被影响！这个行为很容易带来疑惑和错误。</p>
+<p>幸运的是，<code class="docutils literal"><span class="pre">copy</span></code> 模块拥有一个叫做 <code class="docutils literal"><span class="pre">deepcopy</span></code> 的方法，
+它不仅可以复制一个对象，还可以复制这个对象所引用的对象，
+甚至可以复制<em>这个对象所引用的对象</em>所引用的对象，等等。
+没错！这个操作叫做<strong>深复制（deep copy）</strong>。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">box3</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">box3</span> <span class="ow">is</span> <span class="n">box</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">box3</span><span class="o">.</span><span class="n">corner</span> <span class="ow">is</span> <span class="n">box</span><span class="o">.</span><span class="n">corner</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">box3</span></code>和 <code class="docutils literal"><span class="pre">box</span></code> 是完全互不相干的对象。</p>
+<p>我们做个练习，编写另一个版本的<code class="docutils literal"><span class="pre">move_rectangle</span></code>，
+函数创建并返回一个新的 <code class="docutils literal"><span class="pre">Rectangle</span></code> 对象而非修改原先的那个。</p>
+</div>
+<div class="section" id="id8">
+<h2>调试<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>当你开始学习对象的时候，你可能会遇到一些新的异常。
+如果你访问一个不存在的属性，你会得到 <code class="docutils literal"><span class="pre">Attributeerror</span></code> 的错误提示：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">z</span>
+<span class="go">AttributeError: Point instance has no attribute &#39;z&#39;</span>
+</pre></div>
+</div>
+<p>如果你不确定一个对象的类型，你可以询问：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="go">&lt;class &#39;__main__.Point&#39;&gt;</span>
+</pre></div>
+</div>
+<p>你也可以用 <code class="docutils literal"><span class="pre">isinstance</span></code> 来检查某个对象是不是某个类的实例。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Point</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>如果你不确定一个对象是否拥有某个属性， 你可以使用内置函数 <code class="docutils literal"><span class="pre">hasattr</span></code> 检查：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">hasattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">hasattr</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>第一个参数可以是任何对象；
+第二个参数是一个<em>字符串</em>，代表了某个属性的名字。</p>
+<p>你也可以使用 <code class="docutils literal"><span class="pre">try</span></code>　语句来检查某个对象是不是有你需要的属性:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">x</span>
+<span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>这个方法可以让你更容易编写出可以适应多种数据结构的函数。你可以在[polymorphism]节查看更多内容。</p>
+</div>
+<div class="section" id="id9">
+<h2>术语表<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>类（class）:</p>
+<blockquote>
+<div>一种程序员自定义的类型。类定义创建了一个新的类对象。</div></blockquote>
+<p>类对象（class object）:</p>
+<blockquote>
+<div>包含程序员自定义类型的细节信息的对象。类对象可以被用于创建该类型的实例。</div></blockquote>
+<p>实例（instance）:</p>
+<blockquote>
+<div>属于某个类的对象。</div></blockquote>
+<p>实例化（instantiate）:</p>
+<blockquote>
+<div>创建新的对象。</div></blockquote>
+<p>属性（attribute）:</p>
+<blockquote>
+<div>和某个对象相关联的有命名的值。</div></blockquote>
+<p>嵌套对象（embedded object）:</p>
+<blockquote>
+<div>作为另一个对象的属性存储的对象。</div></blockquote>
+<p>浅复制（shallow copy）:</p>
+<blockquote>
+<div>在复制对象内容的时候，只包含嵌套对象的引用，通过 <code class="docutils literal"><span class="pre">copy</span></code> 模块的 <code class="docutils literal"><span class="pre">copy</span></code> 函数实现。</div></blockquote>
+<p>深复制（deep copy）:</p>
+<blockquote>
+<div>在复制对象内容的时候，既复制对象属性，也复制所有嵌套对象及其中的所有嵌套对象，由 <code class="docutils literal"><span class="pre">copy</span></code> 模块的 <code class="docutils literal"><span class="pre">deepcopy</span></code> 函数实现。</div></blockquote>
+<p>对象图（object diagram）:</p>
+<blockquote>
+<div>展示对象及其属性和属性值的图。</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h2>练习题<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id11">
+<h3>习题 15-1<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>定义一个叫做 <code class="docutils literal"><span class="pre">Circle</span></code>　的类，类的属性是圆心(<code class="docutils literal"><span class="pre">center</span></code>) 和半径(<code class="docutils literal"><span class="pre">radius</span></code>),其中，圆心(<code class="docutils literal"><span class="pre">center</span></code>) 是一个　<code class="docutils literal"><span class="pre">Point</span></code> 类，而半径(<code class="docutils literal"><span class="pre">radius</span></code>)是一个数字。</p>
+<p>实例化一个圆心(center)为<span class="math">\((150, 100)\)</span>，半径(radius)为 75 的 <code class="docutils literal"><span class="pre">Circle</span></code> 对象。</p>
+</div>
+<div class="section" id="id12">
+<h3>习题 15-2<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<p>编写一个名称为 <code class="docutils literal"><span class="pre">point_in_circle</span></code> 的函数，该函数可以接受一个圆类(<code class="docutils literal"><span class="pre">Circle</span></code>)对象和点类 (<code class="docutils literal"><span class="pre">Point</span></code>)对象，然后判断该点是否在圆内。在圆内则返回 <code class="docutils literal"><span class="pre">True</span></code> 。</p>
+</div>
+<div class="section" id="id13">
+<h3>习题 15-3<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>编写一个名称为 <code class="docutils literal"><span class="pre">rect_in_circle</span></code> 的函数，该函数接受一个圆类(<code class="docutils literal"><span class="pre">Circle</span></code>)对象和矩形(<code class="docutils literal"><span class="pre">Rectangle</span></code>)对象，如果该矩形是否完全在圆内或者在圆上则返回 <code class="docutils literal"><span class="pre">True</span></code> 。</p>
+</div>
+<div class="section" id="id14">
+<h3>习题 15-4<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>编写一个名为 <code class="docutils literal"><span class="pre">rect_circle_overlap</span></code> 函数，该函数接受一个圆类对象和一个矩形类对象，如果矩形有任意一个角落在圆内则返回 <code class="docutils literal"><span class="pre">True</span></code> 。或者写一个更具有挑战性的版本，如果该矩形有任何部分落在圆内返回 <code class="docutils literal"><span class="pre">True</span></code> 。</p>
+<p>答案:<a class="reference external" href="http://thinkpython2.com/code/Circle.py">http://thinkpython2.com/code/Circle.py</a>.</p>
+</div>
+<div class="section" id="id15">
+<h3>习题 15-5<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>编写一个名为 <code class="docutils literal"><span class="pre">draw_rect</span></code> 的函数，该函数接受一个 <code class="docutils literal"><span class="pre">Turtle</span></code> 对象和一个 <code class="docutils literal"><span class="pre">Rectangle</span></code> 对象，使用 <code class="docutils literal"><span class="pre">Turtle</span></code> 画出该矩形。参考[turtlechap]章中使用 <code class="docutils literal"><span class="pre">Turtle</span></code> 的示例。</p>
+</div>
+<div class="section" id="id16">
+<h3>习题 15-6<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p>编写一个名为　<code class="docutils literal"><span class="pre">draw_circle</span></code> 的函数，该函数接受一个　<code class="docutils literal"><span class="pre">Turtle</span></code> 对象和 <code class="docutils literal"><span class="pre">Circle</span></code> 对象，并画出该圆。</p>
+<p>答案:<a class="reference external" href="http://thinkpython2.com/code/draw.py">http://thinkpython2.com/code/draw.py</a>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="14-files.html" class="btn btn-neutral" title="第十四章：文件" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, EarlGrey et.al.
+      最后更新于 4月 29, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
