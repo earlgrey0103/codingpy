@@ -149,7 +149,7 @@
     >>> os.path.abspath('memo.txt')
     '/home/dinsdale/memo.txt'
 
-\ ``os.path``\ 还提供了其它函数来对文件名和路径进行操作。例如，``os.paht.exists`` 检查一个文件或者目录是否存在：
+\ ``os.path``\ 还提供了其它函数来对文件名和路径进行操作。例如，``os.path.exists`` 检查一个文件或者目录是否存在：
 
 ::
 

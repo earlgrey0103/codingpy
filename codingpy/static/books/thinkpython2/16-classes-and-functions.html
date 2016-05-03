@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第十六章：类和函数 &mdash; 《Think Python 2e》中译本 1.0 文档</title>
+  
+
+  
+    <meta name="keywords" content="《Think Python》第二版中译文, Python 3版入门教材, Allen Downey, EarlGrey, 编程派">
+    <meta name="description" content="编程派翻译的《Think Python 2ed》中文版，为最新支持Python 3版的教材。">
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="prev" title="第十五章：类和对象" href="15-classes-and-objects.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69612020-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 《Think Python 2e》中译本
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                持续更新中
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-lists.html">第十章：列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dictionaries.html">第十一章：字典</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-tuples.html">第十二章：元组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-case-study-data-structure-selection.html">第十三章：案例研究：数据结构选择</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-files.html">第十四章：文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-classes-and-objects.html">第十五章：类和对象</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第十六章：类和函数</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">时间</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">纯函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">修改器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vs">原型 vs. 方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">术语表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">习题16-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">习题16-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10"><strong>贡献者</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">《Think Python 2e》中译本</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>第十六章：类和函数</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+            <a href="http://codingpy.com" title="编程派" >前往编程派</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第十六章：类和函数<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>现在我们已经知道如何去定义一个新的类型，下一步就是编写以自定义对象为参数的函数，并返回自定义对象作为结果。在本章中，我还将介绍“函数式编程风格”和两种新的编程开发方案。</p>
+<p>本章的代码示例可以从 <a class="reference external" href="http://thinkpython2.com/code/Time1.py">http://thinkpython2.com/code/Time1.py</a> 下载。练习的答案可以从 <a class="reference external" href="http://thinkpython2.com/code/Time1_soln.py">http://thinkpython2.com/code/Time1_soln.py</a> 下载。</p>
+<div class="section" id="id2">
+<h2>时间<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>再举一个程序员自定义类型的例子，我们定义一个叫 <code class="docutils literal"><span class="pre">Time</span></code> 的类，用于记录时间。
+这个类的定义如下：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Time</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Represents the time of day.</span>
+
+<span class="sd">    attributes: hour, minute, second</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>我们可以创建一个新的 <code class="docutils literal"><span class="pre">Time</span></code> 类对象，并且给它的属性 <code class="docutils literal"><span class="pre">hour</span></code> , <code class="docutils literal"><span class="pre">minutes</span></code> 和 <code class="docutils literal"><span class="pre">seconds</span></code> 赋值：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">hour</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">time</span><span class="o">.</span><span class="n">minute</span> <span class="o">=</span> <span class="mi">59</span>
+<span class="n">time</span><span class="o">.</span><span class="n">second</span> <span class="o">=</span> <span class="mi">30</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">Time</span></code>对象的状态图类似于<a class="reference internal" href="#fig-time"><span class="std std-ref">图16-1：对象图</span></a>。</p>
+<p>我们做个练习，编写一个叫做 <code class="docutils literal"><span class="pre">print_time</span></code> 的函数，接收一个 <code class="docutils literal"><span class="pre">Time</span></code> 对象并用“时:分:秒”的格式打印它。
+提示：格式化序列 <code class="docutils literal"><span class="pre">'%.2d'</span></code> 可以至少两位数的形式打印一个整数，如果不足则在前面补0。</p>
+<p>编写一个叫做 <code class="docutils literal"><span class="pre">is_after</span></code> 的布尔函数，接收两个 <code class="docutils literal"><span class="pre">Time</span></code> 对象，<code class="docutils literal"><span class="pre">t1</span></code> 和 <code class="docutils literal"><span class="pre">t2</span></code> ，若 <code class="docutils literal"><span class="pre">t1</span></code> 的时间在 <code class="docutils literal"><span class="pre">t2</span></code> 之后，
+则返回 <code class="docutils literal"><span class="pre">True</span></code> ，否则返回 <code class="docutils literal"><span class="pre">False</span></code> 。挑战：不要使用 <code class="docutils literal"><span class="pre">if</span></code> 语句。</p>
+<div class="figure" id="id11">
+<span id="fig-time"></span><img alt="图16-1：对象图" src="_images/time.png" />
+<p class="caption"><span class="caption-text">图16-1：对象图</span></p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>纯函数<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>在下面几节中，我们将编写两个用来增加时间值的函数。
+它们展示了两种不同的函数：纯函数（pure functions）和修改器（modifiers）。
+它们也展示了我所称的 <strong>原型和补丁（prototype and patch）</strong> 的开发方案。
+这是一种处理复杂问题的方法，从简单的原型开始，逐步解决复杂情况。</p>
+<p>下面是一个简单的 <code class="docutils literal"><span class="pre">add_time</span></code> 原型：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_time</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="n">Time</span><span class="p">()</span>
+    <span class="nb">sum</span><span class="o">.</span><span class="n">hour</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span> <span class="n">t2</span><span class="o">.</span><span class="n">hour</span>
+    <span class="nb">sum</span><span class="o">.</span><span class="n">minute</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">minute</span> <span class="o">+</span> <span class="n">t2</span><span class="o">.</span><span class="n">minute</span>
+    <span class="nb">sum</span><span class="o">.</span><span class="n">second</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">second</span> <span class="o">+</span> <span class="n">t2</span><span class="o">.</span><span class="n">second</span>
+    <span class="k">return</span> <span class="nb">sum</span>
+</pre></div>
+</div>
+<p>这个函数创建了一个新的 <code class="docutils literal"><span class="pre">Time</span></code> 对象，初始化了对象的属性，并返回了这个对象的引用。
+我们把这个函数称为 <strong>纯函数（pure function）</strong>，因为它除了返回一个值以外，并不修改作为参数传入的任何对象，
+也没有产生如显示一个值或者获取用户输入的影响。</p>
+<p>为了测试这个函数，我将创建两个 <code class="docutils literal"><span class="pre">Time</span></code> 对象：<code class="docutils literal"><span class="pre">start</span></code> 用于存放一个电影
+（如 Monty Python and the Holy Grail）的开始时间，<code class="docutils literal"><span class="pre">duration</span></code> 用于存放电影的放映时长，这里时长定为1小时35分钟。</p>
+<p><code class="docutils literal"><span class="pre">add_time</span></code>将计算电影何时结束。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">start</span> <span class="o">=</span> <span class="n">Time</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start</span><span class="o">.</span><span class="n">hour</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start</span><span class="o">.</span><span class="n">minute</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start</span><span class="o">.</span><span class="n">second</span> <span class="o">=</span>  <span class="mi">0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">duration</span> <span class="o">=</span> <span class="n">Time</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">duration</span><span class="o">.</span><span class="n">hour</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">duration</span><span class="o">.</span><span class="n">minute</span> <span class="o">=</span> <span class="mi">35</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">duration</span><span class="o">.</span><span class="n">second</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">done</span> <span class="o">=</span> <span class="n">add_time</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">duration</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">print_time</span><span class="p">(</span><span class="n">done</span><span class="p">)</span>
+<span class="go">10:80:00</span>
+</pre></div>
+</div>
+<p>这个结果 10:80:00 可能不是你所希望得到的。问题在于这个函数并没有处理好秒数和分钟数相加超过60的情况。
+当发生这种情况时，我们要把多余的秒数放进分钟栏，或者把多余的分钟加进小时栏。</p>
+<p>下面是一个改进的版本：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_time</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="n">Time</span><span class="p">()</span>
+    <span class="nb">sum</span><span class="o">.</span><span class="n">hour</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span> <span class="n">t2</span><span class="o">.</span><span class="n">hour</span>
+    <span class="nb">sum</span><span class="o">.</span><span class="n">minute</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">minute</span> <span class="o">+</span> <span class="n">t2</span><span class="o">.</span><span class="n">minute</span>
+    <span class="nb">sum</span><span class="o">.</span><span class="n">second</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">second</span> <span class="o">+</span> <span class="n">t2</span><span class="o">.</span><span class="n">second</span>
+
+    <span class="k">if</span> <span class="nb">sum</span><span class="o">.</span><span class="n">second</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="nb">sum</span><span class="o">.</span><span class="n">second</span> <span class="o">-=</span> <span class="mi">60</span>
+        <span class="nb">sum</span><span class="o">.</span><span class="n">minute</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="nb">sum</span><span class="o">.</span><span class="n">minute</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="nb">sum</span><span class="o">.</span><span class="n">minute</span> <span class="o">-=</span> <span class="mi">60</span>
+        <span class="nb">sum</span><span class="o">.</span><span class="n">hour</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="nb">sum</span>
+</pre></div>
+</div>
+<p>这个函数虽然正确，但是它开始变得臃肿。我们会在后面看到一个较短的版本。</p>
+</div>
+<div class="section" id="id4">
+<h2>修改器<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>有时候用函数修改作为参数传入的对象是很有用的。在这种情况下，这种改变对
+调用者来说是可见的。这种方式工作的函数称为 <strong>修改器（modifiers）</strong>。</p>
+<p>函数 <code class="docutils literal"><span class="pre">increment</span></code> 给一个 <code class="docutils literal"><span class="pre">Time</span></code> 对象增加指定的秒数，可以很自然地用修改器来编写。
+下面是一个初稿：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">increment</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">seconds</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">second</span> <span class="o">+=</span> <span class="n">seconds</span>
+
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">second</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">second</span> <span class="o">-=</span> <span class="mi">60</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">minute</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">minute</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">minute</span> <span class="o">-=</span> <span class="mi">60</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">hour</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>第一行进行基础操作；其余部分的处理则是我们之前看到的特殊情况。</p>
+<p>这个函数正确吗？如果 <code class="docutils literal"><span class="pre">seconds</span></code> 比 60 大很多会发生什么？</p>
+<p>在那种情况下，只进位一次是不够的；我们要重复执行直到 <code class="docutils literal"><span class="pre">seconds</span></code> 小于 60。一种
+方法是用 <code class="docutils literal"><span class="pre">while</span></code> 语句代替 <code class="docutils literal"><span class="pre">if</span></code> 语句。这样能够让函数正确，但是并不是很高效。</p>
+<p>我们做个练习：编写正确的 <code class="docutils literal"><span class="pre">increment</span></code> 函数，不能包含任何循环。</p>
+<p>任何能够用修改器实现的函数同样能够用纯函数实现。事实上，一些编程语言只允许用纯函数。
+一些证据表明用纯函数实现的程序比用修改器实现的函数开发更快、更不易出错。
+但是有时候修改器是很方便的，而函数式程序效率反而不高。</p>
+<p>通常来说，我推荐只要是合理的情况下，都使用纯函数方式编写，只在有完全令人信服的原因下采用修改器。
+这种方法可以称为 <strong>函数式编程风格（functional programming style）</strong>。</p>
+<p>我们做个练习，编写一个纯函数版本的 <code class="docutils literal"><span class="pre">increment</span></code> ，创建并返回一个 <code class="docutils literal"><span class="pre">Time</span></code> 对象，而不是修改参数。</p>
+</div>
+<div class="section" id="vs">
+<h2>原型 vs. 方案<a class="headerlink" href="#vs" title="永久链接至标题">¶</a></h2>
+<p>我刚才展示的开发方案叫做 <strong>原型和补丁（protptype and patch）</strong>。
+针对每个函数，我编写了一个可以进行基本运算的原型并对其测试，逐步修正错误。</p>
+<p>这种方法在你对问题没有深入理解时特别有效。但增量修正可能导致代码过度复杂，
+因为需要处理许多特殊情况。也并不可靠，因为很难知道你是否已经找到了所有的错误。</p>
+<p>另一种方法叫做 <strong>设计开发(designed development)</strong> 。
+对问题有高层次的理解能够使开发变得更容易。
+这给我们的启示是，<code class="docutils literal"><span class="pre">Time</span></code> 对象本质上是一个基于六十进制的三位数（详见 <a class="reference external" href="http://en.wikipedia.org/wiki/Sexagesimal">http://en.wikipedia.org/wiki/Sexagesimal</a> 。）！
+属性<code class="docutils literal"><span class="pre">second</span></code>是“个位”，属性 <code class="docutils literal"><span class="pre">minute</span></code> 是“六十位”，属性 <code class="docutils literal"><span class="pre">hour</span></code> 是“360位数”。</p>
+<p>当我们编写 <code class="docutils literal"><span class="pre">add_time</span></code> 和 <code class="docutils literal"><span class="pre">increment</span></code> 时，其实是在基于六十进制累加，
+所以我们需要把一位进位到下一位。</p>
+<p>这个观察意味着我们可以用另一种方法去解决整个问题——我们可以把 <code class="docutils literal"><span class="pre">Time</span></code> 对象转换为整数，
+并利用计算机知道如何进行整数运算的这个事实。</p>
+<p>下面是一个把 <code class="docutils literal"><span class="pre">Time</span></code> 对象转成整数的函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">time_to_int</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+    <span class="n">minutes</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">hour</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">minute</span>
+    <span class="n">seconds</span> <span class="o">=</span> <span class="n">minutes</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">second</span>
+    <span class="k">return</span> <span class="n">seconds</span>
+</pre></div>
+</div>
+<p>下面则是一个把整数转换为 <code class="docutils literal"><span class="pre">Time</span></code> 对象（记得 <code class="docutils literal"><span class="pre">divmod</span></code> 是用第一个参数除以第二个参数并以
+元组的形式返回商和余数）。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">int_to_time</span><span class="p">(</span><span class="n">seconds</span><span class="p">):</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">()</span>
+    <span class="n">minutes</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">second</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">seconds</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">minute</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">minutes</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">time</span>
+</pre></div>
+</div>
+<p>你可能需要思考一下，并运行一些测试，以此来说服自己这些函数是正确的。
+一种测试方法是对很多的 <code class="docutils literal"><span class="pre">x</span></code> 检查 <code class="docutils literal"><span class="pre">time_to_int(int_to_time(x))</span> <span class="pre">==</span> <span class="pre">x</span></code> 是否正确。
+这是一致性检查的例子。</p>
+<p>一旦你确信它们是正确的，你就能使用它们重写 <code class="docutils literal"><span class="pre">add_time</span></code> ：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_time</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+    <span class="n">seconds</span> <span class="o">=</span> <span class="n">time_to_int</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">+</span> <span class="n">time_to_int</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">int_to_time</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这个版本比先前的要更短，更容易校验。我们再做个练习，使用 <code class="docutils literal"><span class="pre">time_to_int</span></code> 和 <code class="docutils literal"><span class="pre">int_to_time</span></code> 重写 <code class="docutils literal"><span class="pre">increment</span></code> 函数。</p>
+<p>从某个方面来说，六十进制和十进制相互转换比处理时间更难些。进制转换更加抽象；
+我们解决时间值的想法是更好的。</p>
+<p>但如果我们意识到把时间当作六十进制，并预先做好编写转换函数（ <code class="docutils literal"><span class="pre">time_to_int</span></code>
+和 <code class="docutils literal"><span class="pre">int_to_time</span></code> ）的准备，我们就能获得一个更短、更易读、更可靠的程序。</p>
+<p>这让我们日后更加容易添加其它功能。例如，试想将两个 <code class="docutils literal"><span class="pre">Time</span></code> 对象相减来获得它们之间的时间间隔。
+最简单的方法是使用借位来实现减法。使用转换函数则更容易，也更容易正确。</p>
+<p>讽刺的是，有时候把一个问题变得更难（或更加普遍）反而能让它更加简单
+（因为会有更少的特殊情况和更少出错的机会）。</p>
+</div>
+<div class="section" id="id5">
+<h2>调试<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>如果 <code class="docutils literal"><span class="pre">minute</span></code> 和 <code class="docutils literal"><span class="pre">second</span></code> 的值介于 0 和 60 之间（包括 0 但不包括 60 ），并且 <code class="docutils literal"><span class="pre">hour</span></code> 是正值，那么这个 <code class="docutils literal"><span class="pre">Time</span></code> 对象就是合法的。<code class="docutils literal"><span class="pre">hour</span></code> 和 <code class="docutils literal"><span class="pre">minute</span></code> 应该是整数值，
+但我们可能也允许
+<code class="docutils literal"><span class="pre">second</span></code>有小数部分。</p>
+<p>这样的要求称为 <strong>不变式（invariants）</strong>。因为它们应当总是为真。
+换句话说，如果它们不为真，肯定是某些地方出错了。</p>
+<p>编写代码来检查不变式能够帮助检测错误并找到出错的原因。
+例如，你可能会写一个 <code class="docutils literal"><span class="pre">valid_time</span></code> 这样的函数，
+接受一个 <code class="docutils literal"><span class="pre">Time</span></code> 对象，并在违反不变式的条件下返回 <code class="docutils literal"><span class="pre">False</span></code> ：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">valid_time</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">time</span><span class="o">.</span><span class="n">minute</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">time</span><span class="o">.</span><span class="n">second</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">minute</span> <span class="o">&gt;=</span> <span class="mi">60</span> <span class="ow">or</span> <span class="n">time</span><span class="o">.</span><span class="n">second</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>在每个函数的开头，你可以检查参数，确认它们是否合法：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_time</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_time</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">valid_time</span><span class="p">(</span><span class="n">t2</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;invalid Time object in add_time&#39;</span><span class="p">)</span>
+    <span class="n">seconds</span> <span class="o">=</span> <span class="n">time_to_int</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">+</span> <span class="n">time_to_int</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">int_to_time</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>或者你可以使用 <strong>assert语句</strong>，检查一个给定的不变式并在失败的情况下抛出异常：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_time</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">valid_time</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="ow">and</span> <span class="n">valid_time</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+    <span class="n">seconds</span> <span class="o">=</span> <span class="n">time_to_int</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">+</span> <span class="n">time_to_int</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">int_to_time</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">assert</span></code>语句非常有用，因为它们区分了处理普通条件的代码和检查错误的代码。</p>
+</div>
+<div class="section" id="id6">
+<h2>术语表<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>原型和补丁（prototype and patch）：</p>
+<blockquote>
+<div>一种开发方案，编写一个程序的初稿，测试，发现错误时修正它们。</div></blockquote>
+<p>设计开发（designed development）：</p>
+<blockquote>
+<div>一种开发方案，需要对问题有更高层次的理解，比增量开发或原型开发更有计划性。</div></blockquote>
+<p>纯函数（pure function）：</p>
+<blockquote>
+<div>一种不修改任何作为参数传入的对象的函数。大部分纯函数是有返回值的（fruitful）。</div></blockquote>
+<p>修改器（modifier）：</p>
+<blockquote>
+<div>一种修改一个或多个作为参数传入的对象的函数。大部分修改器没有返回值；即返回 <code class="docutils literal"><span class="pre">None</span></code> 。</div></blockquote>
+<p>函数式编程风格（functional programming style）：</p>
+<blockquote>
+<div>一种程序设计风格，大部分函数为纯函数。</div></blockquote>
+<p>不变式（invariant）：</p>
+<blockquote>
+<div>在程序执行过程中总是为真的条件。</div></blockquote>
+<p>断言语句（assert statement）：</p>
+<blockquote>
+<div>一种检查条件是否满足并在失败的情况下抛出异常的语句。</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h2>练习题<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>本章的代码示例可以从 <a class="reference external" href="http://thinkpython2.com/code/Time1.py">http://thinkpython2.com/code/Time1.py</a> 下载；
+练习的答案可以从 <a class="reference external" href="http://thinkpython2.com/code/Time1_soln.py">http://thinkpython2.com/code/Time1_soln.py</a> 下载。</p>
+<div class="section" id="id8">
+<h3>习题16-1<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>编写一个叫做 <code class="docutils literal"><span class="pre">mul_time</span></code> 的函数，接收一个 <code class="docutils literal"><span class="pre">Time</span></code> 对象和一个数，并返回一个新的 <code class="docutils literal"><span class="pre">Time</span></code> 对象，包含原始时间和数的乘积。</p>
+<p>然后使用 <code class="docutils literal"><span class="pre">mul_time</span></code> 编写一个函数，接受一个表示比赛完赛时间的 <code class="docutils literal"><span class="pre">Time</span></code> 对象以及一个表示距离的数字，并返回一个用于表示平均配速（每英里所需时间）的 <code class="docutils literal"><span class="pre">Time</span></code> 对象。</p>
+</div>
+<div class="section" id="id9">
+<h3>习题16-2<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">datetime</span></code>模块提供的 <code class="docutils literal"><span class="pre">time</span></code> 对象，和本章的 <code class="docutils literal"><span class="pre">Time</span></code> 对象类似，但前者提供了更丰富的方法和操作符。可以在 <a class="reference external" href="http://docs.python.org/3/library/datetime.html">http://docs.python.org/3/library/datetime.html</a> 阅读相关文档。</p>
+<ol class="arabic simple">
+<li>使用 <code class="docutils literal"><span class="pre">datetime</span></code> 模块来编写一个程序，获取当前日期并打印当天是周几。</li>
+<li>编写一个程序，接受一个生日作为输入，并打印用户的年龄以及距离下个生日所需要的天数、小时数、分钟数和秒数。</li>
+<li>对于两个不在同一天出生的人来说，总有一天，一个人的出生天数是另一个人的两倍。
+我们把这一天称为“双倍日”。编写一个程序，接受两个不同的出生日期，并计算他们的“双倍日”。</li>
+<li>再增加点挑战，编写一个更通用的版本，用于计算一个人出生天数是另一个人 <span class="math">\(n\)</span> 倍的日子。</li>
+</ol>
+<p>答案：<a class="reference external" href="http://thinkpython2.com/code/double.py">http://thinkpython2.com/code/double.py</a> 。</p>
+</div>
+<div class="section" id="id10">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li>翻译：<a class="reference external" href="https://github.com/cxyfreedom">&#64;cxyfreedom</a></li>
+<li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
+<li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="15-classes-and-objects.html" class="btn btn-neutral" title="第十五章：类和对象" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, EarlGrey et.al.
+      最后更新于 5月 03, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
