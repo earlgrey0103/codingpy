@@ -522,9 +522,6 @@ init 方法（“initialization”的简称）是一个特殊的方法，当一�
 
 #. 一个\ ``__str__``\ 方法，返回 ``Kangaroo`` 对象的字符串表示和 ``pounch`` 中的内容。
 
-Test your code by creating two Kangaroo objects, assigning them to
-variables named kanga and roo, and then adding roo to the contents of
-kanga’s pouch.
 
 创建两个 ``Kangaroo`` 对象，将它们命名为 ``kanga`` 和 ``roo`` ，然后将 ``roo`` 加入 ``kanga`` 的 ``pounch`` 列表，以此测试你写的代码。
 
