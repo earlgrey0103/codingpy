@@ -29,6 +29,7 @@ Contents:
    14-files.rst
    15-classes-and-objects
    16-classes-and-functions
+   17-classes-and-methods
    
 
 

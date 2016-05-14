@@ -38,6 +38,7 @@
 
   
     <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="next" title="第十七章：类和方法" href="17-classes-and-methods.html"/>
         <link rel="prev" title="第十五章：类和对象" href="15-classes-and-objects.html"/> 
 
   
@@ -129,9 +130,9 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="14-files.html">第十四章：文件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="15-classes-and-objects.html">第十五章：类和对象</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">第十六章：类和函数</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">时间</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#isafter">时间</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">纯函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">修改器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#increment">修改器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vs">原型 vs. 方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">调试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id6">术语表</a></li>
@@ -143,6 +144,7 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="17-classes-and-methods.html">第十七章：类和方法</a></li>
 </ul>
 
             
@@ -192,8 +194,8 @@ var _hmt = _hmt || [];
 <h1>第十六章：类和函数<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>现在我们已经知道如何去定义一个新的类型，下一步就是编写以自定义对象为参数的函数，并返回自定义对象作为结果。在本章中，我还将介绍“函数式编程风格”和两种新的编程开发方案。</p>
 <p>本章的代码示例可以从 <a class="reference external" href="http://thinkpython2.com/code/Time1.py">http://thinkpython2.com/code/Time1.py</a> 下载。练习的答案可以从 <a class="reference external" href="http://thinkpython2.com/code/Time1_soln.py">http://thinkpython2.com/code/Time1_soln.py</a> 下载。</p>
-<div class="section" id="id2">
-<h2>时间<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="isafter">
+<span id="id2"></span><h2>时间<a class="headerlink" href="#isafter" title="永久链接至标题">¶</a></h2>
 <p>再举一个程序员自定义类型的例子，我们定义一个叫 <code class="docutils literal"><span class="pre">Time</span></code> 的类，用于记录时间。
 这个类的定义如下：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Time</span><span class="p">:</span>
@@ -278,8 +280,8 @@ var _hmt = _hmt || [];
 </div>
 <p>这个函数虽然正确，但是它开始变得臃肿。我们会在后面看到一个较短的版本。</p>
 </div>
-<div class="section" id="id4">
-<h2>修改器<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="increment">
+<span id="id4"></span><h2>修改器<a class="headerlink" href="#increment" title="永久链接至标题">¶</a></h2>
 <p>有时候用函数修改作为参数传入的对象是很有用的。在这种情况下，这种改变对
 调用者来说是可见的。这种方式工作的函数称为 <strong>修改器（modifiers）</strong>。</p>
 <p>函数 <code class="docutils literal"><span class="pre">increment</span></code> 给一个 <code class="docutils literal"><span class="pre">Time</span></code> 对象增加指定的秒数，可以很自然地用修改器来编写。
@@ -309,7 +311,7 @@ var _hmt = _hmt || [];
 <p>我们做个练习，编写一个纯函数版本的 <code class="docutils literal"><span class="pre">increment</span></code> ，创建并返回一个 <code class="docutils literal"><span class="pre">Time</span></code> 对象，而不是修改参数。</p>
 </div>
 <div class="section" id="vs">
-<h2>原型 vs. 方案<a class="headerlink" href="#vs" title="永久链接至标题">¶</a></h2>
+<span id="prototype"></span><h2>原型 vs. 方案<a class="headerlink" href="#vs" title="永久链接至标题">¶</a></h2>
 <p>我刚才展示的开发方案叫做 <strong>原型和补丁（protptype and patch）</strong>。
 针对每个函数，我编写了一个可以进行基本运算的原型并对其测试，逐步修正错误。</p>
 <p>这种方法在你对问题没有深入理解时特别有效。但增量修正可能导致代码过度复杂，
@@ -455,6 +457,8 @@ var _hmt = _hmt || [];
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="17-classes-and-methods.html" class="btn btn-neutral float-right" title="第十七章：类和方法" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
       
         <a href="15-classes-and-objects.html" class="btn btn-neutral" title="第十五章：类和对象" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
@@ -466,7 +470,7 @@ var _hmt = _hmt || [];
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 5月 03, 2016.
+      最后更新于 5月 14, 2016.
 
     </p>
   </div>

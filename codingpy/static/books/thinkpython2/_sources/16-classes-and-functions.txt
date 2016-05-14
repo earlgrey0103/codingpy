@@ -5,6 +5,7 @@
 
 本章的代码示例可以从 http://thinkpython2.com/code/Time1.py 下载。练习的答案可以从 http://thinkpython2.com/code/Time1_soln.py 下载。
 
+.. _isafter:
 
 时间
 --------
@@ -116,6 +117,7 @@
 
 这个函数虽然正确，但是它开始变得臃肿。我们会在后面看到一个较短的版本。
 
+.. _increment:
 
 修改器
 -------------
@@ -157,6 +159,8 @@
 这种方法可以称为 **函数式编程风格（functional programming style）**。
 
 我们做个练习，编写一个纯函数版本的 ``increment`` ，创建并返回一个 ``Time`` 对象，而不是修改参数。
+
+.. _prototype:
 
 原型 vs. 方案
 ----------------

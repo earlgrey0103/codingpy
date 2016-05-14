@@ -135,7 +135,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#id5">实例作为返回值</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id6">对象是可变的</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id7">复制</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hasattr">调试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id9">术语表</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id10">练习题</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id11">习题 15-1</a></li>
@@ -150,6 +150,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="16-classes-and-functions.html">第十六章：类和函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-classes-and-methods.html">第十七章：类和方法</a></li>
 </ul>
 
             
@@ -281,7 +282,7 @@ var _hmt = _hmt || [];
 <span class="go">5.0</span>
 </pre></div>
 </div>
-<p>你可以将一个实例作为参数传递。例如：</p>
+<p>你可以将一个实例作为参数传递。 例如：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_point</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(</span><span class="si">%g</span><span class="s1">, </span><span class="si">%g</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
 </pre></div>
@@ -448,8 +449,8 @@ copy）</strong>，因为它仅复制了对象以及其包含的引用， 但未
 <p>我们做个练习，编写另一个版本的<code class="docutils literal"><span class="pre">move_rectangle</span></code>，
 函数创建并返回一个新的 <code class="docutils literal"><span class="pre">Rectangle</span></code> 对象而非修改原先的那个。</p>
 </div>
-<div class="section" id="id8">
-<h2>调试<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<div class="section" id="hasattr">
+<span id="id8"></span><h2>调试<a class="headerlink" href="#hasattr" title="永久链接至标题">¶</a></h2>
 <p>当你开始学习对象的时候，你可能会遇到一些新的异常。
 如果你访问一个不存在的属性，你会得到 <code class="docutils literal"><span class="pre">Attributeerror</span></code> 的错误提示：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">()</span>
@@ -577,7 +578,7 @@ copy）</strong>，因为它仅复制了对象以及其包含的引用， 但未
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 5月 03, 2016.
+      最后更新于 5月 14, 2016.
 
     </p>
   </div>
