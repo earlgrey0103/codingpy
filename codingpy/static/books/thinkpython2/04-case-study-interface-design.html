@@ -124,7 +124,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#id4">封装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">泛化</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id6">接口设计</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">重构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#refactoring">重构</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id8">开发方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id9">文档字符串</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id10">调试</a></li>
@@ -153,6 +153,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="15-classes-and-objects.html">第十五章：类和对象</a></li>
 <li class="toctree-l1"><a class="reference internal" href="16-classes-and-functions.html">第十六章：类和函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="17-classes-and-methods.html">第十七章：类和方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-inheritance.html">第十八章：继承</a></li>
 </ul>
 
             
@@ -422,8 +423,8 @@ n就不太合适，因为它是关于 <strong>如何</strong> 画圆的细节。
 所以每条线段的长度（大概）是3，小到足以使圆看上去逼真，
 又大到效率足够高，对任意大小的圆都能接受。</p>
 </div>
-<div class="section" id="id7">
-<h2>重构<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<div class="section" id="refactoring">
+<span id="id7"></span><h2>重构<a class="headerlink" href="#refactoring" title="永久链接至标题">¶</a></h2>
 <p>当我写 <code class="docutils literal"><span class="pre">circle</span></code> 程序的时候，我能够复用 <code class="docutils literal"><span class="pre">polygon</span></code> ，
 因为一个多边形是与圆形非常近似。
 但是 <code class="docutils literal"><span class="pre">arc</span></code> 就不那么容易实现了；我们不能使用 <code class="docutils literal"><span class="pre">polygon</span></code> 或者 <code class="docutils literal"><span class="pre">circle</span></code> 来画一个弧。</p>
@@ -637,7 +638,7 @@ ends.</dd>
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 5月 14, 2016.
+      最后更新于 5月 21, 2016.
 
     </p>
   </div>

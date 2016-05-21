@@ -375,6 +375,8 @@ Python　提供了一个叫做集合（set）的数据结构，支持许多常�
 
 答案：\ http://thinkpython2.com/code/analyze_book3.py \ 。
 
+.. _markov:
+
 马尔科夫分析
 ----------------------------
 

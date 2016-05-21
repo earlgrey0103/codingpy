@@ -30,6 +30,7 @@ Contents:
    15-classes-and-objects
    16-classes-and-functions
    17-classes-and-methods
+   18-inheritance
    
 
 
