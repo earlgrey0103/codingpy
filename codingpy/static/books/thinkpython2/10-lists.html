@@ -130,7 +130,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#id5">列表操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id6">列表切片</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id7">列表方法</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">映射、筛选和归并</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#filter">映射、筛选和归并</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id9">删除元素</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id10">列表和字符串</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id11">对象和值</a></li>
@@ -144,7 +144,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l3"><a class="reference internal" href="#id19">习题10-3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id20">习题10-4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id21">习题10-5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">习题10-6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anagram">习题10-6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exercise10-7">习题10-7</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id24">习题10-8</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id25">习题10-9</a></li>
@@ -164,6 +164,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="16-classes-and-functions.html">第十六章：类和函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="17-classes-and-methods.html">第十七章：类和方法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="18-inheritance.html">第十八章：继承</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19-the-goodies.html">第十九章：进阶小技巧</a></li>
 </ul>
 
             
@@ -375,8 +376,8 @@ var _hmt = _hmt || [];
 <p>大部分的列表方法都是无返回值的；它们对列表进行修改，然后返回None。
 如果你意外的写了 <code class="docutils literal"><span class="pre">t.sort()</span></code> ，你将会对结果感到失望的。</p>
 </div>
-<div class="section" id="id8">
-<h2>映射、筛选和归并<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<div class="section" id="filter">
+<span id="id8"></span><h2>映射、筛选和归并<a class="headerlink" href="#filter" title="永久链接至标题">¶</a></h2>
 <p>你可以这样使用循环，对列表中所有元素求和:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_all</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
@@ -789,8 +790,8 @@ var _hmt = _hmt || [];
 </pre></div>
 </div>
 </div>
-<div class="section" id="id22">
-<h3>习题10-6<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<div class="section" id="anagram">
+<span id="id22"></span><h3>习题10-6<a class="headerlink" href="#anagram" title="永久链接至标题">¶</a></h3>
 <p>如果可以通过重排一个单词中字母的顺序，得到另外一个单词，那么称这两个单词是变位词。
 编写一个叫做 <code class="docutils literal"><span class="pre">is_anagram</span></code> 的函数，接受两个字符串作为参数，
 如果它们是变位词则返回 <code class="docutils literal"><span class="pre">True</span></code> 。</p>
@@ -879,7 +880,7 @@ var _hmt = _hmt || [];
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 5月 21, 2016.
+      最后更新于 6月 04, 2016.
 
     </p>
   </div>

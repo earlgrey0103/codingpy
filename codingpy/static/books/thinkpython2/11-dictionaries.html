@@ -130,13 +130,13 @@ var _hmt = _hmt || [];
 <li class="toctree-l2"><a class="reference internal" href="#id4">循环和字典</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">逆向查找</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id6">字典和列表</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">备忘录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memoize">备忘录</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id8">全局变量</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id9">调试</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id10">术语表</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id11">练习题</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#exercise11-1">习题11-1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">习题11-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setdefault">习题11-2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id14">习题11-3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id15">习题11-4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id16">习题11-5</a></li>
@@ -153,6 +153,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="16-classes-and-functions.html">第十六章：类和函数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="17-classes-and-methods.html">第十七章：类和方法</a></li>
 <li class="toctree-l1"><a class="reference internal" href="18-inheritance.html">第十八章：继承</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19-the-goodies.html">第十九章：进阶小技巧</a></li>
 </ul>
 
             
@@ -270,7 +271,7 @@ var _hmt = _hmt || [];
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">in</span></code>操作符对列表和字典采用不同的算法。
-对于列表，它按顺序依次查找目标，如<a class="reference internal" href="08-strings.html#search"><span class="std std-ref">搜索</span></a>一节所示。
+对于列表，它按顺序依次查找目标，如<a class="reference internal" href="09-case-study-word-play.html#search"><span class="std std-ref">搜索</span></a>一节所示。
 随着列表的增长，搜索时间成正比增长。</p>
 <p>对于字典，Python使用一种叫做 <strong>哈希表（hashtable）</strong> 的算法，
 这种算法具备一种了不起的特性：
@@ -460,8 +461,8 @@ var _hmt = _hmt || [];
 绕过这种限制最简单的方法是使用元组， 我们将在下一章中介绍。</p>
 <p>因为字典是可变的，因此它们不能作为键，但是 <em>可以</em> 用作值。</p>
 </div>
-<div class="section" id="id7">
-<h2>备忘录<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<div class="section" id="memoize">
+<span id="id7"></span><h2>备忘录<a class="headerlink" href="#memoize" title="永久链接至标题">¶</a></h2>
 <p>如果你在 <a class="reference internal" href="06-fruitful-functions.html#onemoreexample"><span class="std std-ref">再举一例</span></a>一节中接触过 <code class="docutils literal"><span class="pre">fibonacci</span></code> 函数，你可能注意到输入的实参越大，函数运行就需要越多时间。
 而且运行时间增长得非常快。</p>
 <p>要理解其原因，思考&nbsp;<a class="reference internal" href="#fig-fibonacci"><span class="std std-ref">图11-2：调用图</span></a>，它展示了当 <code class="docutils literal"><span class="pre">n=4</span></code> 时 <code class="docutils literal"><span class="pre">fibonacci</span></code> 的 <strong>调用图（call graph）</strong> ：</p>
@@ -663,8 +664,8 @@ var _hmt = _hmt || [];
 <p>如果你做过<a class="reference internal" href="10-lists.html#exercise10-10"><span class="std std-ref">习题10-10</span></a>，可以比较一下 <code class="docutils literal"><span class="pre">in</span></code> 操作符
 和二分查找的速度。</p>
 </div>
-<div class="section" id="id13">
-<h3>习题11-2<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<div class="section" id="setdefault">
+<span id="id13"></span><h3>习题11-2<a class="headerlink" href="#setdefault" title="永久链接至标题">¶</a></h3>
 <p>查看字典方法 <code class="docutils literal"><span class="pre">setdefault</span></code> 的文档，并使用该方法写一个更简洁的 <code class="docutils literal"><span class="pre">invert_dict</span></code> 。</p>
 <p>答案： <a class="reference external" href="http://thinkpython2.com/code/invert_dict.py">http://thinkpython2.com/code/invert_dict.py</a> 。</p>
 </div>
@@ -729,7 +730,7 @@ on that buck! It must have been a nine-pointer!”它是一个完美的同音词
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 5月 21, 2016.
+      最后更新于 6月 04, 2016.
 
     </p>
   </div>

@@ -1,0 +1,695 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第十九章：进阶小技巧 &mdash; 《Think Python 2e》中译本 1.0 文档</title>
+  
+
+  
+    <meta name="keywords" content="《Think Python》第二版中译文, Python 3版入门教材, Allen Downey, EarlGrey, 编程派">
+    <meta name="description" content="编程派翻译的《Think Python 2ed》中文版，为最新支持Python 3版的教材。">
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="prev" title="第十八章：继承" href="18-inheritance.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69612020-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 《Think Python 2e》中译本
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                持续更新中
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-lists.html">第十章：列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dictionaries.html">第十一章：字典</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-tuples.html">第十二章：元组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-case-study-data-structure-selection.html">第十三章：案例研究：数据结构选择</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-files.html">第十四章：文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-classes-and-objects.html">第十五章：类和对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-classes-and-functions.html">第十六章：类和函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-classes-and-methods.html">第十七章：类和方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-inheritance.html">第十八章：继承</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第十九章：进阶小技巧</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">条件表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">列表解析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">生成器表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#any-all">any 和 all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">集合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">计数器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defaultdict">defaultdict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">命名元组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">汇集关键字实参</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">术语表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">练习题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">习题19-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12"><strong>贡献者</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">《Think Python 2e》中译本</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>第十九章：进阶小技巧</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+            <a href="http://codingpy.com" title="编程派" >前往编程派</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第十九章：进阶小技巧<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>我在写这本书时的一个目标，就是尽量少教些Python。如果有两种实现方法，我会挑其中之一讲解，避免再提另一种方法。有时候可能会将第二种方法放在练习题里。</p>
+<p>现在我想回过头来讲一些之前没有涉及的内容。Python提供的特性中，有一些其实并不是必须的——没有它们你也能写出好的代码——但是有了它们之后，有时候你能写出更简洁、可读性更高或者效率更高的代码，有时候甚至三个好处都有。</p>
+<div class="section" id="id2">
+<h2>条件表达式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>在<a class="reference internal" href="05-conditionals-and-recursion.html#conditional-execution"><span class="std std-ref">有条件的执行</span></a>一节中，我们学习了条件语句。条件语句通常用于在两个值之间进行二选一；例如：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这个语句检测 <code class="docutils literal"><span class="pre">x</span></code> 是否是正值。如果是，它将计算它的 <code class="docutils literal"><span class="pre">math.log</span></code> 。如果不是，<code class="docutils literal"><span class="pre">math.log</span></code> 会抛出 <code class="docutils literal"><span class="pre">ValueError</span></code> 。为了避免程序出错，我们生成一个 “NaN”，这是一个代表“非数字”的特殊浮点值。</p>
+<p>我们可以使用 <strong>条件表达式</strong> 简化这个语句：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这条语句读起来很像英语：“y gets log-x if x is
+greater than 0; otherwise it gets NaN”（如果 x 大于 0，y 的值则是 x 的 log；否则 y 的值为 NaN ）。</p>
+<p>有时候也可以使用条件表达式改写递归函数。例如，下面是阶乘函数的递归版本：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>我们可以像这样重写：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>条件表达式的另一个用处是处理可选参数。例如，下面是<a class="reference internal" href="17-classes-and-methods.html#kangaroo"><span class="std std-ref">习题17-2</span></a>中 <code class="docutils literal"><span class="pre">GoodKangaroo</span></code> 类的 init 方法：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">contents</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">if</span> <span class="n">contents</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">contents</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pouch_contents</span> <span class="o">=</span> <span class="n">contents</span>
+</pre></div>
+</div>
+<p>我们可以像这样重写：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">contents</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pouch_contents</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">contents</span> <span class="o">==</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">contents</span>
+</pre></div>
+</div>
+<p>一般来说，如果条件语句的两个分支中均为简单的表达式，不是被返回就是被赋值给相同的变量，那么你可以用条件表达式替换调该条件语句。</p>
+</div>
+<div class="section" id="id3">
+<h2>列表解析<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>在<a class="reference internal" href="10-lists.html#filter"><span class="std std-ref">映射、筛选和归并</span></a>一节中，我们学习了映射和筛选模式。例如，下面这个函数接受一个字符串列表，将字符串方法 <code class="docutils literal"><span class="pre">capitalize</span></code> 映射至元素，并返回一个新的字符串列表：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">capitalize_all</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<p>我们可以使用 <strong>列表解析</strong> 简化该函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">capitalize_all</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">t</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>方括号操作符表示，我们正在构造一个新列表。方括号中的表达式指定列表中的元素，<code class="docutils literal"><span class="pre">for</span></code> 子句表示我们要遍历的序列。</p>
+<p>列表解析的语法有点奇怪，因为此例中的循环变量 <code class="docutils literal"><span class="pre">s</span></code> 在定义之前就出现了。</p>
+<p>列表解析也可以用于筛选。例如，这个函数只选择 <code class="docutils literal"><span class="pre">t</span></code> 中为大写的元素，并返回一个新列表：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">only_upper</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<p>我们可以使用列表解析重写这个函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">only_upper</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">t</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">isupper</span><span class="p">()]</span>
+</pre></div>
+</div>
+<p>列表解析非常简洁、易读，至少对简单的表达式是这样的。而且通常比对应的 for 循环要更快，有时要快很多。所以，如果你恨我之前没介绍，我可以理解。</p>
+<p>但是，我这么做也是有原因的，列表解析的调试难度更大，因为你不能在循环中添加打印语句。我建议你只在计算足够简单、第一次就能写出正确代码的前提下使用。不过对初学来说，第一次就写对几乎不可能。</p>
+</div>
+<div class="section" id="id4">
+<h2>生成器表达式<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p><strong>生成器表达式</strong>与列表解析类似，但是使用的是圆括号，而不是方括号：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span>
+<span class="go">&lt;generator object &lt;genexpr&gt; at 0x7f4c45a786c0&gt;</span>
+</pre></div>
+</div>
+<p>结果是一个表达式对象，该对象知道如何遍历一个值序列。但与列举解析不同的是，它不会一次性计算出所有的值；而是等待求值请求。内建函数 <code class="docutils literal"><span class="pre">next</span></code> 从生成器获取下一个值：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>抵达序列的末尾时，<code class="docutils literal"><span class="pre">next</span></code> 会抛出 <code class="docutils literal"><span class="pre">StopIteration</span></code> 异常。你还可以使用 for 循环遍历这些值：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="go">9</span>
+<span class="go">16</span>
+</pre></div>
+</div>
+<p>生成器对象会记录其在序列中的位置，因此 for 循环是从 next 结束的地方开始的。一旦生成器被消耗完，它会抛出 <code class="docutils literal"><span class="pre">StopException</span></code> 。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="go">StopIteration</span>
+</pre></div>
+</div>
+<p>生成器表达式常与 <code class="docutils literal"><span class="pre">sum</span></code> 、<code class="docutils literal"><span class="pre">max</span></code> 和 <code class="docutils literal"><span class="pre">min</span></code> 等函数一起使用：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="go">30</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="any-all">
+<h2>any 和 all<a class="headerlink" href="#any-all" title="永久链接至标题">¶</a></h2>
+<p>Python提供了一个内建函数 <code class="docutils literal"><span class="pre">any</span></code>，它接受一个布尔值序列，如果其中有任意一个值为 <code class="docutils literal"><span class="pre">True</span></code> 则返回 <code class="docutils literal"><span class="pre">True</span></code> 。它也适用于列表：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">any</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>但是它通常用于生成器表达式：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">any</span><span class="p">(</span><span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39;t&#39;</span> <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s1">&#39;monty&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>上面这个例子不是很有用，因为它的功能和 in 操作符一样。但是我们可以使用 <code class="docutils literal"><span class="pre">any</span></code> 重写<a class="reference internal" href="09-case-study-word-play.html#search"><span class="std std-ref">搜索</span></a>一节中的部分搜索函数。例如，我们可以像这样编写 <code class="docutils literal"><span class="pre">avoids</span></code> 函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">avoids</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">forbidden</span><span class="p">):</span>
+    <span class="k">return</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">letter</span> <span class="ow">in</span> <span class="n">forbidden</span> <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>上面的函数读取来和英语没什么区别：“word avoids forbidden if there
+are not any forbidden letters in word.”（如果某个词中没有任何禁用字母，那么该词就算避免了使用禁用词。）</p>
+<p>将 <code class="docutils literal"><span class="pre">any</span></code> 与生成器表达式结合使用的效率较高，因为它只要一遇到真值就会终止，所以不会对整个序列进行计算。</p>
+<p>Python还提供了另一个内建函数 <code class="docutils literal"><span class="pre">all</span></code>，如果序列中的每个元素均为 <code class="docutils literal"><span class="pre">True</span></code> 才会返回 <code class="docutils literal"><span class="pre">True</span></code> 。我们做个练习，使用 <code class="docutils literal"><span class="pre">all</span></code> 重写<a class="reference internal" href="09-case-study-word-play.html#search"><span class="std std-ref">搜索</span></a>一节中 <code class="docutils literal"><span class="pre">uses_all</span></code> 函数。</p>
+</div>
+<div class="section" id="id5">
+<h2>集合<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>在<a class="reference internal" href="13-case-study-data-structure-selection.html#dictsub"><span class="std std-ref">字典差集</span></a>一节中，我使用字典对那些在文档中但不在单词列表里的单词进行了查找。我写的那个函数接受参数 <code class="docutils literal"><span class="pre">d1</span></code> 和 <code class="docutils literal"><span class="pre">d2</span></code> ，分别包含文档中的单词（作为键使用）和单词列表。它返回不在 <code class="docutils literal"><span class="pre">d2</span></code> 中但在 <code class="docutils literal"><span class="pre">d1</span></code> 里的键组成的字典。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">subtract</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d2</span><span class="p">:</span>
+            <span class="n">res</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<p>在上面的字典中，所有键的值均为 <code class="docutils literal"><span class="pre">None</span></code> ，因为我们不会使用这些值。后果就是会浪费一些存储空间。</p>
+<p>Python提供了另一个叫做集合的内建类型，它的行为类似没有值的字典键集合。往集合中添加元素是非常快的；成员关系检测也很快。另外，集合还提供了计算常见集合操作的方法和操作符。</p>
+<p>例如，集合差集就有一个对应的 <code class="docutils literal"><span class="pre">difference</span></code> 方法，或者操作符 <code class="docutils literal"><span class="pre">-</span></code>。因此，我们可以这样重写 <code class="docutils literal"><span class="pre">subtract</span></code> 函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">subtract</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>结果是一个集合，而不是字典，但对于像迭代这样的操作而言，二者是没有区别的。</p>
+<p>如果使用集合来完成本书中的部分练习题，代码会比较简洁、高效。例如，下面是<a class="reference internal" href="10-lists.html#exercise10-7"><span class="std std-ref">习题10-7</span></a>中 <code class="docutils literal"><span class="pre">has_duplicates</span></code> 函数的一种使用字典的实现：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_duplicates</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>当某个元素首次出现时，它被添加至字典中。如果同样的元素再次出现，函数则返回 <code class="docutils literal"><span class="pre">True</span></code> 。</p>
+<p>如果使用集合，我们可以像这样重写该函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_duplicates</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>一个元素在集合中只能出现一次，因此如果 <code class="docutils literal"><span class="pre">t</span></code> 中的某个元素出现次数超过一次，那么集合的大小就会小于 <code class="docutils literal"><span class="pre">t</span></code> 。如果没有重复的元素，集合和 <code class="docutils literal"><span class="pre">t</span></code> 的大小则相同。</p>
+<p>我们还可以使用集合完成<a class="reference internal" href="09-case-study-word-play.html#wordplay"><span class="std std-ref">第九章：文字游戏</span></a>中的部分练习题。例如，下面是使用循环实现的 <code class="docutils literal"><span class="pre">uses_only</span></code> 函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">uses_only</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">available</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">available</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">uses_only</span></code> 检查 <code class="docutils literal"><span class="pre">word</span></code> 中的所有字符也在 <code class="docutils literal"><span class="pre">available</span></code> 中。我们可以像这样重写该函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">uses_only</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">available</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">set</span><span class="p">(</span><span class="n">available</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>操作符  <code class="docutils literal"><span class="pre">&lt;=</span></code>  检查某个集合是否是另一个集合的子集或本身，包括了二者相等的可能性。如果 <code class="docutils literal"><span class="pre">word</span></code> 中所有的字符都出现在 <code class="docutils literal"><span class="pre">available</span></code> 中，则返回 <code class="docutils literal"><span class="pre">True</span></code> 。</p>
+<p>接下来做个练习，使用集合重写 <code class="docutils literal"><span class="pre">avoids</span></code> 函数。</p>
+</div>
+<div class="section" id="id6">
+<h2>计数器<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>计数器（Counter）类似集合，区别在于如果某个元素出现次数超过一次，计数器就会记录其出现次数。如果你熟悉数学中的 <strong>多重集</strong> 概念，计数器就是用来表示一个多重集的自然选择。</p>
+<p>计数器定义在叫做 <code class="docutils literal"><span class="pre">collections</span></code> 的标准模块中，因此你必须首先导入该模块。你可以通过字符串、列表或任何支持迭代的数据结构来初始化计数器：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s1">&#39;parrot&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">count</span>
+<span class="go">Counter({&#39;r&#39;: 2, &#39;t&#39;: 1, &#39;o&#39;: 1, &#39;p&#39;: 1, &#39;a&#39;: 1})</span>
+</pre></div>
+</div>
+<p>计数器的行为与字典有很多相似的地方：它们将每个键映射至其出现的次数。与字典一样，键必须是可哈希的。</p>
+<p>与字典不同的是，如果你访问一个没有出现过的元素，计数器不会抛出异常，而只是返回 0 ：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">count</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">]</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>我们可以使用计数器重写<a class="reference internal" href="10-lists.html#anagram"><span class="std std-ref">习题10-6</span></a> 中的 <code class="docutils literal"><span class="pre">is_anagram</span></code> 函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_anagram</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span> <span class="o">==</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果两个单词是变位词，那么它们会包含相同的字符，而且字符的计数也相同，因此它们的计数器也是等价的。</p>
+<p>计数器提供了执行类似集合操作的方法和操作符，包括集合添加、差集、并集和交集。另外，还提供了一个通常非常有用的方法 <code class="docutils literal"><span class="pre">most_common</span></code> ，返回一个由值-频率对组成的列表，按照频率高低排序：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s1">&#39;parrot&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">val</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="n">count</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+<span class="go">r 2</span>
+<span class="go">p 1</span>
+<span class="go">a 1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="defaultdict">
+<h2>defaultdict<a class="headerlink" href="#defaultdict" title="永久链接至标题">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">collections</span></code> 模块中还提供了一个 <code class="docutils literal"><span class="pre">defaultdict</span></code> ，它类似字典，但是如果你访问一个不存在的键，它会临时生成一个新值。</p>
+<p>在创建 <code class="docutils literal"><span class="pre">defaultdict</span></code> 时，你提供一个用于创建新值的函数。这个用于创建对象的函数有时也被称为 <strong>工厂</strong> 。用于创建列表、集合和其他类型的内建函数也可以用作工厂：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>请注意，这里的实参是 <code class="docutils literal"><span class="pre">list</span></code> ，它是一个类对象，而不是 <code class="docutils literal"><span class="pre">list()</span></code> ，后者是一个新列表。你提供的函数只有在访问不存在的键时，才会被调用。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;new key&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<p>新列表 <code class="docutils literal"><span class="pre">t</span></code> 也被添加至字典中。因此如果我们修改 <code class="docutils literal"><span class="pre">t</span></code> ，改动也会出现在 <code class="docutils literal"><span class="pre">d</span></code> 中。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;new value&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">defaultdict(&lt;class &#39;list&#39;&gt;, {&#39;new key&#39;: [&#39;new value&#39;]})</span>
+</pre></div>
+</div>
+<p>如果你要创建一个列表组成的字典，通常你可以使用 <code class="docutils literal"><span class="pre">defaultdict</span></code> 来简化代码。在<a class="reference internal" href="12-tuples.html#anagrams"><span class="std std-ref">习题12-2</span></a>的答案（可从 <a class="reference external" href="http://thinkpython2.com/code/anagram_sets.py">http://thinkpython2.com/code/anagram_sets.py</a> 处获取）中，我创建的字典将排好序的字符串映射至一个可以由这些字符串构成的单词列表。例如，<code class="docutils literal"><span class="pre">'opst'</span></code> 映射至列表 <code class="docutils literal"><span class="pre">['opts',</span> <span class="pre">'post',</span> <span class="pre">'pots',</span> <span class="pre">'spot',</span> <span class="pre">'stop',</span> <span class="pre">'tops']</span></code> 。</p>
+<p>下面是代码：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">all_anagrams</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">d</span>
+</pre></div>
+</div>
+<p>这个函数可以使用 <code class="docutils literal"><span class="pre">setdefault</span></code> 进行简化，你可能在<a class="reference internal" href="11-dictionaries.html#setdefault"><span class="std std-ref">习题11-2</span></a>中也用到了：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">all_anagrams</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">d</span>
+</pre></div>
+</div>
+<p>这种方案有一个缺点，即不管是否需要，每次都会创建一个新列表。如果只是创建列表，这问题你不大，但是如果工厂函数非常复杂，就可能会成为一个大问题。</p>
+<p>我们可以使用 <code class="docutils literal"><span class="pre">defaultdict</span></code> 来避免这个问题，同时简化代码：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">all_anagrams</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="n">d</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">d</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="18-inheritance.html#poker"><span class="std std-ref">习题18-3</span></a>的答案（可从 <a class="reference external" href="http://thinkpython2.com/code/PokerHandSoln.py">http://thinkpython2.com/code/PokerHandSoln.py</a> 下载）中，<code class="docutils literal"><span class="pre">has_straightflush</span></code> 函数使用了 <code class="docutils literal"><span class="pre">setdefault</span></code> 。这个答案的缺点就是每次循环时都会创建一个 <code class="docutils literal"><span class="pre">Hand</span></code> 对象，不管是否需要。我们做个练习，使用 <code class="docutils literal"><span class="pre">defaultdict</span></code> 改写这个函数。</p>
+</div>
+<div class="section" id="id7">
+<h2>命名元组<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>许多简单对象基本上就是相关值的集合。例如，<a class="reference internal" href="15-classes-and-objects.html#clobjects"><span class="std std-ref">第十五章：类和对象</span></a>中定义的 <code class="docutils literal"><span class="pre">Point</span></code> 对象包含两个数字 <code class="docutils literal"><span class="pre">x</span></code> 和 <code class="docutils literal"><span class="pre">y</span></code> 。当你像下面这样定义类时，你通常先开始定义 init 和 str 方法：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;(</span><span class="si">%g</span><span class="s1">, </span><span class="si">%g</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>但是编写了这么多代码，却只传递了很少的信息。Python提供了一个更简洁的实现方式：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">namedtuple</span>
+<span class="n">Point</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Point&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>第一个实参是你希望创建的类的名称。第二个实参是 <code class="docutils literal"><span class="pre">Point</span></code> 对象应该具备的属性列表，以字符串的形式指定。 <code class="docutils literal"><span class="pre">namedtuple</span></code> 的返回值是一个类对象：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Point</span>
+<span class="go">&lt;class &#39;__main__.Point&#39;&gt;</span>
+</pre></div>
+</div>
+<p>这里的 <code class="docutils literal"><span class="pre">Point</span></code> 自动提供了像 <code class="docutils literal"><span class="pre">__init__</span></code> 和 <code class="docutils literal"><span class="pre">__str__</span></code> 这样的方法，你没有必须再自己编写。</p>
+<p>如果想创建一个 <code class="docutils literal"><span class="pre">Point</span></code> 对象，你可以将 <code class="docutils literal"><span class="pre">Point</span></code> 类当作函数使用：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">Point(x=1, y=2)</span>
+</pre></div>
+</div>
+<p>init 方法将实参赋值给你提供的属性。str 方法打印 <code class="docutils literal"><span class="pre">Point</span></code> 对象的字符串呈现及其属性。</p>
+<p>你可以通过名称访问命令元组的元素：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span>
+<span class="go">(1, 2)</span>
+</pre></div>
+</div>
+<p>但是你也可以把命名元组当作元组使用：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">(1, 2)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">p</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+<span class="go">(1, 2)</span>
+</pre></div>
+</div>
+<p>命名元组是定义简单类的一种便捷方式。缺点是这些简单类不会一成不变。之后你可能会发现想要给命名元组添加更多的方法。在这种情况下，你可以定义一个继承自命名元组的新类：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pointier</span><span class="p">(</span><span class="n">Point</span><span class="p">):</span>
+    <span class="c1"># add more methods here</span>
+</pre></div>
+</div>
+<p>或者使用传统的类定义方式。</p>
+</div>
+<div class="section" id="id8">
+<h2>汇集关键字实参<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>在<a class="reference internal" href="12-tuples.html#gather"><span class="std std-ref">可变长度参数元组</span></a>一节中，我们学习了如何编写一个将实参汇集到元组的函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">printall</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你可以使用任意数量的位置实参（即不带关键字的参数）调用该函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">printall</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="go">(1, 2.0, &#39;3&#39;)</span>
+</pre></div>
+</div>
+<p>不过 <code class="docutils literal"><span class="pre">*</span></code> 星号操作符无法汇集关键字参数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">printall</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">third</span><span class="o">=</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="go">TypeError: printall() got an unexpected keyword argument &#39;third&#39;</span>
+</pre></div>
+</div>
+<p>如果要汇集关键字参数，你可以使用 <code class="docutils literal"><span class="pre">**</span></code> 双星号操作符：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">printall</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你可以给关键字汇集形参取任意的名称，但是 <code class="docutils literal"><span class="pre">kwargs</span></code> 是常用名。上面函数的结果是一个将关键字映射至值的字典：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">printall</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">third</span><span class="o">=</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="go">(1, 2.0) {&#39;third&#39;: &#39;3&#39;}</span>
+</pre></div>
+</div>
+<p>如果你有一个有关键字和值组成的字典，可以使用分散操作符（scatter operator） <code class="docutils literal"><span class="pre">**</span></code> 调用函数：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Point</span><span class="p">(</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>
+<span class="go">Point(x=1, y=2)</span>
+</pre></div>
+</div>
+<p>如果没有分散操作符，函数会将 <code class="docutils literal"><span class="pre">d</span></code> 视为一个位置实参，因此会将 <code class="docutils literal"><span class="pre">d</span></code> 赋值给 <code class="docutils literal"><span class="pre">x</span></code> 并报错，因为没有给 <code class="docutils literal"><span class="pre">y</span></code> 赋值：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Point</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">__new__() missing 1 required positional argument: &#39;y&#39;</span>
+</pre></div>
+</div>
+<p>在处理有大量形参的函数时，通常可以创建指定了常用选项的字典，并将其传入函数。</p>
+</div>
+<div class="section" id="id9">
+<h2>术语表<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>条件表达式（conditional expression）：</p>
+<blockquote>
+<div>根据条件在两个值中二选一的表达式。</div></blockquote>
+<p>列表解析（list comprehension）：</p>
+<blockquote>
+<div>位于方括号中带 for 循环的表达式，最终生成一个新列表。</div></blockquote>
+<p>生成器表达式（generator expression）：</p>
+<blockquote>
+<div>位于圆括号中带 for 循环的表达式，最终生成一个生成器对象。</div></blockquote>
+<p>多重集（multiset）：</p>
+<blockquote>
+<div>一个数学概念，表示一个集合的元素与各元素出现次数之间的映射。</div></blockquote>
+<p>工厂（factory）：</p>
+<blockquote>
+<div>用于创建对象的函数，通常作为形参传入。</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h2>练习题<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id11">
+<h3>习题19-1<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>下面是一个递归计算二项式系数（binomial coefficient）的函数。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">binomial_coeff</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the binomial coefficient &quot;n choose k&quot;.</span>
+
+<span class="sd">    n: number of trials</span>
+<span class="sd">    k: number of successes</span>
+
+<span class="sd">    returns: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">binomial_coeff</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">binomial_coeff</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<p>使用嵌套条件表达式重写函数体。</p>
+<p>注意：这个函数不是特别高效，因为它最后在不断地重复计算相同的值。你可以通过备忘录模式（memoizing，也可理解为缓存）来提高效率（参见<a class="reference internal" href="11-dictionaries.html#memoize"><span class="std std-ref">备忘录</span></a>一节）。不过你会发现，如果使用条件表达式，进行缓存的难度会更大。</p>
+</div>
+<div class="section" id="id12">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li>翻译：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
+<li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
+<li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="18-inheritance.html" class="btn btn-neutral" title="第十八章：继承" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, EarlGrey et.al.
+      最后更新于 6月 04, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

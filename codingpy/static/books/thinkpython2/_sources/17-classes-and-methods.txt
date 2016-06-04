@@ -509,6 +509,8 @@ init 方法（“initialization”的简称）是一个特殊的方法，当一�
 
 完成之后，程序的输出应该和之前保持一致。答案： http://thinkpython2.com/code/Time2_soln.py 。
 
+.. _kangaroo:
+
 习题17-2
 ^^^^^^^^^^^^
 
