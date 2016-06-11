@@ -38,6 +38,7 @@
 
   
     <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="next" title="第二十章：调试" href="20-debugging.html"/>
         <link rel="prev" title="第十八章：继承" href="18-inheritance.html"/> 
 
   
@@ -133,7 +134,7 @@ var _hmt = _hmt || [];
 <li class="toctree-l1"><a class="reference internal" href="18-inheritance.html">第十八章：继承</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">第十九章：进阶小技巧</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">条件表达式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">列表解析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">列表推导式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">生成器表达式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#any-all">any 和 all</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">集合</a></li>
@@ -149,6 +150,7 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="20-debugging.html">第二十章：调试</a></li>
 </ul>
 
             
@@ -244,7 +246,7 @@ greater than 0; otherwise it gets NaN”（如果 x 大于 0，y 的值则是 x 
 <p>一般来说，如果条件语句的两个分支中均为简单的表达式，不是被返回就是被赋值给相同的变量，那么你可以用条件表达式替换调该条件语句。</p>
 </div>
 <div class="section" id="id3">
-<h2>列表解析<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2>列表推导式<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>在<a class="reference internal" href="10-lists.html#filter"><span class="std std-ref">映射、筛选和归并</span></a>一节中，我们学习了映射和筛选模式。例如，下面这个函数接受一个字符串列表，将字符串方法 <code class="docutils literal"><span class="pre">capitalize</span></code> 映射至元素，并返回一个新的字符串列表：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">capitalize_all</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
@@ -253,14 +255,14 @@ greater than 0; otherwise it gets NaN”（如果 x 大于 0，y 的值则是 x 
     <span class="k">return</span> <span class="n">res</span>
 </pre></div>
 </div>
-<p>我们可以使用 <strong>列表解析</strong> 简化该函数：</p>
+<p>我们可以使用 <strong>列表推导式</strong> 简化该函数：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">capitalize_all</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">t</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>方括号操作符表示，我们正在构造一个新列表。方括号中的表达式指定列表中的元素，<code class="docutils literal"><span class="pre">for</span></code> 子句表示我们要遍历的序列。</p>
-<p>列表解析的语法有点奇怪，因为此例中的循环变量 <code class="docutils literal"><span class="pre">s</span></code> 在定义之前就出现了。</p>
-<p>列表解析也可以用于筛选。例如，这个函数只选择 <code class="docutils literal"><span class="pre">t</span></code> 中为大写的元素，并返回一个新列表：</p>
+<p>列表推导式的语法有点奇怪，因为此例中的循环变量 <code class="docutils literal"><span class="pre">s</span></code> 在定义之前就出现了。</p>
+<p>列表推导式也可以用于筛选。例如，这个函数只选择 <code class="docutils literal"><span class="pre">t</span></code> 中为大写的元素，并返回一个新列表：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">only_upper</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
@@ -269,23 +271,23 @@ greater than 0; otherwise it gets NaN”（如果 x 大于 0，y 的值则是 x 
     <span class="k">return</span> <span class="n">res</span>
 </pre></div>
 </div>
-<p>我们可以使用列表解析重写这个函数：</p>
+<p>我们可以使用列表推导式重写这个函数：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">only_upper</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">t</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">isupper</span><span class="p">()]</span>
 </pre></div>
 </div>
-<p>列表解析非常简洁、易读，至少对简单的表达式是这样的。而且通常比对应的 for 循环要更快，有时要快很多。所以，如果你恨我之前没介绍，我可以理解。</p>
-<p>但是，我这么做也是有原因的，列表解析的调试难度更大，因为你不能在循环中添加打印语句。我建议你只在计算足够简单、第一次就能写出正确代码的前提下使用。不过对初学来说，第一次就写对几乎不可能。</p>
+<p>列表推导式非常简洁、易读，至少对简单的表达式是这样的。而且通常比对应的 for 循环要更快，有时要快很多。所以，如果你恨我之前没介绍，我可以理解。</p>
+<p>但是，我这么做也是有原因的，列表推导式的调试难度更大，因为你不能在循环中添加打印语句。我建议你只在计算足够简单、第一次就能写出正确代码的前提下使用。不过对初学来说，第一次就写对几乎不可能。</p>
 </div>
 <div class="section" id="id4">
 <h2>生成器表达式<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<p><strong>生成器表达式</strong>与列表解析类似，但是使用的是圆括号，而不是方括号：</p>
+<p><strong>生成器表达式</strong>与列表推导式类似，但是使用的是圆括号，而不是方括号：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span>
 <span class="go">&lt;generator object &lt;genexpr&gt; at 0x7f4c45a786c0&gt;</span>
 </pre></div>
 </div>
-<p>结果是一个表达式对象，该对象知道如何遍历一个值序列。但与列举解析不同的是，它不会一次性计算出所有的值；而是等待求值请求。内建函数 <code class="docutils literal"><span class="pre">next</span></code> 从生成器获取下一个值：</p>
+<p>结果是一个表达式对象，该对象知道如何遍历一个值序列。但与列举推导式不同的是，它不会一次性计算出所有的值；而是等待求值请求。内建函数 <code class="docutils literal"><span class="pre">next</span></code> 从生成器获取下一个值：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 <span class="go">0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
@@ -574,7 +576,7 @@ are not any forbidden letters in word.”（如果某个词中没有任何禁用
 <p>条件表达式（conditional expression）：</p>
 <blockquote>
 <div>根据条件在两个值中二选一的表达式。</div></blockquote>
-<p>列表解析（list comprehension）：</p>
+<p>列表推导式（list comprehension）：</p>
 <blockquote>
 <div>位于方括号中带 for 循环的表达式，最终生成一个新列表。</div></blockquote>
 <p>生成器表达式（generator expression）：</p>
@@ -630,6 +632,8 @@ are not any forbidden letters in word.”（如果某个词中没有任何禁用
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="20-debugging.html" class="btn btn-neutral float-right" title="第二十章：调试" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
       
         <a href="18-inheritance.html" class="btn btn-neutral" title="第十八章：继承" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
@@ -641,7 +645,7 @@ are not any forbidden letters in word.”（如果某个词中没有任何禁用
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2016, EarlGrey et.al.
-      最后更新于 6月 04, 2016.
+      最后更新于 6月 11, 2016.
 
     </p>
   </div>

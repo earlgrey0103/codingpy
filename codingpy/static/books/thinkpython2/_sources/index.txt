@@ -32,6 +32,7 @@ Contents:
    17-classes-and-methods
    18-inheritance
    19-the-goodies
+   20-debugging
    
 
 
