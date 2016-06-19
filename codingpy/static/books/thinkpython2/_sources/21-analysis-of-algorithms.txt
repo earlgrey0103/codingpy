@@ -447,11 +447,11 @@ Python基本运算操作分析
 **贡献者**
 ^^^^^^^^^^^^^^^
 
-#. 翻译：`@bingjin`_
+#. 翻译：`@SeikaScarlet`_
 #. 校对：`@bingjin`_
 #. 参考：`@carfly`_
 
-.. _@lroolle: https://github.com/bingjin
+.. _@SeikaScarlet: https://github.com/SeikaScarlet
 .. _@bingjin: https://github.com/bingjin
 .. _@carfly: https://github.com/carfly
 
