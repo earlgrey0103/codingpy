@@ -1,0 +1,672 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第二十一章：算法分析 &mdash; 《Think Python 2e》中译本 1.0 文档</title>
+  
+
+  
+    <meta name="keywords" content="《Think Python》第二版中译文, Python 3版入门教材, Allen Downey, EarlGrey, 编程派">
+    <meta name="description" content="编程派翻译的《Think Python 2ed》中文版，为最新支持Python 3版的教材。">
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="《Think Python 2e》中译本 1.0 文档" href="index.html"/>
+        <link rel="prev" title="第二十章：调试" href="20-debugging.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1a54d19172d7819c009872071839bfe3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69612020-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 《Think Python 2e》中译本
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                持续更新中
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="foreword.html">译者的话</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00-preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-the-way-of-the-program.html">第一章：程序之道</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-variables-expressions-and-statements.html">第二章：变量、表达式和语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-functions.html">第三章：函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-case-study-interface-design.html">第四章：案例研究：接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-conditionals-and-recursion.html">第五章：条件和递归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-fruitful-functions.html">第六章：有返回值的函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-iteration.html">第七章：迭代</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-strings.html">第八章：字符串</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-case-study-word-play.html">第九章：文字游戏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-lists.html">第十章：列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dictionaries.html">第十一章：字典</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-tuples.html">第十二章：元组</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-case-study-data-structure-selection.html">第十三章：案例研究：数据结构选择</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-files.html">第十四章：文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-classes-and-objects.html">第十五章：类和对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-classes-and-functions.html">第十六章：类和函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-classes-and-methods.html">第十七章：类和方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-inheritance.html">第十八章：继承</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19-the-goodies.html">第十九章：进阶小技巧</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-debugging.html">第二十章：调试</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第二十一章：算法分析</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">增长量级</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">习题21-1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#python">Python基本运算操作分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">习题21-2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">搜索算法分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hashtable">哈希表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">术语表</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10"><strong>贡献者</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">《Think Python 2e》中译本</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>第二十一章：算法分析</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+            <a href="http://codingpy.com" title="编程派" >前往编程派</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第二十一章：算法分析<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<blockquote>
+<div>本附录摘自 Allen B. Downey 的 <em>Think Complexity</em> 一书 ， 也由 O’Reilly
+Media (2011)出版。 当你读完本书后，也许你可以接着读读那本书。</div></blockquote>
+<p><em>算法分析</em> (<strong>Analysis of algorithms</strong>) 是计算机科学的一个分支，
+着重研究算法的性能， 特别是它们的运行时间和资源开销。见 <a class="reference external" href="http://en.wikipedia.org/wiki/Analysis_of_algorithms">http://en.wikipedia.org/wiki/Analysis_of_algorithms</a> 。</p>
+<p>算法分析的实际目的是预测不同算法的性能，用于指导设计决策。</p>
+<p>2008年美国总统大选期间，当候选人奥巴马(Barack Obama)访问Google时，
+他被要求进行即时分析。首席执行官 Eric Schmidt 开玩笑地问他“对一百万个32位整数排序的最有效的方法”。
+显然有人暗中通知了奥巴马，因为他很快回答，“我认为不应该采用冒泡排序法”。
+详见 <a class="reference external" href="http://www.youtube.com/watch?v=k4RRi_ntQc8">http://www.youtube.com/watch?v=k4RRi_ntQc8</a> 。</p>
+<p>是真的：冒泡排序概念上很简单，但是对于大数据集来说速度非常慢。Schmidt所提问题的答案可能是 “基数排序 (<a class="reference external" href="http://en.wikipedia.org/wiki/Radix_sort">http://en.wikipedia.org/wiki/Radix_sort</a>)” <a class="footnote-reference" href="#id11" id="id2">[1]</a>。</p>
+<p>算法分析的目的是在不同算法间进行有意义的比较， 但是有一些问题：</p>
+<ul class="simple">
+<li>算法的相对性能依赖于硬件的特性，因此一个算法可能在机器A上比较快，
+另一个算法则在机器B上比较快。 对此问题一般的解决办法是指定一个
+<em>机器模型</em> (machine model)
+并且分析一个算法在一个给定模型下所需的步骤或运算的数目。</li>
+<li>相对性能可能依赖于数据集的细节。 例如， 如果数据已经部分排好序，
+一些排序算法可能更快； 此时其它算法运行的比较慢。
+避免该问题的一般方法是分析 <em>最坏情况</em>。 有时分析平均情况性能也可，
+但那通常更难，而且可能不容易弄清该对哪些数据集合进行平均。</li>
+<li>相对性能也依赖于问题的规模。一个对于小列表很快的排序算法可能对于长列表很慢。
+此问题通常的解决方法是将运行时间（或者运算的次数）表示成问题规模的函数，
+并且根据各自随着问题规模的增长而增加的速度，将函数分成不同的类别。</li>
+</ul>
+<p>此类比较的好处是有助于对算法进行简单的分类。
+例如，如果我知道算法A的运行时间与输入的规模 <span class="math">\(n\)</span> 成正比， 算法 B 与
+<span class="math">\(n^2\)</span> 成正比，那么我可以认为 A 比 B 快，至少对于很大的 <span class="math">\(n\)</span> 值来说。</p>
+<p>这类分析也有一些问题，我们后面会提到。</p>
+<div class="section" id="id3">
+<h2>增长量级<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>假设你已经分析了两个算法，并能用输入计算量的规模表示它们的运行时间：
+若算法 A 用 <span class="math">\(100n+1\)</span> 步解决一个规模为 <span class="math">\(n\)</span> 的问题；而算法 B
+用 <span class="math">\(n^2 + n + 1\)</span> 步。</p>
+<p>下表列出了这些算法对于不同问题规模的运行时间：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="33%" />
+<col width="46%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Input</td>
+<td>Run time of</td>
+<td>Run time of</td>
+</tr>
+<tr class="row-even"><td>size</td>
+<td>Algorithm A</td>
+<td>Algorithm B</td>
+</tr>
+<tr class="row-odd"><td>10</td>
+<td>1 001</td>
+<td>111</td>
+</tr>
+<tr class="row-even"><td>100</td>
+<td>10 001</td>
+<td>10 101</td>
+</tr>
+<tr class="row-odd"><td>1 000</td>
+<td>100 001</td>
+<td>1 001 001</td>
+</tr>
+<tr class="row-even"><td>10 000</td>
+<td>1 000 001</td>
+<td><span class="math">\(&gt; 10^{10}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>当 <span class="math">\(n=10\)</span> 时，算法 A 看上去很糟糕，它用了 10 倍于算法 B 所需的时间。
+但当 <span class="math">\(n=100\)</span> 时 ，它们性能几乎相同， 而 <span class="math">\(n\)</span> 取更大值时，算法
+A 要好得多。</p>
+<p>根本原因是对于较大的 <span class="math">\(n\)</span> 值，任何包含 <span class="math">\(n^2\)</span>
+项的函数都比首项为 <span class="math">\(n\)</span> 的函数增长要快。 <em>首项</em> (leading term)
+是指具有最高指数的项。</p>
+<p>对于算法A，首项有一个较大的系数 100，这是为什么对于小 <span class="math">\(n\)</span>
+，B比A好。但是不考虑该系数，总有一些 <span class="math">\(n\)</span> 值使得
+<span class="math">\(a n^2 &gt; b n\)</span>，<span class="math">\(a\)</span> 和 <span class="math">\(b\)</span> 可取任意值。</p>
+<p>同样推论也适用于非首项。 即使算法 A 的运行时间为 <span class="math">\(n+1000000\)</span>
+，对于足够大的 <span class="math">\(n\)</span> ，它仍然比算法 B 好。</p>
+<p>一般来讲，我们认为具备较小首项的算法对于规模大的问题是一个好算法，但是对于规模小的问题，可能存在有一个 <em>交叉点</em> (crossover point)，在此规模以下，另一个算法更好。
+交叉点的位置取决于算法的细节、输入以及硬件，因此在进行算法分析时它通常被忽略。
+但是这不意味着你可以忘记它。</p>
+<p>如果两个算法有相同的首项，很难说哪个更好；答案还是取决于细节。
+所以对于算法分析来说，具有相同首项的函数被认为是相当的，即使它们具有不同的系数。</p>
+<p><em>增长量级*(order of growth)是一个函数集合，集合中函数的增长行为被认为是相当的。
+例如:math:`2n`、:math:`100n`和:math:`n+1`属于相同的增长量级，可用
+*大O符号</em> (Big-Oh notation) 写成<span class="math">\(O(n)\)</span>，
+而且常被称作 <em>线性级</em> (linear)，因为集合中的每个函数随着<span class="math">\(n\)</span>线性增长。</p>
+<p>首项为 <span class="math">\(n^2\)</span> 的函数属于 <span class="math">\(O(n^2)\)</span>；它们被称为 <em>二次方级</em>
+(quadratic)。</p>
+<p>下表列出了算法分析中最通常的一些增长量级，按照运行效率从高到低排列 <a class="footnote-reference" href="#id12" id="id4">[2]</a>。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="52%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Order of Growth</th>
+<th class="head">Name</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(O(1)\)</span></td>
+<td>constant</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(O(\log_b n)\)</span></td>
+<td>logarithmic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(O(n)\)</span></td>
+<td>linear</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(O(n \log_b n)\)</span></td>
+<td>linearithmic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(O(n^2)\)</span></td>
+<td>quadratic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(O(n^3)\)</span></td>
+<td>cubic</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(O(c^n)\)</span></td>
+<td>exponential</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>对于对数级，对数的基数并不影响增长量级。
+改变阶数等价于乘以一个常数，其不改变增长量级。相应的，所有的指数级数都属于相同的增长量级，而无需考虑指数的基数大小。指数函数增长量级增长的非常快，因此指数级算法只用于小规模问题。</p>
+<div class="section" id="id5">
+<h3>习题21-1<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>访问 <a class="reference external" href="http://en.wikipedia.org/wiki/Big_O_notation">http://en.wikipedia.org/wiki/Big_O_notation</a> ，阅读维基百科关于大O符号的介绍，并回答以下问题：</p>
+<ol class="arabic simple">
+<li><span class="math">\(n^3 + n^2\)</span>的增长量级是多少？<span class="math">\(1000000 n^3 + n^2\)</span> 和 <span class="math">\(n^3 + 1000000 n^2\)</span> 的增长量级又是多少？</li>
+<li><span class="math">\((n^2 + n) \cdot (n + 1)\)</span>的增长量级是多少？在开始计算之前，记住你只需要考虑首项即可。</li>
+<li>如果 <span class="math">\(f\)</span> 的增长量级为 <span class="math">\(O(g)\)</span> ，那么对于未指定的函数 <span class="math">\(g\)</span> ，我们可以如何描述 <span class="math">\(af+b\)</span> ？</li>
+<li>如果 <span class="math">\(f_1\)</span> 和 <span class="math">\(f_2\)</span> 的增长量级为 <span class="math">\(O(g)\)</span>，那么 <span class="math">\(f_1 + f_2\)</span> 的增长量级又是多少？</li>
+<li>如果 <span class="math">\(f_1\)</span> 的增长量级为 <span class="math">\(O(g)\)</span> ，<span class="math">\(f_2\)</span> 的增长量级为 <span class="math">\(O(h)\)</span>，那么 <span class="math">\(f_1 + f_2\)</span> 的增长量级是多少？</li>
+<li>如果 <span class="math">\(f_1\)</span> 的增长量级为 <span class="math">\(O(g)\)</span> ，<span class="math">\(f_2\)</span> 的增长量级为 <span class="math">\(O(h)\)</span>，那么 <span class="math">\(f_1 \cdot f_2\)</span> 的增长量级是多少？</li>
+</ol>
+<p>关注性能的程序员经常发现这种分析很难忍受。他们的观点有一定道理：有时系数和非首项会产生巨大的影响。
+有时，硬件的细节、编程语言以及输入的特性会造成很大的影响。对于小问题，渐近的行为没有什么影响。</p>
+<p>但是，如果你牢记这些注意事项，算法分析就是一个有用的工具。
+至少对于大问题，“更好的” 算法通常更好，并且有时要好的多。
+相同增长量级的两个算法之间的不同通常是一个常数因子，但是一个好算法和一个坏算法之间的不同是无限的！</p>
+</div>
+</div>
+<div class="section" id="python">
+<h2>Python基本运算操作分析<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h2>
+<p>在 Python 中，大部分算术运算的开销是常数级的；乘法会比加减法用更长的时间，除法更长，
+但是这些运算时间不依赖被运算数的数量级。非常大的整数却是个例外；在这种情况下，运行时间随着位数的增加而增加。</p>
+<p>索引操作 — 在序列或字典中读写元素 — 的增长量级也是常数级的，和数据结构的大小无关。</p>
+<p>一个遍历序列或字典的 for 循环通常是线性的，只要循环体内的运算是常数时间。
+例如，累加一个列表的元素是线性的：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>内建函数 <code class="docutils literal"><span class="pre">sum</span></code> 也是线性的，因为它做的是相同的事情，但是它要更快一些，因为它是一个更有效的实现；从算法分析角度讲，它具有更小的首项系数。</p>
+<p>根据经验，如果循环体内的增长量级是 <span class="math">\(O(n^a)\)</span>，则整个循环的增长量级是<span class="math">\(O(n^{a+1})\)</span>。如果这个循环在执行一定数目循环后退出则是例外。
+无论 <span class="math">\(n\)</span> 取值多少，如果循环仅执行 <span class="math">\(k\)</span> 次， 整个循环的增长量级是<span class="math">\(O(n^a)\)</span>，即便 <span class="math">\(k\)</span> 值比较大。</p>
+<p>乘上 <span class="math">\(k\)</span> 并不会改变增长量级，除法也是。
+因此，如果循环体的增长量级是 <span class="math">\(O(n^a)\)</span>，而且循环执行 <span class="math">\(n/k\)</span> 次，那么整个循环的增长量级就是 <span class="math">\(O(n^{a+1})\)</span> , 即使 <span class="math">\(k\)</span> 值很大。</p>
+<p>大部分字符串和元组运算是线性的，除了索引和 <code class="docutils literal"><span class="pre">len</span></code> ，它们是常数时间。
+内建函数 <code class="docutils literal"><span class="pre">min</span></code> 和 <code class="docutils literal"><span class="pre">max</span></code> 是线性的。切片运算与输出的长度成正比，但是和输入的大小无关。</p>
+<p>字符串拼接是线性的；它的运算时间取决于运算对象的总长度。</p>
+<p>所有字符串方法都是线性的，但是如果字符串的长度受限于一个常数 — 例如，在单个字符上的运算 — 它们被认为是常数时间。字符串方法 <code class="docutils literal"><span class="pre">join</span></code> 也是线性的；它的运算时间取决于字符串的总长度。</p>
+<p>大部分的列表方法是线性的，但是有一些例外：</p>
+<ul class="simple">
+<li>平均来讲，在列表结尾增加一个元素是常数时间。
+当它超出了所占用空间时，它偶尔被拷贝到一个更大的地方，但是对于
+<span class="math">\(n\)</span> 个运算的整体时间仍为 <span class="math">\(O(n)\)</span> ，
+所以我每个运算的平均时间是 <span class="math">\(O(1)\)</span> 。</li>
+<li>从一个列表结尾删除一个元素是常数时间。</li>
+<li>排序是 <span class="math">\(O(n \log n)\)</span> 。</li>
+</ul>
+<p>大部分的字典运算和方法是常数时间，但有些例外：</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">update</span></code> 的运行时间与作为形参被传递的字典（不是被更新的字典）的大小成正比。</li>
+<li><code class="docutils literal"><span class="pre">keys</span></code>、<code class="docutils literal"><span class="pre">values</span></code> 和 <code class="docutils literal"><span class="pre">items</span></code> 是常数时间，因为它们返回迭代器。
+但是如果你对迭代器进行循环，循环将是线性的。</li>
+</ul>
+<p>字典的性能是计算机科学的一个小奇迹之一。在<a class="reference internal" href="#hashtable"><span class="std std-ref">哈希表</span></a>一节中，我们将介绍它们是如何工作的。</p>
+<div class="section" id="id6">
+<h3>习题21-2<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>访问 <a class="reference external" href="http://en.wikipedia.org/wiki/Sorting_algorithm">http://en.wikipedia.org/wiki/Sorting_algorithm</a> ，阅读维基百科上对排序算法的介绍，并回答下面的问题：</p>
+<ol class="arabic simple">
+<li>什么是“比较排序”？比较排序在最差情况下的最好增长量级是多少？别的排序算法在最差情况下的最优增长量级又是多少？</li>
+<li>冒泡排序法的增长量级是多少？为什么奥巴马认为是“不应采用的方法”</li>
+<li>基数排序(radix sort)的增长量级是多少？我们使用它之前需要具备的前提条件有哪些？</li>
+<li>排序算法的稳定性是指什么？为什么它在实际操作中很重要？</li>
+<li>最差的排序算法是哪一个（有名称的）？</li>
+<li>C 语言使用哪种排序算法？Python使用哪种排序算法？这些算法稳定吗？你可能需要谷歌一下，才能找到这些答案。</li>
+<li>大多数非比较算法是线性的，因此为什 Python 使用一个 增长量级为 <span class="math">\(O(n \log n)\)</span> 的比较排序？</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>搜索算法分析<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p><em>搜索</em> (search)算法，接受一个集合以及一个目标项，并判断该目标项是否在集合中，通常返回目标的索引值。</p>
+<p>最简单的搜素算法是“线性搜索”，其按顺序遍历集合中的项，如果找到目标则停止。
+最坏的情况下， 它不得不遍历全部集合，所以运行时间是线性的。</p>
+<p>序列的 in 操作符使用线性搜索；字符串方法 <code class="docutils literal"><span class="pre">find</span></code> 和 <code class="docutils literal"><span class="pre">count</span></code> 也使用线性搜索。</p>
+<p>如果元素在序列中是排序好的，你可以用 <em>二分搜素</em> (bisection search) ，它的增长量级是 <span class="math">\(O(\log n)\)</span> 。
+二分搜索和你在字典中查找一个单词的算法类似（这里是指真正的字典，不是数据结构）。
+你不会从头开始并按顺序检查每个项，而是从中间的项开始并检查你要查找的单词在前面还是后面。
+如果它出现在前面，那么你搜索序列的前半部分。否则你搜索后一半。如论如何，你将剩余的项数分为一半。</p>
+<p>如果序列有 1,000,000 项，它将花 20 步找到该单词或判断出其不在序列中。因此它比线性搜索快大概 50,000 倍。</p>
+<p>二分搜索比线性搜索快很多，但是它要求已排序的序列，因此使用时需要做额外的工作。</p>
+<p>另一个检索速度更快的数据结构被称为 <em>哈希表</em> (hashtable) — 它可以在常数时间内检索出结果 — 并且不依赖于序列是否已排序。 Python 中的字典就通过哈希表技术实现的，因此大多数的字典操作，包括 in 操作符，只花费常数时间就可完成。</p>
+</div>
+<div class="section" id="hashtable">
+<span id="id8"></span><h2>哈希表<a class="headerlink" href="#hashtable" title="永久链接至标题">¶</a></h2>
+<p>为了解释哈希表是如何工作以及为什么它的性能如此优秀，
+我们从实现一个简单的映射(map)开始并逐步改进它，直到其成为一个哈希表。</p>
+<p>我们使用 Python 来演示这些实现，但在现实生活中，你用不着用 Python 写这样的代码；你只需用内建的字典对象就可以了！因此在接下来的内容中，你就当字典对象并不存在，你希望自己实现一个将键映射到值的数据结构。你必须实现的操作包括：</p>
+<p><code class="docutils literal"><span class="pre">add(k,</span> <span class="pre">v)</span></code>：</p>
+<blockquote>
+<div>增加一个新的项，其从键 k 映射到值 v 。
+如果使用 Python 的字典d，该运算被写作 <code class="docutils literal"><span class="pre">d[k]</span> <span class="pre">=</span> <span class="pre">v</span></code>。</div></blockquote>
+<p><code class="docutils literal"><span class="pre">get(k)</span></code>：</p>
+<blockquote>
+<div>查找并返回相应键的值。
+如果使用 Python 的字典d，该运算被写作 <code class="docutils literal"><span class="pre">d[k]</span></code> 或 <code class="docutils literal"><span class="pre">d.get(k)</span></code> 。</div></blockquote>
+<p>现在，假设每个键只出现一次。该接口最简单的实现是使用一个元组列表，其中每个元组是一个键-值对。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LinearMap</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">val</span>
+        <span class="k">raise</span> <span class="ne">KeyError</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">add</span></code> 向项列表追加一个键—值元组，其增长量级为常数时间。</p>
+<p><code class="docutils literal"><span class="pre">get</span></code> 使用 <code class="docutils literal"><span class="pre">for</span></code> 循环搜索该列表：如果它找到目标键，则返回相应的值；否则触发一个 <code class="docutils literal"><span class="pre">KeyError</span></code>。因此 <code class="docutils literal"><span class="pre">get</span></code> 是线性的。</p>
+<p>另一个方案是保持列表按键排序。那么，<code class="docutils literal"><span class="pre">get</span></code> 可以使用二分搜索，其增长量级为 <span class="math">\(O(\log n)\)</span> 。 但是在列表中间插入一个新的项是线性的，因此这可能不是最好的选择。
+有其它的数据结构能在对数级时间内实现 <code class="docutils literal"><span class="pre">add</span></code> 和 <code class="docutils literal"><span class="pre">get</span></code> ，但是这仍然不如常数时间好，那么我们继续。</p>
+<p>另一种改良 <code class="docutils literal"><span class="pre">LinearMap</span></code> 的方法是将键-值对列表分成小列表。
+下面是一个被称作 <code class="docutils literal"><span class="pre">BetterMap</span></code> 的实现，它是 100 个 <code class="docutils literal"><span class="pre">LinearMap</span></code> 组成的列表。 正如一会儿我们将看到的，<code class="docutils literal"><span class="pre">get</span></code> 的增长量级仍然是线性的， 但是 <code class="docutils literal"><span class="pre">BetterMap</span></code> 是迈向哈希表的一步。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BetterMap</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maps</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">maps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">LinearMap</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">find_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maps</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">maps</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_map</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_map</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">__init__</span></code>会生成一个由 n 个 <code class="docutils literal"><span class="pre">LinearMap</span></code> 组成的列表。</p>
+<p><code class="docutils literal"><span class="pre">add</span></code>和 <code class="docutils literal"><span class="pre">get</span></code> 使用 <code class="docutils literal"><span class="pre">find_map</span></code>  查找往哪一个列表中添加新项，或者对哪个列表进行检索。</p>
+<p><code class="docutils literal"><span class="pre">find_map</span></code> 使用了内建函数 <code class="docutils literal"><span class="pre">hash</span></code>，其接受几乎任何 Python 对象并返回一个整数。
+这一实现的一个限制是它仅适用于可哈希的键。像列表和字典等可变类型是不能哈希的。</p>
+<p>被认为是相等的可哈希对象返回相同的哈希值，但是反之不是必然成立：两个具备不同值的对象能够返回相同的哈希值。</p>
+<p><code class="docutils literal"><span class="pre">find_map</span></code>使用求余运算符将哈希值包在 0 到 <code class="docutils literal"><span class="pre">len(self.maps)</span></code> 之间，
+因此结果是该列表的合法索引值。当然，这意味着许多不同的哈希值将被包成相同的索引值。
+但是如果哈希函数散布相当均匀（这是哈希函数被设计的初衷），
+那么我们预计每个 <code class="docutils literal"><span class="pre">LinearMap</span></code> 会有 <span class="math">\(n/100\)</span> 项。</p>
+<p>由于 <code class="docutils literal"><span class="pre">LinearMap.get</span></code> 的运行时间与项数成正比，那么我们预计 <code class="docutils literal"><span class="pre">BetterMap</span></code> 比 <code class="docutils literal"><span class="pre">LinearMap</span></code> 快100倍。
+增长量级仍然是线性的，但是首项系数变小了。这样很好，但是仍然不如哈希表好。</p>
+<p>下面是使哈希表变快的关键：如果你能保证 <code class="docutils literal"><span class="pre">LinearMap</span></code> 的最大长度是有上限的，则 <code class="docutils literal"><span class="pre">LinearMap.get</span></code> 的增长量级是常数时间。你只需要跟踪项数并且当每个 <code class="docutils literal"><span class="pre">LinearMap</span></code> 的项数超过阈值时，通过增加更多的 <code class="docutils literal"><span class="pre">LinearMap</span></code> 调整哈希表的大小。</p>
+<p>以下是哈希表的一个实现：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HashMap</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maps</span> <span class="o">=</span> <span class="n">BetterMap</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">maps</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maps</span><span class="o">.</span><span class="n">maps</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">maps</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">new_maps</span> <span class="o">=</span> <span class="n">BetterMap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">maps</span><span class="o">.</span><span class="n">maps</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+                <span class="n">new_maps</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">maps</span> <span class="o">=</span> <span class="n">new_maps</span>
+</pre></div>
+</div>
+<p>每个 <code class="docutils literal"><span class="pre">HashMap</span></code> 包含一个 <code class="docutils literal"><span class="pre">BetterMap</span></code>。<code class="docutils literal"><span class="pre">__init__</span></code> 开始仅有两个 <code class="docutils literal"><span class="pre">LinearMap</span></code> ，并且初始化 <code class="docutils literal"><span class="pre">num</span></code>，用于跟踪项的数量。</p>
+<p><code class="docutils literal"><span class="pre">get</span></code>仅仅用来调度 <code class="docutils literal"><span class="pre">BetterMap</span></code>。真正的操作发生于 <code class="docutils literal"><span class="pre">add</span></code> 内，其检查项的数量以及 <code class="docutils literal"><span class="pre">BetterMap</span></code> 的大小：
+如果它们相同，每个 <code class="docutils literal"><span class="pre">LinearMap</span></code> 的平均项数为 1，因此它调用 <code class="docutils literal"><span class="pre">resize</span></code>。</p>
+<p><code class="docutils literal"><span class="pre">resize</span></code> 生成一个新的 <code class="docutils literal"><span class="pre">BetterMap</span></code>，是之前那个的两倍大，然后将像从旧表“重新哈希”至到新的表。</p>
+<p>重新哈希是必要的，因为改变 <code class="docutils literal"><span class="pre">LinearMap</span></code> 的数目也改变了 <code class="docutils literal"><span class="pre">find_map</span></code> 中求余运算的分母。
+这意味着一些被包进相同的 <code class="docutils literal"><span class="pre">LinearMap</span></code> 的对象将被分离（这正是我们希望的，对吧？）。</p>
+<p>重新哈希是线性的，因此 <code class="docutils literal"><span class="pre">resize</span></code> 是线性的，这可能看起来很糟糕，因为我保证 <code class="docutils literal"><span class="pre">add</span></code> 会是常数时间。 但是记住，我们不必每次都调整，因此 <code class="docutils literal"><span class="pre">add</span></code> 通常是常数时间，只是偶尔是线性的。
+运行 <code class="docutils literal"><span class="pre">add</span></code> <span class="math">\(n\)</span> 次的整体操作量与 <span class="math">\(n\)</span> 成正比，因此 <code class="docutils literal"><span class="pre">add</span></code> 的平均运行时间是常数时间！</p>
+<p>为了弄清这是如何工作的，考虑以一个空的 <code class="docutils literal"><span class="pre">HashTable</span></code> 开始并增加一系列项。
+我们以两个 <code class="docutils literal"><span class="pre">LinearMap</span></code> 开始，因此前两个 <code class="docutils literal"><span class="pre">add</span></code> 操作很快（不需要调整大小）。
+我们假设它们每个操作花费一个工作单元。下一个 <code class="docutils literal"><span class="pre">add</span></code> 需要进行一次大小调整，
+因此我们必须重新哈希前两项（我们将其算成两个额外的工作单元），然后增加第3项（又一个工作单元）。
+增加下一项的花费一个单元，所以目前为止添加四个项共需要 6 个单元。</p>
+<p>下一个 <code class="docutils literal"><span class="pre">add</span></code> 花费 5 个单元，但是之后的3个操作每个只花费 1 个单元，所以前八个 <code class="docutils literal"><span class="pre">add</span></code> 总共需要 14 个单元。</p>
+<p>下一个 <code class="docutils literal"><span class="pre">add</span></code> 花费 9 个单元，但是之后在下一次调整大小之前，可以再增加七个，
+所以前 16 个 <code class="docutils literal"><span class="pre">add</span></code> 总共需要 30 个单元。</p>
+<p>进行 32 次 <code class="docutils literal"><span class="pre">add</span></code> 之后，总共花费了 62 个单元，我希望你开始看到规律。
+<span class="math">\(n\)</span>次 <code class="docutils literal"><span class="pre">add</span></code> 后，其中 <span class="math">\(n\)</span> 是 2 的倍数，总花费是 <span class="math">\(2n-2\)</span> 个单元，
+所以平均每个 <code class="docutils literal"><span class="pre">add</span></code> 操作只花费了少于 2 个单元。当 <span class="math">\(n\)</span> 是 2 的倍数时，那是最好的情况。 对于其它的 <span class="math">\(n\)</span> 值，平均花费稍高一点，但是那并不重要。重要的是其增长量级为 <span class="math">\(O(1)\)</span> 。</p>
+<p><a class="reference internal" href="#fig-hash"><span class="std std-ref">图21-1：哈希表中 add 操作的成本</span></a>形象地说明了其工作原理。每个区块代表一个工作单元。
+每列显示每个 <code class="docutils literal"><span class="pre">add</span></code> 所需的单元，按从左到右的顺序排列：前两个 <code class="docutils literal"><span class="pre">add</span></code> 花费 1 个单元，第三个花费 3 个单元，等等。</p>
+<div class="figure" id="id13">
+<span id="fig-hash"></span><a class="reference internal image-reference" href="_images/towers.png"><img alt="哈希表中 ``add`` 操作的成本" src="_images/towers.png" style="width: 5.50000in;" /></a>
+<p class="caption"><span class="caption-text">图21-1：哈希表中 <code class="docutils literal"><span class="pre">add</span></code> 操作的成本</span></p>
+</div>
+<p>重新哈希的额外工作，表现为一系列不断增高的高塔，各自之间的距离越来越大。
+现在，如果你打翻这些塔，将大小调整的代价均摊到所有的 <code class="docutils literal"><span class="pre">add</span></code> 上，你会从图上看到 <span class="math">\(n\)</span> 次 <code class="docutils literal"><span class="pre">add</span></code> 的整个花费是 <span class="math">\(2n - 2\)</span> 。</p>
+<p>该算法一个重要的特征是，当我们调整 <code class="docutils literal"><span class="pre">HashTable</span></code> 的大小时，它呈几何级增长；也就是说，我们用常数乘以表的大小。
+如果你按算术级增加大小 —— 每次增加固定的数目 —— 每个 <code class="docutils literal"><span class="pre">add</span></code> 的平均时间是线性的。</p>
+<p>你可以从 <a class="reference external" href="http://thinkpython2.com/code/Map.py">http://thinkpython2.com/code/Map.py</a> 下载到 <code class="docutils literal"><span class="pre">HashMap</span></code> 的实现代码，你不必使用它；如果你想要一个映射数据结构，只要使用 Python 中的字典即可。</p>
+</div>
+<div class="section" id="id9">
+<h2>术语表<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>算法分析（algorithm analysis）：</p>
+<blockquote>
+<div>比较不同算法间运行时间和资源占用的分析方法。</div></blockquote>
+<p>机器模型（machine model）：</p>
+<blockquote>
+<div>用于描述算法（性能）的简化计算机表示。</div></blockquote>
+<p>最坏情况（worst case）：</p>
+<blockquote>
+<div>使得给定算法运行时间最长（或占用做多资源）的输入。</div></blockquote>
+<dl class="docutils">
+<dt>首项（leading term）：</dt>
+<dd>在多项式中，拥有指数最高的项。</dd>
+</dl>
+<p>交叉点（crossover point）：</p>
+<blockquote>
+<div>使得两个算法需要相同运行时间或资源开销的问题大小。</div></blockquote>
+<p>增长量级（order of growth）：</p>
+<blockquote>
+<div>一个函数集合，从算法分析的角度来看其中的函数的增长视为等价的。例如，线性递增的所有的函数都属于同一个增长量级。</div></blockquote>
+<p>大O记法（Big-Oh notation）：</p>
+<blockquote>
+<div>代表一个增长量级的记法；例如，<span class="math">\(O(n)\)</span> 代表线性增长的函数集合。</div></blockquote>
+<p>线性级（linear）：</p>
+<blockquote>
+<div>算法的运行时间和所求解问题的规模成正比，至少对大的问题规模如此。</div></blockquote>
+<p>二次方级（quadratic）</p>
+<blockquote>
+<div>算法的运行时间和求解问题的规模的二次方(<span class="math">\(n^2\)</span>)成正比，<span class="math">\(n\)</span>用于描述问题的规模。</div></blockquote>
+<p>搜索（search）：</p>
+<blockquote>
+<div>在一个集合（如列表或字典）中定位某个元素位置的问题，或者判断其不在集合中。</div></blockquote>
+<p>哈希表（hashtable）：</p>
+<blockquote>
+<div>代表键-值对集合的一种数据结构，执行搜索操作只需常数时间。</div></blockquote>
+<div class="section" id="id10">
+<h3><strong>贡献者</strong><a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li>翻译：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
+<li>校对：<a class="reference external" href="https://github.com/bingjin">&#64;bingjin</a></li>
+<li>参考：<a class="reference external" href="https://github.com/carfly">&#64;carfly</a></li>
+</ol>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>但是，如果你面试中被问到这个问题，我认为更好的答案是，“对上百万个整数进行最快排序的方法就是用你所使用的语言的内建排序函数。它的性能对于大多数应用而言已优化的足够好。但如果最终我的应用运行太慢，我会用性能分析器找出大量的运算时间被用在了哪儿。如果采用一个更快的算法会对性能产生显著的提升，我会试着找一个基数排序的优质实现。”</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td>constant：常数级；logarithmic：对数级；linear：线性级；linearithmic：线性对数级；quadratic：二次方级；cubic：三次方级；exponential：指数级</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="20-debugging.html" class="btn btn-neutral" title="第二十章：调试" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, EarlGrey et.al.
+      最后更新于 6月 19, 2016.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
