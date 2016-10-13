@@ -22,7 +22,7 @@ bp = Blueprint('site', __name__)
 @bp.route('/')
 @bp.route('/index/')
 @bp.route('/page/<int:page>/')
-@cache.cached(timeout=60)
+@cache.cached()
 def index(page=1):
     _base_query = Article.query.public()
     # Latest 10 articles
@@ -55,7 +55,7 @@ def index(page=1):
 
 
 @bp.route('/article/<article_slug>/')
-@cache.cached(timeout=60)
+@cache.cached()
 def article(article_slug):
     article = Article.query.filter(Article.slug == article_slug).first()
     if not article.published:
@@ -93,7 +93,7 @@ def article(article_slug):
 
 @bp.route('/category/<slug>/')
 @bp.route('/category/page/<int:page>/')
-@cache.cached(timeout=60)
+@cache.cached()
 def category(slug, page=1):
     category = Category.query.filter_by(slug=slug).first()
     _base_query = Article.query.public().filter_by(category=category)
@@ -124,7 +124,7 @@ def category(slug, page=1):
 
 @bp.route('/tag/<slug>/')
 @bp.route('/tag/page/<int:page>/')
-@cache.cached(timeout=60)
+@cache.cached()
 def tag(slug, page=1):
     tag = Tag.query.filter_by(slug=slug).first()
     _base_query = Article.query.public().filter(

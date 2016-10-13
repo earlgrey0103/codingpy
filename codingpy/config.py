@@ -29,7 +29,7 @@ class Config:
 
     # flask-cache configuration
     CACHE_KEY = 'view/%s'  # ?
-    CACHE_DEFAULT_TIMEOUT = 30
+    CACHE_DEFAULT_TIMEOUT = 120
     # 使用uwsgi_cache效果更好
     # Used only for RedisCache, MemcachedCache and GAEMemcachedCache
     CACHE_KEY_PREFIX = '%s_' % md5(SECRET_KEY).hexdigest()[7:15]
