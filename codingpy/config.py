@@ -15,6 +15,8 @@ class Config:
     SECRET_KEY = os.urandom(32)
     DEBUG_TB_INTERCEPT_REDIRECTS = False
 
+    BODY_FORMAT = os.getenv('BODY_FORMAT') or 'html'
+
     # mail setup
     MAIL_SERVER = 'smtp.126.com'
     MAIL_PORT = 25
