@@ -70,3 +70,9 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# redis dump
+dump.rdb
+
+# envs
+set_envs.sh

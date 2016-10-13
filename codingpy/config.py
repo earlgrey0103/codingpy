@@ -36,6 +36,8 @@ class Config:
     CACHE_REDIS_HOST = 'localhost'
     CACHE_REDIS_PORT = 6379
     CACHE_REDIS_URL = 'redis://localhost:6379'
+    CACHE_REDIS_PASSWORD = ''
+    CACHE_REDIS_DB = '0'
 
     @staticmethod
     def init_app(app):
