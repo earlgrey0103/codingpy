@@ -8,7 +8,7 @@ from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.assets import Environment, Bundle
 from codingpy import *
 
-app = create_app(os.environ.get('APP_CONFIG') or 'default')
+app = create_app(os.getenv('APP_CONFIG') or 'default')
 
 manager = Manager(app)
 migrate = Migrate(app, db)

@@ -15,12 +15,6 @@ class Config:
     SECRET_KEY = os.urandom(32)
     DEBUG_TB_INTERCEPT_REDIRECTS = False
 
-    # 是否启用博客模式
-    # BLOG_MODE = True
-
-    # html or markdown
-    BODY_FORMAT = os.getenv('BODY_FORMAT')  # or 'html'
-
     # mail setup
     MAIL_SERVER = 'smtp.126.com'
     MAIL_PORT = 25
@@ -42,12 +36,6 @@ class Config:
     CACHE_REDIS_HOST = 'localhost'
     CACHE_REDIS_PORT = 6379
     CACHE_REDIS_URL = 'redis://localhost:6379'
-
-    # QiNiu Cloud Storage
-    QINIU_AK = os.getenv('QINIU_AK') or ''
-    QINIU_SK = os.getenv('QINIU_SK') or ''
-    QINIU_BUCKET = os.getenv('QINIU_BUCKET') or ''
-    QINIU_DOMAIN = os.getenv('QINIU_DOMAIN') or '%s.qiniudn.com' % QINIU_BUCKET
 
     @staticmethod
     def init_app(app):
